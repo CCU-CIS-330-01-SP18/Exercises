@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 /// <summary>This program is responsible for writing a message based on the current year.</summary>
 class Program
 {
+    static DateTime now = DateTime.Now;
+
     /// <summary>This is the entry point for the program.</summary>
     /// <param name="args">Program arguments.</param>
     /// <returns>The New Year status message.</returns>
@@ -15,8 +17,6 @@ class Program
     {
         return writeMessage(now, Console.Out);
     }
-
-    static DateTime now = DateTime.Now;
 
     /// <summary>Writes the year's greeting to a TextWriter, and returns a value.</summary>
     /// <param name="currentDate">The current date's DateTime object.</param>
