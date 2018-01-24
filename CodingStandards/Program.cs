@@ -15,18 +15,18 @@ class Program
     /// <returns>The New Year status message.</returns>
     static int Main(string[] args)
     {
-        return writeMessage(now, Console.Out);
+        return WriteMessage(now, Console.Out);
     }
 
     /// <summary>Writes the year's greeting to a TextWriter, and returns a value.</summary>
     /// <param name="currentDate">The current date's DateTime object.</param>
     /// <param name="writer">The TextWriter object that will be written to.</param>
     /// <returns>An integer 0.</returns>
-    public static int writeMessage(DateTime currentDate, TextWriter writer)
+    public static int WriteMessage(DateTime currentDate, TextWriter writer)
     {
-        int retVal = 0;
+        int returnVal = 0;
         const int messageCount = 5;
-        for (int myIndex = 0; myIndex < messageCount; myIndex++)
+        for (int messageIndex = 0; messageIndex < messageCount; messageIndex++)
         {
             // Write a line based on whether the current year is greater than 2017.
             if (currentDate.Year > 2017)
@@ -40,6 +40,6 @@ class Program
         }
         
         // Return the result value.
-        return retVal;
+        return returnVal;
     }
 }
