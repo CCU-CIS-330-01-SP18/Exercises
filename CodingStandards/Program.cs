@@ -28,7 +28,7 @@ class Program
     /// <returns>Returns standard error value.</returns>
     public static int WriteMessage(DateTime currentDate, TextWriter writer)
     {
-        int retVal = 0;
+        int returnValue = 0;
         const int messageCount = 5;
         // Iterates for the value of messageCount constant.
         for (int counter = 0; counter < messageCount; counter++)
@@ -43,6 +43,6 @@ class Program
                 writer.WriteLine("Hello From " + currentDate.Year);
         }
         // Return the result value.
-        return retVal;
+        return returnValue;
     }
 }
