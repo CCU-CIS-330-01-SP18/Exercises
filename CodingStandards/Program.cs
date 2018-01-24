@@ -5,18 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// This is the entry point for the program.
+/// </summary>
 class Program
 {
-    // This is the entry point for the program.
+    /// <summary>
+    /// The current date and time.
+    /// </summary>
     static DateTime Now = DateTime.Now;
 
+    /// <summary>
+    /// This is the entry method.
+    /// </summary>
+    /// <returns>Returns zero.</returns>
     static int Main(string[] args)
     {
         return WriteMessage(Now, Console.Out);
     }
 
     /// <summary>
-    ///  This method determines what time it is relative to 2017, and congratulates the user if 2017 has passed.
+    /// This method determines what time it is relative to 2017, and congratulates the user if 2017 has passed.
     /// </summary>
     /// <param name="currentDate">The current date, expressed as a DateTime object.</param>
     /// <param name="writer">The output stream to write the results to.</param>
