@@ -13,8 +13,8 @@ class Program
     /// <summary>
     /// This is the entry point for the program.
     /// </summary>
-    /// <param name="args">Includes an array  of type string that can be passed.</param>
-    /// <returns></returns>
+    /// <param name="args">Includes an array  of type string that can be passed and utilized.</param>
+    /// <returns>Returns the ouput of calling the Method WriteMessage.</returns>
     static int Main(string[] args)
     {
         return WriteMessage(dtNow, Console.Out);
@@ -24,8 +24,8 @@ class Program
     /// Writes out a string based upon meeting certain conditions.
     /// </summary>
     /// <param name="currentDate">A specified date wanting to be analyzed.</param>
-    /// <param name="writer">Holds a TextWriter object which is used to display a string</param>
-    /// <returns></returns>
+    /// <param name="writer">Holds a TextWriter object which is used to display a string.</param>
+    /// <returns>Returns an integer of 0.</returns>
     public static int WriteMessage(DateTime currentDate, TextWriter writer)
     {
         int returnValue = 0;
@@ -42,7 +42,7 @@ class Program
                 writer.WriteLine("Hello From " + currentDate.Year);
             }
         }
-        // return the result value
+        // returns the value 0 which is held in the declaration returnValue.
         return returnValue;
     }
 }
