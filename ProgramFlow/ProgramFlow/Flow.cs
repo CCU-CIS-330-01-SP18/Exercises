@@ -18,8 +18,7 @@ namespace ProgramFlow
         /// <returns><b>true</b> if <paramref name="value"/> is <b>false</b>; <b>false</b> if <paramref name="value"/> is <b>true</b>.</returns>
         public static bool InvertBoolean(bool value)
         {
-            // TODO: Fix this method so it passes all associated tests.
-            return value;
+            return !value;
         }
 
         /// <summary>
@@ -29,8 +28,21 @@ namespace ProgramFlow
         /// <returns>The correct <see cref="DriverAction"/> value.</returns>
         public static DriverAction DriveSafelyIfElse(LightColor color)
         {
-            // TODO: Fix this method so it passes all associated tests. An if-else statement must be used to return the correct values.
-            return (DriverAction)24;
+            var returnValue = DriverAction.Unknown;
+
+            if (color.Equals(LightColor.Green))
+            {
+                returnValue = DriverAction.ProceedWithCaution;
+            }
+            else if (color.Equals(LightColor.Red))
+            {
+                returnValue = DriverAction.Stop;
+            }
+            else if (color.Equals(LightColor.Yellow))
+            {
+                returnValue = DriverAction.StopIfSafe;
+            }
+            return returnValue;
         }
 
         /// <summary>
@@ -40,8 +52,20 @@ namespace ProgramFlow
         /// <returns>The correct <see cref="DriverAction"/> value.</returns>
         public static DriverAction DriveSafelySwitch(LightColor color)
         {
-            // TODO: Fix this method so it passes all associated tests. A switch statement must be used to return the correct values.
-            return (DriverAction)24;
+            switch (color)
+            {
+                case LightColor.Green:
+                    return DriverAction.ProceedWithCaution;
+
+                case LightColor.Red:
+                    return DriverAction.Stop;
+
+                case LightColor.Yellow:
+                    return DriverAction.StopIfSafe;
+
+                default:
+                    return DriverAction.Unknown;
+            }
         }
 
         /// <summary>
@@ -51,8 +75,13 @@ namespace ProgramFlow
         /// <returns>The sum of the numbers.</returns>
         public static long ForSum(int[] values)
         {
-            // TODO: Fix this method so it passes all associated tests. A for loop must be used to calculate the sum.
-            return -1;
+            int sum = 0;
+
+            for (int index = 0; index < values.Length; index++)
+            {
+                sum += values[index];
+            }
+            return sum;
         }
 
         /// <summary>
@@ -62,8 +91,13 @@ namespace ProgramFlow
         /// <returns>The sum of the numbers.</returns>
         public static long ForEachSum(int[] values)
         {
-            // TODO: Fix this method so it passes all associated tests. A foreach loop must be used to calculate the sum.
-            return -1;
+            int sum = 0;
+
+            foreach (int addend in values)
+            {
+                sum += addend;
+            }
+            return sum;
         }
     }
 }
