@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassHierarchyAndCollections", "ClassHierarchyAndCollections\ClassHierarchyAndCollections.csproj", "{8A9290B8-0F04-4450-A0B4-75FA346893AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassHierarchyAndCollectionsTests", "ClassHierarchyAndCollectionsTests\ClassHierarchyAndCollectionsTests.csproj", "{6005BACE-F480-49C7-9269-E9BCFB8B7F6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{8A9290B8-0F04-4450-A0B4-75FA346893AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A9290B8-0F04-4450-A0B4-75FA346893AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A9290B8-0F04-4450-A0B4-75FA346893AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6005BACE-F480-49C7-9269-E9BCFB8B7F6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6005BACE-F480-49C7-9269-E9BCFB8B7F6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6005BACE-F480-49C7-9269-E9BCFB8B7F6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6005BACE-F480-49C7-9269-E9BCFB8B7F6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BAFBABD-CA43-4E5F-8A84-27AFA4548C0B}
 	EndGlobalSection
 EndGlobal
