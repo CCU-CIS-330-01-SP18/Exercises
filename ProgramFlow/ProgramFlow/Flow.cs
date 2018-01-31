@@ -18,8 +18,14 @@ namespace ProgramFlow
         /// <returns><b>true</b> if <paramref name="value"/> is <b>false</b>; <b>false</b> if <paramref name="value"/> is <b>true</b>.</returns>
         public static bool InvertBoolean(bool value)
         {
-            // TODO: Fix this method so it passes all associated tests.
-            return value;
+            if (value == true)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         /// <summary>
@@ -29,8 +35,18 @@ namespace ProgramFlow
         /// <returns>The correct <see cref="DriverAction"/> value.</returns>
         public static DriverAction DriveSafelyIfElse(LightColor color)
         {
-            // TODO: Fix this method so it passes all associated tests. An if-else statement must be used to return the correct values.
-            return (DriverAction)24;
+            if(color == LightColor.Green)
+            {
+                return DriverAction.ProceedWithCaution;
+            }
+            else if (color == LightColor.Yellow)
+            {
+                return DriverAction.StopIfSafe;
+            }
+            else if (color == LightColor.Red)
+            {
+                return DriverAction.Stop;
+            }
         }
 
         /// <summary>
