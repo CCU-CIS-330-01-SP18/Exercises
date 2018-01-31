@@ -47,6 +47,10 @@ namespace ProgramFlow
             {
                 return DriverAction.Stop;
             }
+            else
+            {
+                return DriverAction.Unknown;
+            }
         }
 
         /// <summary>
@@ -56,8 +60,21 @@ namespace ProgramFlow
         /// <returns>The correct <see cref="DriverAction"/> value.</returns>
         public static DriverAction DriveSafelySwitch(LightColor color)
         {
-            // TODO: Fix this method so it passes all associated tests. A switch statement must be used to return the correct values.
-            return (DriverAction)24;
+            switch (color)
+            {
+                case LightColor.Green:
+                    return DriverAction.ProceedWithCaution;
+                    break;
+                case LightColor.Yellow:
+                    return DriverAction.StopIfSafe;
+                    break;
+                case LightColor.Red:
+                    return DriverAction.Stop;
+                    break;
+                default:
+                    return DriverAction.Unknown;
+                    break;
+            }
         }
 
         /// <summary>
@@ -67,8 +84,14 @@ namespace ProgramFlow
         /// <returns>The sum of the numbers.</returns>
         public static long ForSum(int[] values)
         {
-            // TODO: Fix this method so it passes all associated tests. A for loop must be used to calculate the sum.
-            return -1;
+            int sum = 0;
+
+            for (int v = 0; v <= values.Length; v++)
+            {
+                sum += values[v];
+            }
+
+            return sum;
         }
 
         /// <summary>
@@ -78,8 +101,7 @@ namespace ProgramFlow
         /// <returns>The sum of the numbers.</returns>
         public static long ForEachSum(int[] values)
         {
-            // TODO: Fix this method so it passes all associated tests. A foreach loop must be used to calculate the sum.
-            return -1;
+            foreach ()
         }
     }
 }
