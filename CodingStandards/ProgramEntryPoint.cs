@@ -21,6 +21,7 @@ class Program
     static int Main(string[] args)
     {
         return WriteMessage(dateNow, Console.Out);
+        
     }
 
     static DateTime dateNow = DateTime.Now;
