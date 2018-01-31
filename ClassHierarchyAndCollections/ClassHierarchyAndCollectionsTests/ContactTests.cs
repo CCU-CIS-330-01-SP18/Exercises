@@ -15,7 +15,48 @@ namespace ClassHierarchyAndCollectionsTests
             // 3. Need using namespace for contact class.
 
             Contact c = new Contact();
+            Assert.IsNotNull(c);
 
         }
+
+        [TestMethod]
+        public void ContactDerivesFromObject()
+        {
+            // 1. Add a reference, right click reference, projects.
+            // 2. Make Class accessable Go to class and make public.
+            // 3. Need using namespace for contact class.
+
+            Contact c = new Contact();
+            Assert.IsInstanceOfType(c, typeof(Object));
+
+        }
+
+        [TestMethod]
+        public void ContactCanreadWriteDisplayName()
+        {
+            // 1. Add a reference, right click reference, projects.
+            // 2. Make Class accessable Go to class and make public.
+            // 3. Need using namespace for contact class.
+
+            Contact c = new Contact();
+            c.DisplayName = "Matt";
+            Assert.AreEqual("Matt", c.DisplayName);
+
+        }
+
+        [TestMethod]
+        public void ContactCanreadWriteLegalName()
+        {
+            // 1. Add a reference, right click reference, projects.
+            // 2. Make Class accessable Go to class and make public.
+            // 3. Need using namespace for contact class.
+
+            Contact c = new Contact();
+            c.LegalName = "Matt";
+            Assert.AreEqual("Matt", c.LegalName);
+
+        }
+
+
     }
 }
