@@ -16,16 +16,11 @@ namespace ClassHierarchyAndCollections
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the Contact class, with the given information.
+        /// Initializes a new instance of the Contact class.
         /// </summary>
-        /// <param name="displayName">The name by which the contact will be displayed.</param>
-        /// <param name="email">The contact's email address.</param>
-        /// <param name="phone">The contact's phone number.</param>
-        public Contact(string displayName, string email, string phone)
+        public Contact()
         {
-            DisplayName = displayName;
-            EmailAddress = email;
-            PhoneNumber = phone;
+
         }
     }
 }
