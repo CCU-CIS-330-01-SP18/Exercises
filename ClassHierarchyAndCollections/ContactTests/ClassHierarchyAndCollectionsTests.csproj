@@ -54,6 +54,7 @@
     <Compile Include="IndividualTests.cs" />
     <Compile Include="StudentTests.cs" />
     <Compile Include="MemberTests.cs" />
+    <Compile Include="ClientTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

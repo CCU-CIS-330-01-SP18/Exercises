@@ -21,9 +21,9 @@ Instructions:
 
 Sample Class Hierarchy (aka Object Model):
 ------------------------------------------
-Contact
+$Contact$
  |
- -- Organization
+ -- $Organization$
  |   |
  |   -- Association
  |   |
@@ -31,10 +31,10 @@ Contact
  |   |
  |   -- Business
  |
- -- Individual
+ -- $Individual$
      |
-     -- Student
+     -- $Student$
      |
-     -- Member
+     -- $Member$
      |
      -- Client
