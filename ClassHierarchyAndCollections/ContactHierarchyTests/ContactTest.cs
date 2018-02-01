@@ -4,9 +4,16 @@ using ClassHierarchyAndCollections;
 
 namespace ContactHierarchyTests
 {
+    /// <summary>
+    /// A compilation of tests that ensures that instances of Contact can be created, their class derives from Object,
+    /// and that their properties can be written to and read.
+    /// </summary>
     [TestClass]
     public class ContactTest
     {
+        /// <summary>
+        /// A test that ensures that instances of Contact can be created.
+        /// </summary>
         [TestMethod]
         public void CanCreateContact()
         {
@@ -14,6 +21,9 @@ namespace ContactHierarchyTests
             Assert.IsNotNull(createdContact);
         }
 
+        /// <summary>
+        /// A test that ensures that the Contact class derives from Object.
+        /// </summary>
         [TestMethod]
         public void ContactDerivesFromObject()
         {
@@ -21,6 +31,9 @@ namespace ContactHierarchyTests
             Assert.IsInstanceOfType(createdContact, typeof(Object));
         }
 
+        /// <summary>
+        /// A test that ensures the DisplayName property can be written to and read.
+        /// </summary>
         [TestMethod]
         public void CanReadWriteDisplayName()
         {
@@ -29,6 +42,9 @@ namespace ContactHierarchyTests
             Assert.AreEqual("Test", createdContact.DisplayName);
         }
 
+        /// <summary>
+        /// A test that ensures the LegalName property can be written to and read.
+        /// </summary>
         [TestMethod]
         public void CanReadWriteLegalName()
         {

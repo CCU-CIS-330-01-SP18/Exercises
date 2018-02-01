@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace ClassHierarchyAndCollections
 {
     /// <summary>
-    /// A generic contact with a display name and a legal name.
+    /// A singular person with an email address and a cell phone number.
     /// </summary>
-    public class Contact
+    public class Individual : Contact
     {
-        public string DisplayName { get; set; }
+        public string EmailAddress { get; set; }
 
-        public string LegalName { get; set; }
+        public string CellNumber { get; set; }
     }
 }

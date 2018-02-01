@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace ClassHierarchyAndCollections
 {
     /// <summary>
-    /// A generic contact with a display name and a legal name.
+    /// An individual with a job and an annual salary.
     /// </summary>
-    public class Contact
+    public class Employee : Individual
     {
-        public string DisplayName { get; set; }
+        public int AnnualSalary { get; set; }
 
-        public string LegalName { get; set; }
+        public string JobName { get; set; }
     }
 }
