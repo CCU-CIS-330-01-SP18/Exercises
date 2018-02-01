@@ -21,6 +21,7 @@ namespace ContactTests
             Contact c = new Contact();
             Assert.IsInstanceOfType(c, typeof(Object));
         }
+
         [TestMethod]
         public void CanReadWriteDisplayName()
         {
@@ -28,6 +29,7 @@ namespace ContactTests
             c.DisplayName = "Dean";
             Assert.AreEqual("Dean", c.DisplayName);
         }
+
         [TestMethod]
         public void CanReadWriteLegalName()
         {

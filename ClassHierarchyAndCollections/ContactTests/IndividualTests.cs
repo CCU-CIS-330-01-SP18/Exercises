@@ -13,12 +13,14 @@ namespace ContactTests
             Individual i = new Individual();
             Assert.IsNotNull(i);
         }
+
         [TestMethod]
         public void IsDescendantOfContact()
         {
             Individual i = new Individual();
             Assert.IsInstanceOfType(i, typeof(Contact));
         }
+
         [TestMethod]
         public void CanReadWriteAge()
         {
@@ -26,6 +28,7 @@ namespace ContactTests
             i.Age = 22;
             Assert.AreEqual(i.Age, 22);
         }
+
         [TestMethod]
         public void CanReadWriteName()
         {

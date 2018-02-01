@@ -13,12 +13,14 @@ namespace ContactTests
             Student s = new Student();
             Assert.IsNotNull(s);
         }
+
         [TestMethod]
         public void IsDescendantOfIndividual()
         {
             Student s = new Student();
             Assert.IsInstanceOfType(s, typeof(Individual));
         }
+
         [TestMethod]
         public void CanReadWriteCradeClassification()
         {
@@ -26,6 +28,7 @@ namespace ContactTests
             s.GradeClassification = 18;
             Assert.AreEqual(18, s.GradeClassification);
         }
+
         [TestMethod]
         public void CanReadWriteGPA()
         {
@@ -33,6 +36,7 @@ namespace ContactTests
             s.GPA = 3.1;
             Assert.AreEqual(3.1, s.GPA);
         }
+
         [TestMethod]
         public void CanReadWriteID()
         {
