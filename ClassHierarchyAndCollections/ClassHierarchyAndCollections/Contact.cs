@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Represents a Contact with a DisplayName and a LegalName.
+/// </summary>
 namespace ClassHierarchyAndCollections
 {
     public class Contact

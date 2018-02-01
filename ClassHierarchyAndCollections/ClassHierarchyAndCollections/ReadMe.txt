@@ -37,4 +37,4 @@ $Contact$
      |
      -- $Member$
      |
-     -- Client
+     -- $Client$

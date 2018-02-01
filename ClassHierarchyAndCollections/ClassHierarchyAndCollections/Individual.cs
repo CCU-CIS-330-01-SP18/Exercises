@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Represents an Individual with an Age and a Name.
+/// </summary>
 namespace ClassHierarchyAndCollections
 {
     public class Individual : Contact

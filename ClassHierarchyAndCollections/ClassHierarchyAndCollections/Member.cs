@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Represents an Individual with an ID and a JoinDate.
+/// </summary>
 namespace ClassHierarchyAndCollections
 {
     public class Member : Individual

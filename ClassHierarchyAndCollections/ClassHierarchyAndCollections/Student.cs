@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Represents a Student with a GPA and ID. 
+/// </summary>
 namespace ClassHierarchyAndCollections
 {
     public class Student : Individual
