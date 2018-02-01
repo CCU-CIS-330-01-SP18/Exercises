@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    public class Contact
+    public class Organization : Contact
     {
-        public string DisplayName { get; set; }
+        public string Address { get; set; }
 
-        public string LegalName { get; set; }
+        public bool IsForProfit { get; set; }
     }
 }

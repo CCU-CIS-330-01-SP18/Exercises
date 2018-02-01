@@ -11,7 +11,6 @@ namespace ContactTests
         [TestMethod]
         public void CanCreateContact()
         {
-
             Contact c = new Contact();
             Assert.IsNotNull(c);
         }
