@@ -82,7 +82,7 @@ namespace ProgramFlow
         {
             long sum = 0;
 
-            for (int v = 0; v <= values.Length; v++)
+            for (int v = 0; v < values.Length; v++)
             {
                 sum += values[v];
             }
@@ -101,7 +101,7 @@ namespace ProgramFlow
         
             foreach(int v in values)
             {
-                sum += values[v];
+                sum += v;
             }
 
             return sum;
