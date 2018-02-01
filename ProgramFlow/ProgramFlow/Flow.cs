@@ -64,16 +64,12 @@ namespace ProgramFlow
             {
                 case LightColor.Green:
                     return DriverAction.ProceedWithCaution;
-                    break;
                 case LightColor.Yellow:
                     return DriverAction.StopIfSafe;
-                    break;
                 case LightColor.Red:
                     return DriverAction.Stop;
-                    break;
                 default:
                     return DriverAction.Unknown;
-                    break;
             }
         }
 
@@ -84,7 +80,7 @@ namespace ProgramFlow
         /// <returns>The sum of the numbers.</returns>
         public static long ForSum(int[] values)
         {
-            int sum = 0;
+            long sum = 0;
 
             for (int v = 0; v <= values.Length; v++)
             {
@@ -101,7 +97,14 @@ namespace ProgramFlow
         /// <returns>The sum of the numbers.</returns>
         public static long ForEachSum(int[] values)
         {
-            foreach ()
+            long sum = 0;
+        
+            foreach(int v in values)
+            {
+                sum += values[v];
+            }
+
+            return sum;
         }
     }
 }
