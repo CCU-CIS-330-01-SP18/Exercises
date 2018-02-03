@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Organization: Contact
+    public class Organization: Contact
     {
         public string OrganizationName { get; set; }
         public string OrganizaitonAddress { get; set; }

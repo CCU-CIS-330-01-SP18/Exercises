@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    public class Association: Organization
+    public class School: Organization
     {
-        public string AssociationName { get; set; }
-        public int MemberCount { get; set; }
+        public string SchoolName { get; set; }
+        public int SchoolPrice { get; set; }
     }
 }

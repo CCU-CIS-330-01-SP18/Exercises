@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    public class Association: Organization
+    public class Student: Individual
     {
-        public string AssociationName { get; set; }
-        public int MemberCount { get; set; }
+
+        public int StudentID { get; set; }
+        public float StudentGPA { get; set; }
     }
 }

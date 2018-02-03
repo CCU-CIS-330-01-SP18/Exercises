@@ -48,8 +48,16 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssociationTests.cs" />
+    <Compile Include="BusinessTests.cs" />
+    <Compile Include="ClientTests.cs" />
     <Compile Include="ContactTests.cs" />
+    <Compile Include="IndividualTests.cs" />
+    <Compile Include="MemberTests.cs" />
+    <Compile Include="OrganizationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchoolTests.cs" />
+    <Compile Include="StudentTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

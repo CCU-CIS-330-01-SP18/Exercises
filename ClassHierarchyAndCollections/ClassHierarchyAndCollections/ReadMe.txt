@@ -1,4 +1,4 @@
-﻿Scenario: We are creating an application to manage contacts - individuals and organizations that we know.
+﻿ Scenario: We are creating an application to manage contacts - individuals and organizations that we know.
 The first step is to design and develop our object model to represent the kinds of contacts we can store
 and manage.
 

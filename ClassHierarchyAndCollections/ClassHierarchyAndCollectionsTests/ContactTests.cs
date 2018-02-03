@@ -10,53 +10,31 @@ namespace ClassHierarchyAndCollectionsTests
         [TestMethod]
         public void CanCreateContact()
         {
-            // 1. Add a reference, right click reference, projects.
-            // 2. Make Class accessable Go to class and make public.
-            // 3. Need using namespace for contact class.
-
-            Contact c = new Contact();
-            Assert.IsNotNull(c);
-
+            Contact contact = new Contact();
+            Assert.IsNotNull(contact);
         }
 
         [TestMethod]
         public void ContactDerivesFromObject()
         {
-            // 1. Add a reference, right click reference, projects.
-            // 2. Make Class accessable Go to class and make public.
-            // 3. Need using namespace for contact class.
-
-            Contact c = new Contact();
-            Assert.IsInstanceOfType(c, typeof(Object));
-
+            Contact contact = new Contact();
+            Assert.IsInstanceOfType(contact, typeof(Object));
         }
 
         [TestMethod]
-        public void ContactCanreadWriteDisplayName()
+        public void CanReadWriteDisplayName()
         {
-            // 1. Add a reference, right click reference, projects.
-            // 2. Make Class accessable Go to class and make public.
-            // 3. Need using namespace for contact class.
-
-            Contact c = new Contact();
-            c.DisplayName = "Matt";
-            Assert.AreEqual("Matt", c.DisplayName);
-
+            Contact contact = new Contact();
+            contact.DisplayName = "Justin";
+            Assert.AreEqual("Justin", contact.DisplayName);
         }
 
         [TestMethod]
-        public void ContactCanreadWriteLegalName()
+        public void CanReadWriteLegalName()
         {
-            // 1. Add a reference, right click reference, projects.
-            // 2. Make Class accessable Go to class and make public.
-            // 3. Need using namespace for contact class.
-
-            Contact c = new Contact();
-            c.LegalName = "Matt";
-            Assert.AreEqual("Matt", c.LegalName);
-
+            Contact contact = new Contact();
+            contact.LegalName = "Horak";
+            Assert.AreEqual("Horak", contact.LegalName);
         }
-
-
     }
 }
