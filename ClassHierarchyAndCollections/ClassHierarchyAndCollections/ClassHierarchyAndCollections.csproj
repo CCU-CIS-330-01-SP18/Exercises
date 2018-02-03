@@ -45,6 +45,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Individual.cs" />
+    <Compile Include="IStudentCountable.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Organization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

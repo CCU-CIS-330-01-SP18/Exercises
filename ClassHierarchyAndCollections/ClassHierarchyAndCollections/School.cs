@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    public class School: Organization
+    public class School: Organization, IStudentCountable
     {
         public string SchoolName { get; set; }
-        public int SchoolPrice { get; set; }
+        public List<Student> Students { get; set;}
+
+
+        public int GetStudentCount()
+        {
+            return Students.Count;
+        }
+
     }
 }

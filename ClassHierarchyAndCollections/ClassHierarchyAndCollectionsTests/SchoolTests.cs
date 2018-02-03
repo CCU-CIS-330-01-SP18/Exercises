@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ClassHierarchyAndCollections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -30,11 +31,12 @@ namespace ClassHierarchyAndCollectionsTests
         }
 
         [TestMethod]
-        public void CanReadWriteSchoolCount()
+        public void CanReadWriteStudentsList()
         {
             School school = new School();
-            school.SchoolPrice = 40000;
-            Assert.AreEqual(40000, school.SchoolPrice);
+            List<Student> studentList = new List<Student> { new Student() };
+            school.Students = studentList;
+            Assert.AreEqual(studentList, school.Students);
         }
     }
 }
