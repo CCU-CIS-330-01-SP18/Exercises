@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ClassHierarchyAndCollections
 {
-    class Organization
+    /// <summary>
+    /// Represents an organization of contacts. Can contain multiple individuals.
+    /// </summary>
+    public class Organization : Contact
     {
+        List<Individual> Members;
+
+        /// <summary>
+        /// Initializes a new instance of the Organization class.
+        /// </summary>
+        public Organization()
+        {
+            Members = new List<Individual>();
+        }
     }
 }

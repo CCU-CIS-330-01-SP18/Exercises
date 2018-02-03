@@ -45,6 +45,8 @@
     <Compile Include="Client.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="IDemocracy.cs" />
+    <Compile Include="ILocatable.cs" />
     <Compile Include="Individual.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Organization.cs" />

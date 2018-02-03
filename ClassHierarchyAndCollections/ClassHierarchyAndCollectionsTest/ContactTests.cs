@@ -1,6 +1,6 @@
-﻿using System;
+﻿using ClassHierarchyAndCollections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ClassHierarchyAndCollections;
+using System;
 
 namespace ClassHierarchyAndCollectionsTests
 {

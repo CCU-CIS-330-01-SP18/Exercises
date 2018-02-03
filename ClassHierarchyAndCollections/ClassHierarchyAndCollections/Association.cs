@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassHierarchyAndCollections
+﻿namespace ClassHierarchyAndCollections
 {
-    class Association
+    /// <summary>
+    /// Represents an association of individual members.
+    /// Unlike other Organizations, Associations make decisions by voting.
+    /// </summary>
+    public class Association : Organization, IDemocracy
     {
     }
 }
