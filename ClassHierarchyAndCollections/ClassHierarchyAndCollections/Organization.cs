@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    public class Organization : Contact
+    /// <summary>
+    /// Creates an Organization object that derives from the Contact class.
+    /// </summary>
+    public class Organization : Contact, ILocatable
     {
         public string DisplayOrganizationName { get; set; }
 

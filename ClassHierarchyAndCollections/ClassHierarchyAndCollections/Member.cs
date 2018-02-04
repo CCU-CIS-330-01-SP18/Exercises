@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// Creates a Member object that derives from the Individual class.
+    /// </summary>
     public class Member : Individual
     {
         public string MemberName { get; set; }

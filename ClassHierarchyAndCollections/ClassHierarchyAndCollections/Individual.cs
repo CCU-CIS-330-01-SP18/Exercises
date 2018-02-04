@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// Creates an Individual object that derives from the Contact class.
+    /// </summary>
     public class Individual : Contact
     {
         public string FirstName { get; set; }

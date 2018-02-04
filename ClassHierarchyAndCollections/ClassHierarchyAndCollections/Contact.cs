@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// Creates a Contact object that also inherits an Ilocatable Interface.
+    /// </summary>
     public class Contact : ILocatable
     {
         private string location;
@@ -13,17 +16,20 @@ namespace ClassHierarchyAndCollections
 
         public string LegalName { get; set; }
 
-        public Contact(string location)
+        /*public Contact(string location)
         {
             this.Location = location;
-        }
+        }*/
 
         public string Location
         {
             get { return location; }
             set { location = value; }
         }
-
+        /// <summary>
+        /// Method as implemented in ILocatable for retrieving a location.
+        /// </summary>
+        /// <returns>Location of a Contact.</returns>
         public string GetLocation()
         {
             return location;
