@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Association
+    interface ILocatable
     {
-
     }
 }

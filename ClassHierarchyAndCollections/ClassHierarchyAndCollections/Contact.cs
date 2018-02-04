@@ -6,9 +6,20 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// This generic class holds the DisplayName and LegalName properties
+    /// </summary>
     class Contact
     {
-        public string DisplayName { get; set; }
-        public string LegalName { get; set; }
+        public string DisplayName
+        {
+            get;
+            set;
+        }
+        public string LegalName
+        {
+            get;
+            set;
+        }
     }
 }
