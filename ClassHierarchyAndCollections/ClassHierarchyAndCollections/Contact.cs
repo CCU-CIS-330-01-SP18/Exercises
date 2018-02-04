@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Represents a Contact with a DisplayName and a LegalName.
-/// </summary>
 namespace ClassHierarchyAndCollections
 {
+
+    /// <summary>
+    /// Represents a Contact with a DisplayName and a LegalName.
+    /// </summary>
     public class Contact
     {
         public string DisplayName { get; set; }

@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Represents a Student with a GPA and ID. 
-/// </summary>
 namespace ClassHierarchyAndCollections
 {
+
+    /// <summary>
+    /// Represents a Student with a GPA, Grade Classificiation and ID. 
+    /// </summary>
     public class Student : Individual
     {
         public int GradeClassification { get; set; }

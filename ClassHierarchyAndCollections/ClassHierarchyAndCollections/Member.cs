@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Represents an Individual with an ID and a JoinDate.
-/// </summary>
 namespace ClassHierarchyAndCollections
 {
+
+    /// <summary>
+    /// Represents a Member with a 
+    /// </summary>
     public class Member : Individual
     {
         public int ID { get; set; }

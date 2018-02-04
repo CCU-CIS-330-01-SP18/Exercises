@@ -25,11 +25,11 @@ $Contact$
  |
  -- $Organization$
  |   |
- |   -- Association
+ |   -- $Association$
  |   |
- |   -- School
+ |   -- $School$
  |   |
- |   -- Business
+ |   -- $Business$
  |
  -- $Individual$
      |

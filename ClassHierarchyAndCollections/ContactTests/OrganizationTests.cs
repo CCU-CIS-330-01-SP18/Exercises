@@ -25,8 +25,8 @@ namespace ContactTests
         public void CanReadWriteAddress()
         {
             Organization o = new Organization();
-            o.Address = "123 Test Street";
-            Assert.AreEqual("123 Test Street",o.Address);
+            o.HeadQuartersAddress = "123 Test Street";
+            Assert.AreEqual("123 Test Street",o.HeadQuartersAddress);
         }
         [TestMethod]
         public void CanReadWriteIsForProfit()
