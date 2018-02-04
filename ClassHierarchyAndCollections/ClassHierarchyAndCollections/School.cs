@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassHierarchyAndCollections
+﻿namespace ClassHierarchyAndCollections
 {
-    class School
+    /// <summary>
+    /// Represents a school, which can have a class of students.
+    /// </summary>
+    public class School
     {
+
     }
 }

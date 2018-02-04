@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassHierarchyAndCollections
+﻿namespace ClassHierarchyAndCollections
 {
-    class Student
+    /// <summary>
+    /// Represents a student, who can study homework and stress for exams.
+    /// </summary>
+    public class Student
     {
+        
     }
 }
