@@ -3,6 +3,7 @@
     /// <summary>
     /// Interface to allow for the removal and transplanting of organs.
     /// </summary>
+    /// <remarks>Yes, I went there.</remarks>
     interface ITransplantOrgan
     {
         /// <summary>
@@ -17,6 +18,7 @@
         /// </summary>
         /// <param name="organType">The type of organ to transplant.</param>
         /// <returns>Whether or not the operation was carried out.</returns>
+        /// <remarks>All humans are compatible.</remarks>
         bool TransplantOrgan(Organ organType);
     }
 }

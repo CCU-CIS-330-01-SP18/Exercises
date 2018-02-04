@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassHierarchyAndCollections
+﻿namespace ClassHierarchyAndCollections
 {
-    class Employee
+    /// <summary>
+    /// Represents an employee for one or more businesses.
+    /// </summary>
+    class Employee : Individual
     {
+
     }
 }

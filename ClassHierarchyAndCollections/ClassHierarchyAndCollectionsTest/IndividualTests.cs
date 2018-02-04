@@ -64,13 +64,6 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void CanLocateIndividual()
-        {
-            Individual individual = new Individual();
-            Assert.IsNotNull(individual.Locate());
-        }
-
-        [TestMethod]
         public void CanRemoveOrgans()
         {
             Individual individual = new Individual();

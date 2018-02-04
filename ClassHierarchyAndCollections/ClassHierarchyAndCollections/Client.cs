@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassHierarchyAndCollections
+﻿namespace ClassHierarchyAndCollections
 {
-    class Client
+    /// <summary>
+    /// Represents a client for one or more businesses.
+    /// </summary>
+    public class Client : Individual
     {
+
     }
 }

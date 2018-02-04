@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents an individual human contact.
     /// </summary>
-    public class Individual : Contact, ILocatable, ITransplantOrgan
+    public class Individual : Contact, ITransplantOrgan
     {
         private int numberOfRemainingKidneys = 2;
         private int numberOfRemainingLungs = 2;
@@ -30,19 +30,6 @@
         public Individual()
         {
             
-        }
-
-        /// <summary>
-        /// Return the individual's current location.
-        /// </summary>
-        /// <returns>A string containing the individual's location.</returns>
-        /// <remarks>Implements ILocatable.</remarks>
-        public string Locate()
-        {
-            // As we all know, North America is the only continent that exists in real life.
-            var possibleLocations = new string[] { "United States of America", "Canada", "Mexico" };
-            System.Random random = new System.Random();
-            return possibleLocations[random.Next(3)];
         }
 
         /// <summary>
