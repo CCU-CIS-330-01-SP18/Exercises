@@ -11,5 +11,10 @@ namespace ClassHierarchyAndCollections
         public string BusinessEntity { get; set; }
         
         public int Sales { get; set; }
+
+        public List<Client> Clients = new List<Client>();
     }
+
+   
+
 }
