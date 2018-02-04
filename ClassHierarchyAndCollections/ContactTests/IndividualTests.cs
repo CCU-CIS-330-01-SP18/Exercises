@@ -10,31 +10,31 @@ namespace ContactTests
         [TestMethod]
         public void CanCreateIndividual()
         {
-            Individual i = new Individual();
-            Assert.IsNotNull(i);
+            Individual individual = new Individual();
+            Assert.IsNotNull(individual);
         }
 
         [TestMethod]
         public void IsDescendantOfContact()
         {
-            Individual i = new Individual();
-            Assert.IsInstanceOfType(i, typeof(Contact));
+            Individual individual = new Individual();
+            Assert.IsInstanceOfType(individual, typeof(Contact));
         }
 
         [TestMethod]
         public void CanReadWriteAge()
         {
-            Individual i = new Individual();
-            i.Age = 22;
-            Assert.AreEqual(i.Age, 22);
+            Individual individual = new Individual();
+            individual.Age = 22;
+            Assert.AreEqual(individual.Age, 22);
         }
 
         [TestMethod]
         public void CanReadWriteName()
         {
-            Individual i = new Individual();
-            i.Name = "Dean";
-            Assert.AreEqual(i.Name, "Dean");
+            Individual individual = new Individual();
+            individual.Name = "Dean";
+            Assert.AreEqual(individual.Name, "Dean");
         }
     }
 }

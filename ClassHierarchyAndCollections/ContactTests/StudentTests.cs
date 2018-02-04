@@ -10,39 +10,39 @@ namespace ContactTests
         [TestMethod]
         public void CanCreateStudent()
         {
-            Student s = new Student();
-            Assert.IsNotNull(s);
+            Student student = new Student();
+            Assert.IsNotNull(student);
         }
 
         [TestMethod]
         public void IsDescendantOfIndividual()
         {
-            Student s = new Student();
-            Assert.IsInstanceOfType(s, typeof(Individual));
+            Student student = new Student();
+            Assert.IsInstanceOfType(student, typeof(Individual));
         }
 
         [TestMethod]
         public void CanReadWriteCradeClassification()
         {
-            Student s = new Student();
-            s.GradeClassification = 18;
-            Assert.AreEqual(18, s.GradeClassification);
+            Student student = new Student();
+            student.GradeClassification = 18;
+            Assert.AreEqual(18, student.GradeClassification);
         }
 
         [TestMethod]
         public void CanReadWriteGPA()
         {
-            Student s = new Student();
-            s.GPA = 3.1;
-            Assert.AreEqual(3.1, s.GPA);
+            Student student = new Student();
+            student.GPA = 3.1;
+            Assert.AreEqual(3.1, student.GPA);
         }
 
         [TestMethod]
         public void CanReadWriteID()
         {
-            Student s = new Student();
-            s.ID = 0464940;
-            Assert.AreEqual(0464940, s.ID);
+            Student student = new Student();
+            student.ID = 0464940;
+            Assert.AreEqual(0464940, student.ID);
         }
     }
 }

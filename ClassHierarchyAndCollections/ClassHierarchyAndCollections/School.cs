@@ -10,10 +10,18 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Represents a School with a list of Students and the Schools IsPrivate property.
     /// </summary>
-    public class School : Organization
+    public class School : Organization, IReadLists
     {
         public List<Student> Students { get; set; }
 
         public bool IsPrivate { get; set; }
+
+        public void ReadList()
+        {
+            foreach (Student student in this.Students)
+            {
+                Console.WriteLine(student.DisplayName);
+            }
+        }
     }
 }

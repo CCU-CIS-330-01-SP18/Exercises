@@ -11,29 +11,29 @@ namespace ContactTests
         public void CanCreateOrganization()
         {
 
-             Organization o = new Organization();
-            Assert.IsNotNull(o);
+             Organization organization = new Organization();
+            Assert.IsNotNull(organization);
         }
 
         [TestMethod]
         public void OrganizationDerivesFromContact()
         {
-            Organization o = new Organization();
-            Assert.IsInstanceOfType(o, typeof(Contact));
+            Organization organization = new Organization();
+            Assert.IsInstanceOfType(organization, typeof(Contact));
         }
         [TestMethod]
         public void CanReadWriteAddress()
         {
-            Organization o = new Organization();
-            o.HeadQuartersAddress = "123 Test Street";
-            Assert.AreEqual("123 Test Street",o.HeadQuartersAddress);
+            Organization organization = new Organization();
+            organization.HeadQuartersAddress = "123 Test Street";
+            Assert.AreEqual("123 Test Street",organization.HeadQuartersAddress);
         }
         [TestMethod]
         public void CanReadWriteIsForProfit()
         {
-            Organization o = new Organization();
-            o.IsForProfit = false;
-            Assert.AreEqual(false, o.IsForProfit);
+            Organization organization = new Organization();
+            organization.IsForProfit = false;
+            Assert.AreEqual(false, organization.IsForProfit);
         }
     }
 }

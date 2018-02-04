@@ -11,33 +11,51 @@ namespace ContactTests
         [TestMethod]
         public void CanCreateSchool()
         {
-            School s = new School();
-            Assert.IsNotNull(s);
+            School school = new School();
+            Assert.IsNotNull(school);
         }
 
         [TestMethod]
         public void IsDescendantofOrganization()
         {
-            School s = new School();
-            Assert.IsInstanceOfType(s, typeof(Organization));
+            School school = new School();
+            Assert.IsInstanceOfType(school, typeof(Organization));
         }
 
         [TestMethod]
         public void CanReadWriteStudens()
         {
-            School s = new School();
-            s.Students = new List<Student>();
-            Student st = new Student();
-            s.Students.Add(st);
-            Assert.AreEqual(st, s.Students[0]);
+            School school = new School();
+            school.Students = new List<Student>();
+            Student student = new Student();
+            school.Students.Add(student);
+            Assert.AreEqual(student, school.Students[0]);
         }
 
         [TestMethod]
         public void CanReadWriteIsPrivate()
         {
-            School s = new School();
-            s.IsPrivate = true;
-            Assert.AreEqual(true, s.IsPrivate);
+            School school = new School();
+            school.IsPrivate = true;
+            Assert.AreEqual(true, school.IsPrivate);
+        }
+
+        [TestMethod]
+        public void CanUseInterface()
+        {
+            School school = new School();
+            school.Students = new List<Student>();
+            Student student1 = new Student();
+            student1.DisplayName = "Bob";
+            Student student2 = new Student();
+            student2.DisplayName = "Joe";
+            Student student3 = new Student();
+            student3.DisplayName = "Sue";
+            school.Students.Add(student1);
+            school.Students.Add(student2);
+            school.Students.Add(student3);
+
+            school.ReadList();
         }
     }
 }

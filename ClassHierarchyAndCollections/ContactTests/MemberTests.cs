@@ -10,31 +10,31 @@ namespace ContactTests
         [TestMethod]
         public void CanCreateMember()
         {
-            Member m = new Member();
-            Assert.IsNotNull(m);
+            Member member = new Member();
+            Assert.IsNotNull(member);
         }
 
         [TestMethod]
         public void IsDescendantOfIndividual()
         {
-            Member m = new Member();
-            Assert.IsInstanceOfType(m, typeof(Member));
+            Member member = new Member();
+            Assert.IsInstanceOfType(member, typeof(Member));
         }
 
         [TestMethod]
         public void CanReadWriteID()
         {
-            Member m = new Member();
-            m.ID = 0464940;
-            Assert.AreEqual(0464940, m.ID);
+            Member member = new Member();
+            member.ID = 0464940;
+            Assert.AreEqual(0464940, member.ID);
         }
 
         [TestMethod]
         public void CanReadWriteJoinDate()
         {
-            Member m = new Member();
-            DateTime d = DateTime.Now.Date;
-            Assert.AreEqual(d, DateTime.Now.Date);
+            Member member = new Member();
+            DateTime date = DateTime.Now.Date;
+            Assert.AreEqual(date, DateTime.Now.Date);
 
         }
     }

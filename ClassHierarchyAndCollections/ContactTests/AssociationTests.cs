@@ -11,52 +11,52 @@ namespace ContactTests
         [TestMethod]
         public void CanCreateAssociation()
         {
-            Association a = new Association();
-            Assert.IsNotNull(a);
+            Association association = new Association();
+            Assert.IsNotNull(association);
 
         }
 
         [TestMethod]
         public void IsDescandantOfOrganization()
         {
-            Association a = new Association();
-            Assert.IsInstanceOfType(a, typeof(Organization));
+            Association association = new Association();
+            Assert.IsInstanceOfType(association, typeof(Organization));
         }
 
         [TestMethod]
         public void CanReadWriteMembers()
         {
-            Association a = new Association();
-            a.Members = new List<Member>();
-            Member m = new Member();
-            a.Members.Add(m);
-            Assert.AreEqual(m, a.Members[0]);
+            Association association = new Association();
+            association.Members = new List<Member>();
+            Member member = new Member();
+            association.Members.Add(member);
+            Assert.AreEqual(member, association.Members[0]);
         }
 
         [TestMethod]
         public void CanReadWriteAssociationFocus()
         {
-            Association a = new Association();
-            a.Focus = "Aiding Single Mothers";
-            Assert.AreEqual("Aiding Single Mothers", a.Focus);
+            Association association = new Association();
+            association.Focus = "Aiding Single Mothers";
+            Assert.AreEqual("Aiding Single Mothers", association.Focus);
         }
 
         [TestMethod]
         public void CanUseInterface()
         {
-            Association a = new Association();
-            a.Members = new List<Member>();
-            Member m1 = new Member();
-            m1.DisplayName = "Bob";
-            Member m2 = new Member();
-            m2.DisplayName = "Joe";
-            Member m3 = new Member();
-            m3.DisplayName = "Sue";
-            a.Members.Add(m1);
-            a.Members.Add(m2);
-            a.Members.Add(m3);
+            Association association = new Association();
+            association.Members = new List<Member>();
+            Member member1 = new Member();
+            member1.DisplayName = "Bob";
+            Member member2 = new Member();
+            member2.DisplayName = "Joe";
+            Member member3 = new Member();
+            member3.DisplayName = "Sue";
+            association.Members.Add(member1);
+            association.Members.Add(member2);
+            association.Members.Add(member3);
 
-            a.ReadList();
+            association.ReadList();
         }
     }
 }

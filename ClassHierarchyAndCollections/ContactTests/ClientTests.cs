@@ -10,32 +10,32 @@ namespace ContactTests
         [TestMethod]
         public void CanCreateClient()
         {
-            Client c = new Client();
-            Assert.IsNotNull(c);
+            Client client = new Client();
+            Assert.IsNotNull(client);
         }
 
         [TestMethod]
         public void IsDescentdantOfIndividual()
         {
-            Client c = new Client();
-            Assert.IsInstanceOfType(c, typeof(Individual));
+            Client client = new Client();
+            Assert.IsInstanceOfType(client, typeof(Individual));
         }
 
         [TestMethod]
         public void CanReadWriteContractStartDate()
         {
-            Client c = new Client();
-            DateTime d = DateTime.Now;
-            c.ContractStartDate = d;
-            Assert.AreEqual(d.Date, c.ContractStartDate.Date);
+            Client client = new Client();
+            DateTime date = DateTime.Now;
+            client.ContractStartDate = date;
+            Assert.AreEqual(date.Date, client.ContractStartDate.Date);
         }
 
         [TestMethod]
         public void CanReadWriteContractValue()
         {
-            Client c = new Client();
-            c.CotnractValue = 45000m;
-            Assert.AreEqual(45000m, c.CotnractValue);
+            Client client = new Client();
+            client.CotnractValue = 45000m;
+            Assert.AreEqual(45000m, client.CotnractValue);
         }
     }
 }

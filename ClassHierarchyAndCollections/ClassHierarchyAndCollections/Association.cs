@@ -18,9 +18,9 @@ namespace ClassHierarchyAndCollections
 
         public void ReadList()
         {
-            foreach(Member m in this.Members)
+            foreach(Member member in this.Members)
             {
-                Console.WriteLine(m.DisplayName);
+                Console.WriteLine(member.DisplayName);
             }
         }
     }

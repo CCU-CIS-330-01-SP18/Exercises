@@ -11,31 +11,31 @@ namespace ContactTests
         [TestMethod]
         public void CanCreateContact()
         {
-            Contact c = new Contact();
-            Assert.IsNotNull(c);
+            Contact contact = new Contact();
+            Assert.IsNotNull(contact);
         }
 
         [TestMethod]
         public void ContactDerivesFromObject()
         {
-            Contact c = new Contact();
-            Assert.IsInstanceOfType(c, typeof(Object));
+            Contact contact = new Contact();
+            Assert.IsInstanceOfType(contact, typeof(Object));
         }
 
         [TestMethod]
         public void CanReadWriteDisplayName()
         {
-            Contact c = new Contact();
-            c.DisplayName = "Dean";
-            Assert.AreEqual("Dean", c.DisplayName);
+            Contact contact = new Contact();
+            contact.DisplayName = "Dean";
+            Assert.AreEqual("Dean", contact.DisplayName);
         }
 
         [TestMethod]
         public void CanReadWriteLegalName()
         {
-            Contact c = new Contact();
-            c.LegalName = "test";
-            Assert.AreEqual("test", c.LegalName);
+            Contact contact = new Contact();
+            contact.LegalName = "test";
+            Assert.AreEqual("test", contact.LegalName);
         }
     }
 }
