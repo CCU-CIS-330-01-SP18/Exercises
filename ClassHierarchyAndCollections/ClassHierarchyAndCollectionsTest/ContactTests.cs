@@ -4,6 +4,9 @@ using System;
 
 namespace ClassHierarchyAndCollectionsTests
 {
+    /// <summary>
+    /// Defines unit tests for the <see cref="Contact"/> class.
+    /// </summary>
     [TestClass]
     public class ContactTests
     {
