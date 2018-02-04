@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class School
+    /// <summary>
+    /// This class inherits from Organization and holds two unique properties.
+    /// </summary>
+    public class School : Organization
     {
         public string Mascot
         {

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Member
+    /// <summary>
+    /// This class inherits from Individual and holds two unique properties.
+    /// </summary>
+    public class Member : Individual
     {
         public int Rank
         {

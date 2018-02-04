@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Business
+    /// <summary>
+    /// This class inherits from Organization and holds two unique properties.
+    /// One of those properties is a collection type List which contains Members.
+    /// </summary>
+    public class Business : Organization
     {
         public string MissionStatement
         {
@@ -14,7 +18,7 @@ namespace ClassHierarchyAndCollections
             set;
         }
 
-        public bool IsAFortune500Company
+        public List<Member> Members
         {
             get;
             set;

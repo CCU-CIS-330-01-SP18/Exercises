@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Client
+    /// <summary>
+    /// This class inherits from Individual and holds two unique properties.
+    /// </summary>
+    public class Client : Individual
     {
         public int IdentificationNumber
         {
@@ -14,7 +17,7 @@ namespace ClassHierarchyAndCollections
             set;
         }
 
-        public string EmergencyContac
+        public string EmergencyContact
         {
             get;
             set;

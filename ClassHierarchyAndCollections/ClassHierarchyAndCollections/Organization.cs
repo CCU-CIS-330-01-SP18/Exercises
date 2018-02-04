@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Organization
+    /// <summary>
+    /// This class inherits from Contact and holds two unique properties.
+    /// </summary>
+    public class Organization : Contact
     {
         public string Address
         {
@@ -16,7 +19,8 @@ namespace ClassHierarchyAndCollections
 
         public int ZipCode
         {
-            get; set;
+            get;
+            set;
         }
 
     }

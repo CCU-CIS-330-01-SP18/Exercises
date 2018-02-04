@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Student
+    /// <summary>
+    /// This class inherits from Individual and holds two unique properties.
+    /// </summary>
+    public class Student : Individual
     {
         public bool IsHardWorking
         {

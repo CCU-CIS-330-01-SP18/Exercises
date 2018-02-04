@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Association
+    /// <summary>
+    /// This class inherits from Organization and holds two unique properties.
+    /// </summary>
+    public class Association : Organization
     {
         public string City
         {

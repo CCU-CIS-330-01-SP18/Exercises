@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Individual
+    /// <summary>
+    /// This class inherits from Contact, holds two unique properties, and inherits an interface.
+    /// </summary>
+    public class Individual : Contact, IWork
     {
         public string PreferredName
         {
@@ -18,6 +21,14 @@ namespace ClassHierarchyAndCollections
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// This Method writes to the console utalizing an interface
+        /// </summary>
+        public void Work()
+        {
+            Console.WriteLine("I'm working.");
         }
     }
 }

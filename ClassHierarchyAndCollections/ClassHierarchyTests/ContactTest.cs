@@ -4,9 +4,15 @@ using ClassHierarchyAndCollections;
 
 namespace ClassHierarchyTests
 {
+    /// <summary>
+    /// Tests the functionality of the Contact class.
+    /// </summary>
     [TestClass]
     public class ContactTest
     {
+        /// <summary>
+        /// Tests to see if you can create an instance of the class.
+        /// </summary>
         [TestMethod]
         public void CanCreateContact()
         {
@@ -14,6 +20,9 @@ namespace ClassHierarchyTests
             Assert.IsNotNull(c);
         }
 
+        /// <summary>
+        /// Tests if the class correctly inherets the specified hierarchy.
+        /// </summary>
         [TestMethod]
         public void ContentDerivesFromContent()
         {
@@ -21,6 +30,9 @@ namespace ClassHierarchyTests
             Assert.IsInstanceOfType(c, typeof(object));
         }
 
+        /// <summary>
+        /// Tests the read/write capability of the first property.
+        /// </summary>
         [TestMethod]
         public void ContactCanReadWriteDisplayName()
         {
@@ -29,6 +41,9 @@ namespace ClassHierarchyTests
             Assert.AreEqual("Dylan", c.DisplayName);
         }
 
+        /// <summary>
+        /// Tests the read/write capability of the second property.
+        /// </summary>
         [TestMethod]
         public void ContactCanReadWriteLegalName()
         {
