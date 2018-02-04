@@ -19,7 +19,7 @@ namespace ProgramFlow
         public static bool InvertBoolean(bool value)
         {
             // TODO: Fix this method so it passes all associated tests.
-            return value;
+            return !value;
         }
 
         /// <summary>
@@ -30,7 +30,23 @@ namespace ProgramFlow
         public static DriverAction DriveSafelyIfElse(LightColor color)
         {
             // TODO: Fix this method so it passes all associated tests. An if-else statement must be used to return the correct values.
-            return (DriverAction)24;
+            if (color == LightColor.Green)
+            {
+                return (DriverAction.ProceedWithCaution);
+            }
+            else if (color == LightColor.Yellow)
+            {
+                return (DriverAction.StopIfSafe);
+            }
+            else if(color == LightColor.Red)
+            {
+                return (DriverAction.Stop);
+            }
+            else
+            {
+                return (DriverAction.Unknown);
+            }
+            
         }
 
         /// <summary>
@@ -41,7 +57,17 @@ namespace ProgramFlow
         public static DriverAction DriveSafelySwitch(LightColor color)
         {
             // TODO: Fix this method so it passes all associated tests. A switch statement must be used to return the correct values.
-            return (DriverAction)24;
+            switch (color)
+            {
+                case LightColor.Green:
+                    return (DriverAction.ProceedWithCaution);
+                case LightColor.Yellow:
+                    return (DriverAction.StopIfSafe);
+                case LightColor.Red:
+                    return (DriverAction.Stop);
+                default:
+                    return (DriverAction.Unknown);
+            }
         }
 
         /// <summary>
@@ -52,7 +78,12 @@ namespace ProgramFlow
         public static long ForSum(int[] values)
         {
             // TODO: Fix this method so it passes all associated tests. A for loop must be used to calculate the sum.
-            return -1;
+            int numberToAdd = 0;
+            for (int sum = 0; sum < values.Length; sum++)
+            {
+                numberToAdd += values[sum];
+            }
+            return numberToAdd;
         }
 
         /// <summary>
@@ -63,7 +94,12 @@ namespace ProgramFlow
         public static long ForEachSum(int[] values)
         {
             // TODO: Fix this method so it passes all associated tests. A foreach loop must be used to calculate the sum.
-            return -1;
+            int numberToAdd = 0;
+            foreach(int value in values)
+            {
+                numberToAdd += value;
+            }
+            return numberToAdd;
         }
     }
 }
