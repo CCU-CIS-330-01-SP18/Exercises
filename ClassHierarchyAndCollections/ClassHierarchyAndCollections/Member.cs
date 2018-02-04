@@ -9,14 +9,14 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Defines an Association member.
     /// </summary>
-    class Member : Individual, IQuit
+    public class Member : Individual, IQuitable
     {
         public int MemberID { get; set; }
 
         public DateTime JoinDate { get; set; }
 
         /// <summary>
-        /// Implements the IQuit interface functionality. This person is able to quit their Association membership.
+        /// Implements the IQuitable interface functionality. This person is able to quit their Association membership.
         /// </summary>
         public void Quit()
         {

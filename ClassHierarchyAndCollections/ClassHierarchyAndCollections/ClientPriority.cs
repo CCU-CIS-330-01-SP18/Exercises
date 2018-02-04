@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// The level of priority a business client has. This has been implemented primarily for the purposes of Net Neutrality circumvention.
     /// </summary>
-    enum ClientPriority
+    public enum ClientPriority
     {
         Lowest,
         Low,

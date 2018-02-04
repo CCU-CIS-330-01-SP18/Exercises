@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Defines an educational facility.
     /// </summary>
-    class School : Organization
+    public class School : Organization
     {
         public SchoolType SchoolType { get; set; }
 

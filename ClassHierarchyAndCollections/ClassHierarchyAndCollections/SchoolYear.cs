@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Defines the school year position a Student contact is currently in.
     /// </summary>
-    enum SchoolYear
+    public enum SchoolYear
     {
         Freshman,
         Sophomore,

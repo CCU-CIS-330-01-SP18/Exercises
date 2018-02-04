@@ -9,10 +9,12 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Defines a business entity, created for the purposes of driving a profit.
     /// </summary>
-    class Business : Organization
+    public class Business : Organization
     {
         public String BusinessPhone { get; set; }
 
         public String StockSymbol { get; set; }
+
+        public List<Client> Clients { get; set; }
     }
 }

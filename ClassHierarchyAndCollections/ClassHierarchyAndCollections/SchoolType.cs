@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Defines the type of school a School contact represents.
     /// </summary>
-    enum SchoolType
+    public enum SchoolType
     {
         Elementary,
         Middle,

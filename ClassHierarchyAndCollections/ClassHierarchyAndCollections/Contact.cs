@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// The parent class for our StalkYourFriends© application.
     /// </summary>
-    internal class Contact
+    public class Contact
     {
         public String DisplayName { get; set; }
         public String EmailAddress { get; set; }

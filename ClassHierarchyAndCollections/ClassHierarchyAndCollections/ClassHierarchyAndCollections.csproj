@@ -46,7 +46,7 @@
     <Compile Include="ClientPriority.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Individual.cs" />
-    <Compile Include="IQuit.cs" />
+    <Compile Include="IQuitable.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Organization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

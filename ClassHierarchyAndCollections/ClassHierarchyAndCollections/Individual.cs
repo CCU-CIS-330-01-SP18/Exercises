@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Defines a singular individual or person.
     /// </summary>
-    class Individual : Contact
+    public class Individual : Contact
     {
         public String CellPhone { get; set; }
 

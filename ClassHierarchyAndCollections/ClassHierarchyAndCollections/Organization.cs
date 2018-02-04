@@ -9,12 +9,10 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Defines an organization of people.
     /// </summary>
-    internal class Organization : Contact
+    public class Organization : Contact
     {
         public String PhysicalAddress { get; set; }
 
         public DateTime FormationDate { get; set; }
-
-        public List<Client> Clients { get; set; }
     }
 }

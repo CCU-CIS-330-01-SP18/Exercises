@@ -9,14 +9,14 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Defines a student contact.
     /// </summary>
-    class Student : Individual, IQuit
+    public class Student : Individual, IQuitable
     {
         public int StudentID { get; set; }
 
         public SchoolYear YearInSchool { get; set; }
 
         /// <summary>
-        /// Implements the IQuit interface to enable dropping out of school.
+        /// Implements the IQuitable interface to enable dropping out of school.
         /// </summary>
         public void Quit()
         {

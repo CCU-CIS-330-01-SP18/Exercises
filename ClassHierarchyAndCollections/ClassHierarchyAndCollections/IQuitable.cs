@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Enables and enforces the quit functionality for class members.
     /// </summary>
-    interface IQuit
+    interface IQuitable
     {
         void Quit();
     }

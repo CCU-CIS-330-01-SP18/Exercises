@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Defines a business client or contact.
     /// </summary>
-    class Client : Individual, IQuit
+   public class Client : Individual, IQuitable
     {
         public int ClientID { get; set; }
 
