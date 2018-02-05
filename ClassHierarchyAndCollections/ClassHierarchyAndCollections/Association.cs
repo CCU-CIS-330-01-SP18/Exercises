@@ -14,9 +14,8 @@ namespace ClassHierarchyAndCollections
         /// <summary>
         /// Initializes a new instance of the Association class.
         /// </summary>
-        public Association()
+        public Association() : base()
         {
-            Roster = new List<Individual>();
             KeyTenets = new List<string>();
         }
 

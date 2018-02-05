@@ -6,6 +6,7 @@
     public class Employee : Individual, IPay
     {
         public bool Exempt { get; set; }
+        public int Happiness { get; set; }
         public string UnionMembership { get; set; }
         public decimal Wallet { get; set; } = 0.00m;
 
@@ -31,6 +32,7 @@
             }
             else
             {
+                Happiness--;
                 return 0.00m;
             }
         }
@@ -44,6 +46,7 @@
             if (paymentOffered > 0.00m)
             {
                 Wallet += paymentOffered;
+                Happiness++;
             }
         }
     }

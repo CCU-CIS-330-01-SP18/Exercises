@@ -14,7 +14,7 @@ namespace ClassHierarchyAndCollections
         /// <summary>
         /// Initializes a new instance of the Business class.
         /// </summary>
-        public Business()
+        public Business() : base()
         {
             Products = new Dictionary<string, decimal>();
         }
@@ -65,6 +65,19 @@ namespace ClassHierarchyAndCollections
             if (paymentOffered > 0.00m)
             {
                 Cash += paymentOffered;
+            }
+        }
+
+        /// <summary>
+        /// Pays all of the employees in the business the given amount.
+        /// </summary>
+        /// <param name="paycheck">The amount to pay each employee.</param>
+        /// <remarks>In OUR businesses, everyone gets paid exactly the same amount.</remarks>
+        public void PayDay(decimal paycheck)
+        {
+            foreach (Employee employee in Roster)
+            {
+
             }
         }
     }

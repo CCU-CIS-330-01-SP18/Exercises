@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="ContactTests.cs" />
     <Compile Include="ClientTests.cs" />
+    <Compile Include="EmployeeTests.cs" />
     <Compile Include="MemberTests.cs" />
     <Compile Include="AssociationTests.cs" />
     <Compile Include="BusinessTests.cs" />
