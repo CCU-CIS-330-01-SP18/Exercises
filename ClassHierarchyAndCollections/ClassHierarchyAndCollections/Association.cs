@@ -3,8 +3,8 @@
 namespace ClassHierarchyAndCollections
 {
     /// <summary>
-    /// Represents an association of individual members.
-    /// Unlike other Organizations, Associations make decisions by voting.
+    /// Represents an association of individual <see cref="Member"/>s.
+    /// Unlike other <see cref="Organization"/>s, Associations make decisions by voting.
     /// </summary>
     public class Association : Organization
     {
@@ -20,7 +20,7 @@ namespace ClassHierarchyAndCollections
         }
 
         /// <summary>
-        /// Put something up to a vote of all the members.
+        /// Put something up to a vote of all the <see cref="Member"/>s.
         /// </summary>
         /// <returns>An array of two integers: index 0 represents "yea" votes, and index 1 represents "nay" votes.</returns>
         public int[] Vote()

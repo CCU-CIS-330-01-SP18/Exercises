@@ -49,7 +49,6 @@
     <Compile Include="Gender.cs" />
     <Compile Include="Individual.cs" />
     <Compile Include="IPay.cs" />
-    <Compile Include="ITransplantOrgan.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Organ.cs" />
     <Compile Include="Organization.cs" />
@@ -60,6 +59,7 @@
     <Compile Include="VoteType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="zomg.txt" />
     <Content Include="ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

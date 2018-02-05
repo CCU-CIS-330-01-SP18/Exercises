@@ -17,10 +17,10 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void ClientDerivesFromContact()
+        public void ClientDerivesFromIndividual()
         {
             Client client = new Client();
-            Assert.IsInstanceOfType(client, typeof(Contact));
+            Assert.IsInstanceOfType(client, typeof(Individual));
         }
 
         [TestMethod]
@@ -64,6 +64,20 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
+        public void CanReadNumberOfRemainingKidneys()
+        {
+            Client client = new Client();
+            Assert.AreEqual(2, client.NumberOfRemainingKidneys);
+        }
+
+        [TestMethod]
+        public void CanReadNumberOfRemainingLungs()
+        {
+            Client client = new Client();
+            Assert.AreEqual(2, client.NumberOfRemainingLungs);
+        }
+
+        [TestMethod]
         public void CanReadWriteHappiness()
         {
             Client client = new Client()
@@ -79,6 +93,16 @@ namespace ClassHierarchyAndCollectionsTest
             Client client = new Client();
             client.Possessions.Add("Joja Cola");
             Assert.AreEqual("Joja Cola", client.Possessions[0]);
+        }
+
+        [TestMethod]
+        public void CanReadWriteGreedFactor()
+        {
+            Client client = new Client()
+            {
+                GreedFactor = 5
+            };
+            Assert.AreEqual(5, client.GreedFactor);
         }
 
         [TestMethod]

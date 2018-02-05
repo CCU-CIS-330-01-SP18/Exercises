@@ -3,7 +3,7 @@
 namespace ClassHierarchyAndCollections
 {
     /// <summary>
-    /// Represents a member of an association. Can vote on propositions when asked, behaving in accord with a randomly-generated voting personality.
+    /// Represents a member of an <see cref="Association"/>. Can vote on propositions when asked, behaving in accord with a randomly-generated <see cref="Personality"/>.
     /// </summary>
     public class Member : Individual
     {
@@ -53,7 +53,7 @@ namespace ClassHierarchyAndCollections
         }
 
         /// <summary>
-        /// Vote on a proposal, based on voting personality.
+        /// Vote on a proposal, based on voting <see cref="Personality"/>.
         /// </summary>
         /// <returns>A vote type depending on their voting personality.</returns>
         public VoteType Vote()

@@ -18,10 +18,10 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void BusinessDerivesFromContact()
+        public void BusinessDerivesFromOrganization()
         {
             Business business = new Business();
-            Assert.IsInstanceOfType(business, typeof(Contact));
+            Assert.IsInstanceOfType(business, typeof(Organization));
         }
 
         [TestMethod]
@@ -104,16 +104,16 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void CanAddMember()
+        public void CanAddEmployee()
         {
             Business business = new Business();
-            Individual individual = new Individual();
-            business.Roster.Add(individual);
-            Assert.IsTrue(business.Roster.Contains(individual));
+            Employee employee = new Employee();
+            business.Roster.Add(employee);
+            Assert.IsTrue(business.Roster.Contains(employee));
         }
 
         [TestMethod]
-        public void CanRemoveMember()
+        public void CanRemoveEmployee()
         {
             Business business = new Business();
             Employee employee = new Employee();

@@ -3,7 +3,7 @@
 namespace ClassHierarchyAndCollections
 {
     /// <summary>
-    /// Represents a business, containing employees and products.
+    /// Represents a business, containing <see cref="Employee"/>s and products.
     /// </summary>
     public class Business : Organization, IPay
     {
@@ -57,7 +57,7 @@ namespace ClassHierarchyAndCollections
         }
 
         /// <summary>
-        /// Attempts to purchase the given item at the requested amount. Works the same way as Pay.
+        /// Attempts to purchase the given item at the requested amount. Works the same way as <see cref="Pay(decimal)"/>.
         /// </summary>
         /// <param name="paymentRequested">The amount of payment requested by the seller.</param>
         /// <param name="purchaseName">The name of the product being purchased.</param>
@@ -86,7 +86,7 @@ namespace ClassHierarchyAndCollections
         }
 
         /// <summary>
-        /// Pays all of the employees in the business the given amount.
+        /// Pays all of the <see cref="Employee"/>s in the business the given amount.
         /// </summary>
         /// <param name="paycheck">The amount to pay each employee.</param>
         /// <remarks>In OUR businesses, everyone gets paid exactly the same amount.</remarks>

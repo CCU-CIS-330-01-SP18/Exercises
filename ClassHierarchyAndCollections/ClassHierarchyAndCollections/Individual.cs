@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents an individual human contact.
     /// </summary>
-    public class Individual : Contact, ITransplantOrgan
+    public class Individual : Contact
     {
         private int numberOfRemainingKidneys = 2;
         private int numberOfRemainingLungs = 2;

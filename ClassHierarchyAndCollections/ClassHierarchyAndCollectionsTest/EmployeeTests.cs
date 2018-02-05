@@ -17,10 +17,10 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void EmployeeDerivesFromContact()
+        public void EmployeeDerivesFromIndividual()
         {
             Employee employee = new Employee();
-            Assert.IsInstanceOfType(employee, typeof(Contact));
+            Assert.IsInstanceOfType(employee, typeof(Individual));
         }
 
         [TestMethod]
@@ -61,6 +61,20 @@ namespace ClassHierarchyAndCollectionsTest
                 Gender = Gender.Male
             };
             Assert.AreEqual(Gender.Male, employee.Gender);
+        }
+
+        [TestMethod]
+        public void CanReadNumberOfRemainingKidneys()
+        {
+            Employee employee = new Employee();
+            Assert.AreEqual(2, employee.NumberOfRemainingKidneys);
+        }
+
+        [TestMethod]
+        public void CanReadNumberOfRemainingLungs()
+        {
+            Employee employee = new Employee();
+            Assert.AreEqual(2, employee.NumberOfRemainingLungs);
         }
 
         [TestMethod]

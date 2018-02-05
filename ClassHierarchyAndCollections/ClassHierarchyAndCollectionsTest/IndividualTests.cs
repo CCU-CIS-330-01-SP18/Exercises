@@ -64,6 +64,20 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
+        public void CanReadNumberOfRemainingKidneys()
+        {
+            Individual individual = new Individual();
+            Assert.AreEqual(2, individual.NumberOfRemainingKidneys);
+        }
+
+        [TestMethod]
+        public void CanReadNumberOfRemainingLungs()
+        {
+            Individual individual = new Individual();
+            Assert.AreEqual(2, individual.NumberOfRemainingLungs);
+        }
+
+        [TestMethod]
         public void CanRemoveOrgans()
         {
             Individual individual = new Individual();

@@ -3,12 +3,19 @@
 namespace ClassHierarchyAndCollections
 {
     /// <summary>
-    /// Represents a school, which can have a class of students and a catalog of courses.
+    /// Represents a school, which can have a roster of <see cref="Student"/>s and a catalog of courses.
     /// </summary>
     public class School : Organization
     {
-        Dictionary<string, int> CourseCatalog { get; set; }
-        List<Student> DeansList { get; set; }
+        private List<Student> deansList;
+        public Dictionary<string, int> CourseCatalog { get; set; }
+        public List<Student> DeansList
+        {
+            get
+            {
+                return deansList;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the School class.
@@ -16,37 +23,44 @@ namespace ClassHierarchyAndCollections
         public School() : base()
         {
             CourseCatalog = new Dictionary<string, int>();
-            DeansList = new List<Student>();
+            deansList = new List<Student>();
         }
 
         /// <summary>
-        /// Decide which students go on the Dean's List this semester, and update the List with the findings.
+        /// Decides which <see cref="Student"/>s go on the Dean's List this semester, and updates the <see cref="DeansList"/> with the findings.
         /// </summary>
         public void CalculateDeansList()
         {
-            DeansList.Clear();
+            deansList.Clear();
             foreach (Student student in Roster)
             {
                 if (student.GPA >= 3.5)
                 {
-                    DeansList.Add(student);
+                    deansList.Add(student);
                 }
             }
         }
 
         /// <summary>
-        /// Teaches the given course to all students enrolled at the school. Adds the given course's stress level to each student.
+        /// Teaches the given course to all <see cref="Student"/>s enrolled at the school.
         /// </summary>
         /// <param name="courseName">The name of the course to teach.</param>
-        /// <remarks>At our schools, you learn what WE want you to learn.</remarks>
-        public void TeachCourse(string courseName)
+        /// <returns>Whether or not the class was taught.
+        /// If no such class exists in the catalog, or no students exist to take the class, it will return false.</returns>
+        /// <remarks>At our schools, you learn what we want you to learn. Freedom is slavery.</remarks>
+        public bool TeachCourse(string courseName)
         {
-            if (CourseCatalog.ContainsKey(courseName))
+            if (CourseCatalog.ContainsKey(courseName) && Roster.Count > 0)
             {
                 foreach (Student student in Roster)
                 {
                     student.Study(CourseCatalog[courseName]);
                 }
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }

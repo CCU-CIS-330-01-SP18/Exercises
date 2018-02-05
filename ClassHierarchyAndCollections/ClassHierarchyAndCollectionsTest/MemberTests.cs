@@ -17,10 +17,10 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void MemberDerivesFromContact()
+        public void MemberDerivesFromIndividual()
         {
             Member member = new Member();
-            Assert.IsInstanceOfType(member, typeof(Contact));
+            Assert.IsInstanceOfType(member, typeof(Individual));
         }
 
         [TestMethod]
@@ -64,6 +64,20 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
+        public void CanReadNumberOfRemainingKidneys()
+        {
+            Member member = new Member();
+            Assert.AreEqual(2, member.NumberOfRemainingKidneys);
+        }
+
+        [TestMethod]
+        public void CanReadNumberOfRemainingLungs()
+        {
+            Member member = new Member();
+            Assert.AreEqual(2, member.NumberOfRemainingLungs);
+        }
+
+        [TestMethod]
         public void CanReadWriteLiar()
         {
             Member member = new Member()
@@ -81,48 +95,6 @@ namespace ClassHierarchyAndCollectionsTest
                 Personality = Personality.OverlyDeliberative
             };
             Assert.AreEqual(Personality.OverlyDeliberative, member.Personality);
-        }
-
-        [TestMethod]
-        public void VotesYesIfYesMan()
-        {
-            Member member = new Member()
-            {
-                Personality = Personality.YesMan,
-                LiarAndScoundrel = false
-            };
-            Assert.AreEqual(VoteType.Yea, member.Vote());
-        }
-
-        [TestMethod]
-        public void VotesNayIfGrouchyJerk()
-        {
-            Member member = new Member()
-            {
-                Personality = Personality.GrouchyJerk,
-                LiarAndScoundrel = false
-            };
-            Assert.AreEqual(VoteType.Nay, member.Vote());
-        }
-
-        [TestMethod]
-        public void VotesIfSwingVoter()
-        {
-            Member member = new Member()
-            {
-                Personality = Personality.SwingVoter
-            };
-            Assert.IsNotNull(member.Vote());
-        }
-
-        [TestMethod]
-        public void VotesIfOverlyDeliberative()
-        {
-            Member member = new Member()
-            {
-                Personality = Personality.OverlyDeliberative
-            };
-            Assert.IsNotNull(member.Vote());
         }
 
         [TestMethod]
@@ -191,6 +163,70 @@ namespace ClassHierarchyAndCollectionsTest
             int startingCount = member.NumberOfRemainingLungs;
             member.TransplantOrgan(Organ.Lung);
             Assert.AreEqual(startingCount + 1, member.NumberOfRemainingLungs);
+        }
+
+        [TestMethod]
+        public void VotesYeaIfYesMan()
+        {
+            Member member = new Member()
+            {
+                Personality = Personality.YesMan,
+                LiarAndScoundrel = false
+            };
+            Assert.AreEqual(VoteType.Yea, member.Vote());
+        }
+
+        [TestMethod]
+        public void VotesNayIfGrouchyJerk()
+        {
+            Member member = new Member()
+            {
+                Personality = Personality.GrouchyJerk,
+                LiarAndScoundrel = false
+            };
+            Assert.AreEqual(VoteType.Nay, member.Vote());
+        }
+
+        [TestMethod]
+        public void VotesIfSwingVoter()
+        {
+            Member member = new Member()
+            {
+                Personality = Personality.SwingVoter
+            };
+            Assert.IsNotNull(member.Vote());
+        }
+
+        [TestMethod]
+        public void VotesIfOverlyDeliberative()
+        {
+            Member member = new Member()
+            {
+                Personality = Personality.OverlyDeliberative
+            };
+            Assert.IsNotNull(member.Vote());
+        }
+
+        [TestMethod]
+        public void LiarYesMenLie()
+        {
+            Member member = new Member()
+            {
+                Personality = Personality.YesMan,
+                LiarAndScoundrel = true
+            };
+            Assert.AreEqual(VoteType.Nay, member.Vote());
+        }
+
+        [TestMethod]
+        public void LiarGrouchyJerksLie()
+        {
+            Member member = new Member()
+            {
+                Personality = Personality.GrouchyJerk,
+                LiarAndScoundrel = true
+            };
+            Assert.AreEqual(VoteType.Yea, member.Vote());
         }
     }
 }

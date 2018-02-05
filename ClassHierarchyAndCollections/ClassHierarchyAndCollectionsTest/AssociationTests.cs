@@ -18,10 +18,10 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void AssociationDerivesFromContact()
+        public void AssociationDerivesFromOrganization()
         {
             Association association = new Association();
-            Assert.IsInstanceOfType(association, typeof(Contact));
+            Assert.IsInstanceOfType(association, typeof(Organization));
         }
 
         [TestMethod]

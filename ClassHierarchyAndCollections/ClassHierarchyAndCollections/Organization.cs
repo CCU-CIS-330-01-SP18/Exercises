@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace ClassHierarchyAndCollections
 {
     /// <summary>
-    /// Represents an organization of individuals.
+    /// Represents an organization of <see cref="Individual"/>s.
     /// </summary>
     public class Organization : Contact
     {

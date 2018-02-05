@@ -38,7 +38,7 @@
         }
 
         /// <summary>
-        /// Attempts to purchase the given item at the requested amount. Works the same way as Pay.
+        /// Attempts to purchase the given item at the requested amount. Works the same way as <see cref="Pay(decimal)"/>.
         /// </summary>
         /// <param name="paymentRequested">The amount of payment requested by the seller.</param>
         /// <param name="purchaseName">The name of the product being purchased.</param>
