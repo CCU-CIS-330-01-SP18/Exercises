@@ -18,7 +18,6 @@ namespace ClassHierarchyAndCollections
         
         // Sets a collection of Clients that can be used by the business class.
         public List<Client> Clients = new List<Client>();
-
         public string Location
         {
             get { return location; }

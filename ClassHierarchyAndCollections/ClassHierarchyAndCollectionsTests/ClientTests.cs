@@ -5,7 +5,7 @@ using ClassHierarchyAndCollections;
 namespace ClassHierarchyAndCollectionsTests
 {
     [TestClass]
-    public class UnitTest1
+    public class ClientTests
     {
         [TestMethod]
         public void CanCreateClient()

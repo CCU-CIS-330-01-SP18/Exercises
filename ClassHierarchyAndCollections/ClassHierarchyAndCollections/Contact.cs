@@ -16,11 +16,6 @@ namespace ClassHierarchyAndCollections
 
         public string LegalName { get; set; }
 
-        /*public Contact(string location)
-        {
-            this.Location = location;
-        }*/
-
         public string Location
         {
             get { return location; }
