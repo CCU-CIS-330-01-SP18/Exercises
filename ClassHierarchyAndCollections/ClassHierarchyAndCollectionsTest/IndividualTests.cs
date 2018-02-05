@@ -71,11 +71,26 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
+        public void CannotRemoveAllOrgans()
+        {
+            Individual individual = new Individual();
+            individual.RemoveOrgan(Organ.Kidney);
+            Assert.IsFalse(individual.RemoveOrgan(Organ.Kidney));
+        }
+
+        [TestMethod]
         public void CanTransplantOrgans()
         {
             Individual individual = new Individual();
             individual.RemoveOrgan(Organ.Kidney);
             Assert.IsTrue(individual.TransplantOrgan(Organ.Kidney));
+        }
+
+        [TestMethod]
+        public void CannotTransplantMoreOrgans()
+        {
+            Individual individual = new Individual();
+            Assert.IsFalse(individual.TransplantOrgan(Organ.Kidney));
         }
 
         [TestMethod]

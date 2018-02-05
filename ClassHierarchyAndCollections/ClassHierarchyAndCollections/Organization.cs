@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ClassHierarchyAndCollections
 {
@@ -7,30 +8,16 @@ namespace ClassHierarchyAndCollections
     /// </summary>
     public class Organization : Contact
     {
-        protected List<Individual> roster;
-
         public string Motto { get; set; }
-        public List<Individual> Roster
-        {
-            get
-            {
-                // Since lists are reference types, make a new copy of it to return.
-                // This way, the roster cannot be directly modified by those who read it.
-                List<Individual> rosterCopy = new List<Individual>();
-                foreach (Individual individual in roster)
-                {
-                    rosterCopy.Add(individual);
-                }
-                return rosterCopy;
-            }
-        }
+        public DateTime FoundingDate { get; set; }
+        public List<Individual> Roster { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the Organization class.
         /// </summary>
         public Organization()
         {
-            
+            Roster = new List<Individual>();
         }
     }
 }

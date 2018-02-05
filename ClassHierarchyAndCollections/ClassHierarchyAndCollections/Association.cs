@@ -8,36 +8,16 @@ namespace ClassHierarchyAndCollections
     /// </summary>
     public class Association : Organization
     {
+        // The new keyword is used so that this property "overrides" the one from Organization, in a way.
+        // This is necessary because this list must contain Members and no other type of Individual.
+        //public new List<Member> Roster { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the Association class.
         /// </summary>
         public Association()
         {
-            roster = new List<Individual>();
-        }
-
-        /// <summary>
-        /// Expels the given member from the association and removes them from the roster.
-        /// </summary>
-        /// <param name="member">The member to remove.</param>
-        public void ExpelMember(Member member)
-        {
-            if (roster.Contains(member))
-            {
-                roster.Remove(member);
-            }
-        }
-
-        /// <summary>
-        /// Inducts a new member into the association and adds them to the roster.
-        /// </summary>
-        /// <param name="newMember">The member to induct.</param>
-        public void InductMember(Member newMember)
-        {
-            if (!roster.Contains(newMember))
-            {
-                roster.Add(newMember);
-            }
+            Roster = new List<Individual>();
         }
 
         /// <summary>
@@ -47,11 +27,11 @@ namespace ClassHierarchyAndCollections
         public int[] Vote()
         {
             int[] tally = new int[2] { 0, 0 };
-            if (roster.Count == 0)
+            if (Roster.Count == 0)
             {
                 return tally;
             }
-            foreach (Member member in roster)
+            foreach (Member member in Roster)
             {
                 var vote = member.Vote();
                 switch (vote)

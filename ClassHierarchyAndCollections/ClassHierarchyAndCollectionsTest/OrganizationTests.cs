@@ -1,5 +1,6 @@
 ﻿using ClassHierarchyAndCollections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace ClassHierarchyAndCollectionsTest
 {
@@ -61,6 +62,36 @@ namespace ClassHierarchyAndCollectionsTest
                 Motto = "Life's better with Joja."
             };
             Assert.AreEqual("Life's better with Joja.", organization.Motto);
+        }
+
+        [TestMethod]
+        public void CanReadWriteFoundingDate()
+        {
+            var now = DateTime.Now;
+            Organization organization = new Organization()
+            {
+                FoundingDate = now
+            };
+            Assert.AreEqual(now, organization.FoundingDate);
+        }
+
+        [TestMethod]
+        public void CanRemoveMember()
+        {
+            Organization organization = new Organization();
+            Individual individual = new Individual();
+            organization.Roster.Add(individual);
+            organization.Roster.Remove(individual);
+            Assert.IsFalse(organization.Roster.Contains(individual));
+        }
+
+        [TestMethod]
+        public void CanAddMember()
+        {
+            Organization organization = new Organization();
+            Individual individual = new Individual();
+            organization.Roster.Add(individual);
+            Assert.IsTrue(organization.Roster.Contains(individual));
         }
     }
 }
