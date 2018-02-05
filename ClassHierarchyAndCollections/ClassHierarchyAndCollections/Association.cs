@@ -8,9 +8,8 @@ namespace ClassHierarchyAndCollections
     /// </summary>
     public class Association : Organization
     {
-        // The new keyword is used so that this property "overrides" the one from Organization, in a way.
-        // This is necessary because this list must contain Members and no other type of Individual.
-        //public new List<Member> Roster { get; set; }
+        public List<string> KeyTenets { get; set; }
+        public bool IsACult { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the Association class.
@@ -18,6 +17,7 @@ namespace ClassHierarchyAndCollections
         public Association()
         {
             Roster = new List<Individual>();
+            KeyTenets = new List<string>();
         }
 
         /// <summary>

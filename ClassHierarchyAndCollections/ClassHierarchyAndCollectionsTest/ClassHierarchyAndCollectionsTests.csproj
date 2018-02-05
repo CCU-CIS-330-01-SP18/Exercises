@@ -50,8 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactTests.cs" />
+    <Compile Include="ClientTests.cs" />
     <Compile Include="MemberTests.cs" />
     <Compile Include="AssociationTests.cs" />
+    <Compile Include="BusinessTests.cs" />
     <Compile Include="OrganizationTests.cs" />
     <Compile Include="IndividualTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -76,6 +76,15 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
+        public void CanAddMember()
+        {
+            Organization organization = new Organization();
+            Individual individual = new Individual();
+            organization.Roster.Add(individual);
+            Assert.IsTrue(organization.Roster.Contains(individual));
+        }
+
+        [TestMethod]
         public void CanRemoveMember()
         {
             Organization organization = new Organization();
@@ -83,15 +92,6 @@ namespace ClassHierarchyAndCollectionsTest
             organization.Roster.Add(individual);
             organization.Roster.Remove(individual);
             Assert.IsFalse(organization.Roster.Contains(individual));
-        }
-
-        [TestMethod]
-        public void CanAddMember()
-        {
-            Organization organization = new Organization();
-            Individual individual = new Individual();
-            organization.Roster.Add(individual);
-            Assert.IsTrue(organization.Roster.Contains(individual));
         }
     }
 }

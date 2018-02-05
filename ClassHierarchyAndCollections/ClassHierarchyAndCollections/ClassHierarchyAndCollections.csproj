@@ -42,11 +42,13 @@
   <ItemGroup>
     <Compile Include="Association.cs" />
     <Compile Include="Business.cs" />
+    <Compile Include="BusinessType.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Individual.cs" />
+    <Compile Include="IPay.cs" />
     <Compile Include="ITransplantOrgan.cs" />
     <Compile Include="Member.cs" />
     <Compile Include="Organ.cs" />
