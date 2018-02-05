@@ -47,6 +47,11 @@ namespace ClassHierarchyAndCollections
                         break;
                 }
             }
+            if (IsACult)
+            {
+                // They may THINK they voted...but it was all for naught. The leader always gets what he or she wants.
+                return new int[2] { Roster.Count, 0 };
+            }
             return tally;
         }
     }

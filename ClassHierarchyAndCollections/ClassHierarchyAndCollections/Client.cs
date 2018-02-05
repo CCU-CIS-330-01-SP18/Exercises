@@ -1,4 +1,6 @@
-﻿namespace ClassHierarchyAndCollections
+﻿using System.Collections.Generic;
+
+namespace ClassHierarchyAndCollections
 {
     /// <summary>
     /// Represents a client that can be sold products.
@@ -6,6 +8,7 @@
     public class Client : Individual, IPay
     {
         public int Happiness { get; set; } = 0;
+        public List<string> Possessions { get; set; }
         public decimal Wallet { get; set; } = 0.00m;
 
         /// <summary>
@@ -13,13 +16,14 @@
         /// </summary>
         public Client()
         {
-
+            Possessions = new List<string>();
         }
 
         /// <summary>
         /// Attempts to pay the requested amount, deducting it from this entity's money reserves and returning the value paid.
         /// </summary>
         /// <param name="paymentRequested">The amount of payment requested by the seller.</param>
+        /// <param name="productName">The product being purchased.</param>
         /// <returns>A decimal amount equal to the amount requested, or 0.00m if the payment could not be processed.</returns>
         public decimal Pay(decimal paymentRequested)
         {
@@ -33,6 +37,22 @@
                 Happiness--;
                 return 0.00m;
             }
+        }
+
+        /// <summary>
+        /// Attempts to purchase the given item at the requested amount. Works the same way as Pay.
+        /// </summary>
+        /// <param name="paymentRequested">The amount of payment requested by the seller.</param>
+        /// <param name="purchaseName">The name of the product being purchased.</param>
+        /// <returns>A decimal amount equal to the amount requested, or 0.00m if the payment could not be processed.</returns>
+        public decimal Purchase(decimal paymentRequested, string purchaseName)
+        {
+            decimal payment = Pay(paymentRequested);
+            if (payment > 0.00m)
+            {
+                Possessions.Add(purchaseName);
+            }
+            return payment;
         }
 
         /// <summary>

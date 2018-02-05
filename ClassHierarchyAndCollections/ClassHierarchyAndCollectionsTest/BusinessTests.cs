@@ -173,5 +173,27 @@ namespace ClassHierarchyAndCollectionsTest
             business.ReceivePayment(10.00m);
             Assert.AreEqual(10.00m, business.Cash);
         }
+
+        [TestMethod]
+        public void CanAcquireProducts()
+        {
+            Business business = new Business()
+            {
+                Cash = 20.00m
+            };
+            business.Purchase(5.00m, "Joja Cola");
+            Assert.AreEqual(15.00m, business.Cash);
+        }
+
+        [TestMethod]
+        public void CanAddAcquiredProductsToLineup()
+        {
+            Business business = new Business()
+            {
+                Cash = 20.00m
+            };
+            business.Purchase(5.00m, "Joja Cola");
+            Assert.AreEqual(5.50m, business.Products["Joja Cola"]);
+        }
     }
 }

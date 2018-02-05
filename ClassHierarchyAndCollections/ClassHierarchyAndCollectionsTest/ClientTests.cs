@@ -74,6 +74,14 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
+        public void CanReadWritePossessions()
+        {
+            Client client = new Client();
+            client.Possessions.Add("Joja Cola");
+            Assert.AreEqual("Joja Cola", client.Possessions[0]);
+        }
+
+        [TestMethod]
         public void CanRemoveOrgans()
         {
             Client client = new Client();
@@ -190,6 +198,28 @@ namespace ClassHierarchyAndCollectionsTest
             };
             client.Pay(10.00m);
             Assert.AreEqual(-1, client.Happiness);
+        }
+
+        [TestMethod]
+        public void CanCollectPossessions()
+        {
+            Client client = new Client()
+            {
+                Wallet = 20.00m
+            };
+            client.Purchase(5.00m, "Joja Cola");
+            Assert.AreEqual("Joja Cola", client.Possessions[0]);
+        }
+
+        [TestMethod]
+        public void CanPurchasePossessions()
+        {
+            Client client = new Client()
+            {
+                Wallet = 20.00m
+            };
+            client.Purchase(5.00m, "Joja Cola");
+            Assert.AreEqual(15.00m, client.Wallet);
         }
     }
 }

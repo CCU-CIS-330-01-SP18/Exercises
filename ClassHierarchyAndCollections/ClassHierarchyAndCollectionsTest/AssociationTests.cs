@@ -166,5 +166,23 @@ namespace ClassHierarchyAndCollectionsTest
             }
             Assert.AreEqual(5, association.Vote()[1]);
         }
+
+        [TestMethod]
+        public void CultMakesAllVotesYea()
+        {
+            Association association = new Association()
+            {
+                IsACult = true
+            };
+            for (int i = 0; i < 5; i++)
+            {
+                association.Roster.Add(new Member()
+                {
+                    Personality = Personality.GrouchyJerk,
+                    LiarAndScoundrel = false
+                });
+            }
+            Assert.AreEqual(5, association.Vote()[0]);
+        }
     }
 }

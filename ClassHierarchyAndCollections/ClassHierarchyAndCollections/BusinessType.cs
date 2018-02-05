@@ -6,8 +6,8 @@
     public enum BusinessType
     {
         Corporation,
-        SoleProprietorship,
         LimitedLiability,
-        Partnership
+        Partnership,
+        SoleProprietorship
     }
 }
