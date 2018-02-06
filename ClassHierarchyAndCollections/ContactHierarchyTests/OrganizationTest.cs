@@ -49,9 +49,9 @@ namespace ContactHierarchyTests
         public void CanReadWriteFormationDate()
         {
             var createdOrganization = new Organization();
-            var dateTest = new DateTime(2018, 2, 14);
-            createdOrganization.FormationDate = dateTest;
-            Assert.AreEqual(dateTest, createdOrganization.FormationDate);
+            var testDate = new DateTime(2018, 2, 14);
+            createdOrganization.FormationDate = testDate;
+            Assert.AreEqual(testDate, createdOrganization.FormationDate);
         }
     }
 }

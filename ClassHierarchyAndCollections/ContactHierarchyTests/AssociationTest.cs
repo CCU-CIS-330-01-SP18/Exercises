@@ -39,9 +39,9 @@ namespace ContactHierarchyTests
         public void CanReadWriteNextScheduledMeet()
         {
             var createdAssociation = new Association();
-            var dateTest = new DateTime(2018, 2, 14);
-            createdAssociation.NextScheduledMeet = dateTest;
-            Assert.AreEqual(dateTest, createdAssociation.NextScheduledMeet);
+            var testDate = new DateTime(2018, 2, 14);
+            createdAssociation.NextScheduledMeet = testDate;
+            Assert.AreEqual(testDate, createdAssociation.NextScheduledMeet);
         }
 
         /// <summary>
