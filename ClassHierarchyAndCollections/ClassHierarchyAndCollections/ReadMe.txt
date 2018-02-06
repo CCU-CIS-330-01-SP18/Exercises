@@ -12,7 +12,7 @@ Instructions:
     GPS coordinates for a contact. That is, each class that "has a" location could implemente the ILocatable interface.
 
 5.  Define at least one collection property for one class that should contain instances of another class. For example, the School class
-    could have a colleciton of Students (ex: public List<Student> Students { get; }). Or, the Business class could have a list of
+    could have a collection of Students (ex: public List<Student> Students { get; }). Or, the Business class could have a list of
     Clients.
 
 6.  Create a test project that contains least one automated test for each class, confirming that you can create an instance of the class, that the 

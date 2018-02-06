@@ -6,7 +6,25 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class School
+    /// <summary>
+    /// A generic class inherited from the Organization class that contains the unique the SchoolName, SchoolLocation and Students properites.
+    /// </summary>
+    class School : Organization
     {
+        public string SchoolName
+        {
+            get;
+            set;
+        }
+        public List<Student> Students
+        {
+            get;
+            set;
+        }
+        public string SchoolLocation
+        {
+            get;
+            set;
+        }
     }
 }

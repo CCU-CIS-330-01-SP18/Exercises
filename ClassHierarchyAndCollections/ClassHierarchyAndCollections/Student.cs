@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Student
+    /// <summary>
+    /// A generic class that inherits from the Individual class and holds the unique StudentName and StudentAge properties.
+    /// </summary>
+    class Student : Individual
     {
+        public string StudentName
+        {
+            get;
+            set;
+        }
+        public int StudentAge
+        {
+            get;
+            set;
+        }
     }
 }

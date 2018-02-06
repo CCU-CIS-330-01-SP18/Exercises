@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Client
+    /// <summary>
+    /// A generic class inherited from the Individual class and holds the unique UserID and UserName properties. 
+    /// </summary>
+    class Client : Individual
     {
+        public string UserID
+        {
+            get;
+            set;
+        }
+        public string UserName
+        {
+            get;
+            set;
+        }
     }
 }

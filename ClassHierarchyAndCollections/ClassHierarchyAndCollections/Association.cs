@@ -6,8 +6,20 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Association
+    /// <summary>
+    /// A generic class that holds the AssociationName and AssociationLocation properties and is inherited from Organization.
+    /// </summary>
+    class Association : Organization
     {
-
+        public string AssociationName
+        {
+            get;
+            set;
+        }
+        public string AssociationLocation
+        {
+            get;
+            set;
+        }
     }
 }

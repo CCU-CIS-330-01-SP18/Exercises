@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace ClassHierarchyAndCollections
 {
     /// <summary>
-    /// This generic class holds the DisplayName and LegalName properties
+    /// This class is the top of the class hierarchy and holds the FullName and ContactNumber properties.
     /// </summary>
-    class Contact
+    public class Contact
     {
-        public string DisplayName
+        public string FullName
         {
             get;
             set;
         }
-        public string LegalName
+        public int ContactNumber
         {
             get;
             set;
