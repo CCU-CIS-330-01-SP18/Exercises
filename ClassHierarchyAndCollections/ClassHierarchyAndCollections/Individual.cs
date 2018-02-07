@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// A generic class inherited from the Contact Class that contains the Age and Name properties.
     /// </summary>
-    class Individual : Contact
+    public class Individual : Contact
     {
         public int Age
         {

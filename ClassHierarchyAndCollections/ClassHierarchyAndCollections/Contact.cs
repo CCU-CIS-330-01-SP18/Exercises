@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ClassHierarchyAndCollections
 {
     /// <summary>
-    /// This class is the top of the class hierarchy and holds the FullName and ContactNumber properties.
+    /// This class is the top of the class hierarchy and holds the unique FullName and ContactNumber properties.
     /// </summary>
     public class Contact
     {

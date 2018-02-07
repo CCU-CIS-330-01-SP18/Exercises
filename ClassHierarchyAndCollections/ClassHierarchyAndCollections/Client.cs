@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// A generic class inherited from the Individual class and holds the unique UserID and UserName properties. 
     /// </summary>
-    class Client : Individual
+    public class Client : Individual
     {
         public string UserID
         {

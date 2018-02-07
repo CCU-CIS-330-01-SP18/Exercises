@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// A generic class that inherits from the Individual class and holds the unique StudentName and StudentAge properties.
     /// </summary>
-    class Student : Individual
+    public class Student : Individual
     {
         public string StudentName
         {

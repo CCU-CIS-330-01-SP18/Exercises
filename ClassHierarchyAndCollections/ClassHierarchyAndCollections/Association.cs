@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// A generic class that holds the AssociationName and AssociationLocation properties and is inherited from Organization.
     /// </summary>
-    class Association : Organization
+    public class Association : Organization
     {
         public string AssociationName
         {
