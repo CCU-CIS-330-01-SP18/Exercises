@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Contact
+    class School: Organization
     {
-        public String DisplayName { get; set; }
-
-        public String EmailAddress { get; set; }
-    
+        public String
     }
 }

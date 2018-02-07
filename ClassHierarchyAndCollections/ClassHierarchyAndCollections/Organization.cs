@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Contact
+    class Organization: Contact
     {
-        public String DisplayName { get; set; }
+        public DateTime FormationDate { get; set; }
 
-        public String EmailAddress { get; set; }
-    
+        public String OrganizationName { get; set; }
     }
 }
