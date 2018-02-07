@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class School: Organization
+    class Student: Individual
     {
-        public String SchoolDistrict { get; set; }
+        public Decimal StudentGradePointAverage { get; set; }
 
-        public String SuperintendentName { get; set; }
+        public String StudentSchool { get; set; }
     }
 }

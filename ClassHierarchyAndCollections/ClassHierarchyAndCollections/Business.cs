@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class School: Organization
+    class Business: Organization
     {
-        public String SchoolDistrict { get; set; }
+        public String BusinessOwner { get; set; }
 
-        public String SuperintendentName { get; set; }
+        public Boolean IsOwnedByDisney { get; set; }
     }
 }
