@@ -66,6 +66,8 @@ namespace LINQAndEF
         /// </returns>
         public TEntity Add(TEntity entity)
         {
+            set.Add(entity);
+            return entity;
             throw new NotImplementedException("This method needs to be implemented.");
         }
 
@@ -77,6 +79,7 @@ namespace LINQAndEF
         /// </param>
         public void Delete(TEntity entity)
         {
+            Delete(entity);
             throw new NotImplementedException("This method needs to be implemented.");
         }
 
@@ -85,6 +88,7 @@ namespace LINQAndEF
         /// </summary>
         public void Save()
         {
+            context.SaveChanges();
             throw new NotImplementedException("This method needs to be implemented.");
         }
     }
