@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// Provides the details of a business client.
+    /// </summary>
     class Client: Individual
     {
         public String ClientBusiness { get; set; }

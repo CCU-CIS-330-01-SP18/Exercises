@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// 
+    /// </summary>
     class Association: Organization
     {
         public String AnnualDues { get; set; }
