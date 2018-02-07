@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ClassHierachyAndCollectionsTests
 {
     [TestClass]
-    public class OrganizationTestscs
+    public class OrganizationTests
     {
         [TestMethod]
         public void TestMethod1()
