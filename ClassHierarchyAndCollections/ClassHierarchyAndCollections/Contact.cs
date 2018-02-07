@@ -8,5 +8,7 @@ namespace ClassHierarchyAndCollections
 {
     class Contact
     {
+        public string DisplayName { get; set; }
+    
     }
 }
