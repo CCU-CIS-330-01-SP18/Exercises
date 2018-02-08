@@ -32,6 +32,11 @@ namespace ClassHierarchyAndCollections
         {          
             return latCoordinates;
         }
+        /// <summary>
+        /// Returns a string of a location provided.
+        /// </summary>
+        /// <param name="myLocation"> A string passed through and returned. </param>
+        /// <returns> Returns the myLocation string. </returns>
         public string GetLocation(string myLocation)
         {
             return myLocation;

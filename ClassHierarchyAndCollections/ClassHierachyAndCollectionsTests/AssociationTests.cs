@@ -22,7 +22,7 @@ namespace ClassHierachyAndCollectionsTests
         }
       
         [TestMethod]
-        public void CanReadWriteName()
+        public void CanReadWriteAssociationName()
         {
             var createdAssociation = new Association
             {
@@ -33,7 +33,7 @@ namespace ClassHierachyAndCollectionsTests
         }
 
         [TestMethod]
-        public void nCanReadWriteLocation()
+        public void CanReadWriteAssociationLocation()
         {
             var createdAssociation = new Association
             {

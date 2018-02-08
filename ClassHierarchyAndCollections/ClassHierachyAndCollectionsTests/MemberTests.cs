@@ -15,7 +15,7 @@ namespace ClassHierachyAndCollectionsTests
         }
 
         [TestMethod]
-        public void ClientDerivesFromIndividual()
+        public void MemberDerivesFromIndividual()
         {
             var createdMember = new Member();
             Assert.IsInstanceOfType(createdMember, typeof(Individual));
