@@ -13,7 +13,6 @@ namespace ClassHierarchyAndCollections
     public class Organization : Contact
     {
         public string HeadQuartersAddress { get; set; }
-
         public bool IsForProfit { get; set; }
     }
 }

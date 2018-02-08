@@ -13,9 +13,11 @@ namespace ClassHierarchyAndCollections
     public class Business : Organization, IReadLists
     {
         public List<Client> Clients { get; set; }
-
         public String PrimaryService { get; set; }
 
+        /// <summary>
+        /// Prints each item in the list to the console. Implements IReadLists
+        /// </summary>
         public void ReadList()
         {
             foreach (Client client in this.Clients)

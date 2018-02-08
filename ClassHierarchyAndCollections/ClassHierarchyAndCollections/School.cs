@@ -13,9 +13,11 @@ namespace ClassHierarchyAndCollections
     public class School : Organization, IReadLists
     {
         public List<Student> Students { get; set; }
-
         public bool IsPrivate { get; set; }
 
+        /// <summary>
+        /// Prints each item in the list to the console. Implements IReadLists
+        /// </summary>
         public void ReadList()
         {
             foreach (Student student in this.Students)

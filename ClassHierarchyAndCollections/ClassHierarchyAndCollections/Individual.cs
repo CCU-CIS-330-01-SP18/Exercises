@@ -13,7 +13,6 @@ namespace ClassHierarchyAndCollections
     public class Individual : Contact
     {
         public int Age { get; set; }
-
         public string Name { get; set; }
     }
 }

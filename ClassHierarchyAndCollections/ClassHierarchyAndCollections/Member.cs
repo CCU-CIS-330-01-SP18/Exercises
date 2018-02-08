@@ -13,7 +13,6 @@ namespace ClassHierarchyAndCollections
     public class Member : Individual
     {
         public int ID { get; set; }
-
         public DateTime JoinDate { get; set; }
     }
 }

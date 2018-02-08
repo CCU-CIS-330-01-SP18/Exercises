@@ -13,7 +13,6 @@ namespace ClassHierarchyAndCollections
     public class Client : Individual
     {
         public DateTime ContractStartDate { get; set; }
-
         public decimal CotnractValue { get; set; }
     }
 }

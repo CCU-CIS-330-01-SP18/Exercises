@@ -13,7 +13,6 @@ namespace ClassHierarchyAndCollections
     public class Contact
     {
         public string DisplayName { get; set; }
-
         public string LegalName { get; set; }
     }
 }

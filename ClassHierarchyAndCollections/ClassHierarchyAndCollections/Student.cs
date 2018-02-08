@@ -13,7 +13,6 @@ namespace ClassHierarchyAndCollections
     public class Student : Individual
     {
         public int GradeClassification { get; set; }
-
         public double GPA { get; set; }
 
         public int ID { get; set; }
