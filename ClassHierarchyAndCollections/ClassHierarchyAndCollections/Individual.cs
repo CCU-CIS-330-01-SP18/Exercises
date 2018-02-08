@@ -9,10 +9,10 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Provides the details of an individual.
     /// </summary>
-    class Individual : Contact
+    public class Individual : Contact
     {
         public String PhoneNumber { get; set; }
 
-        public String MarritalStatus { get; set; }
+        public String MaritalStatus { get; set; }
     }
 }

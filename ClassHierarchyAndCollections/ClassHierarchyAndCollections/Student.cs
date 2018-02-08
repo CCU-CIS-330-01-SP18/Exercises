@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Provides the details of a student.
     /// </summary>
-    class Student: Individual, IBookLunchDate
+    public class Student: Individual, IBookLunchDate
     {
         public Decimal StudentGradePointAverage { get; set; }
 

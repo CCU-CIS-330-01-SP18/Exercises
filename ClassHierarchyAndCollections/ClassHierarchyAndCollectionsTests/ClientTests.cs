@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ClassHierarchyAndCollections;
 
 namespace ClassHierarchyAndCollectionsTests
 {
@@ -25,8 +26,8 @@ namespace ClassHierarchyAndCollectionsTests
         public void CanGetSetClientCreditStanding()
         {
             Client i = new Client();
-            i.CreditStanding = "Poor";
-            Assert.AreEqual("Poor", i.CreditStanding);
+            i.ClientCreditStanding = "Poor";
+            Assert.AreEqual("Poor", i.ClientCreditStanding);
         }
 
         [TestMethod]

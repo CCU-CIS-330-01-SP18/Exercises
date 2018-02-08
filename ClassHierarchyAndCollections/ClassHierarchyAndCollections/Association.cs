@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Provides the details of an association.
     /// </summary>
-    class Association: Organization
+    public class Association: Organization
     {
         public String AnnualDues { get; set; }
 

@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Provides details for a particular contact.
     /// </summary>
-    class Contact
+    public class Contact
     {
         public String DisplayName { get; set; }
 

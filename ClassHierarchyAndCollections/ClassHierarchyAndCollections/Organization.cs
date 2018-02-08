@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Provides the details of an organization.
     /// </summary>
-    class Organization : Contact
+    public class Organization : Contact
     {
         public DateTime FormationDate { get; set; }
 

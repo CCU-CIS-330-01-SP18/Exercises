@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Provides the details of a school.
     /// </summary>
-    class School : Organization
+    public class School : Organization
     {
         public String SchoolDistrict { get; set; }
 

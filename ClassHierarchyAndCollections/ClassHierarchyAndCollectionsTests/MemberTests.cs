@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ClassHierarchyAndCollections;
 
 namespace ClassHierarchyAndCollectionsTests
 {
@@ -17,8 +18,8 @@ namespace ClassHierarchyAndCollectionsTests
         public void CanGetSetLevelOfMembership()
         {
             Member i = new Member();
-            i.MemberBusiness = "Wendy's";
-            Assert.AreEqual("Wendy's", i.MemberBusiness);
+            i.LevelOfMembership = "Elite";
+            Assert.AreEqual("Elite", i.LevelOfMembership);
         }
 
         [TestMethod]

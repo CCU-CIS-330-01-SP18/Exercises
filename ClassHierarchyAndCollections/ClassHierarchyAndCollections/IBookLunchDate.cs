@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// An interface that allows a user to schedule a lunch date with a particular individual.
     /// </summary>
-    interface IBookLunchDate
+    public interface IBookLunchDate
     {
         void BookLunchDate();
     }

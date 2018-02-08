@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Provides the details of a member.
     /// </summary>
-    class Member: Individual, IBookLunchDate
+    public class Member: Individual, IBookLunchDate
     {
         public String LevelOfMembership { get; set; }
 

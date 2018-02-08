@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Provides the details of a business.
     /// </summary>
-    class Business : Organization
+    public class Business : Organization
     {
         public String BusinessOwner { get; set; }
 

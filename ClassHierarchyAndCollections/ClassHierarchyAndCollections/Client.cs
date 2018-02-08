@@ -9,7 +9,7 @@ namespace ClassHierarchyAndCollections
     /// <summary>
     /// Provides the details of a business client.
     /// </summary>
-    class Client: Individual, IBookLunchDate
+    public class Client: Individual, IBookLunchDate
     {
         public String ClientBusiness { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ClassHierarchyAndCollections;
 
 namespace ClassHierarchyAndCollectionsTests
 {
@@ -17,16 +18,16 @@ namespace ClassHierarchyAndCollectionsTests
         public void CanGetSetLevelOfStudentship()
         {
             Student i = new Student();
-            i.StudentBusiness = "Wendy's";
-            Assert.AreEqual("Wendy's", i.StudentBusiness);
+            i.StudentGradePointAverage = 4;
+            Assert.AreEqual(4, i.StudentGradePointAverage);
         }
 
         [TestMethod]
         public void CanGetSetDateJoined()
         {
             Student i = new Student();
-            i.DateJoined = DateTime.Now;
-            Assert.AreEqual(DateTime.Now, i.DateJoined);
+            i.StudentSchool = "Hogwarts";
+            Assert.AreEqual("Hogwarts", i.StudentSchool);
         }
 
         [TestMethod]
