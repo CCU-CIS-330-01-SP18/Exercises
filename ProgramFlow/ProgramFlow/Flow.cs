@@ -19,6 +19,14 @@ namespace ProgramFlow
         public static bool InvertBoolean(bool value)
         {
             // TODO: Fix this method so it passes all associated tests.
+            if (value == true)
+            {
+                value = false;
+            }
+            else
+            {
+                value = true;
+            }
             return value;
         }
 
@@ -30,7 +38,22 @@ namespace ProgramFlow
         public static DriverAction DriveSafelyIfElse(LightColor color)
         {
             // TODO: Fix this method so it passes all associated tests. An if-else statement must be used to return the correct values.
-            return (DriverAction)24;
+            if (color == LightColor.Green)
+            {
+                return DriverAction.ProceedWithCaution;
+            }
+            else if (color == LightColor.Yellow)
+            {
+                return DriverAction.StopIfSafe;
+            }
+            else if (color == LightColor.Red)
+            {
+                return DriverAction.Stop;
+            }
+            else
+            {
+                return DriverAction.Unknown;
+            }
         }
 
         /// <summary>
@@ -41,7 +64,17 @@ namespace ProgramFlow
         public static DriverAction DriveSafelySwitch(LightColor color)
         {
             // TODO: Fix this method so it passes all associated tests. A switch statement must be used to return the correct values.
-            return (DriverAction)24;
+            switch (color)
+            {
+                case LightColor.Green:
+                    return DriverAction.ProceedWithCaution;
+                case LightColor.Yellow:
+                    return DriverAction.StopIfSafe;
+                case LightColor.Red:
+                    return DriverAction.Stop;
+                default:
+                    return DriverAction.Unknown;
+            }
         }
 
         /// <summary>
@@ -52,7 +85,12 @@ namespace ProgramFlow
         public static long ForSum(int[] values)
         {
             // TODO: Fix this method so it passes all associated tests. A for loop must be used to calculate the sum.
-            return -1;
+            long sum = 0;
+            for (int value = 0; value < values.Length; value++)
+            {
+                sum += values[value];
+            }
+            return sum;
         }
 
         /// <summary>
@@ -63,7 +101,12 @@ namespace ProgramFlow
         public static long ForEachSum(int[] values)
         {
             // TODO: Fix this method so it passes all associated tests. A foreach loop must be used to calculate the sum.
-            return -1;
+            long sum = 0;
+            foreach(int value in values)
+            {
+                sum += value;
+            }
+            return sum;
         }
     }
 }
