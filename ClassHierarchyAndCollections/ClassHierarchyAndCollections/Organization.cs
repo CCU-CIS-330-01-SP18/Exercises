@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Organization: Contact
+    /// <summary>
+    /// Provides the details of an organization.
+    /// </summary>
+    class Organization : Contact
     {
         public DateTime FormationDate { get; set; }
 

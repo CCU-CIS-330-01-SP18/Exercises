@@ -6,10 +6,21 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Member: Individual
+    /// <summary>
+    /// Provides the details of a member.
+    /// </summary>
+    class Member: Individual, IBookLunchDate
     {
         public String LevelOfMembership { get; set; }
 
         public DateTime DateJoined { get; set; }
+
+        /// <summary>
+        /// Books a lunch date with the designated member
+        /// </summary>
+        public void BookLunchDate()
+        {
+            Console.WriteLine("You have booked a lunch date with: " + this.DisplayName);
+        }
     }
 }

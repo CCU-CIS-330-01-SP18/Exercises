@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Individual: Contact, IBookLunchDate
+    /// <summary>
+    /// Provides the details of an individual.
+    /// </summary>
+    class Individual : Contact
     {
         public String PhoneNumber { get; set; }
 
         public String MarritalStatus { get; set; }
-
-        public void BookLunchDate()
-        {
-            Console.WriteLine("You have booked a lunch date with: " + this.name);
-        }
     }
 }

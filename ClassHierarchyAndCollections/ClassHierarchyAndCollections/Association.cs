@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ClassHierarchyAndCollections
 {
     /// <summary>
-    /// 
+    /// Provides the details of an association.
     /// </summary>
     class Association: Organization
     {

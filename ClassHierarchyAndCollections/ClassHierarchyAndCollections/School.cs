@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class School: Organization
+    /// <summary>
+    /// Provides the details of a school.
+    /// </summary>
+    class School : Organization
     {
         public String SchoolDistrict { get; set; }
 
