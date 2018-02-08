@@ -58,6 +58,8 @@
     <Compile Include="StudentTests.cs" />
     <Compile Include="MemberTests.cs" />
     <Compile Include="ClientTests.cs" />
+    <Compile Include="CollectionTests.cs" />
+    <Compile Include="ILocatableTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

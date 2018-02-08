@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// Interface that is meant to be added on to objects that have a location.
+    /// </summary>
     public interface ILocatable
     {
         string Location
@@ -14,6 +17,10 @@ namespace ClassHierarchyAndCollections
             set;
         }
 
+        /// <summary>
+        /// This method returns a location.
+        /// </summary>
+        /// <returns>A location in the form of a string.</returns>
         string GetLocation();
     }
 }
