@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// Represents a Business with a BusinessName (String) and a BusinessStockPrice (Float).
+    /// </summary>
     public class Business: Organization
     {
         public string BusinessName { get; set; }

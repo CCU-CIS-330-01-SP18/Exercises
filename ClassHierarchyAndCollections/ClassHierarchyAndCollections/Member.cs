@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// Represents a Member with a MemberName (String) and a MemberID (Int).
+    /// </summary>
     public class Member: Individual
     {
         public string MemberName { get; set; }

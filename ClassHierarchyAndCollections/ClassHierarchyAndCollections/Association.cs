@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// Represents a Association with a AssociationName (String) and a MemberCount (Int).
+    /// </summary>
     public class Association: Organization
     {
         public string AssociationName { get; set; }

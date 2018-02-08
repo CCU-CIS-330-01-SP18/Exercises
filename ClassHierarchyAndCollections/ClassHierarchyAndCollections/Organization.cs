@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
+    /// <summary>
+    /// Represents a Organization with a OrganizationName (String) and a OrganizationAddress (String).
+    /// </summary>
     public class Organization: Contact
     {
         public string OrganizationName { get; set; }
