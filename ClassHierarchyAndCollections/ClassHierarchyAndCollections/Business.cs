@@ -14,5 +14,7 @@ namespace ClassHierarchyAndCollections
         public String BusinessOwner { get; set; }
 
         public Boolean IsOwnedByDisney { get; set; }
+
+        public List<Client> Clients { get; }
     }
 }
