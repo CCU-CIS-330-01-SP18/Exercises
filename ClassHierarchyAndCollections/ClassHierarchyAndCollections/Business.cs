@@ -15,6 +15,6 @@ namespace ClassHierarchyAndCollections
 
         public Boolean IsOwnedByDisney { get; set; }
 
-        public List<Client> Clients { get; }
+        public List<Client> Clients { get; set; }
     }
 }
