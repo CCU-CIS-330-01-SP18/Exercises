@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
+
 namespace ClassHierarchyAndCollectionsTests
 {
     [TestClass]
