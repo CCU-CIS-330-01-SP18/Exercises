@@ -31,5 +31,4 @@ namespace ClassHierarchyAndCollectionsTests
             Assert.AreEqual("swag@gmail.com", c.EmailAddress);
         }
     }
-    }
 }

@@ -36,3 +36,4 @@ namespace ClassHierarchyAndCollectionsTests
             Assert.IsInstanceOfType(i, typeof(Individual));
         }
     }
+}

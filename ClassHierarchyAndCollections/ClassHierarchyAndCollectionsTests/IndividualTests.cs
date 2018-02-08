@@ -4,19 +4,19 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ClassHierarchyAndCollectionsTests
 {
     [TestClass]
-    public class ClientTests
+    public class IndividualTests
     {
         [TestMethod]
-        public void CanMakeClient()
+        public void CanMakeIndividual()
         {
-            Client i = new Client();
+            Individual i = new Individual();
             Assert.IsNotNull(i);
         }
 
         [TestMethod]
         public void CanGetSetPhoneNumber()
         {
-            Client i = new Client();
+            Individual i = new Individual();
             i.PhoneNumber = "911";
             Assert.AreEqual("911", i.PhoneNumber);
         }
@@ -24,7 +24,7 @@ namespace ClassHierarchyAndCollectionsTests
         [TestMethod]
         public void CanGetSetMaritalStatus()
         {
-            Client i = new Client();
+            Individual i = new Individual();
             i.MaritalStatus = "It's Complicated";
             Assert.AreEqual("It's Complicated", i.MaritalStatus);
         }
@@ -32,7 +32,7 @@ namespace ClassHierarchyAndCollectionsTests
         [TestMethod]
         public void IsAContact()
         {
-            Client i = new Client();
+            Individual i = new Individual();
             Assert.IsInstanceOfType(i, typeof(Contact));
         }
     }
