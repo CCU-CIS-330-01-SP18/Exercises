@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace ClassHierarchyAndCollections
 {
-    class Individual: Contact
+    class Individual: Contact, IBookLunchDate
     {
         public String PhoneNumber { get; set; }
 
         public String MarritalStatus { get; set; }
+
+        public void BookLunchDate(string name)
+        {
+            Console.WriteLine("You have booked a lunch date with: " + name);
+        }
     }
 }
