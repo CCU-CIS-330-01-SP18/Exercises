@@ -12,9 +12,9 @@ namespace ClassHierarchyAndCollections
 
         public String MarritalStatus { get; set; }
 
-        public void BookLunchDate(string name)
+        public void BookLunchDate()
         {
-            Console.WriteLine("You have booked a lunch date with: " + name);
+            Console.WriteLine("You have booked a lunch date with: " + this.name);
         }
     }
 }
