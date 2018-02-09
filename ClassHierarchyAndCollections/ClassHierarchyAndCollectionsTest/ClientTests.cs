@@ -24,60 +24,6 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void CanReadWriteName()
-        {
-            Client client = new Client()
-            {
-                DisplayName = "Joe Cool"
-            };
-            Assert.AreEqual("Joe Cool", client.DisplayName);
-        }
-
-        [TestMethod]
-        public void CanReadWriteEmail()
-        {
-            Client client = new Client()
-            {
-                EmailAddress = "jcool@ccu.edu"
-            };
-            Assert.AreEqual("jcool@ccu.edu", client.EmailAddress);
-        }
-
-        [TestMethod]
-        public void CanReadWritePhone()
-        {
-            Client client = new Client()
-            {
-                PhoneNumber = "9705551234"
-            };
-            Assert.AreEqual("9705551234", client.PhoneNumber);
-        }
-
-        [TestMethod]
-        public void CanReadWriteGender()
-        {
-            Client client = new Client()
-            {
-                Gender = Gender.Male
-            };
-            Assert.AreEqual(Gender.Male, client.Gender);
-        }
-
-        [TestMethod]
-        public void CanReadNumberOfRemainingKidneys()
-        {
-            Client client = new Client();
-            Assert.AreEqual(2, client.NumberOfRemainingKidneys);
-        }
-
-        [TestMethod]
-        public void CanReadNumberOfRemainingLungs()
-        {
-            Client client = new Client();
-            Assert.AreEqual(2, client.NumberOfRemainingLungs);
-        }
-
-        [TestMethod]
         public void CanReadWriteHappiness()
         {
             Client client = new Client()
@@ -103,74 +49,6 @@ namespace ClassHierarchyAndCollectionsTest
                 GreedFactor = 5
             };
             Assert.AreEqual(5, client.GreedFactor);
-        }
-
-        [TestMethod]
-        public void CanRemoveOrgans()
-        {
-            Client client = new Client();
-            Assert.IsTrue(client.RemoveOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CannotRemoveAllOrgans()
-        {
-            Client client = new Client();
-            client.RemoveOrgan(Organ.Kidney);
-            Assert.IsFalse(client.RemoveOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CanTransplantOrgans()
-        {
-            Client client = new Client();
-            client.RemoveOrgan(Organ.Kidney);
-            Assert.IsTrue(client.TransplantOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CannotTransplantMoreOrgans()
-        {
-            Client client = new Client();
-            Assert.IsFalse(client.TransplantOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CanRemoveKidneys()
-        {
-            Client client = new Client();
-            int startingCount = client.NumberOfRemainingKidneys;
-            client.RemoveOrgan(Organ.Kidney);
-            Assert.AreEqual(startingCount - 1, client.NumberOfRemainingKidneys);
-        }
-
-        [TestMethod]
-        public void CanRemoveLungs()
-        {
-            Client client = new Client();
-            int startingCount = client.NumberOfRemainingLungs;
-            client.RemoveOrgan(Organ.Lung);
-            Assert.AreEqual(startingCount - 1, client.NumberOfRemainingLungs);
-        }
-
-        [TestMethod]
-        public void CanTransplantKidneys()
-        {
-            Client client = new Client();
-            client.RemoveOrgan(Organ.Kidney);
-            int startingCount = client.NumberOfRemainingKidneys;
-            client.TransplantOrgan(Organ.Kidney);
-            Assert.AreEqual(startingCount + 1, client.NumberOfRemainingKidneys);
-        }
-
-        [TestMethod]
-        public void CanTransplantLungs()
-        {
-            Client client = new Client();
-            client.RemoveOrgan(Organ.Lung);
-            int startingCount = client.NumberOfRemainingLungs;
-            client.TransplantOrgan(Organ.Lung);
-            Assert.AreEqual(startingCount + 1, client.NumberOfRemainingLungs);
         }
 
         [TestMethod]
@@ -206,7 +84,8 @@ namespace ClassHierarchyAndCollectionsTest
         {
             Client client = new Client()
             {
-                Happiness = 0
+                Happiness = 0,
+                GreedFactor = 1
             };
             client.ReceivePayment(10.00m);
             Assert.AreEqual(1, client.Happiness);
@@ -218,6 +97,7 @@ namespace ClassHierarchyAndCollectionsTest
             Client client = new Client()
             {
                 Happiness = 0,
+                GreedFactor = 1,
                 Wallet = 0.00m
             };
             client.Pay(10.00m);

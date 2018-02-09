@@ -25,57 +25,6 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void CanReadWriteName()
-        {
-            Business business = new Business()
-            {
-                DisplayName = "Joja Corp."
-            };
-            Assert.AreEqual("Joja Corp.", business.DisplayName);
-        }
-
-        [TestMethod]
-        public void CanReadWriteEmail()
-        {
-            Business business = new Business()
-            {
-                EmailAddress = "contact@joja.com"
-            };
-            Assert.AreEqual("contact@joja.com", business.EmailAddress);
-        }
-
-        [TestMethod]
-        public void CanReadWritePhone()
-        {
-            Business business = new Business()
-            {
-                PhoneNumber = "18006661384"
-            };
-            Assert.AreEqual("18006661384", business.PhoneNumber);
-        }
-
-        [TestMethod]
-        public void CanReadWriteMotto()
-        {
-            Business business = new Business()
-            {
-                Motto = "Life's better with Joja."
-            };
-            Assert.AreEqual("Life's better with Joja.", business.Motto);
-        }
-
-        [TestMethod]
-        public void CanReadWriteFoundingDate()
-        {
-            var now = DateTime.Now;
-            Business business = new Business()
-            {
-                FoundingDate = now
-            };
-            Assert.AreEqual(now, business.FoundingDate);
-        }
-
-        [TestMethod]
         public void CanReadWriteBusinessType()
         {
             Business business = new Business()

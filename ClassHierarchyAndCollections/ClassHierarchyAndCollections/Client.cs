@@ -7,7 +7,7 @@ namespace ClassHierarchyAndCollections
     /// </summary>
     public class Client : Individual, IPay
     {
-        public int GreedFactor { get; set; }
+        public int GreedFactor { get; set; } = 1;
         public int Happiness { get; set; } = 0;
         public List<string> Possessions { get; set; }
         public decimal Wallet { get; set; } = 0.00m;
@@ -35,7 +35,7 @@ namespace ClassHierarchyAndCollections
             }
             else
             {
-                Happiness--;
+                Happiness -= GreedFactor;
                 return 0.00m;
             }
         }
@@ -65,7 +65,7 @@ namespace ClassHierarchyAndCollections
             if (paymentOffered > 0.00m)
             {
                 Wallet += paymentOffered;
-                Happiness++;
+                Happiness += GreedFactor;
             }
         }
     }

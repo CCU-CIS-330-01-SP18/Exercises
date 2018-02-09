@@ -25,57 +25,6 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void CanReadWriteName()
-        {
-            School school = new School()
-            {
-                DisplayName = "Snowden Academy"
-            };
-            Assert.AreEqual("Snowden Academy", school.DisplayName);
-        }
-
-        [TestMethod]
-        public void CanReadWriteEmail()
-        {
-            School school = new School()
-            {
-                EmailAddress = "contact@snowden.edu"
-            };
-            Assert.AreEqual("contact@snowden.edu", school.EmailAddress);
-        }
-
-        [TestMethod]
-        public void CanReadWritePhone()
-        {
-            School school = new School()
-            {
-                PhoneNumber = "18007669336"
-            };
-            Assert.AreEqual("18007669336", school.PhoneNumber);
-        }
-
-        [TestMethod]
-        public void CanReadWriteMotto()
-        {
-            School school = new School()
-            {
-                Motto = "Caffeine is your friend."
-            };
-            Assert.AreEqual("Caffeine is your friend.", school.Motto);
-        }
-
-        [TestMethod]
-        public void CanReadWriteFoundingDate()
-        {
-            var now = DateTime.Now;
-            School school = new School()
-            {
-                FoundingDate = now
-            };
-            Assert.AreEqual(now, school.FoundingDate);
-        }
-
-        [TestMethod]
         public void CanReadWriteCourseCatalog()
         {
             School school = new School();

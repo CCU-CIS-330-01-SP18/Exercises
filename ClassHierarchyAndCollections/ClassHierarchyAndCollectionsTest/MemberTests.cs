@@ -24,60 +24,6 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void CanReadWriteName()
-        {
-            Member member = new Member()
-            {
-                DisplayName = "Joe Cool"
-            };
-            Assert.AreEqual("Joe Cool", member.DisplayName);
-        }
-
-        [TestMethod]
-        public void CanReadWriteEmail()
-        {
-            Member member = new Member()
-            {
-                EmailAddress = "jcool@ccu.edu"
-            };
-            Assert.AreEqual("jcool@ccu.edu", member.EmailAddress);
-        }
-
-        [TestMethod]
-        public void CanReadWritePhone()
-        {
-            Member member = new Member()
-            {
-                PhoneNumber = "9705551234"
-            };
-            Assert.AreEqual("9705551234", member.PhoneNumber);
-        }
-
-        [TestMethod]
-        public void CanReadWriteGender()
-        {
-            Member member = new Member()
-            {
-                Gender = Gender.Male
-            };
-            Assert.AreEqual(Gender.Male, member.Gender);
-        }
-
-        [TestMethod]
-        public void CanReadNumberOfRemainingKidneys()
-        {
-            Member member = new Member();
-            Assert.AreEqual(2, member.NumberOfRemainingKidneys);
-        }
-
-        [TestMethod]
-        public void CanReadNumberOfRemainingLungs()
-        {
-            Member member = new Member();
-            Assert.AreEqual(2, member.NumberOfRemainingLungs);
-        }
-
-        [TestMethod]
         public void CanReadWriteLiar()
         {
             Member member = new Member()
@@ -95,74 +41,6 @@ namespace ClassHierarchyAndCollectionsTest
                 Personality = Personality.OverlyDeliberative
             };
             Assert.AreEqual(Personality.OverlyDeliberative, member.Personality);
-        }
-
-        [TestMethod]
-        public void CanRemoveOrgans()
-        {
-            Member member = new Member();
-            Assert.IsTrue(member.RemoveOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CannotRemoveAllOrgans()
-        {
-            Member member = new Member();
-            member.RemoveOrgan(Organ.Kidney);
-            Assert.IsFalse(member.RemoveOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CanTransplantOrgans()
-        {
-            Member member = new Member();
-            member.RemoveOrgan(Organ.Kidney);
-            Assert.IsTrue(member.TransplantOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CannotTransplantMoreOrgans()
-        {
-            Member member = new Member();
-            Assert.IsFalse(member.TransplantOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CanRemoveKidneys()
-        {
-            Member member = new Member();
-            int startingCount = member.NumberOfRemainingKidneys;
-            member.RemoveOrgan(Organ.Kidney);
-            Assert.AreEqual(startingCount - 1, member.NumberOfRemainingKidneys);
-        }
-
-        [TestMethod]
-        public void CanRemoveLungs()
-        {
-            Member member = new Member();
-            int startingCount = member.NumberOfRemainingLungs;
-            member.RemoveOrgan(Organ.Lung);
-            Assert.AreEqual(startingCount - 1, member.NumberOfRemainingLungs);
-        }
-
-        [TestMethod]
-        public void CanTransplantKidneys()
-        {
-            Member member = new Member();
-            member.RemoveOrgan(Organ.Kidney);
-            int startingCount = member.NumberOfRemainingKidneys;
-            member.TransplantOrgan(Organ.Kidney);
-            Assert.AreEqual(startingCount + 1, member.NumberOfRemainingKidneys);
-        }
-
-        [TestMethod]
-        public void CanTransplantLungs()
-        {
-            Member member = new Member();
-            member.RemoveOrgan(Organ.Lung);
-            int startingCount = member.NumberOfRemainingLungs;
-            member.TransplantOrgan(Organ.Lung);
-            Assert.AreEqual(startingCount + 1, member.NumberOfRemainingLungs);
         }
 
         [TestMethod]

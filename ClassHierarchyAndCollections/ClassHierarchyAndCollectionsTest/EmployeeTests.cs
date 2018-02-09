@@ -24,60 +24,6 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void CanReadWriteName()
-        {
-            Employee employee = new Employee()
-            {
-                DisplayName = "Joe Cool"
-            };
-            Assert.AreEqual("Joe Cool", employee.DisplayName);
-        }
-
-        [TestMethod]
-        public void CanReadWriteEmail()
-        {
-            Employee employee = new Employee()
-            {
-                EmailAddress = "jcool@ccu.edu"
-            };
-            Assert.AreEqual("jcool@ccu.edu", employee.EmailAddress);
-        }
-
-        [TestMethod]
-        public void CanReadWritePhone()
-        {
-            Employee employee = new Employee()
-            {
-                PhoneNumber = "9705551234"
-            };
-            Assert.AreEqual("9705551234", employee.PhoneNumber);
-        }
-
-        [TestMethod]
-        public void CanReadWriteGender()
-        {
-            Employee employee = new Employee()
-            {
-                Gender = Gender.Male
-            };
-            Assert.AreEqual(Gender.Male, employee.Gender);
-        }
-
-        [TestMethod]
-        public void CanReadNumberOfRemainingKidneys()
-        {
-            Employee employee = new Employee();
-            Assert.AreEqual(2, employee.NumberOfRemainingKidneys);
-        }
-
-        [TestMethod]
-        public void CanReadNumberOfRemainingLungs()
-        {
-            Employee employee = new Employee();
-            Assert.AreEqual(2, employee.NumberOfRemainingLungs);
-        }
-
-        [TestMethod]
         public void CanReadWriteUnionMembership()
         {
             Employee employee = new Employee()
@@ -105,74 +51,6 @@ namespace ClassHierarchyAndCollectionsTest
                 Exempt = true
             };
             Assert.AreEqual(true, employee.Exempt);
-        }
-
-        [TestMethod]
-        public void CanRemoveOrgans()
-        {
-            Employee employee = new Employee();
-            Assert.IsTrue(employee.RemoveOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CannotRemoveAllOrgans()
-        {
-            Employee employee = new Employee();
-            employee.RemoveOrgan(Organ.Kidney);
-            Assert.IsFalse(employee.RemoveOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CanTransplantOrgans()
-        {
-            Employee employee = new Employee();
-            employee.RemoveOrgan(Organ.Kidney);
-            Assert.IsTrue(employee.TransplantOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CannotTransplantMoreOrgans()
-        {
-            Employee employee = new Employee();
-            Assert.IsFalse(employee.TransplantOrgan(Organ.Kidney));
-        }
-
-        [TestMethod]
-        public void CanRemoveKidneys()
-        {
-            Employee employee = new Employee();
-            int startingCount = employee.NumberOfRemainingKidneys;
-            employee.RemoveOrgan(Organ.Kidney);
-            Assert.AreEqual(startingCount - 1, employee.NumberOfRemainingKidneys);
-        }
-
-        [TestMethod]
-        public void CanRemoveLungs()
-        {
-            Employee employee = new Employee();
-            int startingCount = employee.NumberOfRemainingLungs;
-            employee.RemoveOrgan(Organ.Lung);
-            Assert.AreEqual(startingCount - 1, employee.NumberOfRemainingLungs);
-        }
-
-        [TestMethod]
-        public void CanTransplantKidneys()
-        {
-            Employee employee = new Employee();
-            employee.RemoveOrgan(Organ.Kidney);
-            int startingCount = employee.NumberOfRemainingKidneys;
-            employee.TransplantOrgan(Organ.Kidney);
-            Assert.AreEqual(startingCount + 1, employee.NumberOfRemainingKidneys);
-        }
-
-        [TestMethod]
-        public void CanTransplantLungs()
-        {
-            Employee employee = new Employee();
-            employee.RemoveOrgan(Organ.Lung);
-            int startingCount = employee.NumberOfRemainingLungs;
-            employee.TransplantOrgan(Organ.Lung);
-            Assert.AreEqual(startingCount + 1, employee.NumberOfRemainingLungs);
         }
 
         [TestMethod]

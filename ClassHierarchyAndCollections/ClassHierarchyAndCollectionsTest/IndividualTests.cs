@@ -24,36 +24,6 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void CanReadWriteName()
-        {
-            Individual individual = new Individual()
-            {
-                DisplayName = "Joe Cool"
-            };
-            Assert.AreEqual("Joe Cool", individual.DisplayName);
-        }
-
-        [TestMethod]
-        public void CanReadWriteEmail()
-        {
-            Individual individual = new Individual()
-            {
-                EmailAddress = "jcool@ccu.edu"
-            };
-            Assert.AreEqual("jcool@ccu.edu", individual.EmailAddress);
-        }
-
-        [TestMethod]
-        public void CanReadWritePhone()
-        {
-            Individual individual = new Individual()
-            {
-                PhoneNumber = "9705551234"
-            };
-            Assert.AreEqual("9705551234", individual.PhoneNumber);
-        }
-
-        [TestMethod]
         public void CanReadWriteGender()
         {
             Individual individual = new Individual()

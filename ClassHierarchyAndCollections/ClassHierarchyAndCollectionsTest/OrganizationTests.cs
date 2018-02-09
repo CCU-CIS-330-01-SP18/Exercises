@@ -25,36 +25,6 @@ namespace ClassHierarchyAndCollectionsTest
         }
 
         [TestMethod]
-        public void CanReadWriteName()
-        {
-            Organization organization = new Organization()
-            {
-                DisplayName = "Joja Corp."
-            };
-            Assert.AreEqual("Joja Corp.", organization.DisplayName);
-        }
-
-        [TestMethod]
-        public void CanReadWriteEmail()
-        {
-            Organization organization = new Organization()
-            {
-                EmailAddress = "contact@joja.com"
-            };
-            Assert.AreEqual("contact@joja.com", organization.EmailAddress);
-        }
-
-        [TestMethod]
-        public void CanReadWritePhone()
-        {
-            Organization organization = new Organization()
-            {
-                PhoneNumber = "18006661384"
-            };
-            Assert.AreEqual("18006661384", organization.PhoneNumber);
-        }
-
-        [TestMethod]
         public void CanReadWriteMotto()
         {
             Organization organization = new Organization()
