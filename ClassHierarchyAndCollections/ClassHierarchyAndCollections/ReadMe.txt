@@ -3,12 +3,12 @@ The first step is to design and develop our object model to represent the kinds 
 and manage.
 
 Instructions:
-1.  Create your own branch from master in the Exercises GitHub repository with a name similar to dev/<initials>/week4.
-2.  Create the following class hierarchy (or a better one!) for storing contacts. Each class should be defined in its own file.
-3.  Define at least two unique properties for each class (ex: Contact.DisplayName, Organization.FormationDate, Association.AnnualDues).
-4.  Define at least one interface that might be implemented by some classes. An example could be ILocatable, which would provide the
+1. x Create your own branch from master in the Exercises GitHub repository with a name similar to dev/<initials>/week4.
+2. x Create the following class hierarchy (or a better one!) for storing contacts. Each class should be defined in its own file.
+3. x Define at least two unique properties for each class (ex: Contact.DisplayName, Organization.FormationDate, Association.AnnualDues).
+4. x Define at least one interface that might be implemented by some classes. An example could be ILocatable, which would provide the
     GPS coordinates for a contact. That is, each class that "has a" location could implemente the ILocatable interface.
-5.  Define at least one collection property for one class that should contain instances of another class. For example, the School class
+5. x Define at least one collection property for one class that should contain instances of another class. For example, the School class
     could have a colleciton of Students (ex: public List<Student> Students { get; }). Or, the Business class could have a list of
     Clients.
 6.  Create a test project that contains least one automated test for each class, confirming that you can create an instance of the class, that the 
