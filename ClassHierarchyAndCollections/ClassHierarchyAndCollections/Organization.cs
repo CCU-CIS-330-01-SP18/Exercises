@@ -11,7 +11,7 @@ namespace ClassHierarchyAndCollections
     /// </summary>
     public class Organization : Contact
     {
-        public DateTime FormationDate { get; set; }
+        public String FormationDate { get; set; }
 
         public String OrganizationName { get; set; }
     }

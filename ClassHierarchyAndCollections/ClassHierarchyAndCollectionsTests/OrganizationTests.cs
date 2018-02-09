@@ -18,8 +18,8 @@ namespace ClassHierarchyAndCollectionsTests
         public void CanGetSetFormationDate()
         {
             Organization i = new Organization();
-            i.FormationDate = DateTime.Now;
-            Assert.AreEqual(DateTime.Now, i.FormationDate);
+            i.FormationDate = "June 1 1996";
+            Assert.AreEqual("June 1 1996", i.FormationDate);
         }
 
         [TestMethod]
@@ -38,4 +38,4 @@ namespace ClassHierarchyAndCollectionsTests
         }
     }
 }
-}
+

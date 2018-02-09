@@ -15,26 +15,26 @@ namespace ClassHierarchyAndCollectionsTests
         }
 
         [TestMethod]
-        public void CanGetSetFormationDate()
+        public void CanGetSetBusinessOwner()
         {
             Business i = new Business();
-            i.FormationDate = DateTime.Now;
-            Assert.AreEqual(DateTime.Now, i.FormationDate);
+            i.BusinessOwner = "Steve Employments";
+            Assert.AreEqual("Steve Employments", i.BusinessOwner);
         }
 
         [TestMethod]
-        public void CanGetSetBusinessName()
+        public void CanGetSetIsOwnedByDisney()
         {
             Business i = new Business();
-            i.BusinessName = "PETA";
-            Assert.AreEqual("PETA", i.BusinessName);
+            i.IsOwnedByDisney = true;
+            Assert.AreEqual(true, i.IsOwnedByDisney);
         }
 
         [TestMethod]
         public void IsAContact()
         {
             Business i = new Business();
-            Assert.IsInstanceOfType(i, typeof(Contact));
+            Assert.IsInstanceOfType(i, typeof(Organization));
         }
     }
 }

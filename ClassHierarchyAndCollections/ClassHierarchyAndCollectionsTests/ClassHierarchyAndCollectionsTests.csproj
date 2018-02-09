@@ -57,6 +57,8 @@
     <Compile Include="OrganizationTests.cs" />
     <Compile Include="AssociationTests.cs" />
     <Compile Include="BusinessTests.cs" />
+    <Compile Include="SchoolTests.cs" />
+    <Compile Include="IBookLunchDateTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

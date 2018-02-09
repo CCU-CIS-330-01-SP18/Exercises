@@ -26,8 +26,8 @@ namespace ClassHierarchyAndCollectionsTests
         public void CanGetSetDateJoined()
         {
             Member i = new Member();
-            i.DateJoined = DateTime.Now;
-            Assert.AreEqual(DateTime.Now, i.DateJoined);
+            i.DateJoined = "July 4 1776";
+            Assert.AreEqual("July 4 1776", i.DateJoined);
         }
 
         [TestMethod]

@@ -13,7 +13,7 @@ namespace ClassHierarchyAndCollections
     {
         public String LevelOfMembership { get; set; }
 
-        public DateTime DateJoined { get; set; }
+        public String DateJoined { get; set; }
 
         /// <summary>
         /// Books a lunch date with the designated member
