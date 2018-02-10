@@ -7,31 +7,38 @@ using System.Threading.Tasks;
 
 class Program
 {
-        //This is the entry point for the program.
-        static int Main(string[] args)
+    // This is the entry point for the program
+   
+    static DateTime datetimeNow = DateTime.Now;
+    static int Main(string[] args)
 {
-    return writeMessage(dtNow, Console.Out);
+    return WriteMessage(datetimeNow, Console.Out);
 }
 
-        static DateTime dtNow = DateTime.Now;
-
-public static int writeMessage(DateTime CurrentDate, TextWriter writer)
+    /// <summary>
+    /// Determines if 2017 has passed or not. If so, it greets the user with "Happy New Year!" If not it greets from the given year.
+    /// </summary>
+    /// <param name="currentDate">This expresses the current date as a DateTime object.</param>
+    /// <param name="writer">A text writer object that is responsible for relaying the message to the user.</param>
+    /// <returns>Returns the result value: 0</returns>
+public static int WriteMessage(DateTime currentDate, TextWriter writer)
 {
-    var intRetVal = 0; const Int32 MESSAGE_COUNT = 5; for (int MyIndex = 0; MyIndex < MESSAGE_COUNT; MyIndex++)
-    /*********************/
-    /* greater than 2017 */
-    /*********************/
-    if (CurrentDate.Year > 2017) writer.WriteLine("Happy New Year!");
-    else
-                writer.WriteLine("Hello From " + CurrentDate.Year);
-
-
-    //--------------------return the result value----------------------------
-
-
-
-
-    return intRetVal;
+    var resultValue = 0;
+    const int messageCount = 5;
+        for (int index = 0; index < messageCount; index++)
+        {
+            // When the current time is past 2017, greet the user with a "Happy New Year!"
+            if (currentDate.Year > 2017)
+            {
+                writer.WriteLine("Happy New Year!");
+            }
+            else
+            {
+                writer.WriteLine("Hello From " + currentDate.Year);
+            }
+        }
+    // Returns the result value.
+    return resultValue;
     }
 }
 
