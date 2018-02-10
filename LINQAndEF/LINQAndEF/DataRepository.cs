@@ -52,7 +52,7 @@ namespace LINQAndEF
         /// </returns>
         public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException("This method needs to be implemented.");
+            return set.Where(predicate);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace LINQAndEF
         /// </returns>
         public TEntity Add(TEntity entity)
         {
-            throw new NotImplementedException("This method needs to be implemented.");
+            return set.Add(entity);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace LINQAndEF
         /// </param>
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException("This method needs to be implemented.");
+            set.Remove(entity);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace LINQAndEF
         /// </summary>
         public void Save()
         {
-            throw new NotImplementedException("This method needs to be implemented.");
+            context.SaveChanges();
         }
     }
 }
