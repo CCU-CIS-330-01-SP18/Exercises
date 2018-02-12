@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LINQAndEF;
 using System.Linq;
 using System.Collections.Generic;
+using System.Data.Linq;
+using System.Diagnostics;
 
 namespace LINQAndEFTests
 {
@@ -90,6 +92,43 @@ namespace LINQAndEFTests
         [TestMethod]
         public void DataRepository_Can_Update_Customer()
         {
+            Customer newCustomer = null;
+            Customer customerToUpdate;
+
+            string companyName = Guid.NewGuid().ToString();
+            string customerId = companyName.Substring(0, 5);
+
+            using (DataRepository<Customer> repository = new DataRepository<Customer>())
+            {
+                newCustomer = repository.Add(new Customer
+                {
+                    CustomerID = customerId,
+                    CompanyName = companyName,
+                    ContactName = "Robert Hurley",
+                    ContactTitle = "COO",
+                    Address = "321 Sesame St.",
+                    City = "None of your business",
+                    Region = "Somewhere",
+                    PostalCode = "80525",
+                    Country = "Merica",
+                    Phone = "123-456-7890",
+                    Fax = "321-654-0987"                   
+                });
+                repository.Save();
+                //customerToUpdate = repository.Query(c => c.ContactName == "Robert Hurley").FirstOrDefault();
+                customerToUpdate = repository.Query(c => c.CustomerID == customerId).Single();
+               
+
+               
+
+                
+                //customerToUpdate.ContactName = "Ryan Hurley";
+
+                
+               
+            }
+
+            Assert.AreEqual(newCustomer.ContactName, customerToUpdate.ContactName);
             //Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
         }
 
