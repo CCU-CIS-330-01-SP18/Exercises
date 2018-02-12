@@ -52,6 +52,7 @@ namespace LINQAndEF
         /// </returns>
         public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> predicate)
         {
+            return set.AsQueryable().Where(predicate);
             throw new NotImplementedException("This method needs to be implemented.");
         }
 
@@ -79,7 +80,8 @@ namespace LINQAndEF
         /// </param>
         public void Delete(TEntity entity)
         {
-            Delete(entity);
+            set.Remove(entity);
+            return;
             throw new NotImplementedException("This method needs to be implemented.");
         }
 
@@ -89,6 +91,7 @@ namespace LINQAndEF
         public void Save()
         {
             context.SaveChanges();
+            return;
             throw new NotImplementedException("This method needs to be implemented.");
         }
     }
