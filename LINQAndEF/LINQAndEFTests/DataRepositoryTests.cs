@@ -74,7 +74,6 @@ namespace LINQAndEFTests
             Assert.IsNotNull(customer);
             Assert.IsNotNull(queriedCustomer);
             Assert.AreEqual(customer.CustomerID, queriedCustomer.CustomerID);
-
             Assert.AreEqual(customer.CompanyName, queriedCustomer.CompanyName);
             Assert.AreEqual(customer.ContactName, queriedCustomer.ContactName);
             Assert.AreEqual(customer.ContactTitle, queriedCustomer.ContactTitle);
@@ -112,7 +111,12 @@ namespace LINQAndEFTests
                     Fax = "223-447-2929"
                 });
 
+                // Save changes, make new changes, and save again. Our CTO
+                // said that some fields didn't need to change, so they were left as-is
                 repository.Save();
+                customer.ContactName = "The Goose in the Pond";
+                customer.ContactTitle = "CFO";
+                customer.Phone = "303-963-DUCK";
                 customer.City = "Lakewood";
                 customer.Region = "Midwest";
                 customer.PostalCode = "80226";
@@ -127,18 +131,12 @@ namespace LINQAndEFTests
 
             Assert.IsNotNull(customer);
             Assert.IsNotNull(queriedCustomer);
-            Assert.AreEqual(customer.CustomerID, queriedCustomer.CustomerID);
-
-            Assert.AreEqual(customer.CompanyName, queriedCustomer.CompanyName);
             Assert.AreEqual(customer.ContactName, queriedCustomer.ContactName);
             Assert.AreEqual(customer.ContactTitle, queriedCustomer.ContactTitle);
-            Assert.AreEqual(customer.Address, queriedCustomer.Address);
             Assert.AreEqual(customer.City, queriedCustomer.City);
             Assert.AreEqual(customer.Region, queriedCustomer.Region);
             Assert.AreEqual(customer.PostalCode, queriedCustomer.PostalCode);
-            Assert.AreEqual(customer.Country, queriedCustomer.Country);
             Assert.AreEqual(customer.Phone, queriedCustomer.Phone);
-            Assert.AreEqual(customer.Fax, queriedCustomer.Fax);
         }
 
         [TestMethod]
