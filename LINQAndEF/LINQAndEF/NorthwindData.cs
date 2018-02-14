@@ -8,7 +8,7 @@ namespace LINQAndEF
     public partial class NorthwindModel : DbContext
     {
         public NorthwindModel()
-            : base("name=NorthwindModel")
+            : base("name=Northwind")
         {
         }
 

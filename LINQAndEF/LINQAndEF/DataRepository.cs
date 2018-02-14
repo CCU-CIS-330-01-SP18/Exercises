@@ -52,7 +52,7 @@ namespace LINQAndEF
         /// </returns>
         public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> predicate)
         {
-            return set.AsQueryable<TEntity>().Where(predicate);
+            return set.Where(predicate);
         }
 
         /// <summary>

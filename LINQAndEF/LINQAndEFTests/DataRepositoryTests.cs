@@ -29,7 +29,6 @@ namespace LINQAndEFTests
             }
 
             Assert.IsNotNull(customers);
-
             Assert.AreEqual(3, customers.Count);
             Assert.AreEqual(customers[0].CompanyName, "Reggiani Caseifici");
             Assert.AreEqual(customers[1].CompanyName, "Magazzini Alimentari Riuniti");
@@ -45,6 +44,7 @@ namespace LINQAndEFTests
             string companyName = Guid.NewGuid().ToString();
             string customerId = companyName.Substring(0, 5);
 
+            // Creating a customer.
             using (DataRepository<Customer> repository = new DataRepository<Customer>())
             {
                 customer = repository.Add(new Customer
@@ -66,7 +66,7 @@ namespace LINQAndEFTests
 
                 queriedCustomer = repository.Query(c => c.CustomerID == customerId).FirstOrDefault();
 
-                // Clean up added customer.
+                // Cleaned up customer.
                 repository.Delete(customer);
                 repository.Save();
             }
@@ -96,6 +96,7 @@ namespace LINQAndEFTests
             string companyName = Guid.NewGuid().ToString();
             string customerId = companyName.Substring(0, 5);
 
+            // Creating a customer.
             using (DataRepository<Customer> repository = new DataRepository<Customer>())
             {               
                 customer = repository.Add(new Customer
@@ -117,6 +118,7 @@ namespace LINQAndEFTests
 
                 queriedCustomer = repository.Query(c => c.CustomerID == customerId).FirstOrDefault();
 
+                // Cleaned up customer. 
                 repository.Delete(customer);
                 repository.Save();
             }
@@ -152,6 +154,7 @@ namespace LINQAndEFTests
                 queriedCustomer = customerQuery.FirstOrDefault();
                 Assert.IsNull(queriedCustomer, "Customer should not exist.");
 
+                // Creating a customer.
                 customer = repository.Add(new Customer
                 {
                     CustomerID = customerId,
@@ -172,6 +175,7 @@ namespace LINQAndEFTests
                 queriedCustomer = customerQuery.FirstOrDefault();
                 Assert.IsNotNull(queriedCustomer, "Customer should exist.");
 
+                // Cleaned up a customer.
                 repository.Delete(customer);
                 repository.Save();
 
