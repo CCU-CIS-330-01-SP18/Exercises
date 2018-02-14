@@ -93,7 +93,7 @@ namespace LINQAndEFTests
         public void DataRepository_Can_Update_Customer()
         {
             Customer newCustomer = null;
-            Customer customerToUpdate;
+            Customer customerToUpdate = null;
 
             string companyName = Guid.NewGuid().ToString();
             string customerId = companyName.Substring(0, 5);
@@ -115,18 +115,14 @@ namespace LINQAndEFTests
                     Fax = "321-654-0987"                   
                 });
                 repository.Save();
-                //customerToUpdate = repository.Query(c => c.ContactName == "Robert Hurley").FirstOrDefault();
                 customerToUpdate = repository.Query(c => c.CustomerID == customerId).Single();
-               
+                                             
+                customerToUpdate.ContactName = "Ryan Hurley";
 
-               
-
-                
-                //customerToUpdate.ContactName = "Ryan Hurley";
-
-                
-               
+                repository.Save();
             }
+
+             
 
             Assert.AreEqual(newCustomer.ContactName, customerToUpdate.ContactName);
             //Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
