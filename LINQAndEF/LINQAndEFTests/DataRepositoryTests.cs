@@ -90,7 +90,58 @@ namespace LINQAndEFTests
         [TestMethod]
         public void DataRepository_Can_Update_Customer()
         {
-            Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
+            Customer customer = null;
+            Customer queriedCustomer = null;
+
+            string companyName = Guid.NewGuid().ToString();
+            string customerId = companyName.Substring(0, 5);
+
+            using (DataRepository<Customer> repository = new DataRepository<Customer>())
+            {
+                customer = repository.Add(new Customer
+                {
+                    CustomerID = customerId,
+                    CompanyName = companyName,
+                    ContactName = "George Smith",
+                    ContactTitle = "CTO",
+                    Address = "123 Main Street, Any Town, USA",
+                    City = "Any Town",
+                    Region = "Southern",
+                    PostalCode = "55555",
+                    Country = "USA",
+                    Phone = "888-899-9932",
+                    Fax = "223-447-2929"
+                });
+
+                repository.Save();
+
+                customer.ContactName = "John Doe";
+                customer.ContactTitle = "CFO";
+                customer.Address = "666 Evil Street, Devilsburg, Australia";
+                customer.City = "Devilsburg";
+                customer.Region = "WAY Down Under";
+                customer.PostalCode = "N/A";
+                customer.Country = "Australia";
+                customer.Phone = "451-613-3556";
+                customer.Fax = "451-613-3557";
+                repository.Save();
+
+                queriedCustomer = repository.Query(c => c.CustomerID == customerId).FirstOrDefault();
+
+                // Clean up added customer.
+                repository.Delete(customer);
+                repository.Save();
+            }
+
+            Assert.AreEqual("John Doe", queriedCustomer.ContactName);
+            Assert.AreEqual("CFO", queriedCustomer.ContactTitle);
+            Assert.AreEqual("666 Evil Street, Devilsburg, Australia", queriedCustomer.Address);
+            Assert.AreEqual("Devilsburg", queriedCustomer.City);
+            Assert.AreEqual("WAY Down Under", queriedCustomer.Region);
+            Assert.AreEqual("N/A", queriedCustomer.PostalCode);
+            Assert.AreEqual("Australia", queriedCustomer.Country);
+            Assert.AreEqual("451-613-3556", queriedCustomer.Phone);
+            Assert.AreEqual("451-613-3557", queriedCustomer.Fax);
         }
 
         [TestMethod]
