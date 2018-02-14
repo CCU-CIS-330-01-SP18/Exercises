@@ -123,6 +123,7 @@ namespace LINQAndEFTests
 
                 repository.Save();
 
+                // Ensure that the queriedCustomer exists.
                 queriedCustomer = customerQuery.FirstOrDefault();
                 Assert.IsNotNull(queriedCustomer, "Customer should exist.");
 
