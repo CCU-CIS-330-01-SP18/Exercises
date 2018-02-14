@@ -47,6 +47,7 @@ namespace LINQAndEFTests
 
             using (DataRepository<Customer> repository = new DataRepository<Customer>())
             {
+                // Create a customer.
                 customer = repository.Add(new Customer
                 {
                     CustomerID = customerId,
@@ -61,17 +62,17 @@ namespace LINQAndEFTests
                     Phone = "888-899-9932",
                     Fax = "223-447-2929"
                 });
-
+                
                 repository.Save();
 
                 queriedCustomer = repository.Query(c => c.CustomerID == customerId).FirstOrDefault();
-
-                // Clean up added customer.
+               
                 repository.Delete(customer);
                 repository.Save();
             }
-
+            
             Assert.IsNotNull(customer);
+            
             Assert.IsNotNull(queriedCustomer);
             Assert.AreEqual(customer.CustomerID, queriedCustomer.CustomerID);
 
@@ -87,14 +88,9 @@ namespace LINQAndEFTests
             Assert.AreEqual(customer.Fax, queriedCustomer.Fax);
         }
 
-        [TestMethod]
-        public void DataRepository_Can_Update_Customer()
-        {
-            Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
-        }
 
         [TestMethod]
-        public void DataRepository_Can_Delete_Customer()
+        public void DataRepository_Can_Update_Customer()
         {
             Customer customer = null;
             Customer queriedCustomer = null;
@@ -109,6 +105,7 @@ namespace LINQAndEFTests
                 queriedCustomer = customerQuery.FirstOrDefault();
                 Assert.IsNull(queriedCustomer, "Customer should not exist.");
 
+                // Create a customer.
                 customer = repository.Add(new Customer
                 {
                     CustomerID = customerId,
@@ -126,8 +123,17 @@ namespace LINQAndEFTests
 
                 repository.Save();
 
+                // Ensure that the queriedCustomer exists.
                 queriedCustomer = customerQuery.FirstOrDefault();
                 Assert.IsNotNull(queriedCustomer, "Customer should exist.");
+
+                // This statement updates the Contact Name of the first Cusomter in the arrary of customers.
+                queriedCustomer.ContactName = "Dylan Ferris";
+
+                repository.Save();
+
+                // Test if the update worked.
+                Assert.AreEqual(queriedCustomer.ContactName, "Dylan Ferris");
 
                 repository.Delete(customer);
                 repository.Save();
@@ -135,6 +141,53 @@ namespace LINQAndEFTests
                 queriedCustomer = customerQuery.FirstOrDefault();
                 Assert.IsNull(queriedCustomer, "Customer should not exist.");
             }
+        }
+
+        [TestMethod]
+        public void DataRepository_Can_Delete_Customer()
+        {
+            Customer customer = null;
+            Customer queriedCustomer = null;
+
+            string companyName = Guid.NewGuid().ToString();
+            string customerId = companyName.Substring(0, 5);
+            
+            using (DataRepository<Customer> repository = new DataRepository<Customer>())
+            {
+                var customerQuery = repository.Query(c => c.CustomerID == customerId);
+                
+                queriedCustomer = customerQuery.FirstOrDefault();
+                Assert.IsNull(queriedCustomer, "Customer should not exist.");
+
+                // Create a customer.
+                customer = repository.Add(new Customer
+                {
+                    CustomerID = customerId,
+                    CompanyName = companyName,
+                    ContactName = "George Smith",
+                    ContactTitle = "CTO",
+                    Address = "123 Main Street, Any Town, USA",
+                    City = "Any Town",
+                    Region = "Southern",
+                    PostalCode = "55555",
+                    Country = "USA",
+                    Phone = "888-899-9932",
+                    Fax = "223-447-2929"
+                });
+
+                repository.Save();
+                
+                queriedCustomer = customerQuery.FirstOrDefault();
+                Assert.IsNotNull(queriedCustomer, "Customer should exist.");
+                
+                repository.Delete(customer);
+                repository.Save();
+                
+                queriedCustomer = customerQuery.FirstOrDefault();
+                Assert.IsNull(queriedCustomer, "Customer should not exist.");
+                
+            }
+
         }
     }
 }
