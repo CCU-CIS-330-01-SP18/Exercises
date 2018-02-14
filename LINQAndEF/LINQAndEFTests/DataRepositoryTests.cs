@@ -133,6 +133,12 @@ namespace LINQAndEFTests
 
                 // Test if the update worked.
                 Assert.AreEqual(queriedCustomer.ContactName, "Dylan Ferris");
+
+                repository.Delete(customer);
+                repository.Save();
+
+                queriedCustomer = customerQuery.FirstOrDefault();
+                Assert.IsNull(queriedCustomer, "Customer should not exist.");
             }
         }
 
@@ -182,5 +188,5 @@ namespace LINQAndEFTests
             }
 
         }
-        }
+    }
 }
