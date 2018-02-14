@@ -107,7 +107,7 @@ namespace LINQAndEFTests
                     ContactName = "Robert Hurley",
                     ContactTitle = "COO",
                     Address = "321 Sesame St.",
-                    City = "None of your business",
+                    City = "Denver",
                     Region = "Somewhere",
                     PostalCode = "80525",
                     Country = "Merica",
@@ -116,13 +116,17 @@ namespace LINQAndEFTests
                 });
                 repository.Save();
                 customerToUpdate = repository.Query(c => c.CustomerID == customerId).Single();
+
+                Assert.AreEqual("Robert Hurley", customerToUpdate.ContactName);
                                              
-                customerToUpdate.ContactName = "Ryan Hurley";
+                customerToUpdate.ContactName = "Bob Swaggert";
 
                 repository.Save();
-            }
 
-             
+                Assert.AreEqual("Bob Swaggert", customerToUpdate.ContactName);
+
+                repository.Delete(newCustomer);
+            }
 
             Assert.AreEqual(newCustomer.ContactName, customerToUpdate.ContactName);
             //Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
