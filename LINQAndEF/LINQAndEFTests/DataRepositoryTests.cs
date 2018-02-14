@@ -90,7 +90,76 @@ namespace LINQAndEFTests
         [TestMethod]
         public void DataRepository_Can_Update_Customer()
         {
-            Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
+            Customer newCustomer = null;
+            Customer updatedQueriedCustomer = null;
+
+            //Original newCustomer attributes stored as local varibles for later test reference. 
+            string companyName = Guid.NewGuid().ToString();
+            string customerId = companyName.Substring(0, 5);
+            string ContactName = "George Smith";
+            string ContactTitle = "CTO";
+            string Address = "123 Main Street, Any Town, USA";
+            string City = "Any Town";
+            string Region = "Southern";
+            string PostalCode = "55555";
+            string Country = "USA";
+            string Phone = "888-899-9932";
+            string Fax = "223-447-2929";
+
+            using (DataRepository<Customer> repository = new DataRepository<Customer>())
+            {
+                newCustomer = repository.Add(new Customer
+                {
+                    CustomerID = customerId,
+                    CompanyName = companyName,
+                    ContactName = "George Smith",
+                    ContactTitle = "CTO",
+                    Address = "123 Main Street, Any Town, USA",
+                    City = "Any Town",
+                    Region = "Southern",
+                    PostalCode = "55555",
+                    Country = "USA",
+                    Phone = "888-899-9932",
+                    Fax = "223-447-2929"
+                });
+
+                repository.Save();
+                
+                updatedQueriedCustomer = repository.Query(c => c.CustomerID == customerId).FirstOrDefault();
+
+                //Update newCustomer information.
+                updatedQueriedCustomer.ContactName = "Dean Randel";
+                updatedQueriedCustomer.ContactTitle = "Student";
+                updatedQueriedCustomer.Address = "123 Test Street, Lakewood, USA";
+                updatedQueriedCustomer.City = "Lakewood";
+                updatedQueriedCustomer.Region = "Test";
+                updatedQueriedCustomer.PostalCode = "80226";
+                updatedQueriedCustomer.Country = "U.S.";
+                updatedQueriedCustomer.Phone = "806-683-7766";
+                updatedQueriedCustomer.Fax = "806-688-7766";
+
+                repository.Save();
+
+                // Clean up added customer.
+                repository.Delete(newCustomer);
+                repository.Delete(updatedQueriedCustomer);
+                repository.Save();
+            }
+
+            Assert.IsNotNull(newCustomer);
+            Assert.IsNotNull(updatedQueriedCustomer);
+            Assert.AreEqual(newCustomer.CustomerID, updatedQueriedCustomer.CustomerID);
+            Assert.AreEqual(newCustomer.CompanyName, updatedQueriedCustomer.CompanyName);
+
+            Assert.AreNotEqual(ContactName, updatedQueriedCustomer.ContactName);
+            Assert.AreNotEqual(ContactTitle, updatedQueriedCustomer.ContactTitle);
+            Assert.AreNotEqual(Address, updatedQueriedCustomer.Address);
+            Assert.AreNotEqual(City, updatedQueriedCustomer.City);
+            Assert.AreNotEqual(Region, updatedQueriedCustomer.Region);
+            Assert.AreNotEqual(PostalCode, updatedQueriedCustomer.PostalCode);
+            Assert.AreNotEqual(Country, updatedQueriedCustomer.Country);
+            Assert.AreNotEqual(Phone, updatedQueriedCustomer.Phone);
+            Assert.AreNotEqual(Fax, updatedQueriedCustomer.Fax);
         }
 
         [TestMethod]
