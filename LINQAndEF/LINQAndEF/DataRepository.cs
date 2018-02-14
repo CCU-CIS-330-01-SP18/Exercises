@@ -52,7 +52,10 @@ namespace LINQAndEF
         /// </returns>
         public IQueryable<TEntity> Query(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException("This method needs to be implemented.");
+            // Because Expression is a lambda expression, and the test passes in a lambda expression,
+            // it works as the argument for the Where() method. This totally did not take me all night to
+            // figure out.
+            return set.AsQueryable<TEntity>().Where(predicate);
         }
 
         /// <summary>
@@ -66,7 +69,8 @@ namespace LINQAndEF
         /// </returns>
         public TEntity Add(TEntity entity)
         {
-            throw new NotImplementedException("This method needs to be implemented.");
+            set.Add(entity);
+            return entity;
         }
 
         /// <summary>
@@ -77,7 +81,7 @@ namespace LINQAndEF
         /// </param>
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException("This method needs to be implemented.");
+            set.Remove(entity);
         }
 
         /// <summary>
@@ -85,7 +89,7 @@ namespace LINQAndEF
         /// </summary>
         public void Save()
         {
-            throw new NotImplementedException("This method needs to be implemented.");
+            context.SaveChanges();
         }
     }
 }
