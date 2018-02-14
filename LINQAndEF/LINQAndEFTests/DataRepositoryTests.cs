@@ -92,11 +92,10 @@ namespace LINQAndEFTests
         {
             Customer newCustomer = null;
             Customer updatedQueriedCustomer = null;
-            Customer customer = null;
 
+            //Original newCustomer attributes stored as local varibles for later test reference. 
             string companyName = Guid.NewGuid().ToString();
             string customerId = companyName.Substring(0, 5);
-            /*
             string ContactName = "George Smith";
             string ContactTitle = "CTO";
             string Address = "123 Main Street, Any Town, USA";
@@ -106,7 +105,6 @@ namespace LINQAndEFTests
             string Country = "USA";
             string Phone = "888-899-9932";
             string Fax = "223-447-2929";
-            */
 
             using (DataRepository<Customer> repository = new DataRepository<Customer>())
             {
@@ -126,10 +124,10 @@ namespace LINQAndEFTests
                 });
 
                 repository.Save();
-
-                customer = repository.Query(c => c.CustomerID == customerId).FirstOrDefault();
+                
                 updatedQueriedCustomer = repository.Query(c => c.CustomerID == customerId).FirstOrDefault();
 
+                //Update newCustomer information.
                 updatedQueriedCustomer.ContactName = "Dean Randel";
                 updatedQueriedCustomer.ContactTitle = "Student";
                 updatedQueriedCustomer.Address = "123 Test Street, Lakewood, USA";
@@ -143,26 +141,25 @@ namespace LINQAndEFTests
                 repository.Save();
 
                 // Clean up added customer.
-                repository.Delete(customer);
                 repository.Delete(newCustomer);
                 repository.Delete(updatedQueriedCustomer);
                 repository.Save();
             }
 
-            Assert.IsNotNull(customer);
+            Assert.IsNotNull(newCustomer);
             Assert.IsNotNull(updatedQueriedCustomer);
-            Assert.AreEqual(customer.CustomerID, updatedQueriedCustomer.CustomerID);
+            Assert.AreEqual(newCustomer.CustomerID, updatedQueriedCustomer.CustomerID);
+            Assert.AreEqual(newCustomer.CompanyName, updatedQueriedCustomer.CompanyName);
 
-            Assert.AreEqual(customer.CompanyName, updatedQueriedCustomer.CompanyName);
-            Assert.AreNotEqual(customer.ContactName, updatedQueriedCustomer.ContactName);
-            Assert.AreNotEqual(customer.ContactTitle, updatedQueriedCustomer.ContactTitle);
-            Assert.AreNotEqual(customer.Address, updatedQueriedCustomer.Address);
-            Assert.AreNotEqual(customer.City, updatedQueriedCustomer.City);
-            Assert.AreNotEqual(customer.Region, updatedQueriedCustomer.Region);
-            Assert.AreNotEqual(customer.PostalCode, updatedQueriedCustomer.PostalCode);
-            Assert.AreNotEqual(customer.Country, updatedQueriedCustomer.Country);
-            Assert.AreNotEqual(customer.Phone, updatedQueriedCustomer.Phone);
-            Assert.AreNotEqual(customer.Fax, updatedQueriedCustomer.Fax);
+            Assert.AreNotEqual(ContactName, updatedQueriedCustomer.ContactName);
+            Assert.AreNotEqual(ContactTitle, updatedQueriedCustomer.ContactTitle);
+            Assert.AreNotEqual(Address, updatedQueriedCustomer.Address);
+            Assert.AreNotEqual(City, updatedQueriedCustomer.City);
+            Assert.AreNotEqual(Region, updatedQueriedCustomer.Region);
+            Assert.AreNotEqual(PostalCode, updatedQueriedCustomer.PostalCode);
+            Assert.AreNotEqual(Country, updatedQueriedCustomer.Country);
+            Assert.AreNotEqual(Phone, updatedQueriedCustomer.Phone);
+            Assert.AreNotEqual(Fax, updatedQueriedCustomer.Fax);
         }
 
         [TestMethod]
