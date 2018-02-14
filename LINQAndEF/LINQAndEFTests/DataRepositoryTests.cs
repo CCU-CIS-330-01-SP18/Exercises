@@ -30,7 +30,6 @@ namespace LINQAndEFTests
 
             Assert.IsNotNull(customers);
             Assert.AreEqual(3, customers.Count);
-
             Assert.AreEqual(customers[0].CompanyName, "Reggiani Caseifici");
             Assert.AreEqual(customers[1].CompanyName, "Magazzini Alimentari Riuniti");
             Assert.AreEqual(customers[2].CompanyName, "Franchi S.p.A.");
@@ -45,6 +44,7 @@ namespace LINQAndEFTests
             string companyName = Guid.NewGuid().ToString();
             string customerId = companyName.Substring(0, 5);
 
+            // Creating a customer.
             using (DataRepository<Customer> repository = new DataRepository<Customer>())
             {
                 customer = repository.Add(new Customer
@@ -66,7 +66,7 @@ namespace LINQAndEFTests
 
                 queriedCustomer = repository.Query(c => c.CustomerID == customerId).FirstOrDefault();
 
-                // Clean up added customer.
+                // Cleaned up customer.
                 repository.Delete(customer);
                 repository.Save();
             }
@@ -90,7 +90,52 @@ namespace LINQAndEFTests
         [TestMethod]
         public void DataRepository_Can_Update_Customer()
         {
-            Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
+            Customer customer = null;
+            Customer queriedCustomer = null;
+
+            string companyName = Guid.NewGuid().ToString();
+            string customerId = companyName.Substring(0, 5);
+
+            // Creating a customer.
+            using (DataRepository<Customer> repository = new DataRepository<Customer>())
+            {               
+                customer = repository.Add(new Customer
+                {
+                    CustomerID = customerId,
+                    CompanyName = companyName,
+                    ContactName = "George Smith",
+                    ContactTitle = "CTO",
+                    Address = "123 Main Street, Any Town, USA",
+                    City = "Any Town",
+                    Region = "Southern",
+                    PostalCode = "55555",
+                    Country = "USA",
+                    Phone = "888-899-9932",
+                    Fax = "223-447-2929"
+                });
+
+                repository.Save();
+
+                queriedCustomer = repository.Query(c => c.CustomerID == customerId).FirstOrDefault();
+
+                // Cleaned up customer. 
+                repository.Delete(customer);
+                repository.Save();
+            }
+            Assert.IsNotNull(customer);
+            Assert.IsNotNull(queriedCustomer);
+            Assert.AreEqual(customer.CustomerID, queriedCustomer.CustomerID);
+
+            Assert.AreEqual(customer.CompanyName, queriedCustomer.CompanyName);
+            Assert.AreEqual(customer.ContactName, queriedCustomer.ContactName);
+            Assert.AreEqual(customer.ContactTitle, queriedCustomer.ContactTitle);
+            Assert.AreEqual(customer.Address, queriedCustomer.Address);
+            Assert.AreEqual(customer.City, queriedCustomer.City);
+            Assert.AreEqual(customer.Region, queriedCustomer.Region);
+            Assert.AreEqual(customer.PostalCode, queriedCustomer.PostalCode);
+            Assert.AreEqual(customer.Country, queriedCustomer.Country);
+            Assert.AreEqual(customer.Phone, queriedCustomer.Phone);
+            Assert.AreEqual(customer.Fax, queriedCustomer.Fax);
         }
 
         [TestMethod]
@@ -109,6 +154,7 @@ namespace LINQAndEFTests
                 queriedCustomer = customerQuery.FirstOrDefault();
                 Assert.IsNull(queriedCustomer, "Customer should not exist.");
 
+                // Creating a customer.
                 customer = repository.Add(new Customer
                 {
                     CustomerID = customerId,
@@ -129,6 +175,7 @@ namespace LINQAndEFTests
                 queriedCustomer = customerQuery.FirstOrDefault();
                 Assert.IsNotNull(queriedCustomer, "Customer should exist.");
 
+                // Cleaned up a customer.
                 repository.Delete(customer);
                 repository.Save();
 
