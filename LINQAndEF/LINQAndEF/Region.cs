@@ -6,9 +6,15 @@ namespace LINQAndEF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    /// <summary>
+    /// References the Region Table and creates an instance of a Region.
+    /// </summary>
     [Table("Region")]
     public partial class Region
     {
+        /// <summary>
+        /// Constructor that creates a Hashset of Territories.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Region()
         {

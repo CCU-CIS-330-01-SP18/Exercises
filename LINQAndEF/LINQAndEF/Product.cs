@@ -6,8 +6,14 @@ namespace LINQAndEF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    /// <summary>
+    /// Used to create a new Product.
+    /// </summary>
     public partial class Product
     {
+        /// <summary>
+        /// Constructor that creates a Hashset of Order_Detail.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {

@@ -115,6 +115,7 @@ namespace LINQAndEFTests
                     Fax = "321-654-0987"                   
                 });
                 repository.Save();
+
                 customerToUpdate = repository.Query(c => c.CustomerID == customerId).Single();
 
                 Assert.AreEqual("Robert Hurley", customerToUpdate.ContactName);
@@ -128,8 +129,7 @@ namespace LINQAndEFTests
                 repository.Delete(newCustomer);
             }
 
-            Assert.AreEqual(newCustomer.ContactName, customerToUpdate.ContactName);
-            //Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
+            Assert.AreEqual(newCustomer.ContactName, customerToUpdate.ContactName);      
         }
 
         [TestMethod]

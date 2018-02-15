@@ -6,8 +6,14 @@ namespace LINQAndEF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    /// <summary>
+    /// Creates an instance of a Shipper.
+    /// </summary>
     public partial class Shipper
     {
+        /// <summary>
+        /// Constructor that creates a Hashset of Orders.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Shipper()
         {

@@ -6,8 +6,14 @@ namespace LINQAndEF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    /// <summary>
+    /// Creates an instance of a Supplier.
+    /// </summary>
     public partial class Supplier
     {
+        /// <summary>
+        /// Constructor that sets a HashSet of type Products.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Supplier()
         {

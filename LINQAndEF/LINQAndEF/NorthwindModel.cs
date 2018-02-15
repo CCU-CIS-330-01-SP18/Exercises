@@ -5,6 +5,9 @@ namespace LINQAndEF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
+    /// <summary>
+    /// Used to create an instance of the NorthWind ADO.NET EF Model.
+    /// </summary>
     public partial class NorthwindModel : DbContext
     {
         public NorthwindModel()
@@ -24,6 +27,10 @@ namespace LINQAndEF
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<Territory> Territories { get; set; }
 
+        /// <summary>
+        /// Creates the various entities included in the Northwind database.
+        /// </summary>
+        /// <param name="modelBuilder">References a DbModelBuilder.</param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CustomerDemographic>()

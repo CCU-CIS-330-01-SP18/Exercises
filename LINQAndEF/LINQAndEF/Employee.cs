@@ -6,8 +6,14 @@ namespace LINQAndEF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    /// <summary>
+    /// Creates an Employee Object.
+    /// </summary>
     public partial class Employee
     {
+        /// <summary>
+        /// Constructor that creates HashSets of Employees, Orders, and Territories.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {

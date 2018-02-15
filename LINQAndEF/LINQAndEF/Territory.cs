@@ -6,8 +6,14 @@ namespace LINQAndEF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    /// <summary>
+    /// Creates an instance of a Territory.
+    /// </summary>
     public partial class Territory
     {
+        /// <summary>
+        /// Constructor that creates a HashSet of type Employee.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Territory()
         {

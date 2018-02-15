@@ -6,8 +6,14 @@ namespace LINQAndEF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    /// <summary>
+    /// Creates a CustomerDemographic Object.
+    /// </summary>
     public partial class CustomerDemographic
     {
+        /// <summary>
+        /// Constructor that creates a Hashset of Customers.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CustomerDemographic()
         {

@@ -87,8 +87,6 @@ namespace LINQAndEF
         public void Save()
         {
             context.SaveChanges();
-        }
-
-        
+        }      
     }
 }

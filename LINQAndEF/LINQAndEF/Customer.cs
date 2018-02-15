@@ -6,8 +6,14 @@ namespace LINQAndEF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    /// <summary>
+    /// Creates a Customer Object and also provides a default Constructor.
+    /// </summary>
     public partial class Customer
     {
+        /// <summary>
+        /// Constructor that creates a Hashset of Orders and CustomerDemographics.
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {

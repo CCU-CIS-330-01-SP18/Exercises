@@ -6,6 +6,9 @@ namespace LINQAndEF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    /// <summary>
+    /// Creates an Order_Detail object.
+    /// </summary>
     [Table("Order Details")]
     public partial class Order_Detail
     {

@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace LINQAndEF
 {
+    /// <summary>
+    /// Entry point of the solution.
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// A method to run the solution.
+        /// </summary>
+        /// <param name="args">String array that can be passed in.</param>
         static void Main(string[] args)
         {
             // Instructions:
