@@ -90,7 +90,45 @@ namespace LINQAndEFTests
         [TestMethod]
         public void DataRepository_Can_Update_Customer()
         {
-            Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
+            Customer customer = null;
+
+            string queriedCompany;
+            string updatedCompany;
+            string companyName = Guid.NewGuid().ToString();
+            string customerId = companyName.Substring(0, 5);
+
+            using (DataRepository<Customer> repository = new DataRepository<Customer>())
+            {
+                customer = repository.Add(new Customer
+                {
+                    CustomerID = customerId,
+                    CompanyName = companyName,
+                    ContactName = "George Smith",
+                    ContactTitle = "CTO",
+                    Address = "123 Main Street, Any Town, USA",
+                    City = "Any Town",
+                    Region = "Southern",
+                    PostalCode = "55555",
+                    Country = "USA",
+                    Phone = "888-899-9932",
+                    Fax = "223-447-2929"
+                });
+
+                repository.Save();
+                queriedCompany = repository.Query(c => c.CompanyName == companyName).FirstOrDefault().CompanyName;
+
+                Assert.AreEqual(customer.CompanyName, queriedCompany);
+                                
+                customer.CompanyName = "SomethingElse";           
+                updatedCompany = repository.Query(c => c.CompanyName == companyName).FirstOrDefault().CompanyName;
+                                
+                // Clean up added customer.
+                repository.Delete(customer);
+                repository.Save();
+
+                Assert.AreNotEqual(queriedCompany, updatedCompany);
+                //Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
+            }
         }
 
         [TestMethod]
