@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LINQAndEF;
 using System.Linq;
 using System.Collections.Generic;
+using System.Data.Linq;
+using System.Diagnostics;
 
 namespace LINQAndEFTests
 {
@@ -90,7 +92,44 @@ namespace LINQAndEFTests
         [TestMethod]
         public void DataRepository_Can_Update_Customer()
         {
-            Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
+            Customer newCustomer = null;
+            Customer customerToUpdate = null;
+
+            string companyName = Guid.NewGuid().ToString();
+            string customerId = companyName.Substring(0, 5);
+
+            using (DataRepository<Customer> repository = new DataRepository<Customer>())
+            {
+                newCustomer = repository.Add(new Customer
+                {
+                    CustomerID = customerId,
+                    CompanyName = companyName,
+                    ContactName = "Robert Hurley",
+                    ContactTitle = "COO",
+                    Address = "321 Sesame St.",
+                    City = "Denver",
+                    Region = "Somewhere",
+                    PostalCode = "80525",
+                    Country = "Merica",
+                    Phone = "123-456-7890",
+                    Fax = "321-654-0987"                   
+                });
+                repository.Save();
+
+                customerToUpdate = repository.Query(c => c.CustomerID == customerId).Single();
+
+                Assert.AreEqual("Robert Hurley", customerToUpdate.ContactName);
+                                             
+                customerToUpdate.ContactName = "Bob Swaggert";
+
+                repository.Save();
+
+                Assert.AreEqual("Bob Swaggert", customerToUpdate.ContactName);
+
+                repository.Delete(newCustomer);
+            }
+
+            Assert.AreEqual(newCustomer.ContactName, customerToUpdate.ContactName);      
         }
 
         [TestMethod]
