@@ -10,8 +10,8 @@ namespace LINQAndEF
     {
         static void Main(string[] args)
         {
-            // Instructions:
-            // 1. Create your own branch from master in the Exercises GitHub repository with a name similar to dev/<initials>/week5.
+            // x Instructions:
+            // x 1. Create your own branch from master in the Exercises GitHub repository with a name similar to dev/<initials>/week5.
             // 2. Create a "Code First from database" Entity Data Model called "NorthwindModel" using the Northwind database file included in the project.
             // 3. Complete the methods in the DataRepository and DataRepositoryTest classes so that all tests run successfully.
             // 4. Ensure you follow all coding standards.
