@@ -90,9 +90,53 @@ namespace LINQAndEFTests
         [TestMethod]
         public void DataRepository_Can_Update_Customer()
         {
-            Assert.Fail("Write a test to confirm that a customer can be updated. Ensure you save and read from the repository to confirm the update.");
-        }
+            Customer customer = null;
+            Customer queriedCustomer = null;
+            string companyName = Guid.NewGuid().ToString();
+            string customerId = companyName.Substring(0, 5);
 
+            using (DataRepository<Customer> dataRepository = new DataRepository<Customer>())
+            {
+                customer = dataRepository.Add(new Customer
+                {
+                    CustomerID = customerId,
+                    CompanyName = companyName,
+                    ContactName = "Robert Parr",
+                    ContactTitle = "Claims Handler",
+                    Address = "123 Incredible St.",
+                    City = "New York",
+                    Region = "Suburbs",
+                    PostalCode = "12345",
+                    Country = "United States",
+                    Phone = "1-800-555-1234",
+                    Fax = "1-800-444-5432",
+                });
+                dataRepository.Save();
+                customer.ContactName = "Syndrome";
+                customer.ContactTitle = "Nemesis";
+                customer.Address = "Secret Island Dr.";
+                customer.City = "Volcanus";
+                customer.Region = "Tropics";
+                customer.PostalCode = "99999";
+                customer.Country = "Not Found";
+                customer.Phone = "1-800-EVI-LBOI";
+                customer.Fax = "1-800-SAD-BOYO";
+                dataRepository.Save();
+
+                queriedCustomer = dataRepository.Query(c => c.CustomerID == customerId).FirstOrDefault();
+                dataRepository.Delete(customer);
+                dataRepository.Save();
+            }
+            Assert.AreEqual("Syndrome", queriedCustomer.ContactName);
+            Assert.AreEqual("Nemesis", queriedCustomer.ContactTitle);
+            Assert.AreEqual("Secret Island Dr.", queriedCustomer.Address);
+            Assert.AreEqual("Volcanus", queriedCustomer.City);
+            Assert.AreEqual("Tropics", queriedCustomer.Region);
+            Assert.AreEqual("99999", queriedCustomer.PostalCode);
+            Assert.AreEqual("Not Found", queriedCustomer.Country);
+            Assert.AreEqual("1-800-EVI-LBOI", queriedCustomer.Phone);
+            Assert.AreEqual("1-800-SAD-BOYO", queriedCustomer.Fax);
+        }
         [TestMethod]
         public void DataRepository_Can_Delete_Customer()
         {
