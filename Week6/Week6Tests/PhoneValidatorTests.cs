@@ -11,7 +11,26 @@ namespace Week6Tests
         [TestMethod]
         public void PhoneValidatorReturnsFalseForInvalidPhone()
         {
-            PhoneValidator.ValidatePhoneNumber("abc");
+            var phoneNumber = PhoneValidator.ValidatePhoneNumber("97023147199");
+
+            Assert.IsFalse(phoneNumber);
+        }
+
+        [TestMethod]
+        public void PhoneValidatorReturnsFalseOnPhoneNumberBeginningWithSpace()
+        {
+            var phoneNumber = PhoneValidator.ValidatePhoneNumber(" 970-231-4719");
+            Assert.IsFalse(phoneNumber);
+        }
+
+        [TestMethod]
+        public void PhoneValidatorReturnsFalseOnPhoneNumberWithVaryingFormats()
+        {
+            var numberWithSpaces = PhoneValidator.ValidatePhoneNumber("97 231 4719");
+            Assert.IsFalse(numberWithSpaces);
+
+            var numberWithDashes = PhoneValidator.ValidatePhoneNumber("970--231-4719");
+            Assert.IsFalse(numberWithDashes);
         }
 
         [TestMethod]
