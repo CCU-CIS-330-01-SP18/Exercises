@@ -21,7 +21,7 @@ namespace Week6
             {
                 return true;
             }
-            else if (phoneNumber == null)
+            else if (phoneNumber == null || phoneNumber == "")
             {
                 throw new ArgumentNullException(nameof(phoneNumber));
             }

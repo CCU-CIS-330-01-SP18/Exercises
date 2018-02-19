@@ -11,8 +11,10 @@ namespace Week6Tests
         [TestMethod]
         public void PhoneValidatorReturnsFalseForInvalidPhone()
         {
-            var phoneNumber = PhoneValidator.ValidatePhoneNumber("97023147199");
+            var withLetters = PhoneValidator.ValidatePhoneNumber("abc");
+            Assert.IsFalse(withLetters);
 
+            var phoneNumber = PhoneValidator.ValidatePhoneNumber("97023147199");
             Assert.IsFalse(phoneNumber);
         }
 
@@ -26,11 +28,14 @@ namespace Week6Tests
         [TestMethod]
         public void PhoneValidatorReturnsFalseOnPhoneNumberWithVaryingFormats()
         {
-            var numberWithSpaces = PhoneValidator.ValidatePhoneNumber("97 231 4719");
+            var numberWithSpaces = PhoneValidator.ValidatePhoneNumber("970  231 4719");
             Assert.IsFalse(numberWithSpaces);
 
             var numberWithDashes = PhoneValidator.ValidatePhoneNumber("970--231-4719");
             Assert.IsFalse(numberWithDashes);
+
+            var numberWithPeriods = PhoneValidator.ValidatePhoneNumber("970..231.4719");
+            Assert.IsFalse(numberWithPeriods);
         }
 
         [TestMethod]
@@ -47,6 +52,15 @@ namespace Week6Tests
             var areaCode = PhoneValidator.ValidatePhoneNumber("231-4719");
 
             Assert.AreEqual(true, areaCode);
+
+            var withSpaces = PhoneValidator.ValidatePhoneNumber("231 4719");
+            Assert.IsTrue(withSpaces);
+
+            var withPeriods = PhoneValidator.ValidatePhoneNumber("231.4719");
+            Assert.IsTrue(withPeriods);
+
+            var noSpaces = PhoneValidator.ValidatePhoneNumber("2314179");
+            Assert.IsTrue(noSpaces);
         }
 
         [TestMethod]
@@ -61,6 +75,28 @@ namespace Week6Tests
 
             var includesDashes = PhoneValidator.ValidatePhoneNumber("970-231-4719");
             Assert.AreEqual(true, includesDashes);
+
+            var mixedFormat = PhoneValidator.ValidatePhoneNumber("970.231-4719");
+            Assert.IsTrue(mixedFormat);
+
+            var noSpaces = PhoneValidator.ValidatePhoneNumber("9702314719");
+            Assert.IsTrue(noSpaces);
+        }
+
+        [TestMethod]
+        public void PhoneValidatorReturnsTrueForNumbersStartingWithParentheses()
+        {
+            var includesParentheses = PhoneValidator.ValidatePhoneNumber("(970)-231-4719");
+            Assert.IsTrue(includesParentheses);
+
+            var withSpaces = PhoneValidator.ValidatePhoneNumber("(970) 231 4719");
+            Assert.IsTrue(withSpaces);
+
+            var withPeriods = PhoneValidator.ValidatePhoneNumber("(970).231.4719");
+            Assert.IsTrue(withPeriods);
+
+            var mixedFormat = PhoneValidator.ValidatePhoneNumber("(970).231 4719");
+            Assert.IsTrue(mixedFormat);
         }
 
         [TestMethod]
@@ -68,6 +104,8 @@ namespace Week6Tests
         public void PhoneValidatorThrowsForNullPhone()
         {
             PhoneValidator.ValidatePhoneNumber(null);
+
+            PhoneValidator.ValidatePhoneNumber("");
             /*ArgumentNullException thrownException = null;
             try
             {
