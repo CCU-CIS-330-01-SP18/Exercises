@@ -28,6 +28,7 @@ namespace LINQAndEF
             set = context.Set<TEntity>();
         }
 
+
         /// <summary>
         /// Disposes of managed and unmanaged resources used by the object.
         /// </summary>
