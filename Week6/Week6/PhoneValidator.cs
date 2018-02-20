@@ -11,12 +11,13 @@ namespace Week6
     {
         public static bool ValidatePhoneNumber(string phoneNumber)
         {
+            bool result;
+
             if (phoneNumber == null)
             {
                 throw new ArgumentNullException(phoneNumber);
             }
-                
-            bool result;
+
             if ((phoneNumber.Length >= 10) && (phoneNumber.Length <= 14))
             {
                 result = TenDigitValidator(phoneNumber);
@@ -33,7 +34,6 @@ namespace Week6
             }
         }
 
-
         private static bool TenDigitValidator(string phoneNumber)
         {
             var expression = new Regex(@"^\(?([0-9]{3})\)?[-.]?([0-9]{3})[-.]?([0-9]{4})$");
@@ -45,7 +45,5 @@ namespace Week6
             var expression = new Regex(@"^\d?([0-9]{3})[-.]?([0-9]{4})$");
             return expression.IsMatch(phoneNumber);
         }
-
-
     }
 }
