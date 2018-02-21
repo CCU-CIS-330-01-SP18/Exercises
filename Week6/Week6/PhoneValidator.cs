@@ -7,23 +7,32 @@ using System.Threading.Tasks;
 
 namespace Week6
 {
+    /// <summary>
+    /// A class for validating phone numbers.
+    /// </summary>
     public static class PhoneValidator
     {
-        //string phoneValidator = @"([0-9]{3})[\s\.\-]([0-9]{3})[\s\.\-]([0-9]{4})|([0-9]{3})[\s\.\-]([0-9]{4})";
-        //var phoneRegex = new Regex(@"([0-9]{3})[\s\.\-]([0-9]{3})[\s\.\-]([0-9]{4})|([0-9]{3})[\s\.\-]([0-9]{4})");
+        /// <summary>
+        /// A method that takes a string and checks if its a valid phone number.
+        /// </summary>
+        /// <param name="phoneNumber">A string that is passed in and checked to see if it is a valid phone number.</param>
+        /// <returns>A boolean value, true if the passed in string and the regular expression match, and false if it doesn't.</returns>
         public static bool ValidatePhoneNumber(string phoneNumber)
         {
-            //var regex = new Regex(@"^([0-9]{3})[\s\.\-]([0-9]{3})[\s\.\-]([0-9]{4})|^([0-9]{3})[\s\.\-]([0-9]{4})");
             var regex = new Regex(@"^(\(?\d{3}\)?)[\s\.\-]?(\d{0,3})[\s\.\-]?(\d{0,4})$|^(\d{0,3})[\s\.\-]?(\d{0,4})$");
-            Match match = regex.Match(phoneNumber);
+            var match = regex.Match(phoneNumber);
 
             if (match.Success)
             {
                 return true;
             }
-            else if (phoneNumber == null || phoneNumber == "")
+            else if (phoneNumber == null)
             {
                 throw new ArgumentNullException(nameof(phoneNumber));
+            }
+            else if (string.IsNullOrEmpty(phoneNumber))
+            {
+                throw new FormatException(nameof(phoneNumber));
             }
             else
             {

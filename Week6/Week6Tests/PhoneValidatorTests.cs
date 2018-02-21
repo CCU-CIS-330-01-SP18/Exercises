@@ -67,7 +67,6 @@ namespace Week6Tests
         public void PhoneValidatorReturnsTrueForDifferentVariations()
         {
             var includesPeriods = PhoneValidator.ValidatePhoneNumber("970.231.4719");
-
             Assert.AreEqual(true, includesPeriods);
 
             var includesSpaces = PhoneValidator.ValidatePhoneNumber("970 231 4719");
@@ -104,19 +103,13 @@ namespace Week6Tests
         public void PhoneValidatorThrowsForNullPhone()
         {
             PhoneValidator.ValidatePhoneNumber(null);
+        }
 
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void PhoneValidatorThrowsForEmptyString()
+        {
             PhoneValidator.ValidatePhoneNumber("");
-            /*ArgumentNullException thrownException = null;
-            try
-            {
-                PhoneValidator.ValidatePhoneNumber(null);
-            }
-            catch (ArgumentNullException ex)
-            {
-                thrownException = ex;
-            }
-
-            Assert.IsNotNull(thrownException);*/
         }
     }
 }
