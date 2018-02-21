@@ -7,14 +7,8 @@ using System.Text.RegularExpressions;
 
 namespace Week6Fix
 {
-    class Program
+    public class PhoneNumber
     {
-        static void Main(string[] args)
-        {
-
-            ValidatePhoneNumber("say 25 miles more");
-        }
-
         public static bool ValidatePhoneNumber(string phoneNumber)
         {
             if (phoneNumber == null)
@@ -22,10 +16,10 @@ namespace Week6Fix
                 throw new ArgumentNullException(nameof(phoneNumber));
             }
 
-            Console.WriteLine(Regex.Match(phoneNumber, @"(?<=say\s)\d+").Success);
-            System.Threading.Thread.Sleep(5000);
+            // Phone Number can include () with the area code, and only . - no space and space between groups of numbers.
+            string phoneNumberRegexExpression = @"^(?<AreaCode>\(?\d{3}?\)?)[-.\s]?(?<FirstThreeNumbers>\d{3})[-.\s]?(?<LastFourNumbers>\d{4})$";
 
-            return false;
+            return Regex.IsMatch(phoneNumber, phoneNumberRegexExpression);
         }
     }
 }
