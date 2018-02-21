@@ -10,7 +10,7 @@ namespace Week6Tests
         [TestMethod]
         public void PhoneValidatorCheck()
         {
-            PhoneValidator.ValidatePhoneNumber("abc");
+            //PhoneValidator.ValidatePhoneNumber("abc");
         }
 
         [TestMethod]
@@ -18,7 +18,7 @@ namespace Week6Tests
         public void PhoneValidatorThrowsForNullPhone()
         {
             // Need to have ExpectedException Line 17:
-            PhoneValidator.ValidatePhoneNumber(null);
+            //PhoneValidator.ValidatePhoneNumber(null);
 
             /* If you do not have ExpectedException need to write the following code below...
             ArgumentNullException thrownException = null;
