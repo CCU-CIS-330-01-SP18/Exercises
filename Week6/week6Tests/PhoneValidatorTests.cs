@@ -101,5 +101,13 @@ namespace week6Tests
             PhoneValidator.ValidatePhoneNumber(phoneNumber);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(FormatException))]
+        public void PhoneValidatorThrowsForFormatException()
+        {
+            string phoneNumber = "asdfasdf";
+            PhoneValidator.ValidatePhoneNumber(phoneNumber);
+        }
+
     }
 }
