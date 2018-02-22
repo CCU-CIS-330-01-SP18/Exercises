@@ -66,6 +66,7 @@ namespace LINQAndEF
         /// </returns>
         public TEntity Add(TEntity entity)
         {
+            return set.Add(entity);
             throw new NotImplementedException("This method needs to be implemented.");
         }
 
