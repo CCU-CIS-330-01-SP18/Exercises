@@ -7,21 +7,27 @@ using System.Text.RegularExpressions;
 
 namespace Week6
 {
+    /// <summary>
+    /// Provides access to a method that uses regular expressions to validate a US-based phone number
+    /// </summary>
     public class PhoneValidator
     {
-        
-
-        
+        /// <summary>
+        /// Takes in a phone number as a string, and performs validation against it to determine whether the number is in a valid format.
+        /// </summary>
+        /// <param name="number">The phone number</param>
+        /// <returns>True, if the number is valid. Otherwise, returns false.</returns>
         public static bool ValidatePhoneNumber(string phoneNumber)
         {
-            if(phoneNumber == null)
+            if (phoneNumber == null | phoneNumber == "")
             {
-                throw new ArgumentNullException(nameof(phoneNumber));
+                throw new ArgumentNullException(phoneNumber, "Phone number is null or empty.");
             }
 
-            Console.WriteLine(Regex.Match("say 25 miles more", @"(?<=say\s)\d+"));
+            // Phone Number can include () with the area code, and only . - no space and space between groups of numbers.
+            string phoneNumberRegexExpression = @"^(?<AreaCode>\(?\d{3}?\)?)?[-.\s]?(?<FirstThreeNumbers>\d{3})[-.\s]?(?<LastFourNumbers>\d{4})$";
 
-            return false;
+            return Regex.IsMatch(phoneNumber, phoneNumberRegexExpression);
         }
         
     }
