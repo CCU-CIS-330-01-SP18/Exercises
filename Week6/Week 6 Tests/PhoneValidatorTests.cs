@@ -12,7 +12,7 @@ namespace Week6Tests
         {
             PhoneValidator.ValidatePhoneNumber("abc");
         }
-        
+
         [TestMethod]
         public void CanValidatePhoneNumbers()
         {
@@ -34,9 +34,9 @@ namespace Week6Tests
             Assert.IsFalse(PhoneValidator.ValidatePhoneNumber("1-800-342-2452"));
             Assert.IsFalse(PhoneValidator.ValidatePhoneNumber("303-CallNow"));
         }
-   
+
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException),"Phone number can't be null or empty.")]
+        [ExpectedException(typeof(ArgumentNullException), "Phone number can't be null or empty.")]
         public void DoesThrowExceptionIfNullOrEmpty()
         {
             // I am testing the Expected Exception.

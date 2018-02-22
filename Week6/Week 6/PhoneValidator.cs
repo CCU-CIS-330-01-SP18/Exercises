@@ -36,7 +36,7 @@ namespace Week6
             {
                 return false;
             }
-          
+
             else
             {
                 throw new InvalidOperationException("An invalid Operation Occured");
@@ -46,7 +46,7 @@ namespace Week6
 }
 
 
-         
 
-  
+
+
 
