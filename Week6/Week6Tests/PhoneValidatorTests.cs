@@ -104,12 +104,5 @@ namespace Week6Tests
         {
             PhoneValidator.ValidatePhoneNumber(null);
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(FormatException))]
-        public void PhoneValidatorThrowsForEmptyString()
-        {
-            PhoneValidator.ValidatePhoneNumber("");
-        }
     }
 }

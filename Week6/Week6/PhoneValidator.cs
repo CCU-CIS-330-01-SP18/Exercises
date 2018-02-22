@@ -26,13 +26,9 @@ namespace Week6
             {
                 return true;
             }
-            else if (phoneNumber == null)
+            else if (string.IsNullOrWhiteSpace(phoneNumber))
             {
                 throw new ArgumentNullException(nameof(phoneNumber));
-            }
-            else if (string.IsNullOrEmpty(phoneNumber))
-            {
-                throw new FormatException(nameof(phoneNumber));
             }
             else
             {
