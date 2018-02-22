@@ -8,14 +8,14 @@ using System.Text.RegularExpressions;
 namespace Week6
 {
     /// <summary>
-    /// Provides access to a method that uses regular expressions to validate a US-based phone number
+    /// Provides validation for US Phone Numbers.
     /// </summary>
     public class PhoneValidator
     {
         /// <summary>
-        /// Takes in a phone number as a string, and performs validation against it to determine whether the number is in a valid format.
+        /// Takes in a phone number as a string, and checks to see if it is a valid phone number using Regex.
         /// </summary>
-        /// <param name="number">The phone number</param>
+        /// <param name="phoneNumber">The phone number that will be validated.</param>
         /// <returns>True, if the number is valid. Otherwise, returns false.</returns>
         public static bool ValidatePhoneNumber(string phoneNumber)
         {
