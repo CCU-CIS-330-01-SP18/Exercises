@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Week7
 {
-    public class File
+    public class CharacterReader
     {
         private string fileName;
         public string FileName
@@ -42,9 +42,5 @@ namespace Week7
 
             return count;
         }
-        /*File(string fileName)
-        {
-
-        }*/
     }
 }
