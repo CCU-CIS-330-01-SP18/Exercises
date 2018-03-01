@@ -1,5 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Week9CodingExercise;
+using System.IO;
+using System.Threading.Tasks;
+
 
 namespace Week9CodingExerciseTests
 {
@@ -9,6 +13,7 @@ namespace Week9CodingExerciseTests
         [TestMethod]
         public void TestMethod1()
         {
+           
         }
     }
 }

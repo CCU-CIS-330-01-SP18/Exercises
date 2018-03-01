@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppReadme\Compare-NET-Objects-Help.txt" />
+    <Content Include="TextFile1.txt" />
+    <Content Include="TextFile2.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
