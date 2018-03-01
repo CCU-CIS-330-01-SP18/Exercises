@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week7Threading", "Week7Thre
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week7ThreadingTests", "Week7ThreadingTests\Week7ThreadingTests.csproj", "{F5E8B6C8-3211-4933-ADAE-6B883B368C7F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiningApplication", "MiningApplication\MiningApplication.csproj", "{10C9089E-8FFE-4893-8AF3-A97E2CA5F8CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F5E8B6C8-3211-4933-ADAE-6B883B368C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5E8B6C8-3211-4933-ADAE-6B883B368C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5E8B6C8-3211-4933-ADAE-6B883B368C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10C9089E-8FFE-4893-8AF3-A97E2CA5F8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10C9089E-8FFE-4893-8AF3-A97E2CA5F8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10C9089E-8FFE-4893-8AF3-A97E2CA5F8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10C9089E-8FFE-4893-8AF3-A97E2CA5F8CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
