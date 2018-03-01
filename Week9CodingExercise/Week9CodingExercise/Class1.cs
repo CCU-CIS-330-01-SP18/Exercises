@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Week9CodingExercise
 {
-    public class Class1
+    /// <summary>
+    /// Interface that defines two methods, serialize and deserialize.
+    /// </summary>
+    public interface ISerializer
     {
+        void Serialize(object a);
+
+        void Deserialize(object a);
     }
 }
