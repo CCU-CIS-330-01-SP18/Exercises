@@ -1,4 +1,4 @@
-﻿using System;
+﻿using CompareDir;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CompareDirTests
@@ -7,9 +7,9 @@ namespace CompareDirTests
     public class MultiThreadingTests
     {
         [TestMethod]
-        public void CanEvaluateDirectory()
+        public void CanCountFilesInDirectory()
         {
-
+            Assert.AreNotEqual(0, MultiThreading.GetFileCountRecursive("C:\\Windows\\Fonts"));
         }
     }
 }
