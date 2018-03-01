@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -18,9 +19,25 @@ namespace CompareDir
         /// <param name="args">An array of arguments supplied by the user at the command line.</param>
         public static void Main(string[] args)
         {
-            System.Console.WriteLine(Parse(args));
+            /*
+             A NOTE TO THE REVIEWERS:
+             This is a console app, and as such is run from the command line.
+             To run this program, open a command window in the bin/release folder, specify Week7.exe as well as any arguments after it.
+             For example, to evaluate the contents of C:\Users, I would type 'Week7.exe "C:\Users" -e'.
+             In the case that you cannot or do not want to get your command line to work, I have included default arguments in case you just run it from VS.
+             It will evaluate C:\Windows\Fonts and C:\Windows\Cursors by default, since everyone running Windows should have those two directories.
+            */
+            if (args.Length == 0)
+            {
+                System.Console.WriteLine("No arguments specified. Using demonstration values.");
+                System.Console.WriteLine(Parse(new string[] { "C:\\Windows\\Fonts", "C:\\Windows\\Cursors", "-e", "-c" }));
+            }
+            else
+            {
+                System.Console.WriteLine(Parse(args));
+            }
         }
-        
+
         /// <summary>
         /// Parses a string array of arguments and returns the method to perform on them.
         /// </summary>
@@ -28,79 +45,138 @@ namespace CompareDir
         /// <returns></returns>
         private static string Parse(string[] args)
         {
-            var paths = new List<string>();
+            // This HashSet exists to store all of the methods that will be run, until the entire list of arguments has been parsed.
             var operations = new HashSet<DirectoryOperation>();
-            string output = "---- Directory Size Evaluator Output ----\n\n";
-            //DirectoryOperation compare = delegate (List<string> directoryList) { return String.Empty; };
+            var paths = new List<string>();
+            string output = "---- Directory Size Evaluator Output ----\n";
+            DirectoryOperation compare = Compare;
             DirectoryOperation evaluate = Evaluate;
-            //DirectoryOperation validate = delegate (List<string> directoryList) { return String.Empty; };
-            try
+
+            for (int i = 0; i < args.Length; i++)
             {
-                for (int i = 0; i < args.Length; i++)
+                // Find two (probably) valid paths in the arguments.
+                if (Regex.IsMatch(args[i], @"^[A-Za-z]:\\.*"))
                 {
-                    // Find two (probably) valid URIs in the arguments.
-                    if (Regex.IsMatch(args[i], @"^[A-Za-z]:\\([\w]*\\)"))
-                    {
-                        paths.Add(args[i]);
-                    }
-                    else if (Regex.IsMatch(args[i], @"^[-/][EeSs]$"))
-                    {
-                        // TODO: Define delegates
-                        operations.Add(evaluate);
-                    }
-                    else if (Regex.IsMatch(args[i], @"^[-/][Hh]$"))
-                    {
-                        return "---- Directory Size Evaluator Help ----\n\n" +
-                               "-- Usage: Week7.exe <args> [flags]\n" +
-                               "- args may be as many valid file paths as you like.\n\n" +
-                               "-- Flags: \n" +
-                               "-e -s: calculate the size of the given directory\n" +
-                               "-h: display this help screen\n";
-                    }
+                    paths.Add(args[i]);
+                }
+                else if (Regex.IsMatch(args[i], @"^[-/][EeSs]$"))
+                {
+                    operations.Add(evaluate);
+                }
+                else if (Regex.IsMatch(args[i], @"^[-/][Cc]$"))
+                {
+                    operations.Add(compare);
+                }
+                else if (Regex.IsMatch(args[i], @"^[-/][Hh]$"))
+                {
+                    return "---- Directory Size Evaluator Help ----\n\n" +
+                           "-- Usage: Week7.exe <args> [flags]\n" +
+                           "- \"args\" may contain as many valid file paths as you like, in any order.\n\n" +
+                           "-- Flags: \n" +
+                           "-c: compare the sizes of all given directories\n" +
+                           "-e -s: calculate the size of the given directory\n" +
+                           "-h: display this help screen\n";
                 }
             }
-            catch (Exception)
+
+            if (paths.Count == 0)
             {
-                // TODO: Don't catch Exception
-                throw;
+                output += "No valid file paths supplied! Please specify one or more file paths that lead to directories to evaluate.";
+                return output;
             }
 
-            foreach (DirectoryOperation operation in operations)
+            try
             {
-                output += operation(paths);
+                foreach (DirectoryOperation operation in operations)
+                {
+                    output += operation(paths);
+                }
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                output += ex.Message + "\nThe program will now terminate.";
+            }
+            catch (PathTooLongException ex)
+            {
+                output += ex.Message + "\nThis error could also be caused by one of the files or folders inside the ones specified." +
+                                       "\nThe program will now terminate.";
+            }
+            catch (AggregateException ex)
+            {
+                output += ex.Message + "\n" + ex.StackTrace + "\nThe program will now terminate.";
             }
 
             return output;
         }
 
         /// <summary>
-        /// Delegate type. Accepts a list of URIs to operate on and returns a string with the results of the operation.
+        /// Delegate type. Accepts a list of directory paths to operate on and returns a string with the results of the operation.
         /// </summary>
-        /// <param name="directoryList">A list of URIs to operate on.</param>
+        /// <param name="directoryList">A list of directory paths to operate on.</param>
         /// <returns>A string detailing the results of the operation.</returns>
         private delegate string DirectoryOperation(List<string> directoryList);
 
         /// <summary>
-        /// Delegate type. Accepts a path to evaluate and gets the size of the directory at the given path.
+        /// Compares the sizes of a list of directories and all subfolders inside them.
         /// </summary>
-        /// <param name="path">The path to the directory to evaluate.</param>
-        /// <returns>The size of the directory.</returns>
-        //private delegate long Func<string, long> SizeOperation(string path);
-
-        /// <summary>
-        /// Compares the size of two directories and all subfolders inside them.
-        /// </summary>
-        /// <param name="directoryList">A list of URIs to compare.</param>
+        /// <param name="paths">A list of paths to directories to compare.</param>
         /// <returns>A string detailing the results of the comparison.</returns>
-        private static string Compare(List<string> directoryList)
+        private static string Compare(List<string> paths)
         {
-            Func<string, long> getSize = GetByteSizeRecursive;
-            foreach (string directory in directoryList)
+            // If the user attempts to compare only one directory, just evaluate that directory's size instead.
+            if (paths.Count == 1)
             {
-                //long size = Task.Factory.StartNew<long>(getSize);
+                return "Only one directory was supplied. Evaluating size of directory instead.\n" +
+                       Evaluate(paths);
             }
 
-            return null;
+            object padlock = new object();
+            var directorySizes = new Dictionary<string, long>();
+            var orderedDirectoryOutputList = new List<string>();
+            string report = "\n---- Compare Report ----\n" +
+                            "(Ordered by size, descending)\n\n";
+
+            foreach (string path in paths)
+            {
+                long size = Task<long>.Factory.StartNew((directory) => GetByteSizeRecursive((string)directory), path).Result;
+                lock (padlock)
+                {
+                    directorySizes.Add(path, size);
+                }
+            }
+
+            // Prepare the results to be output in order of size.
+            while (directorySizes.Count > 0)
+            {
+                string largestDirectory = String.Empty;
+
+                // Figure out which directories are the largest.
+                foreach (string directory in directorySizes.Keys)
+                {
+                    if (string.IsNullOrEmpty(largestDirectory))
+                    {
+                        largestDirectory = directory;
+                    }
+                    else
+                    {
+                        if (directorySizes[directory] > directorySizes[largestDirectory])
+                        {
+                            largestDirectory = directory;
+                        }
+                    }
+                }
+                orderedDirectoryOutputList.Add("\"" + largestDirectory + "\": " + directorySizes[largestDirectory].ToString() + " bytes");
+                directorySizes.Remove(largestDirectory);
+            }
+
+            // Assemble the report.
+            foreach (string result in orderedDirectoryOutputList)
+            {
+                report += (orderedDirectoryOutputList.IndexOf(result) + 1).ToString() + ": " + result + "\n";
+            }
+
+            report += "\n---- END OF COMPARE REPORT ----\n";
+            return report;
         }
 
         /// <summary>
@@ -123,12 +199,17 @@ namespace CompareDir
                 Interlocked.Add(ref subDirectoryCount, subDirectoryCountTask.Result);
                 Interlocked.Add(ref fileCount, fileCountTask.Result);
             }
-
+            
             string report = "\n---- Evaluate Report ----\n";
+            report += "- Directories Evaluated:\n";
+            foreach (string path in paths)
+            {
+                report += "\"" + path + "\"\n";
+            }
             report += "- Total Size: " + size + " bytes\n";
             report += "- Total Number of Folders: " + subDirectoryCount + " folders\n";
             report += "- Total Number of Files: " + fileCount + " files\n";
-            report += "---- END OF EVALUATE REPORT ----\n";
+            report += "\n---- END OF EVALUATE REPORT ----\n";
             return report;
         }
 
@@ -140,25 +221,31 @@ namespace CompareDir
         private static long GetByteSizeRecursive(string path)
         {
             long size = 0;
-
-            if (Directory.Exists(path))
+            try
             {
-                if (Directory.GetFiles(path).Length > 0)
+                if (Directory.Exists(path))
                 {
-                    foreach (string file in Directory.GetFiles(path))
+                    if (Directory.GetFiles(path).Length > 0)
                     {
-                        FileInfo fileInfo = new FileInfo(file);
-                        size += fileInfo.Length;
+                        foreach (string file in Directory.GetFiles(path))
+                        {
+                            FileInfo fileInfo = new FileInfo(file);
+                            size += fileInfo.Length;
+                        }
                     }
-                }
 
-                if (Directory.GetDirectories(path).Length > 0)
-                {
-                    foreach (string folder in Directory.GetDirectories(path))
+                    if (Directory.GetDirectories(path).Length > 0)
                     {
-                        size += GetByteSizeRecursive(folder);
+                        foreach (string folder in Directory.GetDirectories(path))
+                        {
+                            size += GetByteSizeRecursive(folder);
+                        }
                     }
                 }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw;
             }
 
             return size;
