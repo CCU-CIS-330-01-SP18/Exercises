@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Week7Threading
 {
@@ -10,30 +11,24 @@ namespace Week7Threading
         {
             while (true)
             {
+                Console.WriteLine("Make Choice...");
                 string playerChoice = Console.ReadLine().ToLower();
-                if (playerChoice == "find silver")
-                {
-                    Console.WriteLine("It's silver! Type \"mine silver\" to mine or continue searching for minerals");
-                }
-                if (playerChoice == "find gold")
-                {
-                    Console.WriteLine("Gold! Type \"mine gold\" to mine or continue searching for minerals");
-                }
-                if (playerChoice == "find unobtanium")
-                {
-                    Console.WriteLine("UNOBTANIUM?! Type \"mine unobtanium\" to mine or continue searching for minerals");
-                }
                 if (playerChoice == "mine silver")
                 {
-
+                    MineralMiner.Mine("silver");
                 }
                 if (playerChoice == "mine gold")
                 {
-
+                    Console.WriteLine("Mining Gold! Feel free to start mining something else!");
                 }
                 if (playerChoice == "mine unobtanium")
                 {
-
+                    Console.WriteLine("Mining Unobtanium! Feel free to start mining something else!");
+                }
+                if (playerChoice == "go home")
+                {
+                    Console.WriteLine("Maybe you'll have better luck tomorrow :/");
+                    break;
                 }
             }
         }

@@ -9,7 +9,7 @@ namespace Week7Threading
     /// </summary>
     class Silver: Mineral
     {
-        public Silver(): base("Silver", 2000, 5)
+        public Silver(): base("Silver", 5000, 5)
         {
         }
         /// <summary>

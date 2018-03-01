@@ -1,4 +1,5 @@
 ﻿using System;
+using Week7Threading;
 
 namespace MiningApplication
 {
@@ -6,10 +7,10 @@ namespace MiningApplication
     {
         static void Main(string[] args)
         {
-
             Console.WriteLine("Welcome to the Mine!");
-            Console.WriteLine("Type find <mineral> to search for silver, gold, or unobtainium!");
-            
+            Console.WriteLine("Type mine <mineral> to mine silver, gold, or unobtainium! Or say \"go home\" to give up your mining career. :(");
+            var inputHandler = new InputHandler();
+            inputHandler.InputLoop();
         }
     }
 }
