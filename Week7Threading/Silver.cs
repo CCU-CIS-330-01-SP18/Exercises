@@ -9,6 +9,7 @@ namespace Week7Threading
        public FindSilver()
         {
             Console.WriteLine("You have found silver!");
+
         }
     }
 }
