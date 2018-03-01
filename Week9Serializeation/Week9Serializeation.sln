@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week9Serializeation", "Week9Serializeation\Week9Serializeation.csproj", "{BCB6FB75-33C0-4A08-A1FD-A99BCDB3EC6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{5A03C2E4-020A-4E76-A645-F931CC0E29FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCB6FB75-33C0-4A08-A1FD-A99BCDB3EC6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCB6FB75-33C0-4A08-A1FD-A99BCDB3EC6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCB6FB75-33C0-4A08-A1FD-A99BCDB3EC6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCB6FB75-33C0-4A08-A1FD-A99BCDB3EC6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A03C2E4-020A-4E76-A645-F931CC0E29FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A03C2E4-020A-4E76-A645-F931CC0E29FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A03C2E4-020A-4E76-A645-F931CC0E29FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A03C2E4-020A-4E76-A645-F931CC0E29FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D92A9512-5540-4F3F-8B45-3EE7101482D9}
+	EndGlobalSection
+EndGlobal
