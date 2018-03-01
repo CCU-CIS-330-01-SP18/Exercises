@@ -20,11 +20,14 @@ namespace Week7ThreadingExercise
         public static async Task<int> CountCharacters()
         {
             /* NOTE: I have included a text file already named Data.txt, which you can look at
-               For yourselves. This file is located in Week7ThreadingExercise\bin\Debug.
+               For yourselves in my Solution Explorer. This file is located in Week7ThreadingExercise\bin\Debug.
             */
             string fileName = "Data.txt";
+
             Console.WriteLine("Entering CountCharacters()");
+
             int count = 0;
+
             using (StreamReader reader = new StreamReader(fileName))
             {
                 string content = await reader.ReadToEndAsync();
