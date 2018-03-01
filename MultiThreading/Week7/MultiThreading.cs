@@ -42,7 +42,7 @@ namespace CompareDir
         /// Parses a string array of arguments and returns the method to perform on them.
         /// </summary>
         /// <param name="args">An array of arguments to parse.</param>
-        /// <returns></returns>
+        /// <returns>A string detailing the results of the given arguments.</returns>
         private static string Parse(string[] args)
         {
             // This HashSet exists to store all of the methods that will be run, until the entire list of arguments has been parsed.
@@ -121,7 +121,8 @@ namespace CompareDir
         /// </summary>
         /// <param name="paths">A list of paths to directories to compare.</param>
         /// <returns>A string detailing the results of the comparison.</returns>
-        private static string Compare(List<string> paths)
+        /// <remarks>This method is public to facilitate unit testing.</remarks>
+        public static string Compare(List<string> paths)
         {
             // If the user attempts to compare only one directory, just evaluate that directory's size instead.
             if (paths.Count == 1)
@@ -184,7 +185,8 @@ namespace CompareDir
         /// </summary>
         /// <param name="path">The path to the directory to evaluate.</param>
         /// <returns>A string detailing the results.</returns>
-        private static string Evaluate(List<string> paths)
+        /// <remarks>This method is public to facilitate unit testing.</remarks>
+        public static string Evaluate(List<string> paths)
         {
             long size = 0;
             long subDirectoryCount = 0;
@@ -218,7 +220,8 @@ namespace CompareDir
         /// </summary>
         /// <param name="path">The path to the directory to evaluate.</param>
         /// <returns>The size of the directory in bytes.</returns>
-        private static long GetByteSizeRecursive(string path)
+        /// <remarks>This method is public to facilitate unit testing.</remarks>
+        public static long GetByteSizeRecursive(string path)
         {
             long size = 0;
             try
@@ -256,7 +259,8 @@ namespace CompareDir
         /// </summary>
         /// <param name="path">The path to the directory to evaluate.</param>
         /// <returns>The number of directories found, including the root directory; or 0 if the root directory does not exist.</returns>
-        private static long GetDirectoryCountRecursive(string path)
+        /// <remarks>This method is public to facilitate unit testing.</remarks>
+        public static long GetDirectoryCountRecursive(string path)
         {
             long count = 0;
 
@@ -278,7 +282,8 @@ namespace CompareDir
         /// </summary>
         /// <param name="path">The path to the directory to evaluate.</param>
         /// <returns>The number of files found.</returns>
-        private static long GetFileCountRecursive(string path)
+        /// <remarks>This method is public to facilitate unit testing.</remarks>
+        public static long GetFileCountRecursive(string path)
         {
             long count = 0;
 
