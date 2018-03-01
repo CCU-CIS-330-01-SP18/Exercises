@@ -11,8 +11,8 @@ namespace CompareDirTests
         /*
          * A NOTE TO THE REVIEWERS:
          * This class looks a little sparse, mainly because of the way this program is set up.
-         * Since the main methods that do things return a string for user consumption, unit tests are very difficult to write without some complicated parsing functions.
-         * I've done the best I can, given this.
+         * Since the main methods that do things return a string for user consumption, effective unit tests are very difficult to write 
+         * without some complicated parsing functions. I've done the best I can.
          */
 
         [TestMethod]
@@ -152,6 +152,17 @@ namespace CompareDirTests
                 "C:\\Fonts"
             };
             Assert.IsTrue(MultiThreading.Compare(oneStringList).Contains("Only one directory was supplied. Evaluating size of directory instead."));
+        }
+
+        [TestMethod]
+        public void ParseWarnsWhenNoPathsSupplied()
+        {
+            var args = new string[]
+            {
+                "-e",
+                "-c"
+            };
+            Assert.IsTrue(MultiThreading.Parse(args).Contains("No valid file paths supplied! Please specify one or more file paths that lead to directories to evaluate."));
         }
     }
 }

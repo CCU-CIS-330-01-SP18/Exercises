@@ -43,7 +43,8 @@ namespace CompareDir
         /// </summary>
         /// <param name="args">An array of arguments to parse.</param>
         /// <returns>A string detailing the results of the given arguments.</returns>
-        private static string Parse(string[] args)
+        /// <remarks>This method is public to facilitate unit testing.</remarks>
+        public static string Parse(string[] args)
         {
             // This HashSet exists to store all of the methods that will be run, until the entire list of arguments has been parsed.
             var operations = new HashSet<DirectoryOperation>();
