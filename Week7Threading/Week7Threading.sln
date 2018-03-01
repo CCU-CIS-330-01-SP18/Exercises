@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSiteRace", "LiveSiteRace\LiveSiteRace.csproj", "{1FA219AF-2092-4DC8-A4FF-F355726388FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveSiteRaceTests", "LiveSiteRaceTests\LiveSiteRaceTests.csproj", "{87642146-9B0D-45B8-B005-1A477107EBAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FA219AF-2092-4DC8-A4FF-F355726388FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FA219AF-2092-4DC8-A4FF-F355726388FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FA219AF-2092-4DC8-A4FF-F355726388FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FA219AF-2092-4DC8-A4FF-F355726388FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87642146-9B0D-45B8-B005-1A477107EBAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87642146-9B0D-45B8-B005-1A477107EBAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87642146-9B0D-45B8-B005-1A477107EBAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87642146-9B0D-45B8-B005-1A477107EBAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {679652B5-F8AF-4559-BC33-BDFE227456D6}
+	EndGlobalSection
+EndGlobal
