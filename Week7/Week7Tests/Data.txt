@@ -1,1 +1,0 @@
-Hello this is a simple text file from which my program will read and count the characters of. 
