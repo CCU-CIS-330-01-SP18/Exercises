@@ -14,8 +14,11 @@ namespace Week7ThreadingExerciseTests
         {
             Task<int> task = CharacterReader.CountCharacters();
 
+            // Similarly to the CharacterReader class I added the same text file to 
+            // Week7ThreadingExerciseTests\bin\Debug
             string content = "Data.txt";
-
+            
+            // This allows me to access properties and methods to interact with a file.
             FileInfo file = new FileInfo(content);
 
             Assert.AreEqual(file.Length, task.Result);
