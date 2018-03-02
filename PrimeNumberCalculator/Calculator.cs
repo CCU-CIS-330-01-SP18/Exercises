@@ -8,8 +8,19 @@ using System.Threading.Tasks;
 
 namespace PrimeNumberCalculator
 {
+
+    /// <summary>
+    /// Class that represents a prime number claculator with threadding functionality.  
+    /// </summary>
     public class Calculator
     {
+
+        /// <summary>
+        /// Function that calculates prime numbers, not formatted for threading.
+        /// </summary>
+        /// <param name="initialValue">Value to begin calculation.</param>
+        /// <param name="maxValue">Value to end calculation.</param>
+        /// <returns>A lits of ints that are the results of the prim number check.</returns>
         public List<int> CalculatePrime(int initialValue, int maxValue)
         {
             List<int> primes = new List<int>();
@@ -39,6 +50,13 @@ namespace PrimeNumberCalculator
             return primes;
         }
 
+
+        /// <summary>
+        /// Function that calculates prime numbers, formatted for threading.
+        /// </summary>
+        /// <param name="initialValue">Value to begin calculation.</param>
+        /// <param name="maxValue">Value to end calculation.</param>
+        /// <returns>A lits of ints that are the results of the prim number check.</returns>
         public List<int> CalculatePrimeT(int initialValue, int maxValue)
         {
             List<int> primes = new List<int>();
@@ -63,6 +81,12 @@ namespace PrimeNumberCalculator
             return primes;
         }
 
+        /// <summary>
+        /// Calculates prime numbers between an initial value and a max value using the Threads.
+        /// </summary>
+        /// <param name="initialValue">Value to begin calculation.</param>
+        /// <param name="maxValue">Value to end calculation.</param>
+        /// <returns>A lits of ints that are the results of the prim number check.</returns>
         public List<int> CalculatePrimeThreads(int initialValue, int maxValue)
         {
             Stopwatch stopwatch = new Stopwatch();
@@ -98,6 +122,12 @@ namespace PrimeNumberCalculator
             return primes;
         }
 
+        /// <summary>
+        /// Calculates prime numbers between an initial value and a max value using the Tasks
+        /// </summary>
+        /// <param name="initialValue">Value to begin calculation.</param>
+        /// <param name="maxValue">Value to end calculation.</param>
+        /// <returns>A lits of ints that are the results of the prim number check.</returns>
         public List<int> CalculatePrimeTasks(int initialValue, int maxValue)
         {
             Stopwatch stopwatch = new Stopwatch();
@@ -127,6 +157,12 @@ namespace PrimeNumberCalculator
             return primes;
         }
 
+        /// <summary>
+        /// Calculates prime numbers between an initial value and a max value using the ThreadPool
+        /// </summary>
+        /// <param name="initialValue">Value to begin calculation.</param>
+        /// <param name="maxValue">Value to end calculation.</param>
+        /// <returns>A lits of ints that are the results of the prim number check.</returns>
         public List<int> CalculatePrimeThreadPool(int initialValue, int maxValue)
         {
             Stopwatch stopwatch = new Stopwatch();

@@ -55,7 +55,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp1\PrimeNumberCalculator.csproj">
+    <ProjectReference Include="..\PrimeNumberCalculator\PrimeNumberCalculator.csproj">
       <Project>{9f1d468c-4e20-4999-971b-69235b03589a}</Project>
       <Name>PrimeNumberCalculator</Name>
     </ProjectReference>
