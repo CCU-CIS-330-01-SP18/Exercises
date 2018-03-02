@@ -7,17 +7,13 @@ namespace Week7Threading
     /// <summary>
     /// A type of mineral that is worth 10.
     /// </summary>
-    class Gold: Mineral
+    public class Gold: Mineral
     {
-        public Gold() : base("Gold", 5000, 10)
-        {
-        }
         /// <summary>
-        /// Finds gold and gives a MineralMiner the opportunity to mine it.
+        /// Defines the name, mining time, and value of gold.
         /// </summary>
-        public void FindGold()
+        public Gold() : base("Gold", 10000, 10)
         {
-            Console.WriteLine("Yee Haw! You found gold!");
         }
     }
 }

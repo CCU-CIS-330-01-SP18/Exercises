@@ -7,17 +7,13 @@ namespace Week7Threading
     /// <summary>
     /// A type of mineral that is worth 5.
     /// </summary>
-    class Silver: Mineral
+    public class Silver: Mineral
     {
+        /// <summary>
+        /// Defines the name, mining time, and value of silver.
+        /// </summary>
         public Silver(): base("Silver", 5000, 5)
         {
-        }
-        /// <summary>
-        /// Finds silver and gives a MineralMiner the opportunity to mine it.
-        /// </summary>
-       public void FindSilver()
-        {
-            Console.WriteLine("You have found silver! Type \"mine silver\" to mine!");
         }
     }
 }
