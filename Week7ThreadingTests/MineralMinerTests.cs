@@ -16,7 +16,7 @@ namespace Week7ThreadingTests
             Thread.Sleep(5500);
             Assert.AreEqual(false, MineralMiner.MiningSilver);
         }
-        
+        [TestMethod]
         public void MiningGoldChangesMiningGoldProperty()
         {
             MineralMiner.Mine("gold");
@@ -24,17 +24,21 @@ namespace Week7ThreadingTests
             Thread.Sleep(10500);
             Assert.AreEqual(false, MineralMiner.MiningGold);
         }
+        [TestMethod]
         public void MiningUnobtainiumChangesMiningUnobtainiumProperty()
         {
-            MineralMiner.Mine("unobtanium");
+            MineralMiner.Mine("unobtainium");
             Assert.AreEqual(true, MineralMiner.MiningUnobtainium);
             Thread.Sleep(15500);
             Assert.AreEqual(false, MineralMiner.MiningUnobtainium);
         }
-        public void CantMineMineralWhileAlreadyMiningMineral()
+        [TestMethod]
+        public void CanMineMultipleMinerals()
         {
-            MineralMiner.MiningSilver = true;
             MineralMiner.Mine("silver");
+            MineralMiner.Mine("gold");
+            Assert.AreEqual(MineralMiner.MiningSilver, true);
+            Assert.AreEqual(MineralMiner.MiningGold, true);
         }
         
     }
