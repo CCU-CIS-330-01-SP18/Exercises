@@ -41,5 +41,6 @@ namespace Week7ThreadingTests
             Assert.AreEqual(MineralMiner.MiningGold, true);
         }
         
+
     }
 }
