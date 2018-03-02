@@ -7,82 +7,83 @@ using System.Threading.Tasks;
 using System.Threading;
 
 ///Need to add logic from CalculateFolderSize to make GetDirectorSize have failsafes
-/// It's now recursive and parallel, but faulty at accuracy.
 
 namespace Week7Threading
 {
-    class Week7Threading
+    /// <summary>
+    /// A Class that creates and writes a text file and contains a method to read the size of a directory.
+    /// </summary>
+    public class ThreadingProgram
     {
-        static object countLock = new object();
 
+        /// <summary>
+        /// A method that creates a directory with a text file within it.
+        /// </summary>
+        /// <param name="args"> Takes a string parameter.</param>
         static void Main(string[] args)
         {
-            GetFileSize(@"C:\Program Files\Common Files");
-            //GetFileSize(@"C:\backups");
-        }
-        static long GetFileSize(string directory)
-        {
-            // Gets array of all file names recursively.
-            string[] allFiles = Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories);
+            string folderName = @"c:\Secret Contents";
+            string pathString = Path.Combine(folderName, "You_Better_Watch_Out");
+            Directory.CreateDirectory(pathString);
 
-            /*
-            catch
+            string fileName = "You_Better_Not_Cry.txt";
+
+            pathString = Path.Combine(pathString, fileName);
+
+            if (!File.Exists(pathString))
             {
-                NotSupportedException("Unable to calculate folder size: {0}");
+                using (StreamWriter sw = File.CreateText(pathString))
+                {
+                    sw.WriteLine("Hello, and welcome to the file that you're going to delete because it's annoying (if you notice it mwahaha). Chadderbox Was Here!");
+                }
+                GetFileSize(@"C:\Secret Contents");
+
             }
-            */
-
-            // Calculating total bytes of all files in a loop.
-            long fileLength = 0;
-            Parallel.ForEach(allFiles, currentFile =>
+            else
             {
-                //(string name in allFiles)
-                // FileInfo gets the length of each file
-                FileInfo info = new FileInfo(currentFile);
-                fileLength += info.Length;
-                Console.WriteLine("Processing {0} on thread {1}", info, Thread.CurrentThread.ManagedThreadId);
-            });
+                GetFileSize(@"C:\Secret Contents");
+            }
+        }
 
-            // Returns total size of file.
-           var fileLengthMegabytes =  fileLength / 1000000;
-            Console.WriteLine("The file chosen is "+fileLength+" bytes, or about "+fileLengthMegabytes+" megabytes.");
-            Console.WriteLine("Press any key to exit.");
-            Console.ReadKey();
-            return fileLength;
-        }
-        /*
-        static long GetDirectorySize(string directory)
+        /// <summary>
+        /// A method that finds the file length of the string parameter passed to it.
+        /// This method is public in order to properly test it.
+        /// </summary>
+        /// <param name="directory"> A string parameter that needs to be formatted as a specific directory.</param>
+        /// <returns> This method returns the calculated file length as a long.</returns>
+        public static long GetFileSize(string directory)
         {
-                
-                    // Recursively scan directories.
-                    string[] a = Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories);
-                    // 2.
-                    // Calculate total bytes of all files in a loop.
-                    long fileSize = 0;
-                    foreach (string name in a)
-                    {
-                        if (File.Exists(directory))
-                        {
-                            // 3.
-                            // Use FileInfo to get length of each file.
-                            FileInfo info = new FileInfo(name);
-                            fileSize += info.Length;
-                            // 4.
-                            // Return total size
-                            Console.WriteLine(fileSize);
-                            Console.WriteLine("Press any key to exit.");
-                            Console.ReadKey();
-                        }
-                        else
-                        {
-                            Console.WriteLine("Unable to calculate folder size: {0}");
-                            //Console.ReadKey();
-                            //throw new NotSupportedException("Unable to calculate folder size: {0}");
-                            //UnauthorizedAccessException
-                        };
-                    }
-            return fileSize ;
+
+            long fileLength = 0;
+            if (directory == "")
+            {
+                throw new DirectoryNotFoundException("That file doesn't exist");
+            }
+            
+            if (!File.Exists(directory))
+            {
+                // Gets array of all file names recursively.
+                string[] allFiles = Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories);
+
+               // Calculating the length of the file in a loop using threading.
+                Parallel.ForEach(allFiles, currentFile =>
+                {
+                    FileInfo info = new FileInfo(currentFile);
+                    fileLength += info.Length;
+                    Console.WriteLine("Processing {0} on thread {1}", info, Thread.CurrentThread.ManagedThreadId);
+                });
+
+                long fileLengthKilobytes = fileLength / 1000;
+                Console.WriteLine("The file created is " + fileLength + " bytes, or about " + fileLengthKilobytes + " kilobytes.");
+                Console.WriteLine("Press any key to exit.");
+                Console.ReadKey();
+                return fileLength;
+            }
+
+            else
+            {
+                throw new UnauthorizedAccessException("You do not have access to this file.");
+            }
         }
-        */
     }
 }
