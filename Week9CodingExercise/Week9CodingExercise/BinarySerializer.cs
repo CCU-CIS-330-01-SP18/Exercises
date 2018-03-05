@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Week9CodingExercise
 {
-    class BinarySerializer : ISerializer
+    public class BinarySerializer : ISerializer
     {
         static void BinarySerialization<T>(IndividualList<T> list) where T : Individual
         {

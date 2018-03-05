@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BinarySerializer.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="DataContract.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Individual.cs" />
     <Compile Include="IndividualList.cs" />
