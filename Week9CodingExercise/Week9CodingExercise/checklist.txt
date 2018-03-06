@@ -1,0 +1,2 @@
+﻿Seperate Serialize and deserialize methods within each type of serialization type,
+e.g. Binary, XML, Newton Json.

@@ -51,10 +51,14 @@
     <Compile Include="Individual.cs" />
     <Compile Include="IndividualList.cs" />
     <Compile Include="ISerializer.cs" />
+    <Compile Include="NewtonJsonSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="checklist.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

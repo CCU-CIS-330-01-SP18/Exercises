@@ -11,8 +11,8 @@ namespace Week9CodingExercise
     /// </summary>
     public interface ISerializer
     {
-        void Serialize(object a);
+        void Serialize(IndividualList<Individual> list);
 
-        void Deserialize(object a);
+        void Deserialize(IndividualList<Individual> list);
     }
 }
