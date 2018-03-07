@@ -1,2 +1,5 @@
 ﻿Seperate Serialize and deserialize methods within each type of serialization type,
 e.g. Binary, XML, Newton Json.
+
+Or Move all code that is within serialization and deserialization methods into serialize and deserialize methods and delete
+the extra code.

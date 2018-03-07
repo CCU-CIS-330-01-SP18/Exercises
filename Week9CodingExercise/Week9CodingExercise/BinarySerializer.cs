@@ -20,6 +20,17 @@ namespace Week9CodingExercise
                 formatter.Serialize(stream, list);
             }
 
+            /*IndividualList<T> deserializedList = null;
+            using (FileStream reader = File.OpenRead("_b-individuals.txt"))
+            {
+                deserializedList = formatter.Deserialize(reader) as IndividualList<T>;
+            }*/
+        }
+
+        static void BinaryDeserialization<T>(IndividualList<T> list) where T : Individual
+        {
+            var formatter = new BinaryFormatter();
+
             IndividualList<T> deserializedList = null;
             using (FileStream reader = File.OpenRead("_b-individuals.txt"))
             {
@@ -27,14 +38,14 @@ namespace Week9CodingExercise
             }
         }
 
-        public void Serialize(object o)
+        public void Serialize(IndividualList<Individual> individualList)
         {
-
+            BinarySerializer.BinarySerialization(individualList);
         }
 
-        public void Deserialize(object o)
+        public void Deserialize(IndividualList<Individual> individualList)
         {
-
+            BinarySerializer.BinaryDeserialization(individualList);
         }
     }
 }

@@ -21,7 +21,16 @@ namespace Week9CodingExercise
             using (StreamWriter writer = File.CreateText("nsj-individuals.json"))
             {
                 serializer.Serialize(writer, list);
-            }
+            }     
+        }
+
+        static void NewtonsoftJsonDeserialization<T>(IndividualList<T> list) where T : Individual
+        {
+            JsonSerializer serializer = new JsonSerializer
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                Formatting = Newtonsoft.Json.Formatting.Indented
+            };
 
             IndividualList<T> deserializedList = null;
             using (StreamReader reader = File.OpenText("nsj-individuals.json"))
@@ -37,7 +46,7 @@ namespace Week9CodingExercise
 
         public void Deserialize(IndividualList<Individual> list)
         {
-
+            NewtonJsonSerializer.NewtonsoftJsonDeserialization(list);
         }
     }
 }

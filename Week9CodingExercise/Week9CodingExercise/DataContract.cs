@@ -18,7 +18,12 @@ namespace Week9CodingExercise
             using (XmlWriter writer = XmlWriter.Create("_dc-individuals.xml", settings))
             {
                 serializer.WriteObject(writer, list);
-            }
+            }  
+        }
+
+        static void DataContractDeserialization<T>(IndividualList<T> list) where T : Individual
+        {
+            DataContractSerializer serializer = new DataContractSerializer(typeof(IndividualList<T>));
 
             IndividualList<T> deserializedList = null;
             using (XmlReader reader = XmlReader.Create("_dc-individuals.xml"))
@@ -27,14 +32,14 @@ namespace Week9CodingExercise
             }
         }
 
-        public void Serialize(object o)
+        public void Serialize(IndividualList<Individual> individualList)
         {
-
+            DataContract.DataContractSerialization(individualList);
         }
 
-        public void Deserialize(object o)
+        public void Deserialize(IndividualList<Individual> individualList)
         {
-
+            DataContract.DataContractDeserialization(individualList);
         }
     }
 }
