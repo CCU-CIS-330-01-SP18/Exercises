@@ -29,7 +29,7 @@ namespace Week9CodingExercise
             var formatter = new BinaryFormatter();
             
             // Creates a file stream along with the txt file and serializes it in Binary.
-            using (FileStream stream = File.Create("_b-individuals.txt"))
+            using (FileStream stream = File.Create("b-individuals.txt"))
             {
                 formatter.Serialize(stream, list);
             }

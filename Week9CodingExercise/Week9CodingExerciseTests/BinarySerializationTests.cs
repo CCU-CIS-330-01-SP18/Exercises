@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Week9CodingExercise;
 using KellermanSoftware.CompareNetObjects;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Week9CodingExerciseTests
 {
@@ -19,6 +20,10 @@ namespace Week9CodingExerciseTests
             var serializer = new BinarySerializer();
 
             serializer.Serialize(list);
+
+            FileInfo file = new FileInfo("b-individuals.txt");
+
+            Assert.IsTrue(file.Exists);
 
             object o = serializer.Deserialize(list);
 

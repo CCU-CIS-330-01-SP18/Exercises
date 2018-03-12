@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Week9CodingExercise;
 using KellermanSoftware.CompareNetObjects;
+using System.IO;
 
 namespace Week9CodingExerciseTests
 {
@@ -18,6 +19,10 @@ namespace Week9CodingExerciseTests
             var dataContract = new DataContract();
 
             dataContract.Serialize(list);
+
+            FileInfo file = new FileInfo("_dc-individuals.xml");
+
+            Assert.IsTrue(file.Exists);
 
             var deserializedList = dataContract.Deserialize(list);
 
