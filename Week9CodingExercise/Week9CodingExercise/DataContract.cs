@@ -21,7 +21,7 @@ namespace Week9CodingExercise
             }  
         }
 
-        static void DataContractDeserialization<T>(IndividualList<T> list) where T : Individual
+        static object DataContractDeserialization<T>(IndividualList<T> list) where T : Individual
         {
             DataContractSerializer serializer = new DataContractSerializer(typeof(IndividualList<T>));
 
@@ -30,6 +30,8 @@ namespace Week9CodingExercise
             {
                 deserializedList = serializer.ReadObject(reader) as IndividualList<T>;
             }
+
+            return deserializedList;
         }
 
         public void Serialize(IndividualList<Individual> individualList)
@@ -37,9 +39,9 @@ namespace Week9CodingExercise
             DataContract.DataContractSerialization(individualList);
         }
 
-        public void Deserialize(IndividualList<Individual> individualList)
+        public object Deserialize(IndividualList<Individual> individualList)
         {
-            DataContract.DataContractDeserialization(individualList);
+            return DataContract.DataContractDeserialization(individualList);
         }
     }
 }

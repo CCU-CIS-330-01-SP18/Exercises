@@ -9,6 +9,9 @@ using System.IO;
 
 namespace Week9CodingExercise
 {
+    [Serializable]
+
+    [DataContract]
     public class BinarySerializer : ISerializer
     {
         static void BinarySerialization<T>(IndividualList<T> list) where T : Individual
@@ -27,7 +30,7 @@ namespace Week9CodingExercise
             }*/
         }
 
-        static void BinaryDeserialization<T>(IndividualList<T> list) where T : Individual
+        static object BinaryDeserialization<T>(IndividualList<T> list) where T : Individual
         {
             var formatter = new BinaryFormatter();
 
@@ -36,6 +39,8 @@ namespace Week9CodingExercise
             {
                 deserializedList = formatter.Deserialize(reader) as IndividualList<T>;
             }
+
+            return deserializedList;
         }
 
         public void Serialize(IndividualList<Individual> individualList)
@@ -43,9 +48,9 @@ namespace Week9CodingExercise
             BinarySerializer.BinarySerialization(individualList);
         }
 
-        public void Deserialize(IndividualList<Individual> individualList)
+        public object Deserialize(IndividualList<Individual> individualList)
         {
-            BinarySerializer.BinaryDeserialization(individualList);
+            return BinarySerializer.BinaryDeserialization(individualList);
         }
     }
 }

@@ -7,9 +7,13 @@ using System.Threading.Tasks;
 
 namespace Week9CodingExercise
 {
+    [Serializable]
+
+    [DataContract]
     public class Individual
     {
-        private string gender;
+        
+        //private string gender;
         public Individual(string name = null)
         {
             Name = name;
@@ -19,7 +23,8 @@ namespace Week9CodingExercise
         public string Name { get; set; }
 
         [DataMember]
-        public string Gender
+        public bool IsMale { get; set; }
+        /*public string Gender
         {
             get
             {
@@ -37,7 +42,7 @@ namespace Week9CodingExercise
                     throw new FormatException("Entry Must Be Either 'Male' or 'Female', no other genders are recognized at this time.");
                 }
             }
-        }
+        }*/
 
         [DataMember]
         public bool IsEmployee { get; set; }

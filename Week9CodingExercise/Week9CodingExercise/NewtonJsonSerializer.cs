@@ -24,7 +24,7 @@ namespace Week9CodingExercise
             }     
         }
 
-        static void NewtonsoftJsonDeserialization<T>(IndividualList<T> list) where T : Individual
+        static object NewtonsoftJsonDeserialization<T>(IndividualList<T> list) where T : Individual
         {
             JsonSerializer serializer = new JsonSerializer
             {
@@ -37,6 +37,8 @@ namespace Week9CodingExercise
             {
                 deserializedList = serializer.Deserialize(reader, typeof(IndividualList<T>)) as IndividualList<T>;
             }
+
+            return deserializedList;
         }
 
         public void Serialize(IndividualList<Individual> list)
@@ -44,9 +46,9 @@ namespace Week9CodingExercise
             NewtonJsonSerializer.NewtonsoftJsonSerialization(list);
         }
 
-        public void Deserialize(IndividualList<Individual> list)
+        public object Deserialize(IndividualList<Individual> list)
         {
-            NewtonJsonSerializer.NewtonsoftJsonDeserialization(list);
+            return NewtonJsonSerializer.NewtonsoftJsonDeserialization(list);
         }
     }
 }

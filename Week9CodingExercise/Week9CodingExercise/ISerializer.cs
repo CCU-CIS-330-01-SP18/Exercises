@@ -13,6 +13,6 @@ namespace Week9CodingExercise
     {
         void Serialize(IndividualList<Individual> list);
 
-        void Deserialize(IndividualList<Individual> list);
+        object Deserialize(IndividualList<Individual> list);
     }
 }

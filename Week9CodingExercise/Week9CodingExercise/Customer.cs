@@ -10,7 +10,7 @@ namespace Week9CodingExercise
     [Serializable]
 
     [DataContract]
-    class Customer : Individual
+    public class Customer : Individual
     {
         public Customer(string name = null)
             : base(name)
