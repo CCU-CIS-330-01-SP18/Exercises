@@ -11,8 +11,17 @@ namespace Week9CodingExercise
     /// </summary>
     public interface ISerializer
     {
+        /// <summary>
+        /// Base method for serializing an object.
+        /// </summary>
+        /// <param name="list">IndividualList to be serialized.</param>
         void Serialize(IndividualList<Individual> list);
 
+        /// <summary>
+        /// Base method for deserializing an object.
+        /// </summary>
+        /// <param name="list">IndividualList to be deserialized.</param>
+        /// <returns>An object.</returns>
         object Deserialize(IndividualList<Individual> list);
     }
 }

@@ -20,7 +20,6 @@ namespace Week9CodingExerciseTests
 
             serializer.Serialize(list);
 
-            IndividualList<Individual> deserializedList = null;
             object o = serializer.Deserialize(list);
 
             CompareLogic logic = new CompareLogic();

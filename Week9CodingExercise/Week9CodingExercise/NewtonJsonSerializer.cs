@@ -8,11 +8,20 @@ using Newtonsoft.Json;
 
 namespace Week9CodingExercise
 {
+    /// <summary>
+    /// Instantiates a NewtonJsonSerializer that provides methods to serializes and deserializes
+    /// IndividualLists into JSON format.
+    /// </summary>
     public class NewtonJsonSerializer : ISerializer
     {
+        /// <summary>
+        /// Serializes an IndividualList into JSON format.
+        /// </summary>
+        /// <typeparam name="T">Of Type Individual.</typeparam>
+        /// <param name="list">IndividualList to be serialized.</param>
         static void NewtonsoftJsonSerialization<T>(IndividualList<T> list) where T : Individual
         {
-            JsonSerializer serializer = new JsonSerializer
+            var serializer = new JsonSerializer
             {
                 TypeNameHandling = TypeNameHandling.Auto,
                 Formatting = Newtonsoft.Json.Formatting.Indented
@@ -24,9 +33,15 @@ namespace Week9CodingExercise
             }     
         }
 
+        /// <summary>
+        /// Method to deserialize an IndividualList.
+        /// </summary>
+        /// <typeparam name="T">Of Type Individual.</typeparam>
+        /// <param name="list">An Individual List.</param>
+        /// <returns>The Deserialized List.</returns>
         static object NewtonsoftJsonDeserialization<T>(IndividualList<T> list) where T : Individual
         {
-            JsonSerializer serializer = new JsonSerializer
+            var serializer = new JsonSerializer
             {
                 TypeNameHandling = TypeNameHandling.Auto,
                 Formatting = Newtonsoft.Json.Formatting.Indented
@@ -41,6 +56,10 @@ namespace Week9CodingExercise
             return deserializedList;
         }
 
+        /// <summary>
+        /// An abstracted method to run the NewtonJsonSerializer.NewtonJsonSerialization method.
+        /// </summary>
+        /// <param name="list">An IndividualList to Serialize.</param>
         public void Serialize(IndividualList<Individual> list)
         {
             NewtonJsonSerializer.NewtonsoftJsonSerialization(list);

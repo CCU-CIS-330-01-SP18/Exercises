@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Week9CodingExercise
 {
+    /// <summary>
+    /// Instantiates an IndividualList where the type is an Object Individual.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [Serializable]
 
     [KnownType(typeof(Employee))]

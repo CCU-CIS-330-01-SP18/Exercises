@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Week9CodingExercise
 {
+    /// <summary>
+    /// Instantiates an Individual Object.
+    /// </summary>
     [Serializable]
 
     [DataContract]
@@ -14,6 +17,10 @@ namespace Week9CodingExercise
     {
         
         //private string gender;
+        /// <summary>
+        /// Constructor that sets the name of the Individual.
+        /// </summary>
+        /// <param name="name"></param>
         public Individual(string name = null)
         {
             Name = name;
@@ -22,27 +29,10 @@ namespace Week9CodingExercise
         [DataMember]
         public string Name { get; set; }
 
+
         [DataMember]
         public bool IsMale { get; set; }
-        /*public string Gender
-        {
-            get
-            {
-                return gender;
-            }
-            set
-            {
-                gender.ToLower();
-                if (gender == "male" || gender == "female")
-                {
-                    gender = value;
-                }
-                else
-                {
-                    throw new FormatException("Entry Must Be Either 'Male' or 'Female', no other genders are recognized at this time.");
-                }
-            }
-        }*/
+
 
         [DataMember]
         public bool IsEmployee { get; set; }
