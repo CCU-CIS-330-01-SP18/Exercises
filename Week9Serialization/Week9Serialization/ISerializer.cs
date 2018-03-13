@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Week9Serialization
 {
+    /// <summary>
+    /// An interface that allows classes to serialize and desirialize data.
+    /// </summary>
     interface ISerializer
     {
         void Serialize();

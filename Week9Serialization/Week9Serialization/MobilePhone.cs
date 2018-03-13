@@ -5,9 +5,9 @@ using System.Text;
 namespace Week9Serialization
 {
     /// <summary>
-    /// Serializes data via the Data Contract method.
+    /// Represents an instance of an individual mobile phone.
     /// </summary>
-    class DataContractSerializer: ISerializer
+    class MobilePhone: Device
     {
     }
 }

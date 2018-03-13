@@ -5,9 +5,10 @@ using System.Text;
 namespace Week9Serialization
 {
     /// <summary>
-    /// Serializes data via the Data Contract method.
+    /// Serializes data into a JSON format.
     /// </summary>
-    class DataContractSerializer: ISerializer
+    class JSONSerializer
     {
+
     }
 }
