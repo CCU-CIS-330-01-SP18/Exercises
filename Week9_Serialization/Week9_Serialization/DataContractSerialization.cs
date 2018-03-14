@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Runtime.Serialization;
 
@@ -13,7 +11,7 @@ namespace Week9_Serialization
     /// <summary>
     /// Serializes a GameLibrary list through DataContract Serialization.
     /// </summary>
-    class DataContractSerializer : ISerializer
+    class DataContractSerialization : ISerializer
     {
         /// <summary>
         /// Perform the serialization.

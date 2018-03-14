@@ -11,7 +11,7 @@ namespace Week9_Serialization
     /// <summary>
     /// Serializes a GameLibrary list through Binary Serialization.
     /// </summary>
-    class BinarySerializer : ISerializer
+    public class BinarySerialization : ISerializer
     {
         /// <summary>
         /// Perform the serialization.

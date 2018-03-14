@@ -12,7 +12,7 @@ namespace Week9_Serialization
     /// </summary>
     [Serializable]
     [DataContract]
-    class VideoGame
+    public class VideoGame
     {
         [DataMember]
         public string Name { get; set; }

@@ -12,7 +12,7 @@ namespace Week9_Serialization
     /// </summary>
     [Serializable]
     [DataContract]
-    class Strategy : VideoGame
+    public class Strategy : VideoGame
     {
         /// <summary>
         /// Constructs the object in line with the parent object.

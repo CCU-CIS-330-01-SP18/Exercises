@@ -12,7 +12,7 @@ namespace Week9_Serialization
     /// </summary>
     [Serializable]
     [DataContract]
-    class Platformer : VideoGame
+    public class Platformer : VideoGame
     {
         /// <summary>
         /// Constructs the object in line with the parent object.
