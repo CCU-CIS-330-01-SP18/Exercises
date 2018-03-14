@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Runtime.Serialization;
 
 namespace Week9_Serialization
 {
