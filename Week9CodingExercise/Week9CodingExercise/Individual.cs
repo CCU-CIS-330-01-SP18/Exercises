@@ -35,8 +35,6 @@ namespace Week9CodingExercise
 
 
         [DataMember]
-        public bool IsEmployee { get; set; }
-
-
+        public int Age { get; set; }
     }
 }

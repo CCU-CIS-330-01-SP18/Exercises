@@ -10,7 +10,7 @@ using System.IO;
 namespace Week9CodingExercise
 {
     /// <summary>
-    /// Provides methods for serializing and deserializing a given list of individuals.
+    /// Provides methods for serializing and deserializing a given list of individuals into Binary format.
     /// </summary>
     [Serializable]
 
@@ -46,7 +46,7 @@ namespace Week9CodingExercise
             var formatter = new BinaryFormatter();
 
             IndividualList<T> deserializedList = null;
-            using (FileStream reader = File.OpenRead("_b-individuals.txt"))
+            using (FileStream reader = File.OpenRead("b-individuals.txt"))
             {
                 deserializedList = formatter.Deserialize(reader) as IndividualList<T>;
             }

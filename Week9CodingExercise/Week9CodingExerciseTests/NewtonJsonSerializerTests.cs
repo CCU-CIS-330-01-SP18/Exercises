@@ -13,23 +13,26 @@ namespace Week9CodingExerciseTests
         public void NewtonJsonSerializerCanSerializeAndDeserialize()
         {
             var list = new IndividualList<Individual>();
-            list.Add(new Employee("Ryan") { IsMale = true });
-            list.Add(new Customer("Taylor") { IsMale = false });
+            list.Add(new Employee("Ryan") { IsMale = true, Age = 24 });
+            list.Add(new Customer("Taylor") { IsMale = false, Age = 21 });
 
             var newtonSerializer = new NewtonJsonSerializer();
 
             newtonSerializer.Serialize(list);
 
-            FileInfo file = new FileInfo("nsj-individuals.json");
+            var file = new FileInfo("nsj-individuals.json");
 
+            // Checks to see if the file exists after serialization.
             Assert.IsTrue(file.Exists);
 
+            // The Deserialized List.
             var deserializedList = newtonSerializer.Deserialize(list);
 
             CompareLogic logic = new CompareLogic();
 
             bool areEqual = logic.Compare(list, deserializedList).AreEqual;
 
+            // Checks to see if Instantiated List and Deserialized List Are Equal.
             Assert.AreEqual(true, areEqual);
         }
     }

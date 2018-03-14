@@ -65,6 +65,11 @@ namespace Week9CodingExercise
             NewtonJsonSerializer.NewtonsoftJsonSerialization(list);
         }
 
+        /// <summary>
+        /// An abstracted method to run the NewtonJsonSerializer.NewtonJsonDeserialization method.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public object Deserialize(IndividualList<Individual> list)
         {
             return NewtonJsonSerializer.NewtonsoftJsonDeserialization(list);

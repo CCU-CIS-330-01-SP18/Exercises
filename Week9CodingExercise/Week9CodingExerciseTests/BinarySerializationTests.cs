@@ -14,21 +14,24 @@ namespace Week9CodingExerciseTests
         public void BinarySerializationCanSerializeAndDeserialize()
         {
             var list = new IndividualList<Individual>();
-            list.Add(new Employee("Ryan") { IsMale = true });
-            list.Add(new Customer("Taylor") { IsMale = false });
+            list.Add(new Employee("Ryan") { IsMale = true, Age = 24 });
+            list.Add(new Customer("Taylor") { IsMale = false, Age = 21 });
 
             var serializer = new BinarySerializer();
 
             serializer.Serialize(list);
 
-            FileInfo file = new FileInfo("b-individuals.txt");
+            var file = new FileInfo("b-individuals.txt");
 
+            // Checks to see if the file exists after serialization.
             Assert.IsTrue(file.Exists);
 
+            // The Deserialized List.
             object o = serializer.Deserialize(list);
 
             CompareLogic logic = new CompareLogic();
 
+            // Checks to see if Instantiated List and Deserialized List Are Equal.
             bool areEqual = logic.Compare(list, o).AreEqual;
 
             Assert.AreEqual(true, areEqual);
