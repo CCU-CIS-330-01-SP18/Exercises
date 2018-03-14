@@ -10,8 +10,10 @@ namespace Week9_Serialization
     /// A class that can be serialized, representing a video game.
     /// </summary>
     [Serializable]
+    [DataContract]
     class VideoGame
     {
+        [DataMember]
         public string Name { get; set; }
 
         /// <summary>

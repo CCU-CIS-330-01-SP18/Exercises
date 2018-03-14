@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JSONSerializer.cs" />
+    <Compile Include="DataContractSerializer.cs" />
     <Compile Include="BinarySerializer.cs" />
     <Compile Include="GameLibrary.cs" />
     <Compile Include="ISerializer.cs" />
@@ -59,6 +61,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\Compare-NET-Objects-Help.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

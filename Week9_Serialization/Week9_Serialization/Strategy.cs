@@ -10,6 +10,7 @@ namespace Week9_Serialization
     /// Represents a Strategy video game.
     /// </summary>
     [Serializable]
+    [DataContract]
     class Strategy : VideoGame
     {
         /// <summary>

@@ -5,13 +5,14 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Week9_Serialization
 {
     /// <summary>
-    /// Serializes a GameLibrary list through Binary Serialization.
+    /// Serializes a GameLibrary list through DataContract Serialization.
     /// </summary>
-    class BinarySerializer : ISerializer
+    class DataContractSerializer : ISerializer
     {
         /// <summary>
         /// Perform the serialization.
@@ -19,11 +20,12 @@ namespace Week9_Serialization
         /// <param name="library">The library list to serialize.</param>
         public void Serialize(GameLibrary<VideoGame> library)
         {
-            BinaryFormatter bf = new BinaryFormatter();
+            DataContractSerializer dcs = new DataContractSerializer(typeof(GameLibrary<VideoGame>));
 
-            using (FileStream stream = File.Create("bin_Library.txt"))
+            XmlWriterSettings xmls = new XmlWriterSettings() { Indent = true };
+            using (XmlWriter writer = XmlWriter.Create("dc_Library.xml", xmls))
             {
-                bf.Serialize(stream, library);
+                dcs.WriteObject(writer, library);
             }
         }
 
@@ -33,11 +35,11 @@ namespace Week9_Serialization
         /// <returns>The library list that was deserialized</returns>
         public GameLibrary<VideoGame> Deserialize()
         {
-            BinaryFormatter bf = new BinaryFormatter();
+            DataContractSerializer dcs = new DataContractSerializer(typeof(GameLibrary<VideoGame>));
 
-            using(FileStream read = File.OpenRead("bin_Library.txt"))
+            using (XmlReader reader = XmlReader.Create("dc_Library.xml"))
             {
-                return bf.Deserialize(read) as GameLibrary<VideoGame>;
+                return dcs.ReadObject(reader) as GameLibrary<VideoGame>;
             }
         }
     }

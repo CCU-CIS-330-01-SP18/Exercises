@@ -10,6 +10,7 @@ namespace Week9_Serialization
     /// Represents a Platformer video game.
     /// </summary>
     [Serializable]
+    [DataContract]
     class Platformer : VideoGame
     {
         /// <summary>
