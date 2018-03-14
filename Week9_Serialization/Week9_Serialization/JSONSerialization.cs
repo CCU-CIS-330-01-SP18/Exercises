@@ -13,7 +13,7 @@ namespace Week9_Serialization
     /// <summary>
     /// Serializes a GameLibrary list through Newtonsoft JSON Serialization.
     /// </summary>
-    class JSONSerialization : ISerializer
+    public class JSONSerialization : ISerializer
     {
         /// <summary>
         /// Perform the serialization.

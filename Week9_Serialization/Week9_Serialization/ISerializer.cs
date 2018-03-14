@@ -9,7 +9,7 @@ namespace Week9_Serialization
     /// <summary>
     /// An interface that enforces (de)serialization in its member classes.
     /// </summary>
-    interface ISerializer
+    public interface ISerializer
     {
         void Serialize(GameLibrary<VideoGame> list);
 

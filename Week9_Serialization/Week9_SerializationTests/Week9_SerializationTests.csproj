@@ -55,8 +55,11 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContractSerializationTests.cs" />
     <Compile Include="BinarySerializationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="JSONSerializationTests.cs" />
+    <Compile Include="GeneralProjectTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

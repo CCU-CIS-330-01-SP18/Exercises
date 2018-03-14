@@ -11,7 +11,7 @@ namespace Week9_Serialization
     /// <summary>
     /// Serializes a GameLibrary list through DataContract Serialization.
     /// </summary>
-    class DataContractSerialization : ISerializer
+    public class DataContractSerialization : ISerializer
     {
         /// <summary>
         /// Perform the serialization.
