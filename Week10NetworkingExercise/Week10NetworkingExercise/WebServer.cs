@@ -25,6 +25,7 @@ namespace Week10NetworkingExercise
                 try
                 {
                     var context = await listener.GetContextAsync();
+                    await Task.Run(() => ProcessRequestAsync(context));
                 }
                 catch (HttpListenerException) { break; }
                 catch (InvalidOperationException) { break; }
@@ -44,13 +45,18 @@ namespace Week10NetworkingExercise
             bool xIsNumber = int.TryParse(x, out firstNumber);
             bool yIsNumber = int.TryParse(y, out secondNumber);
 
-            if (xIsNumber || yIsNumber == false)
+            
+
+           
+
+            /*if (xIsNumber || yIsNumber == false)
             {
                 throw new InvalidOperationException("Both query strings must be integer values");
-            }
+            }*/
 
             if (!string.IsNullOrWhiteSpace(x) && !string.IsNullOrWhiteSpace(y))
             {
+                //string result = x + y;
                 int result = firstNumber + secondNumber;
 
                 context.Response.ContentLength64 = Encoding.UTF8.GetByteCount(result.ToString());
