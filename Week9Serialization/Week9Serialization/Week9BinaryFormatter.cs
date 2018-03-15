@@ -18,17 +18,17 @@ namespace Week9Serialization
         /// </summary>
         /// <param name="serialized">A string containing the path to a file that contains a serialized object.</param>
         /// <returns>The deserialized object.</returns>
-        public object Deserialize(string path)
+        public object Deserialize(string filePath)
         {
             var binaryFormatter = new BinaryFormatter();
             object deserialized = null;
 
-            if (!File.Exists(path))
+            if (!File.Exists(filePath))
             {
-                throw new FileNotFoundException("Serial file not found.", path);
+                throw new FileNotFoundException("Serial file not found.", filePath);
             }
 
-            using (var file = File.OpenRead(path))
+            using (var file = File.OpenRead(filePath))
             {
                 deserialized = binaryFormatter.Deserialize(file);
             }
@@ -40,21 +40,21 @@ namespace Week9Serialization
         /// Serializes this object, and puts the serialized object in a file.
         /// </summary>
         /// <param name="obj">The object to serialize.</param>
-        /// <param name="path">The path to the file that will hold the serialized object.</param>
-        public void Serialize(object obj, string path)
+        /// <param name="filePath">The path to the file that will hold the serialized object.</param>
+        public void Serialize(object obj, string filePath)
         {
             var binaryFormatter = new BinaryFormatter();
 
-            if (!File.Exists(path))
+            if (!File.Exists(filePath))
             {
-                using (var file = File.Create(path))
+                using (var file = File.Create(filePath))
                 {
                     binaryFormatter.Serialize(file, obj);
                 }
             }
             else
             {
-                using (var file = File.OpenWrite(path))
+                using (var file = File.OpenWrite(filePath))
                 {
                     binaryFormatter.Serialize(file, obj);
                 }

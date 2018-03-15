@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Week9Serialization
 {
@@ -7,13 +8,23 @@ namespace Week9Serialization
     /// Represents a cephalopod/human hybrid.
     /// </summary>
     /// <remarks>If you're Googling this, you don't get the reference.</remarks>
+    [DataContract]
+    [Serializable]
     public class Cephalokid
     {
         private InkColor primaryColor;
+        private double skillLevel;
 
         public double SkillLevel
         {
-            get; set;
+            get
+            {
+                return skillLevel;
+            }
+            set
+            {
+                skillLevel = value;
+            }
         }
         public string Name
         {

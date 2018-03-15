@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Week9Serialization
@@ -19,11 +21,21 @@ namespace Week9Serialization
         /// <returns>The deserialized object.</returns>
         public object Deserialize(string filePath)
         {
+            var serializer = new JsonSerializer
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                Formatting = Formatting.Indented
+            };
             object deserialized = null;
 
-            if (!File.Exists(filePath))
+            if (!File.Exists(filePath) || !Regex.IsMatch(filePath, @"\.json$"))
             {
-                throw new FileNotFoundException("Serial file not found.", filePath);
+                throw new FileNotFoundException("Serial JSON file not found.", filePath);
+            }
+
+            using (var file = File.OpenText(filePath))
+            {
+                deserialized = serializer.Deserialize(file, typeof(object));
             }
 
             return deserialized;
@@ -34,10 +46,48 @@ namespace Week9Serialization
         /// Serializes this object, and puts the serialized object in a file.
         /// </summary>
         /// <param name="obj">The object to serialize.</param>
-        /// <param name="path">The path to the file that will hold the serialized object.</param>
-        public void Serialize(object obj, string path)
+        /// <param name="filePath">The path to the file that will hold the serialized object.</param>
+        public void Serialize(object obj, string filePath)
         {
-            throw new NotImplementedException();
+            var serializer = new JsonSerializer
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                Formatting = Formatting.Indented
+            };
+
+            if (Regex.IsMatch(filePath, @"\.json$"))
+            {
+                using (var file = File.CreateText(filePath))
+                {
+                    serializer.Serialize(file, obj);
+                }
+            }
+            else
+            {
+                using (var file = File.CreateText(filePath + ".json"))
+                {
+                    serializer.Serialize(file, obj);
+                }
+            }
         }
+
+        /*
+         * JsonSerializer serializer = new JsonSerializer
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                Formatting = Newtonsoft.Json.Formatting.Indented
+            };
+
+            using (StreamWriter writer = File.CreateText("_nsj-animals.json"))
+            {
+                serializer.Serialize(writer, list);
+            }
+
+            AnimalList<T> deserializedList = null;
+            using (StreamReader reader = File.OpenText("_nsj-animals.json"))
+            {
+                deserializedList = serializer.Deserialize(reader, typeof(AnimalList<T>)) as AnimalList<T>;
+            }
+            */
     }
 }

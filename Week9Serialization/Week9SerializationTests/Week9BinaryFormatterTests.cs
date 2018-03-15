@@ -11,6 +11,7 @@ namespace Week9SerializationTests
         [TestMethod]
         public void BinaryFormatterCanSerialize()
         {
+            string fileName = "testFile.txt";
             var formatter = new Week9BinaryFormatter();
             var carmen = new Inkling("Carmen", InkColor.Orange);
             var spectral = new Inkling("Spectral", InkColor.Grape);
@@ -24,13 +25,13 @@ namespace Week9SerializationTests
                 tim
             };
 
-            formatter.Serialize(team, "testFile.txt");
-            Assert.IsTrue(File.Exists("testFile.txt"));
+            formatter.Serialize(team, fileName);
+            Assert.IsTrue(File.Exists(fileName), "File not found.");
 
-            var deserializedTeam = formatter.Deserialize("testFile.txt");
-            Assert.AreEqual(team, deserializedTeam);
-            
-            File.Delete("testFile.txt");
+            var deserializedTeam = formatter.Deserialize(fileName);
+            Assert.IsTrue(KellermanSoftware.CompareNetObjects.CompareLogic.Equals(team, deserializedTeam), "Objects not equal.");
+
+            File.Delete(fileName);
         }
     }
 }

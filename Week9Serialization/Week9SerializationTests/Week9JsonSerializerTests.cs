@@ -11,6 +11,7 @@ namespace Week9SerializationTests
         [TestMethod]
         public void JsonSerializerCanSerialize()
         {
+            string fileName = "testFile.json";
             var serializer = new Week9JsonSerializer();
             var carmen = new Inkling("Carmen", InkColor.Orange);
             var spectral = new Inkling("Spectral", InkColor.Grape);
@@ -24,13 +25,13 @@ namespace Week9SerializationTests
                 tim
             };
 
-            serializer.Serialize(team, "testFile.txt");
-            Assert.IsTrue(File.Exists("testFile.txt"));
+            serializer.Serialize(team, fileName);
+            Assert.IsTrue(File.Exists(fileName), "File not found.");
 
-            var deserializedTeam = serializer.Deserialize("testFile.txt");
-            Assert.AreEqual(team, deserializedTeam);
+            var deserializedTeam = serializer.Deserialize(fileName);
+            Assert.IsTrue(KellermanSoftware.CompareNetObjects.CompareLogic.Equals(team, deserializedTeam), "Objects not equal.");
 
-            File.Delete("testFile.txt");
+            File.Delete(fileName);
         }
     }
 }

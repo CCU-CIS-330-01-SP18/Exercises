@@ -37,12 +37,12 @@ namespace Week9Serialization
         /// Serializes this object, and puts the serialized object in a file.
         /// </summary>
         /// <param name="obj">The object to serialize.</param>
-        /// <param name="path">The path to the file that will hold the serialized object.</param>
-        public void Serialize(object obj, string path)
+        /// <param name="filePath">The path to the file that will hold the serialized object.</param>
+        public void Serialize(object obj, string filePath)
         {
             var serializer = new DataContractSerializer(typeof(object));
             var settings = new XmlWriterSettings() { Indent = true };
-            using (var file = XmlWriter.Create(path))
+            using (var file = XmlWriter.Create(filePath))
             {
                 serializer.WriteObject(file, obj);
             }

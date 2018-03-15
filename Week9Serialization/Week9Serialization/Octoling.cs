@@ -1,11 +1,17 @@
-﻿namespace Week9Serialization
+﻿using System;
+using System.Runtime.Serialization;
+
+namespace Week9Serialization
 {
     /// <summary>
     /// Represents an octokid. May be sanitized, which grants a flat bonus to skill level but weakens further skill growth.
     /// </summary>
+    [DataContract]
+    [Serializable]
     public class Octoling : Cephalokid
     {
         private bool sanitized;
+        private double skillLevel;
 
         public bool Sanitized
         {
@@ -19,17 +25,17 @@
         {
             get
             {
-                return SkillLevel;
+                return skillLevel;
             }
             set
             {
                 if (this.Sanitized)
                 {
-                    SkillLevel = value / 4;
+                    skillLevel = value / 4;
                 }
                 else
                 {
-                    SkillLevel = value;
+                    skillLevel = value;
                 }
             }
         }
