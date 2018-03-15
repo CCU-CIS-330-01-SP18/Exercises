@@ -26,7 +26,7 @@ namespace Week9Serialization
                 TypeNameHandling = TypeNameHandling.Auto,
                 Formatting = Formatting.Indented
             };
-            object deserialized = null;
+            Team<T> deserialized = null;
 
             if (!File.Exists(filePath) || !Regex.IsMatch(filePath, @"\.json$"))
             {
@@ -35,10 +35,10 @@ namespace Week9Serialization
 
             using (var file = File.OpenText(filePath))
             {
-                deserialized = serializer.Deserialize(file, typeof(object));
+                deserialized = serializer.Deserialize(file, typeof(Team<T>)) as Team<T>;
             }
 
-            return (Team<T>) deserialized;
+            return deserialized;
 
         }
 
@@ -55,39 +55,14 @@ namespace Week9Serialization
                 Formatting = Formatting.Indented
             };
 
-            if (Regex.IsMatch(filePath, @"\.json$"))
+            if (!Regex.IsMatch(filePath, @"\.json$"))
             {
-                using (var file = File.CreateText(filePath))
-                {
-                    serializer.Serialize(file, team);
-                }
+                filePath += ".json";
             }
-            else
+            using (var file = File.CreateText(filePath))
             {
-                using (var file = File.CreateText(filePath + ".json"))
-                {
-                    serializer.Serialize(file, team);
-                }
+                serializer.Serialize(file, team);
             }
         }
-
-        /*
-         * JsonSerializer serializer = new JsonSerializer
-            {
-                TypeNameHandling = TypeNameHandling.Auto,
-                Formatting = Newtonsoft.Json.Formatting.Indented
-            };
-
-            using (StreamWriter writer = File.CreateText("_nsj-animals.json"))
-            {
-                serializer.Serialize(writer, list);
-            }
-
-            AnimalList<T> deserializedList = null;
-            using (StreamReader reader = File.OpenText("_nsj-animals.json"))
-            {
-                deserializedList = serializer.Deserialize(reader, typeof(AnimalList<T>)) as AnimalList<T>;
-            }
-            */
     }
 }

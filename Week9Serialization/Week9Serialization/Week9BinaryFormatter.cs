@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Week9Serialization
 {
@@ -21,7 +16,7 @@ namespace Week9Serialization
         public Team<T> Deserialize<T>(string filePath) where T : Cephalokid
         {
             var binaryFormatter = new BinaryFormatter();
-            object deserialized = null;
+            Team<T> deserialized = null;
 
             if (!File.Exists(filePath))
             {
@@ -30,10 +25,10 @@ namespace Week9Serialization
 
             using (var file = File.OpenRead(filePath))
             {
-                deserialized = binaryFormatter.Deserialize(file);
+                deserialized = binaryFormatter.Deserialize(file) as Team<T>;
             }
 
-            return (Team<T>) deserialized;
+            return deserialized;
         }
 
         /// <summary>
@@ -45,20 +40,20 @@ namespace Week9Serialization
         {
             var binaryFormatter = new BinaryFormatter();
 
-            if (!File.Exists(filePath))
-            {
-                using (var file = File.Create(filePath))
-                {
-                    binaryFormatter.Serialize(file, team);
-                }
-            }
-            else
-            {
+            //if (!File.Exists(filePath))
+            //{
+            //    using (var file = File.Create(filePath))
+            //    {
+            //        binaryFormatter.Serialize(file, team);
+            //    }
+            //}
+            //else
+            //{
                 using (var file = File.OpenWrite(filePath))
                 {
                     binaryFormatter.Serialize(file, team);
                 }
-            }
+            //}
         }
     }
 }

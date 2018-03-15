@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cephalokid.cs" />
-    <Compile Include="InkColor.cs" />
     <Compile Include="Inkling.cs" />
     <Compile Include="ISerializer.cs" />
     <Compile Include="Octoling.cs" />

@@ -14,10 +14,10 @@ namespace Week9SerializationTests
         {
             string fileName = "testFile.xml";
             var serializer = new Week9DataContractSerializer();
-            var carmen = new Inkling("Carmen", InkColor.Orange);
-            var spectral = new Inkling("Spectral", InkColor.Grape);
-            var brooke = new Octoling("Brooke", InkColor.Raspberry);
-            var tim = new Octoling("Tim", InkColor.Mustard);
+            var carmen = new Inkling("Carmen", "Orange");
+            var spectral = new Inkling("Spectral", "Grape");
+            var brooke = new Octoling("Brooke", "Magenta");
+            var tim = new Octoling("Tim", "Yellow");
             carmen.ShopForGear();
             spectral.ShopForGear();
             tim.Sanitize();
@@ -40,6 +40,14 @@ namespace Week9SerializationTests
             Assert.IsTrue(compareResult.AreEqual, "Objects not equal: " + compareResult.DifferencesString);
 
             File.Delete(fileName);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void DataContractThrowsNotFound()
+        {
+            var serializer = new Week9DataContractSerializer();
+            var deserializeNonexistent = serializer.Deserialize<Cephalokid>("portal3.xml");
         }
     }
 }

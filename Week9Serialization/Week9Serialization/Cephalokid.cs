@@ -13,7 +13,7 @@ namespace Week9Serialization
     public class Cephalokid
     {
         [DataMember]
-        private InkColor primaryColor;
+        private string primaryColor;
         [DataMember]
         private double skillLevel;
 
@@ -35,11 +35,15 @@ namespace Week9Serialization
             get; set;
         }
         [DataMember]
-        public InkColor PrimaryColor
+        public string PrimaryColor
         {
             get
             {
                 return primaryColor;
+            }
+            set
+            {
+                primaryColor = value;
             }
         }
 
@@ -48,7 +52,7 @@ namespace Week9Serialization
         /// </summary>
         /// <param name="name">The kid's name.</param>
         /// <param name="color">The kid's default ink color.</param>
-        public Cephalokid(string name, InkColor color)
+        public Cephalokid(string name, string color)
         {
             this.Name = name;
             this.primaryColor = color;

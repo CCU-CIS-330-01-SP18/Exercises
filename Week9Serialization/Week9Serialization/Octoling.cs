@@ -44,7 +44,7 @@ namespace Week9Serialization
         /// </summary>
         /// <param name="name">The octokid's name.</param>
         /// <param name="color">The octokid's default ink color.</param>
-        public Octoling(string name, InkColor color) : base(name, color)
+        public Octoling(string name, string color) : base(name, color)
         {
 
         }

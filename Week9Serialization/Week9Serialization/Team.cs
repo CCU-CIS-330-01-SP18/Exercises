@@ -14,7 +14,7 @@ namespace Week9Serialization
     [KnownType(typeof(Octoling))]
     public class Team<T> : List<T>, IEnumerable<T> where T : Cephalokid
     {
-        public InkColor Color
+        public string Color
         {
             get; set;
         }

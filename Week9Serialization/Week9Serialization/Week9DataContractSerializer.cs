@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace Week9Serialization
@@ -16,20 +17,20 @@ namespace Week9Serialization
         /// <returns>The deserialized team.</returns>
         public Team<T> Deserialize<T>(string filePath) where T : Cephalokid
         {
-            var serializer = new DataContractSerializer(typeof(object));
-            object deserialized = null;
+            var serializer = new DataContractSerializer(typeof(Team<T>));
+            Team<T> deserialized = null;
 
-            if (!File.Exists(filePath))
+            if (!File.Exists(filePath) || !Regex.IsMatch(filePath, @"\.xml$"))
             {
-                throw new FileNotFoundException("Serial file not found.", filePath);
+                throw new FileNotFoundException("Serial XML file not found.", filePath);
             }
 
             using (var file = XmlReader.Create(filePath))
             {
-                deserialized = serializer.ReadObject(file) as object;
+                deserialized = serializer.ReadObject(file) as Team<T>;
             }
 
-            return (Team<T>) deserialized;
+            return deserialized;
 
         }
 
@@ -40,9 +41,13 @@ namespace Week9Serialization
         /// <param name="filePath">The path to the file that will hold the serialized team.</param>
         public void Serialize<T>(Team<T> team, string filePath) where T : Cephalokid
         {
-            var serializer = new DataContractSerializer(typeof(object));
+            var serializer = new DataContractSerializer(typeof(Team<T>));
             var settings = new XmlWriterSettings() { Indent = true };
-            using (var file = XmlWriter.Create(filePath))
+            if (!Regex.IsMatch(filePath, @"\.xml$"))
+            {
+                filePath += ".xml";
+            }
+            using (var file = XmlWriter.Create(filePath, settings))
             {
                 serializer.WriteObject(file, team);
             }

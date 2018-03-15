@@ -22,7 +22,7 @@ namespace Week9Serialization
         /// <param name="name">The squidkid's name.</param>
         /// <param name="age">The squidkid's age in years.</param>
         /// <param name="color">The squidkid's default ink color.</param>
-        public Inkling(string name, InkColor color) : base(name, color)
+        public Inkling(string name, string color) : base(name, color)
         {
             this.Freshness = 0;
         }
