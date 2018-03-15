@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Week9CodingExercise
 {
-    public class Class1
+    interface ISerializer
     {
+        void Serialize(Roster<ActionCharacter> roster);
+
+        Roster<ActionCharacter> Deserialize();
     }
 }
