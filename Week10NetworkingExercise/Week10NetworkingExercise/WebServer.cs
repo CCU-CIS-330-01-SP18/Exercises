@@ -45,14 +45,10 @@ namespace Week10NetworkingExercise
             bool xIsNumber = int.TryParse(x, out firstNumber);
             bool yIsNumber = int.TryParse(y, out secondNumber);
 
-            
-
-           
-
-            /*if (xIsNumber || yIsNumber == false)
+            if (xIsNumber || yIsNumber == false)
             {
                 throw new InvalidOperationException("Both query strings must be integer values");
-            }*/
+            }
 
             if (!string.IsNullOrWhiteSpace(x) && !string.IsNullOrWhiteSpace(y))
             {
