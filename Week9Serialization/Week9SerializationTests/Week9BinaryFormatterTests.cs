@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Week9SerializationTests
 {
     [TestClass]
-    public class UnitTest1
+    public class Week9BinaryFormatterTests
     {
         [TestMethod]
         public void TestMethod1()

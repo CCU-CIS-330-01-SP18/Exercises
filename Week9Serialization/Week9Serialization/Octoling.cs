@@ -38,9 +38,8 @@
         /// Creates a new instance of the Octoling class, with the given parameters.
         /// </summary>
         /// <param name="name">The octokid's name.</param>
-        /// <param name="age">The octokid's age in years.</param>
         /// <param name="color">The octokid's default ink color.</param>
-        public Octoling(string name, int age, InkColor color) : base(name, age, color)
+        public Octoling(string name, InkColor color) : base(name, color)
         {
 
         }

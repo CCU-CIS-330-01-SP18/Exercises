@@ -9,7 +9,6 @@ namespace Week9Serialization
     /// <remarks>If you're Googling this, you don't get the reference.</remarks>
     class Cephalokid
     {
-        private int age;
         private InkColor primaryColor;
 
         public double SkillLevel
@@ -27,36 +26,17 @@ namespace Week9Serialization
                 return primaryColor;
             }
         }
-        public int Age
-        {
-            get
-            {
-                return age;
-            }
-        }
 
         /// <summary>
         /// Creates a new instance of the Cephalokid class, with the given parameters.
         /// </summary>
         /// <param name="name">The kid's name.</param>
-        /// <param name="age">The kid's age in years.</param>
         /// <param name="color">The kid's default ink color.</param>
-        public Cephalokid(string name, int age, InkColor color)
+        public Cephalokid(string name, InkColor color)
         {
             this.Name = name;
-            this.age = age;
             this.primaryColor = color;
             this.SkillLevel = 1000;
-        }
-
-        /// <summary>
-        /// Increments age by one year.
-        /// </summary>
-        /// <returns>The kid's new age.</returns>
-        public int Birthday()
-        {
-            this.age++;
-            return this.age;
         }
 
         /// <summary>
@@ -64,15 +44,15 @@ namespace Week9Serialization
         /// </summary>
         /// <param name="entrants">A collection containing the kids to enter in the match.</param>
         /// <returns>A Team object, containing the members of the winning team.</returns>
-        public static Team TurfWar(ICollection<Cephalokid> entrants)
+        public static Team<Cephalokid> TurfWar(ICollection<Cephalokid> entrants)
         {
             var rand = new Random();
             double luck;
             double[] totalSkillLevels = new double[2];
-            var teams = new Team[2]
+            var teams = new Team<Cephalokid>[2]
             {
-                new Team(),
-                new Team()
+                new Team<Cephalokid>(),
+                new Team<Cephalokid>()
             };
 
             // Randomly assign kids to teams until there are four on each.

@@ -3,16 +3,17 @@
     interface ISerializer
     {
         /// <summary>
-        /// Serializes this object to a byte array.
+        /// Serializes this object, and puts the serialized object in a file.
         /// </summary>
-        /// <returns>A byte array representation of the object this method is called on.</returns>
-        void Serialize();
+        /// <param name="obj">The object to serialize.</param>
+        /// <param name="path">The path to the file that will hold the serialized object.</param>
+        void Serialize(object obj, string path);
 
         /// <summary>
-        /// Given a serialized byte array, deserializes an object.
+        /// Given a path to a file, deserializes an object contained in that file.
         /// </summary>
-        /// <param name="serialized">A serialized object, in byte array form.</param>
+        /// <param name="serialized">A string containing the path to a file that contains a serialized object.</param>
         /// <returns>The deserialized object.</returns>
-        object Deserialize(byte[] serialized);
+        object Deserialize(string filePath);
     }
 }

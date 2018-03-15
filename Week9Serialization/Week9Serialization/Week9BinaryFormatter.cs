@@ -9,34 +9,55 @@ using System.Threading.Tasks;
 namespace Week9Serialization
 {
     /// <summary>
-    /// A class that can serialize and deserialize objects given to it, using the BinaryFormatter method.
+    /// A class that can serialize and deserialize objects given to it, using the <see cref="BinaryFormatter"/> method.
     /// </summary>
     class Week9BinaryFormatter : ISerializer
     {
-        string fileName = "bf_serialized.txt";
-
         /// <summary>
-        /// Takes 
+        /// Given a path to a file, deserializes an object contained in that file.
         /// </summary>
-        /// <param name="serialized"></param>
-        /// <returns></returns>
-        public object Deserialize(byte[] serialized)
+        /// <param name="serialized">A string containing the path to a file that contains a serialized object.</param>
+        /// <returns>The deserialized object.</returns>
+        public object Deserialize(string path)
         {
-            throw new NotImplementedException();
+            var binaryFormatter = new BinaryFormatter();
+            object deserialized;
+
+            if (!File.Exists(path))
+            {
+                throw new FileNotFoundException("Serial file not found.", path);
+            }
+
+            using (var file = File.OpenRead(path))
+            {
+                deserialized = binaryFormatter.Deserialize(file);
+            }
+
+            return deserialized;
         }
 
-        public string Serialize<T>(Team<T> team) where T : Cephalokid
+        /// <summary>
+        /// Serializes this object, and puts the serialized object in a file.
+        /// </summary>
+        /// <param name="obj">The object to serialize.</param>
+        /// <param name="path">The path to the file that will hold the serialized object.</param>
+        public void Serialize(object obj, string path)
         {
             var binaryFormatter = new BinaryFormatter();
 
-            if (!File.Exists(fileName))
+            if (!File.Exists(path))
             {
-                using (var file = File.Create(fileName))
+                using (var file = File.Create(path))
                 {
-                    binaryFormatter.Serialize(file, team);
+                    binaryFormatter.Serialize(file, obj);
                 }
-
-                return fileName;
+            }
+            else
+            {
+                using (var file = File.OpenWrite(path))
+                {
+                    binaryFormatter.Serialize(file, obj);
+                }
             }
         }
     }

@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Week9Serialization
 {
     /// <summary>
-    /// Represents a team for Turf Wars.
+    /// Represents a team for Turf Wars, made up of <see cref="Cephalokid"/>s.
     /// </summary>
     [Serializable]
     [KnownType(typeof(Inkling))]
     [KnownType(typeof(Octoling))]
-    class Team<T> : List<T> where T : Cephalokid
+    class Team<T> : List<T>, IEnumerable<T> where T : Cephalokid
     {
         public InkColor Color
         {
