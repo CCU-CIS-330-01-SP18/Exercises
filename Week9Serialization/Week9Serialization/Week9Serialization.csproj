@@ -46,6 +46,7 @@
     <Compile Include="ISerializer.cs" />
     <Compile Include="Octoling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Team.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

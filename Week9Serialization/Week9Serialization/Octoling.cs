@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Week9Serialization
+﻿namespace Week9Serialization
 {
     /// <summary>
     /// Represents an octokid. May be sanitized, which grants a flat bonus to skill level but weakens further skill growth.
     /// </summary>
-    class Octoling : Cephalokid, ISerializer
+    class Octoling : Cephalokid
     {
         private bool sanitized;
 

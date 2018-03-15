@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Week9Serialization
 {
     /// <summary>
     /// Represents a squidkid. Has a "freshness" score, which indicates their rank in Inkling society.
     /// </summary>
-    class Inkling : Cephalokid, ISerializer
+    class Inkling : Cephalokid
     {
         private int freshness;
 

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Week9Serialization
 {
@@ -10,13 +7,19 @@ namespace Week9Serialization
     /// Represents a cephalopod/human hybrid.
     /// </summary>
     /// <remarks>If you're Googling this, you don't get the reference.</remarks>
-    class Cephalokid : ISerializer
+    class Cephalokid
     {
         private int age;
         private InkColor primaryColor;
 
-        public double SkillLevel;
-        public string Name;
+        public double SkillLevel
+        {
+            get; set;
+        }
+        public string Name
+        {
+            get; set;
+        }
         public InkColor PrimaryColor
         {
             get
@@ -60,16 +63,16 @@ namespace Week9Serialization
         /// Sets up the first eight kids in a list of entrants for a match of Turf Wars, and simulates the match's play based on the kids' skill levels.
         /// </summary>
         /// <param name="entrants">A collection containing the kids to enter in the match.</param>
-        /// <returns>A list containing the members of the winning team.</returns>
-        public static List<Cephalokid> TurfWar(ICollection<Cephalokid> entrants)
+        /// <returns>A Team object, containing the members of the winning team.</returns>
+        public static Team TurfWar(ICollection<Cephalokid> entrants)
         {
             var rand = new Random();
             double luck;
             double[] totalSkillLevels = new double[2];
-            var teams = new List<Cephalokid>[2]
+            var teams = new Team[2]
             {
-                new List<Cephalokid>(),
-                new List<Cephalokid>()
+                new Team(),
+                new Team()
             };
 
             // Randomly assign kids to teams until there are four on each.
@@ -113,16 +116,6 @@ namespace Week9Serialization
             {
                 return teams[1];
             }
-        }
-
-        public byte[] Serialize()
-        {
-            throw new NotImplementedException();
-        }
-
-        public object Deserialize(byte[] serialized)
-        {
-            throw new NotImplementedException();
         }
     }
 }
