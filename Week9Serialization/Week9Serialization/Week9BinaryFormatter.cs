@@ -11,7 +11,7 @@ namespace Week9Serialization
     /// <summary>
     /// A class that can serialize and deserialize objects given to it, using the <see cref="BinaryFormatter"/> method.
     /// </summary>
-    class Week9BinaryFormatter : ISerializer
+    public class Week9BinaryFormatter : ISerializer
     {
         /// <summary>
         /// Given a path to a file, deserializes an object contained in that file.
@@ -21,7 +21,7 @@ namespace Week9Serialization
         public object Deserialize(string path)
         {
             var binaryFormatter = new BinaryFormatter();
-            object deserialized;
+            object deserialized = null;
 
             if (!File.Exists(path))
             {

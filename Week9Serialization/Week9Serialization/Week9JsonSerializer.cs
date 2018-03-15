@@ -1,13 +1,16 @@
-﻿using System.IO;
-using System.Runtime.Serialization;
-using System.Xml;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Week9Serialization
 {
     /// <summary>
-    /// A class that can serialize and deserialize objects given to it, using the <see cref="DataContractSerializer"/> method.
+    /// A class that can serialize and deserialize objects given to it, using the <see cref="JsonSerializer"/> method.
     /// </summary>
-    public class Week9DataContractSerializer : ISerializer
+    public class Week9JsonSerializer : ISerializer
     {
         /// <summary>
         /// Given a path to a file, deserializes an object contained in that file.
@@ -16,17 +19,11 @@ namespace Week9Serialization
         /// <returns>The deserialized object.</returns>
         public object Deserialize(string filePath)
         {
-            var serializer = new DataContractSerializer(typeof(object));
             object deserialized = null;
 
             if (!File.Exists(filePath))
             {
                 throw new FileNotFoundException("Serial file not found.", filePath);
-            }
-
-            using (var file = XmlReader.Create(filePath))
-            {
-                deserialized = serializer.ReadObject(file) as object;
             }
 
             return deserialized;
@@ -40,12 +37,7 @@ namespace Week9Serialization
         /// <param name="path">The path to the file that will hold the serialized object.</param>
         public void Serialize(object obj, string path)
         {
-            var serializer = new DataContractSerializer(typeof(object));
-            var settings = new XmlWriterSettings() { Indent = true };
-            using (var file = XmlWriter.Create(path))
-            {
-                serializer.WriteObject(file, obj);
-            }
+            throw new NotImplementedException();
         }
     }
 }

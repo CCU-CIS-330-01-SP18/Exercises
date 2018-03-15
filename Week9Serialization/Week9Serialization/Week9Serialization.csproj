@@ -49,6 +49,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Team.cs" />
     <Compile Include="Week9BinaryFormatter.cs" />
+    <Compile Include="Week9DataContractSerializer.cs" />
+    <Compile Include="Week9JsonSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

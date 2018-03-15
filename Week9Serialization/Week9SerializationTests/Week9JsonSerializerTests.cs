@@ -6,12 +6,12 @@ using Week9Serialization;
 namespace Week9SerializationTests
 {
     [TestClass]
-    public class Week9BinaryFormatterTests
+    public class Week9JsonSerializerTests
     {
         [TestMethod]
-        public void BinaryFormatterCanSerialize()
+        public void JsonSerializerCanSerialize()
         {
-            var formatter = new Week9BinaryFormatter();
+            var serializer = new Week9JsonSerializer();
             var carmen = new Inkling("Carmen", InkColor.Orange);
             var spectral = new Inkling("Spectral", InkColor.Grape);
             var brooke = new Octoling("Brooke", InkColor.Raspberry);
@@ -24,12 +24,12 @@ namespace Week9SerializationTests
                 tim
             };
 
-            formatter.Serialize(team, "testFile.txt");
+            serializer.Serialize(team, "testFile.txt");
             Assert.IsTrue(File.Exists("testFile.txt"));
 
-            var deserializedTeam = formatter.Deserialize("testFile.txt");
+            var deserializedTeam = serializer.Deserialize("testFile.txt");
             Assert.AreEqual(team, deserializedTeam);
-            
+
             File.Delete("testFile.txt");
         }
     }

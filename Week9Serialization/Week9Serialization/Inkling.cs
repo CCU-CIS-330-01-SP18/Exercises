@@ -5,7 +5,7 @@ namespace Week9Serialization
     /// <summary>
     /// Represents a squidkid. Has a "freshness" score, which indicates their rank in Inkling society.
     /// </summary>
-    class Inkling : Cephalokid
+    public class Inkling : Cephalokid
     {
         private int freshness;
 

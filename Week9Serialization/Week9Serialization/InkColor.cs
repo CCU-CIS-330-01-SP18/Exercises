@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Week9Serialization
 {
-    enum InkColor
+    public enum InkColor
     {
         Orange,
         Pumpkin,

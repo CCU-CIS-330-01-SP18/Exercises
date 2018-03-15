@@ -11,7 +11,7 @@ namespace Week9Serialization
     [Serializable]
     [KnownType(typeof(Inkling))]
     [KnownType(typeof(Octoling))]
-    class Team<T> : List<T>, IEnumerable<T> where T : Cephalokid
+    public class Team<T> : List<T>, IEnumerable<T> where T : Cephalokid
     {
         public InkColor Color
         {

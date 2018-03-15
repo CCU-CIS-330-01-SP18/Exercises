@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents an octokid. May be sanitized, which grants a flat bonus to skill level but weakens further skill growth.
     /// </summary>
-    class Octoling : Cephalokid
+    public class Octoling : Cephalokid
     {
         private bool sanitized;
 

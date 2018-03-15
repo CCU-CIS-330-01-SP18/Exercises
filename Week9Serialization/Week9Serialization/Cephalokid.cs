@@ -7,7 +7,7 @@ namespace Week9Serialization
     /// Represents a cephalopod/human hybrid.
     /// </summary>
     /// <remarks>If you're Googling this, you don't get the reference.</remarks>
-    class Cephalokid
+    public class Cephalokid
     {
         private InkColor primaryColor;
 
