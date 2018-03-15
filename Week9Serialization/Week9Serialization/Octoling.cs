@@ -10,17 +10,16 @@ namespace Week9Serialization
     [Serializable]
     public class Octoling : Cephalokid
     {
-        private bool sanitized;
+        [DataMember]
         private double skillLevel;
 
+        [DataMember]
         public bool Sanitized
         {
-            get
-            {
-                return sanitized;
-            }
+            get; set;
         }
 
+        [DataMember]
         new public double SkillLevel
         {
             get
@@ -57,7 +56,7 @@ namespace Week9Serialization
         {
             if (!this.Sanitized)
             {
-                this.sanitized = true;
+                this.Sanitized = true;
                 this.SkillLevel = this.SkillLevel * 2;
             }
         }

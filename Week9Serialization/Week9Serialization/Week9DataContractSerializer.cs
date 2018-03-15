@@ -10,11 +10,11 @@ namespace Week9Serialization
     public class Week9DataContractSerializer : ISerializer
     {
         /// <summary>
-        /// Given a path to a file, deserializes an object contained in that file.
+        /// Given a path to a file, deserializes a team contained in that file.
         /// </summary>
-        /// <param name="serialized">A string containing the path to a file that contains a serialized object.</param>
-        /// <returns>The deserialized object.</returns>
-        public object Deserialize(string filePath)
+        /// <param name="filePath">A string containing the path to a file that contains a serialized team.</param>
+        /// <returns>The deserialized team.</returns>
+        public Team<T> Deserialize<T>(string filePath) where T : Cephalokid
         {
             var serializer = new DataContractSerializer(typeof(object));
             object deserialized = null;
@@ -29,22 +29,22 @@ namespace Week9Serialization
                 deserialized = serializer.ReadObject(file) as object;
             }
 
-            return deserialized;
+            return (Team<T>) deserialized;
 
         }
 
         /// <summary>
-        /// Serializes this object, and puts the serialized object in a file.
+        /// Serializes this team, and puts the serialized team in a file.
         /// </summary>
-        /// <param name="obj">The object to serialize.</param>
-        /// <param name="filePath">The path to the file that will hold the serialized object.</param>
-        public void Serialize(object obj, string filePath)
+        /// <param name="team">The team to serialize.</param>
+        /// <param name="filePath">The path to the file that will hold the serialized team.</param>
+        public void Serialize<T>(Team<T> team, string filePath) where T : Cephalokid
         {
             var serializer = new DataContractSerializer(typeof(object));
             var settings = new XmlWriterSettings() { Indent = true };
             using (var file = XmlWriter.Create(filePath))
             {
-                serializer.WriteObject(file, obj);
+                serializer.WriteObject(file, team);
             }
         }
     }

@@ -10,14 +10,10 @@ namespace Week9Serialization
     [Serializable]
     public class Inkling : Cephalokid
     {
-        private int freshness;
-
+        [DataMember]
         public int Freshness
         {
-            get
-            {
-                return freshness;
-            }
+            get; set;
         }
 
         /// <summary>
@@ -28,7 +24,7 @@ namespace Week9Serialization
         /// <param name="color">The squidkid's default ink color.</param>
         public Inkling(string name, InkColor color) : base(name, color)
         {
-            this.freshness = 0;
+            this.Freshness = 0;
         }
 
         /// <summary>
@@ -39,7 +35,7 @@ namespace Week9Serialization
         {
             var rand = new Random();
             int increase = rand.Next(10);
-            freshness += increase;
+            Freshness += increase;
             return increase;
         }
     }
