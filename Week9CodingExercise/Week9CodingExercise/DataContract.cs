@@ -34,7 +34,7 @@ namespace Week9CodingExercise
         /// </summary>
         /// <typeparam name="T">Of Type Individual.</typeparam>
         /// <param name="list">An IndividualList passed in to be deserialized.</param>
-        /// <returns></returns>
+        /// <returns>The Deserialized List.</returns>
         static object DataContractDeserialization<T>(IndividualList<T> list) where T : Individual
         {
             var serializer = new DataContractSerializer(typeof(IndividualList<T>));
@@ -63,7 +63,7 @@ namespace Week9CodingExercise
         /// DataContract.DataContractDeserialization.
         /// </summary>
         /// <param name="individualList">An IndividualList to be deserialized.</param>
-        /// <returns></returns>
+        /// <returns>The Deserialized List.</returns>
         public object Deserialize(IndividualList<Individual> individualList)
         {
             return DataContract.DataContractDeserialization(individualList);

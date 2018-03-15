@@ -15,8 +15,6 @@ namespace Week9CodingExercise
     [DataContract]
     public class Individual
     {
-        
-        //private string gender;
         /// <summary>
         /// Constructor that sets the name of the Individual.
         /// </summary>

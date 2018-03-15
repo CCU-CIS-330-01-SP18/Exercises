@@ -25,7 +25,7 @@ namespace Week9CodingExercise
         /// <param name="list">An instance of an IndividualList that can be passed in to the method.</param>
         static void BinarySerialization<T>(IndividualList<T> list) where T : Individual
         {
-            // Creates a new BinaryFormatter
+            // Creates a new BinaryFormatter.
             var formatter = new BinaryFormatter();
             
             // Creates a file stream along with the txt file and serializes it in Binary.
@@ -67,7 +67,7 @@ namespace Week9CodingExercise
         /// Abstracted method to deserialize an Individual List in Binary based on the interface ISerializer.
         /// </summary>
         /// <param name="individualList">A list of Individuals that is passed in to deserialize.</param>
-        /// <returns></returns>
+        /// <returns>The Deserialized List</returns>
         public object Deserialize(IndividualList<Individual> individualList)
         {
             return BinarySerializer.BinaryDeserialization(individualList);
