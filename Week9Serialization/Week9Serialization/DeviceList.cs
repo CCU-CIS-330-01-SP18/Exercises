@@ -4,10 +4,7 @@ using System.Text;
 
 namespace Week9Serialization
 {
-    /// <summary>
-    /// Represents an instance of an individual device.
-    /// </summary>
-    class Device
+    class DeviceList<T>: List<T> where T : Device
     {
 
     }

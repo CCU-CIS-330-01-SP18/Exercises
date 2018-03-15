@@ -7,7 +7,7 @@ namespace Week9Serialization
     /// <summary>
     /// Serializes data via the Data Contract method.
     /// </summary>
-    class DataContractSerializer: ISerializer
+    class DataContractSerialization: ISerializer
     {
     }
 }

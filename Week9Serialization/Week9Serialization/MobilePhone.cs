@@ -9,5 +9,6 @@ namespace Week9Serialization
     /// </summary>
     class MobilePhone: Device
     {
+
     }
 }
