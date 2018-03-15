@@ -6,7 +6,7 @@
         /// Serializes this object to a byte array.
         /// </summary>
         /// <returns>A byte array representation of the object this method is called on.</returns>
-        byte[] Serialize();
+        void Serialize();
 
         /// <summary>
         /// Given a serialized byte array, deserializes an object.

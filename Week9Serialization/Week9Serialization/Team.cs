@@ -1,11 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Week9Serialization
 {
     /// <summary>
-    /// Represents a team for Turf Wars. Can contain any type of cephalokid.
+    /// Represents a team for Turf Wars.
     /// </summary>
-    class Team : List<Cephalokid>
+    [Serializable]
+    [KnownType(typeof(Inkling))]
+    [KnownType(typeof(Octoling))]
+    class Team<T> : List<T> where T : Cephalokid
     {
         public InkColor Color
         {
