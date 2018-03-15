@@ -1,0 +1,69 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace Week9Serialization
+{
+    /// <summary>
+    /// A class that can serialize and deserialize objects given to it, using the <see cref="JsonSerializer"/> method.
+    /// </summary>
+    public class Week9JsonSerializer : ISerializer
+    {
+        private string jsonRegex = @"\.json$";
+
+        /// <summary>
+        /// Given a path to a file, deserializes a <see cref="Team{T}"/> contained in that file.
+        /// </summary>
+        /// <param name="filePath">A string containing the path to a file that contains a serialized team.</param>
+        /// <returns>The deserialized <see cref="Team{T}"/>.</returns>
+        public Team<T> Deserialize<T>(string filePath) where T : Cephalokid
+        {
+            var serializer = new JsonSerializer
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                Formatting = Formatting.Indented
+            };
+            var deserialized = new Team<T>();
+
+            if (!File.Exists(filePath) || !Regex.IsMatch(filePath, jsonRegex))
+            {
+                throw new FileNotFoundException("Serial JSON file not found.", filePath);
+            }
+
+            using (var file = File.OpenText(filePath))
+            {
+                deserialized = serializer.Deserialize(file, typeof(Team<T>)) as Team<T>;
+            }
+
+            return deserialized;
+        }
+
+        /// <summary>
+        /// Serializes this <see cref="Team{T}"/>, and puts the serialized team in a file.
+        /// </summary>
+        /// <param name="team">The <see cref="Team{T}"/> to serialize.</param>
+        /// <param name="filePath">The path to the file that will hold the serialized team.</param>
+        public void Serialize<T>(Team<T> team, string filePath) where T : Cephalokid
+        {
+            var serializer = new JsonSerializer
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                Formatting = Formatting.Indented
+            };
+
+            if (!Regex.IsMatch(filePath, jsonRegex))
+            {
+                filePath += ".json";
+            }
+            using (var file = File.CreateText(filePath))
+            {
+                serializer.Serialize(file, team);
+            }
+        }
+    }
+}
