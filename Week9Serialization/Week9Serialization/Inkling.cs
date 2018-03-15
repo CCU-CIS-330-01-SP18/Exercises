@@ -20,11 +20,10 @@ namespace Week9Serialization
         /// Creates a new instance of the Inkling class, with the given parameters.
         /// </summary>
         /// <param name="name">The squidkid's name.</param>
-        /// <param name="age">The squidkid's age in years.</param>
         /// <param name="color">The squidkid's default ink color.</param>
         public Inkling(string name, string color) : base(name, color)
         {
-            this.Freshness = 0;
+            Freshness = 0;
         }
 
         /// <summary>

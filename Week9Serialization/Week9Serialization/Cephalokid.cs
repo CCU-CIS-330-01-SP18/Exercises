@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace Week9Serialization
@@ -54,9 +53,9 @@ namespace Week9Serialization
         /// <param name="color">The kid's default ink color.</param>
         public Cephalokid(string name, string color)
         {
-            this.Name = name;
-            this.primaryColor = color;
-            this.SkillLevel = 1000;
+            Name = name;
+            PrimaryColor = color;
+            SkillLevel = 1000;
         }
     }
 }

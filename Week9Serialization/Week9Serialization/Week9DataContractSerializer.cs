@@ -10,17 +10,19 @@ namespace Week9Serialization
     /// </summary>
     public class Week9DataContractSerializer : ISerializer
     {
+        private string xmlRegex = @"\.xml$";
+
         /// <summary>
-        /// Given a path to a file, deserializes a team contained in that file.
+        /// Given a path to a file, deserializes a <see cref="Team{T}"/> contained in that file.
         /// </summary>
         /// <param name="filePath">A string containing the path to a file that contains a serialized team.</param>
-        /// <returns>The deserialized team.</returns>
+        /// <returns>The deserialized <see cref="Team{T}"/>.</returns>
         public Team<T> Deserialize<T>(string filePath) where T : Cephalokid
         {
             var serializer = new DataContractSerializer(typeof(Team<T>));
-            Team<T> deserialized = null;
+            var deserialized = new Team<T>();
 
-            if (!File.Exists(filePath) || !Regex.IsMatch(filePath, @"\.xml$"))
+            if (!File.Exists(filePath) || !Regex.IsMatch(filePath, xmlRegex))
             {
                 throw new FileNotFoundException("Serial XML file not found.", filePath);
             }
@@ -35,15 +37,16 @@ namespace Week9Serialization
         }
 
         /// <summary>
-        /// Serializes this team, and puts the serialized team in a file.
+        /// Serializes this <see cref="Team{T}"/>, and puts the serialized team in a file.
         /// </summary>
-        /// <param name="team">The team to serialize.</param>
+        /// <param name="team">The <see cref="Team{T}"/> to serialize.</param>
         /// <param name="filePath">The path to the file that will hold the serialized team.</param>
         public void Serialize<T>(Team<T> team, string filePath) where T : Cephalokid
         {
             var serializer = new DataContractSerializer(typeof(Team<T>));
             var settings = new XmlWriterSettings() { Indent = true };
-            if (!Regex.IsMatch(filePath, @"\.xml$"))
+
+            if (!Regex.IsMatch(filePath, xmlRegex))
             {
                 filePath += ".xml";
             }

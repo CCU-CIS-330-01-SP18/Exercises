@@ -14,11 +14,13 @@ namespace Week9Serialization
     /// </summary>
     public class Week9JsonSerializer : ISerializer
     {
+        private string jsonRegex = @"\.json$";
+
         /// <summary>
-        /// Given a path to a file, deserializes a team contained in that file.
+        /// Given a path to a file, deserializes a <see cref="Team{T}"/> contained in that file.
         /// </summary>
         /// <param name="filePath">A string containing the path to a file that contains a serialized team.</param>
-        /// <returns>The deserialized team.</returns>
+        /// <returns>The deserialized <see cref="Team{T}"/>.</returns>
         public Team<T> Deserialize<T>(string filePath) where T : Cephalokid
         {
             var serializer = new JsonSerializer
@@ -26,9 +28,9 @@ namespace Week9Serialization
                 TypeNameHandling = TypeNameHandling.Auto,
                 Formatting = Formatting.Indented
             };
-            Team<T> deserialized = null;
+            var deserialized = new Team<T>();
 
-            if (!File.Exists(filePath) || !Regex.IsMatch(filePath, @"\.json$"))
+            if (!File.Exists(filePath) || !Regex.IsMatch(filePath, jsonRegex))
             {
                 throw new FileNotFoundException("Serial JSON file not found.", filePath);
             }
@@ -39,13 +41,12 @@ namespace Week9Serialization
             }
 
             return deserialized;
-
         }
 
         /// <summary>
-        /// Serializes this team, and puts the serialized team in a file.
+        /// Serializes this <see cref="Team{T}"/>, and puts the serialized team in a file.
         /// </summary>
-        /// <param name="team">The team to serialize.</param>
+        /// <param name="team">The <see cref="Team{T}"/> to serialize.</param>
         /// <param name="filePath">The path to the file that will hold the serialized team.</param>
         public void Serialize<T>(Team<T> team, string filePath) where T : Cephalokid
         {
@@ -55,7 +56,7 @@ namespace Week9Serialization
                 Formatting = Formatting.Indented
             };
 
-            if (!Regex.IsMatch(filePath, @"\.json$"))
+            if (!Regex.IsMatch(filePath, jsonRegex))
             {
                 filePath += ".json";
             }

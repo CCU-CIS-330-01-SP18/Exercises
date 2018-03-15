@@ -54,10 +54,10 @@ namespace Week9Serialization
         /// </summary>
         public void Sanitize()
         {
-            if (!this.Sanitized)
+            if (!Sanitized)
             {
-                this.Sanitized = true;
-                this.SkillLevel = this.SkillLevel * 2;
+                Sanitized = true;
+                SkillLevel = SkillLevel * 2;
             }
         }
     }
