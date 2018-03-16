@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week9Serialize", "Week9Serialize\Week9Serialize.csproj", "{E0C69ACD-EC24-456F-BA94-5A50A478736F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week9SerializeTests", "Week9SerializeTests\Week9SerializeTests.csproj", "{4BC70A34-CF94-4288-8CFD-721EA9DE64EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0C69ACD-EC24-456F-BA94-5A50A478736F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0C69ACD-EC24-456F-BA94-5A50A478736F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0C69ACD-EC24-456F-BA94-5A50A478736F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0C69ACD-EC24-456F-BA94-5A50A478736F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BC70A34-CF94-4288-8CFD-721EA9DE64EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BC70A34-CF94-4288-8CFD-721EA9DE64EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BC70A34-CF94-4288-8CFD-721EA9DE64EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BC70A34-CF94-4288-8CFD-721EA9DE64EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DFA3BB6-EBB7-4609-9688-A528C57349DF}
+	EndGlobalSection
+EndGlobal
