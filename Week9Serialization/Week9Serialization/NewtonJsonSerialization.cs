@@ -45,7 +45,7 @@ namespace Week9Serialization
                 Formatting = Newtonsoft.Json.Formatting.Indented
             };
 
-            using (StreamReader stream = File.OpenText("json_Marsupials.json"))
+            using (StreamReader stream = File.OpenText("NewtonJson_Marsupials.json"))
             {
                 return jsonSerialized.Deserialize(stream, typeof(MarsupialList<Marsupial>)) as MarsupialList<Marsupial>;
             }
