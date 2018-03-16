@@ -9,7 +9,7 @@ namespace Week9Serialization
     /// </summary>
     interface ISerializer
     {
-        void Serialize();
-        void Deserialize();
+        void Serialize(DeviceList<Device> list);
+        DeviceList<Device> Deserialize();
     }
 }

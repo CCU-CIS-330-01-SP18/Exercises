@@ -10,30 +10,34 @@ namespace Week9Serialization
     /// </summary>
     class BinaryFormatter: ISerializer
     {
-        static void BinarySerialization<T>(DeviceList<Device> list) where T : Device
-        {
-            //Console.WriteLine(deserializedList.Equals(list));
-        }
-
-        public DeviceList<Device> Deserialize(FileStream reader)
+        /// <summary>
+        /// Serializes a device list into binary format.
+        /// </summary>
+        /// <param name="list">A list of devices.</param>
+        public void Serialize(DeviceList<Device> list)
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
             using (System.IO.FileStream stream = File.Create("_Devices.txt"))
             {
-                return formatter.Serialize(stream, list);
+                formatter.Serialize(list);
             }
         }
 
-        public void Serialize(FileStream stream, DeviceList<Device> list)
+        /// <summary>
+        /// Deserializes a list of devices from binary format.
+        /// </summary>
+        /// <returns>The list of devices.</returns>
+        public DeviceList<Device> Deserialize()
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            DeviceList<Device> deserializedList = null;
-            using (FileStream reader = File.OpenRead("_Devices.txt"))
+            using (FileStream read = File.OpenRead("_Devices.txt"))
             {
-                deserializedList = formatter.Deserialize(reader) as DeviceList<Device>;
+                return formatter.Deserialize() as DeviceList<Device>;
             }
         }
+
+        
     }
 }
