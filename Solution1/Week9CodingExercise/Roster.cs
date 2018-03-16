@@ -13,7 +13,7 @@ namespace Week9CodingExercise
     [Serializable]
     [KnownType(typeof(Hero))]
     [KnownType(typeof(Villan))]
-    class Roster<ActionCharacter> : List<ActionCharacter>
+    public class Roster<ActionCharacter> : List<ActionCharacter>
     {
     }
 }

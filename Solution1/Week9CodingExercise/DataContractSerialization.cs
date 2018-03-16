@@ -12,7 +12,7 @@ namespace Week9CodingExercise
     /// <summary>
     /// Class that serializes and deserializes using DataContract Serialization.
     /// </summary>
-    class DataContractSerialization : ISerializer
+    public class DataContractSerialization : ISerializer
     {
         /// <summary>
         /// Performs a DataContract serialization on a Roster of Action Characters.
@@ -35,7 +35,12 @@ namespace Week9CodingExercise
         /// <returns>The roster list that has been deserialaized.</returns>
         public Roster<ActionCharacter> Deserialize()
         {
-            throw new NotImplementedException();
+            DataContractSerializer dataContractSerializer = new DataContractSerializer(typeof(Roster<ActionCharacter>));
+
+            using (XmlReader reader = XmlReader.Create("roster_bin_dc.xml"))
+            {
+                return dataContractSerializer.ReadObject(reader) as Roster<ActionCharacter>;
+            }
         }  
     }
 }

@@ -13,7 +13,7 @@ namespace Week9CodingExercise
     /// <summary>
     /// Class that serializes and deserializes using Newtonsoft JSON Serialization.
     /// </summary>
-    class JSONSerializer : ISerializer
+    public class JSONSerialization : ISerializer
     {
         /// <summary>
         /// Performs a serialization on a Roster of Action Characters.
@@ -45,7 +45,7 @@ namespace Week9CodingExercise
                 Formatting = Newtonsoft.Json.Formatting.Indented
             };
 
-            using (StreamReader streamWriter = File.OpenText("json_Library.json"))
+            using (StreamReader streamWriter = File.OpenText("roster_bin_json.json"))
             {
                 return jsonSerialzer.Deserialize(streamWriter, typeof(Roster<ActionCharacter>)) as Roster<ActionCharacter>;
             }

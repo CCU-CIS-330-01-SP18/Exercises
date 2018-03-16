@@ -11,7 +11,7 @@ namespace Week9CodingExercise
     /// <summary>
     /// Class that serializes and deserializes using Binary Serialization.
     /// </summary>
-    class BinarySerializer : ISerializer
+    public class BinarySerializer : ISerializer
     {
 
         /// <summary>

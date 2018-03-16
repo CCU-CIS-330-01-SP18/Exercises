@@ -12,7 +12,7 @@ namespace Week9CodingExercise
     /// </summary>
     [Serializable]
     [DataContract]
-    class Hero : ActionCharacter
+    public class Hero : ActionCharacter
     {
         public string SuperPower { get; set; }
 
