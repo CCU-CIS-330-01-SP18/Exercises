@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Week9Serialization
+namespace Week9Serializations
 {
     /// <summary>
     /// A list of devices.

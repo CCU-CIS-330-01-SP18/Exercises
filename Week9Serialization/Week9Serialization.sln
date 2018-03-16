@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week9Serialization", "Week9Serialization\Week9Serialization.csproj", "{B1BEDF4E-CD98-4A8C-B78F-1423E9B39307}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week9SerializationTests", "Week9SerializationTests\Week9SerializationTests.csproj", "{DB5EA282-6225-45F3-9EED-0907BE5A0E7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week9Serializations", "Week9Serializations\Week9Serializations.csproj", "{CCE0953B-7D68-4309-84B3-29CF1D1E3E3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B1BEDF4E-CD98-4A8C-B78F-1423E9B39307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B1BEDF4E-CD98-4A8C-B78F-1423E9B39307}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B1BEDF4E-CD98-4A8C-B78F-1423E9B39307}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B1BEDF4E-CD98-4A8C-B78F-1423E9B39307}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB5EA282-6225-45F3-9EED-0907BE5A0E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB5EA282-6225-45F3-9EED-0907BE5A0E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB5EA282-6225-45F3-9EED-0907BE5A0E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB5EA282-6225-45F3-9EED-0907BE5A0E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCE0953B-7D68-4309-84B3-29CF1D1E3E3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCE0953B-7D68-4309-84B3-29CF1D1E3E3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCE0953B-7D68-4309-84B3-29CF1D1E3E3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCE0953B-7D68-4309-84B3-29CF1D1E3E3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

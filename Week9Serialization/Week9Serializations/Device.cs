@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Week9Serialization
+namespace Week9Serializations
 {
     /// <summary>
     /// Represents an instance of an individual device.
