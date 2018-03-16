@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
@@ -16,7 +14,7 @@ namespace Week9Serialization
     public class Marsupial
     {
         /// <summary>
-        /// Contructs the object with various properties.
+        /// Contructs an object with various properties.
         /// </summary>
         /// <param name="name">Represents the name.</param>
         public Marsupial(string name = null)

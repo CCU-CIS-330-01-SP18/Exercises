@@ -28,7 +28,6 @@ namespace Week9SerializationTests
             CompareLogic comparer = new CompareLogic();
 
             bool equalCompare = comparer.Compare(list, Logiclist).AreEqual;
-
             Assert.AreEqual(true, equalCompare);
         }
     }

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Week9Serialization
 {
@@ -20,7 +19,7 @@ namespace Week9Serialization
         /// <summary>
         /// The base method for diserializing an object.
         /// </summary>
-        /// <returns>An object derived from diserializing a list.</returns>
+        /// <returns>An object made from diserializing a list.</returns>
         MarsupialList<Marsupial> Deserialize();
 
     }

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using System.IO;
 
 namespace Week9Serialization
 {
@@ -22,8 +19,8 @@ namespace Week9Serialization
         {
             DataContractSerializer dataSerializer = new DataContractSerializer(typeof(MarsupialList<Marsupial>));
 
-            XmlWriterSettings xmls = new XmlWriterSettings() { Indent = true };
-            using (XmlWriter writer = XmlWriter.Create("dataContract_Marsupials.xml", xmls))
+            XmlWriterSettings xmlWriter = new XmlWriterSettings() { Indent = true };
+            using (XmlWriter writer = XmlWriter.Create("dataContract_Marsupials.xml", xmlWriter))
             {
                 dataSerializer.WriteObject(writer, list);
             }

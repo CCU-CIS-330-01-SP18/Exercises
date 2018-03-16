@@ -30,7 +30,6 @@ namespace Week9SerializationTests
             CompareLogic comparer = new CompareLogic();
 
             bool equalCompare = comparer.Compare(list, Binarylist).AreEqual;
-
             Assert.AreEqual(true, equalCompare);
         }
     }

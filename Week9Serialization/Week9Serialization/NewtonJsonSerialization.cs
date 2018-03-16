@@ -1,12 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 
 namespace Week9Serialization
 {
@@ -36,7 +31,7 @@ namespace Week9Serialization
         /// <summary>
         /// Diserializes a list of Marsupials from a JSON format.
         /// </summary>
-        /// <returns>The list that was deserialized</returns>
+        /// <returns>The list that was deserialized.</returns>
         public MarsupialList<Marsupial> Deserialize()
         {
             JsonSerializer jsonSerialized = new JsonSerializer

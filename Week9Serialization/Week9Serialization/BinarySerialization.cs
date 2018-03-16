@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
 using System.IO;
 
 namespace Week9Serialization
@@ -30,7 +27,7 @@ namespace Week9Serialization
         /// <summary>
         /// Performs the diserialization of a list of Marsupials.
         /// </summary>
-        /// <returns>The Marsupial list that was deserialized</returns>
+        /// <returns>The Marsupial list that was deserialized.</returns>
         public MarsupialList<Marsupial> Deserialize()
         {
             BinaryFormatter binaryFormat = new BinaryFormatter();
