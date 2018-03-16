@@ -20,7 +20,7 @@ namespace Week9SerializationTests
             var serializer = new DataContractSerialization();
             serializer.Serialize(list);
 
-            var file = new FileInfo("dctrct-devices.xml");
+            var file = new FileInfo("C:\\dctrct-devices.xml");
             Assert.IsTrue(file.Exists);
 
             DeviceList<Device> DeviceList = serializer.Deserialize();

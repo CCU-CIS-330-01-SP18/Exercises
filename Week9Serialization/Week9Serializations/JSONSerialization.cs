@@ -26,7 +26,7 @@ namespace Week9Serializations
                 Formatting = Newtonsoft.Json.Formatting.Indented
             };
 
-            using (StreamWriter writer = File.CreateText("json_Devices.json"))
+            using (StreamWriter writer = File.CreateText("C:\\json_Devices.json"))
             {
                 serializer.Serialize(writer, list);
             }
@@ -44,7 +44,7 @@ namespace Week9Serializations
                 Formatting = Newtonsoft.Json.Formatting.Indented
             };
 
-            using (StreamReader stream = File.OpenText("json_Devices.json"))
+            using (StreamReader stream = File.OpenText("C:\\json_Devices.json"))
             {
                 return jsonSerialized.Deserialize(stream, typeof(DeviceList<Device>)) as DeviceList<Device>;
             }

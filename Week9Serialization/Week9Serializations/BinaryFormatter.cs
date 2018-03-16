@@ -18,7 +18,7 @@ namespace Week9Serializations
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            using (System.IO.FileStream stream = File.Create("_Devices.txt"))
+            using (System.IO.FileStream stream = File.Create("C:\\_Devices.txt"))
             {
                 formatter.Serialize(list);
             }
@@ -32,7 +32,7 @@ namespace Week9Serializations
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            using (FileStream read = File.OpenRead("_Devices.txt"))
+            using (FileStream read = File.OpenRead("C:\\_Devices.txt"))
             {
                 return formatter.Deserialize() as DeviceList<Device>;
             }

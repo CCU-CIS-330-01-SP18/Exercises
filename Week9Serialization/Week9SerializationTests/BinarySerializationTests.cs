@@ -20,7 +20,7 @@ namespace Week9SerializationTests
             var serializer = new BinaryFormatter();
             serializer.Serialize(deviceList);
 
-            var file = new FileInfo("b_Devices.txt");
+            var file = new FileInfo("C:\\b_Devices.txt");
             Assert.IsTrue(file.Exists);
 
             DeviceList<Device> list = serializer.Deserialize();
