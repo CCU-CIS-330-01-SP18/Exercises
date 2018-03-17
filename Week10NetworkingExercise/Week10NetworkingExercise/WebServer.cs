@@ -38,6 +38,7 @@ namespace Week10NetworkingExercise
         {
             string x = context.Request.QueryString["x"];
             string y = context.Request.QueryString["y"];
+            string responseString = "<HTML><BODY> Hello, welcome to my server! Input some numbers into the query paramaters x and y to add some numbers together.</BODY></HTML>";
 
             int firstNumber;
             int secondNumber;
@@ -45,14 +46,8 @@ namespace Week10NetworkingExercise
             bool xIsNumber = int.TryParse(x, out firstNumber);
             bool yIsNumber = int.TryParse(y, out secondNumber);
 
-            if (xIsNumber || yIsNumber == false)
-            {
-                throw new InvalidOperationException("Both query strings must be integer values");
-            }
-
             if (!string.IsNullOrWhiteSpace(x) && !string.IsNullOrWhiteSpace(y))
             {
-                //string result = x + y;
                 int result = firstNumber + secondNumber;
 
                 context.Response.ContentLength64 = Encoding.UTF8.GetByteCount(result.ToString());
@@ -65,8 +60,15 @@ namespace Week10NetworkingExercise
             }
             else
             {
-                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Response.OutputStream.Close();
+                context.Response.ContentLength64 = Encoding.UTF8.GetByteCount(responseString.ToString());
+                context.Response.StatusCode = (int)HttpStatusCode.OK;
+
+                using (StreamWriter writer = new StreamWriter(context.Response.OutputStream))
+                {
+                    writer.Write(responseString);
+                }
+                /*context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                context.Response.OutputStream.Close();*/
             }
         }
     }

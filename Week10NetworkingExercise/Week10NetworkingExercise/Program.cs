@@ -12,16 +12,12 @@ namespace Week10NetworkingExercise
         {
             int portNumber;
             bool validPortNumber = int.TryParse(args[0], out portNumber);
+            UriBuilder uri = new UriBuilder("http", "localhost", portNumber);
+
+            WebServer.ListenForResponseAsync(portNumber);
 
             Console.WriteLine($"Listening... On Port {portNumber}, press enter to stop.");
             Console.ReadLine();
-
-            if (args.Length == 0)
-            {
-                throw new IndexOutOfRangeException("No Command Line Argument Was Given For the Port Number to Listen on");
-            }
-
-            WebServer.ListenForResponseAsync(portNumber);
         }
     }
 }
