@@ -20,12 +20,10 @@ namespace Week9SerializationTests
             var serializer = new NewtonJsonSerialization();
             serializer.Serialize(list);
 
-            var file = new FileInfo("C:\\newtonjson_Devices.json");
-            Assert.IsTrue(file.Exists);
-
             DeviceList<Device> deviceList = serializer.Deserialize();
-            
-            Assert.AreEqual(list, deviceList);
+
+            Assert.IsTrue(list[0].Equals(deviceList[0]));
+            Assert.IsTrue(list[1].Equals(deviceList[1]));
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Week9Serializations
     /// A list of devices.
     /// </summary>
     /// <typeparam name="T">A device is the required type for this list.</typeparam>
+    [Serializable]
     public class DeviceList<T>: List<T> where T : Device
     {
 

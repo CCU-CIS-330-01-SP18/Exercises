@@ -21,7 +21,7 @@ namespace Week9Serializations
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(DeviceList<Device>));
 
             XmlWriterSettings xmls = new XmlWriterSettings() { Indent = true };
-            using (XmlWriter writer = XmlWriter.Create("C:\\_dc-devices.xml"))
+            using (XmlWriter writer = XmlWriter.Create("_dc-devices.xml"))
             {
                 serializer.WriteObject(writer, list);
             }
@@ -35,7 +35,7 @@ namespace Week9Serializations
         {
             DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(DeviceList<Device>));
 
-            using (XmlReader reader = XmlReader.Create("C:\\_dc-devices.xml"))
+            using (XmlReader reader = XmlReader.Create("_dc-devices.xml"))
             {
                 return serializer.ReadObject(reader) as DeviceList<Device>;
             }

@@ -10,7 +10,7 @@ namespace Week9Serializations
     /// </summary>
     [DataContract]
     [Serializable]
-    public class Computer: Device
+    public class Computer: Device, IEquatable<Computer>
     {
         [DataMember]
         public int RAM { get; set; }
@@ -19,6 +19,17 @@ namespace Week9Serializations
         {
             this.RAM = 5000000;
             this.Price = 5000;
+        }
+
+        public bool Equals(Computer other)
+        {
+            if (other.Price == this.Price
+                && other.Manufacturer == this.Manufacturer
+                && other.RAM == this.RAM)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

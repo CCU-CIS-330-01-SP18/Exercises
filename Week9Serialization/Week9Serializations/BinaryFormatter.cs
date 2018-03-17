@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
 
 namespace Week9Serializations
 {
     /// <summary>
     /// Serializes data in the Binary format.
     /// </summary>
-    public class BinaryFormatter: ISerializer
+    public class BinaryFormatting: ISerializer
     {
         /// <summary>
         /// Serializes a device list into binary format.
@@ -18,9 +20,9 @@ namespace Week9Serializations
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            using (System.IO.FileStream stream = File.Create("C:\\_Devices.txt"))
+            using (System.IO.FileStream stream = File.Create("_Devices.txt"))
             {
-                formatter.Serialize(list);
+                formatter.Serialize(stream, list);
             }
         }
 
@@ -32,9 +34,9 @@ namespace Week9Serializations
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            using (FileStream read = File.OpenRead("C:\\_Devices.txt"))
+            using (FileStream read = File.OpenRead("_Devices.txt"))
             {
-                return formatter.Deserialize() as DeviceList<Device>;
+                return formatter.Deserialize(read) as DeviceList<Device>;
             }
         }
 

@@ -10,14 +10,8 @@ namespace Week9Serializations
     /// </summary>
     [DataContract]
     [Serializable]
-    public class Device
+    public class Device: IEquatable<Device>
     {
-        [DataMember]
-        private int price;
-
-        [DataMember]
-        private string manufacturer;
-
         [DataMember]
         public int Price { get; set; }
 
@@ -26,8 +20,18 @@ namespace Week9Serializations
 
         public Device()
         {
-            this.manufacturer = "Apple";
-            this.price = 1000;
+            this.Manufacturer = "Apple";
+            this.Price = 1000;
+        }
+
+        public bool Equals(Device other)
+        {
+            if (other.Price == this.Price
+                && other.Manufacturer == this.Manufacturer)
+            {
+                return true;
+            }
+            return false;
         }
     }
 
