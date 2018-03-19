@@ -58,6 +58,12 @@ namespace Week10NetworkingExercise
             bool xIsNumber = int.TryParse(x, out firstNumber);
             bool yIsNumber = int.TryParse(y, out secondNumber);
 
+            if (!xIsNumber && yIsNumber)
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                context.Response.OutputStream.Close();
+            }
+
             if (!string.IsNullOrWhiteSpace(x) && !string.IsNullOrWhiteSpace(y))
             {
                 int result = firstNumber + secondNumber;

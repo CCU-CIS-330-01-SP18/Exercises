@@ -20,10 +20,19 @@ namespace Week10NetworkingExercise
             int portNumber;
             bool validPortNumber = int.TryParse(args[0], out portNumber);
 
-            WebServer.ListenForResponseAsync(portNumber);
+            if (validPortNumber)
+            {
+                WebServer.ListenForResponseAsync(portNumber);
 
-            Console.WriteLine($"Listening... On Port {portNumber}, press enter to stop.");
-            Console.ReadLine();
+                Console.WriteLine($"Listening... On Port {portNumber}, press enter to stop.");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"Strings that do not contain numbers are not valid port numbers, enter a command line argument that is a number.");
+            }
+
+            
         }
     }
 }
