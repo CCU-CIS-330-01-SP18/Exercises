@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace Week10NetworkingExercise
 {
+    /// <summary>
+    /// Entry point of this program that runs the webserver.
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// This method runs the program and establishes a port to listen on for requests and responses.
+        /// </summary>
+        /// <param name="args">Command line arguments that can be passed in, in this case the port number.</param>
         static void Main(string[] args)
         {
             int portNumber;
             bool validPortNumber = int.TryParse(args[0], out portNumber);
-            UriBuilder uri = new UriBuilder("http", "localhost", portNumber);
 
             WebServer.ListenForResponseAsync(portNumber);
 

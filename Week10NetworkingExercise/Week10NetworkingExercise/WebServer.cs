@@ -10,13 +10,20 @@ using System.IO;
 
 namespace Week10NetworkingExercise
 {
+    /// <summary>
+    /// Class which provides methods for creating an HttpListener and providing specific responses.
+    /// </summary>
     public class WebServer
     {
+        /// <summary>
+        /// Method that listens for a response based on a specified port number.
+        /// </summary>
+        /// <param name="portNumber">The port on which the HttpListener should listen for.</param>
         public async static void ListenForResponseAsync(int portNumber)
         {
-            UriBuilder uri = new UriBuilder("http", "localhost", portNumber);
+            var uri = new UriBuilder("http", "localhost", portNumber);
 
-            HttpListener listener = new HttpListener();
+            var listener = new HttpListener();
             listener.Prefixes.Add(uri.ToString());
             listener.Start();
 
@@ -34,6 +41,11 @@ namespace Week10NetworkingExercise
             listener.Stop();
         }
 
+        /// <summary>
+        /// Method that processes a request to the WebServer and directs responses which is either a message in the root
+        /// directory, or adding two numbers when QueryString "x" and "y" are populated.
+        /// </summary>
+        /// <param name="context">context in which to work responses for.</param>
         public static void ProcessRequestAsync(HttpListenerContext context)
         {
             string x = context.Request.QueryString["x"];
