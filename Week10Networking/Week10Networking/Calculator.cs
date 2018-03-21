@@ -19,7 +19,7 @@ namespace Week10Networking
         {
             /*
             * Un-comment the following line if you'd like to test this program without compiling into a .exe file.
-            * The default port will be 1234. You will also need to un-comment line 32.
+            * The default port will be 1234. You will also need to un-comment line 39.
             * Warning: please do not run any unit tests when un-commenting these lines, as they may hang or fail
             * unexpectedly.
             */
