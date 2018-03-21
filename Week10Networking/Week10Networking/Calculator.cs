@@ -6,13 +6,20 @@ using System.Threading.Tasks;
 
 namespace Week10Networking
 {
+    /// <summary>
+    /// A web server program that performs basic math arithmatic.
+    /// </summary>
     public class Calculator
     {
+        /// <summary>
+        /// The entry point for the program.
+        /// </summary>
+        /// <param name="args">Launch arguments (HTTP server port).</param>
         public static void Main(string[] args)
         {
             /*
             * Un-comment the following line if you'd like to test this program without compiling into a .exe file.
-            * The default port will be 1234. You will also need to un-comment line 27.
+            * The default port will be 1234. You will also need to un-comment line 32.
             * Warning: please do not run any unit tests when un-commenting these lines, as they may hang or fail
             * unexpectedly.
             */
@@ -23,7 +30,7 @@ namespace Week10Networking
             {
                 try
                 {
-                    var port = Convert.ToInt32(args[0]);
+                    int port = Convert.ToInt32(args[0]);
 
                     if(port > 1024 && port <= 65565)
                     {
@@ -48,10 +55,14 @@ namespace Week10Networking
             }
         }
         
-        async static void RunServer(int port)
+        /// <summary>
+        /// A background (asynchronous) thread to handle incoming API requests.
+        /// </summary>
+        /// <param name="port">The server port to listen on.</param>
+        private async static void RunServer(int port)
         {
-            UriBuilder uri = new UriBuilder("http", "localhost", port);
-            HttpListener httpListener = new HttpListener();
+            var uri = new UriBuilder("http", "localhost", port);
+            var httpListener = new HttpListener();
 
             httpListener.Prefixes.Add(uri.ToString());
             httpListener.Start();
@@ -76,14 +87,18 @@ namespace Week10Networking
             httpListener.Stop();
         }
 
+        /// <summary>
+        /// Performs the acutal math arithmatic for each individual API request, done asynchronously.
+        /// </summary>
+        /// <param name="context">The Http context to use for this request.</param>
         private static void PerformMathCalculations(HttpListenerContext context)
         {
             try
             {
-                var n1 = Convert.ToInt32(context.Request.QueryString["first"]);
-                var n2 = Convert.ToInt32(context.Request.QueryString["second"]);
-                var op = context.Request.QueryString["operation"];
-                var result = 0;
+                int n1 = Convert.ToInt32(context.Request.QueryString["first"]);
+                int n2 = Convert.ToInt32(context.Request.QueryString["second"]);
+                string op = context.Request.QueryString["operation"];
+                int result = 0;
 
                 switch (op)
                 {
@@ -95,17 +110,14 @@ namespace Week10Networking
                     case "multiply":
                         result = n1 * n2;
                         break;
-                    case "divide":
-                        result = n1 / n2;
-                        break;
                     default:
                         result = n1 + n2;
-                        op = "add";
+                        Console.WriteLine($"The operation \"{op}\" is not supported - defaulting to \"add\".");
                         break;
                 }
 
-                HttpListenerResponse httpResponse = context.Response;
-                var respMessage = $"Your result is {result}!";
+                var httpResponse = context.Response;
+                string respMessage = $"Your result is {result}!";
 
                 Console.WriteLine($"Received a request to {op} numbers {n1} and {n2} - result is {result}");
 
