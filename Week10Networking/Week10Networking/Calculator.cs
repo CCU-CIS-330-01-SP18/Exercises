@@ -123,7 +123,8 @@ namespace Week10Networking
 
                 byte[] buf = System.Text.Encoding.UTF8.GetBytes(respMessage);
                 httpResponse.ContentLength64 = buf.Length;
-                Stream output = httpResponse.OutputStream;
+
+                var output = httpResponse.OutputStream;
                 output.Write(buf, 0, buf.Length);
 
                 output.Close();
