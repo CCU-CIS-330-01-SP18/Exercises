@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Week10Networking;
 
 namespace Week10NetworkingTests
@@ -26,13 +27,44 @@ namespace Week10NetworkingTests
         }
 
         [TestMethod]
-        public void DoesNotRespondToBadQueryString()
+        public void BadRequestOnBadQueryString()
+        {
+            ushort port = 8080;
+            Task.Run(() => WebServer.RunWebListener(port));
+
+            var badStrings = new string[] {
+                "?x=ten&y=twenty",
+                "?x=10&y=twenty",
+                "?x=ten&y=20",
+                "?x=10",
+                "?y=20",
+                "?z=30"
+            };
+
+            var client = new HttpClient();
+            var uri = new UriBuilder("http", "localhost", port, badStrings[0]);
+            var response = client.GetAsync(uri.ToString());
+            Assert.AreEqual(HttpStatusCode.BadRequest, response.Result.StatusCode);
+
+            for (int i = 1; i < badStrings.Length; i++)
+            {
+                uri.Path = badStrings[i];
+                response = client.GetAsync(uri.ToString());
+                Assert.AreEqual(HttpStatusCode.BadRequest, response.Result.StatusCode, $"String \"{badStrings[i]}\" did not return a HTTP 400 code.");
+            }
+        }
+
+        [TestMethod]
+        public void OKOnGoodQueryString()
         {
             ushort port = 8080;
             var client = new HttpClient();
-            var uri = new UriBuilder("http", "localhost", port, "?x=ten&y=twenty");
+            var uri = new UriBuilder("http", "localhost", port, "?x=10&y=20");
+
             Task.Run(() => WebServer.RunWebListener(port));
             var response = client.GetAsync(uri.ToString());
+            string res = response.Result.ReasonPhrase;
+            Assert.AreEqual(HttpStatusCode.OK, response.Result.StatusCode);
         }
     }
 }
