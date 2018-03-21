@@ -105,9 +105,7 @@ namespace Week10Networking
                     output.Write(buffer, 0, buffer.Length);
 
                     output.Close();
-                    break;
                 }
-                listener.Stop();
             }
         }
     }

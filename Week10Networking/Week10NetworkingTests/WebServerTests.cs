@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Week10Networking;
 
@@ -26,8 +28,11 @@ namespace Week10NetworkingTests
         [TestMethod]
         public void DoesNotRespondToBadQueryString()
         {
-            var uri = new UriBuilder("http", "localhost", 8080, "?x=ten&y=twenty");
-            WebServer.RunWebListener(8080);
+            ushort port = 8080;
+            var client = new HttpClient();
+            var uri = new UriBuilder("http", "localhost", port, "?x=ten&y=twenty");
+            Task.Run(() => WebServer.RunWebListener(port));
+            var response = client.GetAsync(uri.ToString());
         }
     }
 }
