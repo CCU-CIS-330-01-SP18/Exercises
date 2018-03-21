@@ -18,6 +18,7 @@ namespace Week10NetworkingExercise
         static void Main(string[] args)
         {
             int portNumber;
+            
             bool validPortNumber = int.TryParse(args[0], out portNumber);
 
             if (validPortNumber)
@@ -30,9 +31,7 @@ namespace Week10NetworkingExercise
             else
             {
                 Console.WriteLine($"Strings that do not contain numbers are not valid port numbers, enter a command line argument that is a number.");
-            }
-
-            
+            }    
         }
     }
 }

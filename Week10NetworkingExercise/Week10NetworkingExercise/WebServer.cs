@@ -58,20 +58,21 @@ namespace Week10NetworkingExercise
             bool xIsNumber = int.TryParse(x, out firstNumber);
             bool yIsNumber = int.TryParse(y, out secondNumber);
 
-            if (!xIsNumber && yIsNumber)
-            {
-                context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Response.OutputStream.Close();
-            }
-
             if (!string.IsNullOrWhiteSpace(x) && !string.IsNullOrWhiteSpace(y))
             {
                 int result = firstNumber + secondNumber;
 
+                if (result == 0)
+                {
+                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                    context.Response.OutputStream.Close();
+                    return;
+                }
+
                 context.Response.ContentLength64 = Encoding.UTF8.GetByteCount(result.ToString());
                 context.Response.StatusCode = (int)HttpStatusCode.OK;
 
-                using (StreamWriter writer = new StreamWriter(context.Response.OutputStream))
+                using (var writer = new StreamWriter(context.Response.OutputStream))
                 {
                     writer.Write(result);
                 }
@@ -81,12 +82,10 @@ namespace Week10NetworkingExercise
                 context.Response.ContentLength64 = Encoding.UTF8.GetByteCount(responseString.ToString());
                 context.Response.StatusCode = (int)HttpStatusCode.OK;
 
-                using (StreamWriter writer = new StreamWriter(context.Response.OutputStream))
+                using (var writer = new StreamWriter(context.Response.OutputStream))
                 {
                     writer.Write(responseString);
                 }
-                /*context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Response.OutputStream.Close();*/
             }
         }
     }
