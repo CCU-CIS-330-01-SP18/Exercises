@@ -37,7 +37,6 @@ namespace Week10NetworkingExercise
                 catch (HttpListenerException) { break; }
                 catch (InvalidOperationException) { break; }
             }
-
             listener.Stop();
         }
 
@@ -58,10 +57,14 @@ namespace Week10NetworkingExercise
             bool xIsNumber = int.TryParse(x, out firstNumber);
             bool yIsNumber = int.TryParse(y, out secondNumber);
 
+            // If x and y have values then this condition will run.
             if (!string.IsNullOrWhiteSpace(x) && !string.IsNullOrWhiteSpace(y))
             {
                 int result = firstNumber + secondNumber;
 
+                // int.TryParse returns 0 if false, therefore when adding result if it's false, it will be 0.
+                // Almost the equivalent of (!xIsNumber || !yIsNumber).
+                // This condition will throw a bad request on query strings x=hello, y=world.
                 if (result == 0)
                 {
                     context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
@@ -77,6 +80,8 @@ namespace Week10NetworkingExercise
                     writer.Write(result);
                 }
             }
+            
+            // If the root page is requested i.e. http://localhost:3001.
             else
             {
                 context.Response.ContentLength64 = Encoding.UTF8.GetByteCount(responseString.ToString());

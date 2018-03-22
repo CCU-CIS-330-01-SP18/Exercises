@@ -43,10 +43,10 @@ namespace Week10NetworkingExerciseTests
         {
             WebServer.ListenForResponseAsync(3001);
 
-            // Makes a response to the web server using invalid query parameters.
+            // Makes a request to the web server using invalid query parameters.
             var request = (HttpWebRequest)WebRequest.Create("http://localhost:3001/?x=hello&y=world");
 
-            // Returns a 400(Bad Request) response and throws a WebException
+            // Returns a 400(Bad Request) response and throws a WebException.
             Assert.ThrowsException<WebException>(() => (HttpWebResponse)request.GetResponse());
         }
     }
