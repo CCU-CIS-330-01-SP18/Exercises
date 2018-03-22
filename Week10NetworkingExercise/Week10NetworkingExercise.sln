@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week10NetworkingExercise", "Week10NetworkingExercise\Week10NetworkingExercise.csproj", "{E70DCE18-DBA7-42B5-BFBB-51B9922EF00E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week10NetworkingExerciseTests", "Week10NetworkingExerciseTests\Week10NetworkingExerciseTests.csproj", "{E957CF45-EC1E-4745-AC73-B4ECA029EBD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E70DCE18-DBA7-42B5-BFBB-51B9922EF00E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E70DCE18-DBA7-42B5-BFBB-51B9922EF00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E70DCE18-DBA7-42B5-BFBB-51B9922EF00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E70DCE18-DBA7-42B5-BFBB-51B9922EF00E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E957CF45-EC1E-4745-AC73-B4ECA029EBD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E957CF45-EC1E-4745-AC73-B4ECA029EBD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E957CF45-EC1E-4745-AC73-B4ECA029EBD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E957CF45-EC1E-4745-AC73-B4ECA029EBD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F42888C7-93C1-4408-B961-9A5BDE3D82D9}
+	EndGlobalSection
+EndGlobal
