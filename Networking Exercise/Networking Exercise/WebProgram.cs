@@ -6,14 +6,14 @@ using System.Net;
 namespace NetworkingExercise
 {
     /// <summary>
-    /// 
+    /// Entry point of program that provides some logic before running WebServer.
     /// </summary>
     public class WebProgram
     {
         /// <summary>
-        /// 
+        /// Provides entry point of program and takes port number from user.
         /// </summary>
-        /// <param name="args"></param>
+        /// <param name="args">An port number argument passed by user.</param>
         static void Main(string[] args)
         { 
 

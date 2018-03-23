@@ -10,14 +10,14 @@ using System.IO;
 namespace NetworkingExercise
 {
     /// <summary>
-    /// 
+    ///  A class providing methods to add two numbers together and creating a HttpListener object.
     /// </summary>
     public class WebServer
     {
         /// <summary>
-        /// 
+        /// A method that listens for a port number.
         /// </summary>
-        /// <param name="port"></param>
+        /// <param name="port">A provided integer that islistened to by the HttpListener.</param>
         public static async void ListenAsync(int portNumber)
         {
             UriBuilder uri = new UriBuilder("http", "localhost", portNumber);
@@ -41,9 +41,9 @@ namespace NetworkingExercise
         }
 
         /// <summary>
-        /// 
+        ///  A method that processes a request then adds two numbers together or responds to the user.
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">The provided number from the Http request</param>
         public static void ProcessAsync(HttpListenerContext context)
         {
             string x = context.Request.QueryString["x"];
