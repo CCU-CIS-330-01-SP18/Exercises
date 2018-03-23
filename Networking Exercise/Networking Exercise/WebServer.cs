@@ -12,7 +12,7 @@ namespace NetworkingExercise
     /// <summary>
     /// 
     /// </summary>
-    class WebServer
+    public class WebServer
     {
         /// <summary>
         /// 
@@ -50,12 +50,9 @@ namespace NetworkingExercise
             string y = context.Request.QueryString["y"];
             string responseString = "<HTML><BODY> Hello User! Put in some numbers!</BODY></HTML>";
 
-            int firstNumber;
-            int secondNumber;
-
-            bool xIsNumber = int.TryParse(x, out firstNumber);
-            bool yIsNumber = int.TryParse(y, out secondNumber);
-
+            bool xIsNumber = int.TryParse(x, out int firstNumber);
+            bool yIsNumber = int.TryParse(y, out int secondNumber);
+            
             if (!string.IsNullOrWhiteSpace(x) && !string.IsNullOrWhiteSpace(y))
             {
                 int result = firstNumber + secondNumber;
@@ -67,9 +64,6 @@ namespace NetworkingExercise
                     return;
                 }
 
-                context.Response.ContentLength64 = Encoding.UTF8.GetByteCount(result.ToString());
-                context.Response.StatusCode = (int)HttpStatusCode.OK;
-
                 using (var writer = new StreamWriter(context.Response.OutputStream))
                 {
                     writer.Write(result);
@@ -77,8 +71,6 @@ namespace NetworkingExercise
             }
             else
             {
-                context.Response.ContentLength64 = Encoding.UTF8.GetByteCount(responseString.ToString());
-                context.Response.StatusCode = (int)HttpStatusCode.OK;
 
                 using (var writer = new StreamWriter(context.Response.OutputStream))
                 {

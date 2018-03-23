@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Net;
 
 namespace NetworkingExercise
 {
@@ -21,9 +21,18 @@ namespace NetworkingExercise
 
             if (validPortNumber)
             {
-                WebServer.ListenAsync(portNumber);
-                Console.WriteLine($"Listening on port {portNumber}, press any key to stop.");
-                Console.ReadLine();
+                try
+                {
+                    WebServer.ListenAsync(portNumber);
+                    Console.WriteLine($"Listening on port {portNumber}, press any key to stop.");
+                    Console.ReadLine();
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Incorrect format. Please try again.");
+                    throw;
+                }
+
             }
             else
             {
