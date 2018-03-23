@@ -35,7 +35,10 @@ namespace Networking
                     }
                     else
                     {
-                        StartUpServer(portNumber);
+                        GenerateWebServerAsync(portNumber);
+
+                        Console.WriteLine($"Server running on port {portNumber}. Press Enter to stop.");
+                        Console.ReadLine();
                     }
                 }
                 else
@@ -52,59 +55,18 @@ namespace Networking
         }
 
         /// <summary>
-        /// Starts up the web server, then calls an async method so that it doesn't have to be restarted every time it's refreshed.
+        /// Starts up the web server and allows the web server to be asynchronous.
         /// </summary>
         /// <param name="portNumber">
         /// The port number the user already typed in to host the server on.
         /// </param>
-        private static void StartUpServer(int portNumber)
+        public async static void GenerateWebServerAsync(int portNumber)
         {
             var uri = new UriBuilder("http", "localhost", portNumber);
-
-            using (var listener = new HttpListener())
-            {
-                listener.Prefixes.Add(uri.ToString());
-                listener.Start();
-
-                Console.WriteLine("I'm waiting...");
-
-                var context = listener.GetContext();
-                var request = context.Request;
-
-                var response = context.Response;
-
-                string responseString = "<HTML><BODY> Coding is hard... so here's some math I guess.</BODY></HTML>";
-                byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
-
-                response.ContentLength64 = buffer.Length;
-                Stream output = response.OutputStream;
-                output.Write(buffer, 0, buffer.Length);
-
-                // Terminate the output stream.
-                output.Close();
-                listener.Stop();
-            }
-
-            GenerateWebServerAsync(portNumber, uri);
-
-            Console.WriteLine($"Server running on port {portNumber}. Press Enter to stop.");
-            Console.ReadLine();
-        }
-
-        /// <summary>
-        /// Allows the web server to be asynchronous.
-        /// </summary>
-        /// <param name="portNumber">
-        /// The port number the user already typed in to host the server on.
-        /// </param>
-        /// <param name="uri">
-        /// The URI which was used to start the web server.
-        /// </param>
-        public async static void GenerateWebServerAsync(int portNumber, UriBuilder uri)
-        {
             var listener = new HttpListener();
             listener.Prefixes.Add(uri.ToString());
             listener.Start();
+            Console.WriteLine("I'm waiting...");
 
             while (true)
             {
