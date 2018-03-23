@@ -32,7 +32,7 @@ namespace Week10Networking
                 {
                     int port = Convert.ToInt32(args[0]);
 
-                    if(port > 1024 && port <= 65565)
+                    if(port > 1024 && port <= 65535)
                     {
                         RunServer(port);
                         Console.WriteLine($"The server is running on port {port} - press Enter to stop the server.");
@@ -40,7 +40,7 @@ namespace Week10Networking
                     }
                     else
                     {
-                        throw new IndexOutOfRangeException("This program only accepts port values between 1024 (exclusive) and 65565 (inclusive).");
+                        throw new IndexOutOfRangeException("This program only accepts port values between 1024 (exclusive) and 65535 (inclusive).");
                     }
                 }
                 catch (FormatException)
