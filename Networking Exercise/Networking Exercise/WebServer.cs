@@ -43,7 +43,7 @@ namespace NetworkingExercise
         /// <summary>
         ///  A method that processes a request then adds two numbers together or responds to the user.
         /// </summary>
-        /// <param name="context">The provided number from the Http request</param>
+        /// <param name="context">The provided number from the Http request.</param>
         public static void ProcessAsync(HttpListenerContext context)
         {
             string x = context.Request.QueryString["x"];
