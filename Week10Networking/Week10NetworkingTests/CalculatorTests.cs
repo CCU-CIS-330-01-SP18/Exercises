@@ -38,7 +38,7 @@ namespace Week10NetworkingTests
 
             using (HttpClient client = new HttpClient())
             {
-                var response = client.GetStringAsync("http://localhost:" + port + "/?first=1&second=1&operation=add").Result;
+                var response = client.GetStringAsync("http://localhost:" + port + "/?x=1&y=1&operation=add").Result;
                 Assert.AreEqual(response, "Your result is 2!");
             }
         }

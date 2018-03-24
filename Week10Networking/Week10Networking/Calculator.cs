@@ -19,7 +19,8 @@ namespace Week10Networking
         {
             /*
             * Un-comment the following line if you'd like to test this program without compiling into a .exe file.
-            * The default port will be 1234. You will also need to un-comment line 39.
+            * The default port will be 1234. You will also need to un-comment line 40. Alternatively, you can right-click
+            * on this project and enter launch arguments from the Properties > Debug screen.
             * Warning: please do not run any unit tests when un-commenting these lines, as they may hang or fail
             * unexpectedly.
             */
@@ -95,8 +96,8 @@ namespace Week10Networking
         {
             try
             {
-                int n1 = Convert.ToInt32(context.Request.QueryString["first"]);
-                int n2 = Convert.ToInt32(context.Request.QueryString["second"]);
+                int n1 = Convert.ToInt32(context.Request.QueryString["x"]);
+                int n2 = Convert.ToInt32(context.Request.QueryString["y"]);
                 string op = context.Request.QueryString["operation"];
                 int result = 0;
 
@@ -131,6 +132,15 @@ namespace Week10Networking
             }
             catch (FormatException)
             {
+                context.Response.StatusCode = 400;
+                byte[] buf = System.Text.Encoding.UTF8.GetBytes("Incorrect query strings supplied.");
+                context.Response.ContentLength64 = buf.Length;
+
+                var output = context.Response.OutputStream;
+                output.Write(buf, 0, buf.Length);
+
+                output.Close();
+
                 Console.WriteLine("One or more query string parameters supplied was invalid.");
             }
         }
