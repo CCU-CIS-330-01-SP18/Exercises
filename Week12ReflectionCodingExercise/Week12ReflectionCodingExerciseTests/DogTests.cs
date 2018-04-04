@@ -30,7 +30,7 @@ namespace Week12ReflectionCodingExerciseTests
         [TestMethod]
         public void CanReadDogProperties()
         {
-            Type d = typeof(Dog);
+            var d = typeof(Dog);
 
             var dog = new Dog { Name = "Maggie", Age = 1 };
 
