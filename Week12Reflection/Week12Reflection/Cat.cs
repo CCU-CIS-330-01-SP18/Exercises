@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a cat. Capable of scratching things.
     /// </summary>
-    class Cat
+    public class Cat
     {
         int Age = 0;
         float ClawLength = 1.0f;

@@ -5,10 +5,11 @@ namespace Week12Reflection
     /// <summary>
     /// Represents a dog. Can bark at things.
     /// </summary>
+    /// <remarks>Yes, I'm uncreative. Also, I'm low on time, so you get a dog.</remarks>
     public class Dog
     {
-        int Age = 0;
-        int BarkFactor = 1;
+        private int Age = 0;
+        private int BarkFactor = 1;
 
         /// <summary>
         /// Instantiates a new Dog object.
