@@ -25,6 +25,7 @@ namespace Week12ReflectionTests
         public void CastleAnthraxHasWorkingProperties()
         {
             // Reflected object.
+            var ca = new CastleAnthrax();
             var ca_reflected = typeof(CastleAnthrax);
             
             // For each property, assert whether the properties can be read and written to.
@@ -33,6 +34,15 @@ namespace Week12ReflectionTests
                 Assert.IsTrue(property.CanRead);
                 Assert.IsTrue(property.CanWrite);
             }
+
+            // Perform some changes to the properties and test whether they actually changed.
+            var isHoly = ca_reflected.GetProperty("IsHoly", BindingFlags.Public | BindingFlags.Instance);
+            var isNecessary = ca_reflected.GetProperty("IsNecessaryForPlot", BindingFlags.Public | BindingFlags.Instance);
+            isHoly.SetValue(ca, false, null);
+            isNecessary.SetValue(ca, false, null);
+
+            Assert.IsFalse(ca.IsHoly);
+            Assert.IsFalse(ca.IsNecessaryForPlot);
         }
 
         [TestMethod]
