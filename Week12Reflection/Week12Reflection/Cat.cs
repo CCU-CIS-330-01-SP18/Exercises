@@ -5,8 +5,8 @@
     /// </summary>
     public class Cat
     {
-        int Age = 0;
-        float ClawLength = 1.0f;
+        int age = 0;
+        float clawLength = 1.0f;
 
         /// <summary>
         /// Instantiates a new Cat object.
@@ -14,17 +14,18 @@
         /// <param name="age">The age of the cat in years.</param>
         public Cat(int age)
         {
-            Age = age;
+            this.age = age;
         }
 
         /// <summary>
         /// Scratch at something. Results in a loss in claw length.
         /// </summary>
+        /// <remarks>This method is private to demonstrate reflection's ability to work around access modifiers.</remarks>
         private void Scratch()
         {
-            if (ClawLength >= 0.1)
+            if (clawLength >= 0.1)
             {
-                ClawLength -= 0.1f;
+                clawLength -= 0.1f;
             }
         }
     }
