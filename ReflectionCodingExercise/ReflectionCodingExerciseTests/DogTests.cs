@@ -11,7 +11,7 @@ namespace ReflectionCodingExerciseTests
         [TestMethod]
         public void DogCanBeConstructed()
         {
-            var Dog = typeof(Dog).GetConstructor(new Type[] { }).Invoke(null) as Dog;
+            var Dog = typeof(Dog).GetConstructor(new Type[]{}).Invoke(null) as Dog;
             Assert.IsInstanceOfType(Dog, typeof(Dog));
         }
 

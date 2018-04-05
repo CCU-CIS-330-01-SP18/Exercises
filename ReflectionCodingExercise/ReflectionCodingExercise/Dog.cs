@@ -9,7 +9,7 @@ namespace ReflectionCodingExercise
     /// <summary>
     /// A generic class that contains two properties and one method and inherits from the Animal class.
     /// </summary>
-    public class Dog 
+    public class Dog : Animal
     {
         public string Name { get; set; }
 
