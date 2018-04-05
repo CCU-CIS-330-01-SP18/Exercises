@@ -23,6 +23,10 @@ namespace Week12Reflection
         /// <summary>
         /// Makes the person who looks at the Meme, laugh.
         /// </summary>
-        public void MakeMeLaugh() { }
+        /// <returns>The lovely sound of laughter.</returns>
+        public string MakeMeLaugh()
+        {
+            return "Haha";
+        }
     }
 }
