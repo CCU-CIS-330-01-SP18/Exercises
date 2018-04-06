@@ -42,6 +42,12 @@ namespace ReflectionTests
             reflectionIphoneX.GetType().GetProperty("IsAllowedThroughTSA").SetValue(reflectionIphoneX, true);
             Assert.AreEqual(true , reflectionIphoneX.GetType().GetProperty("IsOverpriced").GetValue(reflectionIphoneX, null));
             Assert.AreEqual(true, reflectionIphoneX.GetType().GetProperty("IsAllowedThroughTSA").GetValue(reflectionIphoneX, null));
+
+            Assert.IsTrue(reflectionIphoneX.GetType().GetProperty("IsOverpriced").CanRead);
+            Assert.IsTrue(reflectionIphoneX.GetType().GetProperty("IsOverpriced").CanWrite);
+
+            Assert.IsTrue(reflectionIphoneX.GetType().GetProperty("IsAllowedThroughTSA").CanRead);
+            Assert.IsTrue(reflectionIphoneX.GetType().GetProperty("IsAllowedThroughTSA").CanWrite);
         }
 
         [TestMethod]
@@ -50,8 +56,16 @@ namespace ReflectionTests
             //Object created using reflection.
             var reflectionIphoneX = Activator.CreateInstance(typeof(IphoneX)) as IphoneX;
 
-            var iPhoneXMethod = reflectionIphoneX.GetType().GetMethod("EmptyBankAccount", null);
-            iPhoneXMethod.Invoke();
+            //Because the "EmptyBankAccount" method only really writes to the console, I added another step to have it change the object's "IsOverpriced"
+            //  property to true. The code below sets the reflectionIphoneX's "IsOverpriced" property to false, so that I may check to see if it 
+            //  is true after the method is run, confirming that the method ran.
+            reflectionIphoneX.GetType().GetProperty("IsOverpriced").SetValue(reflectionIphoneX, false);
+
+            var iPhoneXMethod = reflectionIphoneX.GetType().GetMethod("EmptyBankAccount");
+            iPhoneXMethod.Invoke(reflectionIphoneX, null);
+
+            //Checks to see if the "IsOverpriced" changed to true.
+            Assert.AreEqual(true, reflectionIphoneX.GetType().GetProperty("IsOverpriced").GetValue(reflectionIphoneX, null));
         }
     }
 }

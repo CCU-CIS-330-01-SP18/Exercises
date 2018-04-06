@@ -9,19 +9,19 @@ namespace Week12Reflection
     /// <summary>
     /// A class that represents a mobile phone manufacured by Samsung. 
     /// </summary>
-    class GalaxyNote7
+    public class GalaxyNote7
     {
-        public bool IsAllowedTroughTSA { get; set; }
+        public bool IsAllowedThroughTSA { get; set; }
 
         public bool IsOverpriced { get; set; }
 
         /// <summary>
         /// Initiates device's primary directive. 
         /// </summary>
-        public void EmptyBankAccount()
+        public void Detonate()
         {
             Console.WriteLine("**BOOM**");
-            this.IsAllowedTroughTSA = false;
+            this.IsAllowedThroughTSA = false;
         }
     }
 }
