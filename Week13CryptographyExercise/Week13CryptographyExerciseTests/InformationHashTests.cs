@@ -21,7 +21,7 @@ namespace Week13CryptographyExerciseTests
             byte[] hash = SHA256.Create().ComputeHash(data);
 
 
-
+            // Checks to see if the two Hash values are equal.
             Assert.IsTrue(hashedValue.SequenceEqual(hash));
 
         }

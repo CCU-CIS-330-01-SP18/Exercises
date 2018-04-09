@@ -7,8 +7,16 @@ using System.Threading.Tasks;
 
 namespace Week13CryptographyExercise
 {
+    /// <summary>
+    /// Encrypts data Asymmetrically.
+    /// </summary>
     public class AsymmetricEncryption
     {
+        /// <summary>
+        /// Encrypts data.
+        /// </summary>
+        /// <param name="value">Data that is wanting to be encrypted and decrypted.</param>
+        /// <returns>The decrypted and original value of data after it was encrypted.</returns>
         public static string Encrypt(string value)
         {
             string plainOldText = value;
@@ -17,12 +25,14 @@ namespace Week13CryptographyExercise
             byte[] encryptedValue;
             string decryptedValue;
 
+            // Generates a public and private key.
             using (var csp = new RSACryptoServiceProvider())
             {
                 publicKey = csp.ToXmlString(false);
                 privateKey = csp.ToXmlString(true);
             }
 
+            // encrypts passed in string parameter using the public key.
             using (var csp = new RSACryptoServiceProvider())
             {
                 csp.FromXmlString(publicKey);
@@ -30,6 +40,7 @@ namespace Week13CryptographyExercise
                 encryptedValue = csp.Encrypt(Encoding.UTF8.GetBytes(plainOldText), true);
             }
 
+            // Decrypts value using the private key.
             using (var csp = new RSACryptoServiceProvider())
             {
                 csp.FromXmlString(privateKey);

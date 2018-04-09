@@ -14,6 +14,7 @@ namespace Week13CryptographyExerciseTests
 
             string decryptedText = AsymmetricEncryption.Encrypt(text);
 
+            // Checks to see if the decrypted value is equal to the orginal value of the text.
             Assert.AreEqual(text, decryptedText);
         }
     }
