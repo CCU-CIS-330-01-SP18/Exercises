@@ -7,12 +7,24 @@ using System.Threading.Tasks;
 
 namespace Week13Cryptography
 {
+    /// <summary>
+    /// A class to perform simple asymmetric encryption through RSA.
+    /// </summary>
     public class RSAEncryption
     {
+        /// <summary>
+        /// This instance's public key, created at initialization.
+        /// </summary>
         public string PublicKey { get; private set; }
 
+        /// <summary>
+        /// This instance's private key, created at initialization.
+        /// </summary>
         public string PrivateKey { get; private set; }
 
+        /// <summary>
+        /// Constructs a new instance, and prepares a public and private key pair.
+        /// </summary>
         public RSAEncryption()
         {
             using (RSACryptoServiceProvider crypto = new RSACryptoServiceProvider())
@@ -22,23 +34,35 @@ namespace Week13Cryptography
             }
         }
 
-        public string Encrypt(string key, string plainText)
+        /// <summary>
+        /// Encrypts a string according to a key.
+        /// </summary>
+        /// <param name="key">The key to use for encryption.</param>
+        /// <param name="plainText">The secret text to encrypt.</param>
+        /// <returns>A byte array of encrypted information.</returns>
+        public byte[] Encrypt(string key, string plainText)
         {
             using (RSACryptoServiceProvider crypto = new RSACryptoServiceProvider())
             {
                 crypto.FromXmlString(key);
 
-                return Encoding.UTF8.GetString(crypto.Encrypt(Encoding.UTF8.GetBytes(plainText), true));
+                return crypto.Encrypt(Encoding.UTF8.GetBytes(plainText), true);
             }
         }
 
-        public string Decrypt(string key, string encodedText)
+        /// <summary>
+        /// Decrypts a byte array according to a key.
+        /// </summary>
+        /// <param name="key">The key to use for decryption.</param>
+        /// <param name="encodedText">The byte array to decrypt.</param>
+        /// <returns>A string of decrypted information.</returns>
+        public string Decrypt(string key, byte[] encodedText)
         {
             using (RSACryptoServiceProvider crypto = new RSACryptoServiceProvider())
             {
                 crypto.FromXmlString(key);
 
-                return Encoding.UTF8.GetString(crypto.Decrypt(Encoding.UTF8.GetBytes(encodedText), true));
+                return Encoding.UTF8.GetString(crypto.Decrypt(encodedText, true));
             }
         }
     }
