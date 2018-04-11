@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Week13Security
 {
@@ -22,6 +17,28 @@ namespace Week13Security
         {
             var sha = SHA256.Create();
             return sha.ComputeHash(file);
+        }
+
+        /// <summary>
+        /// Hashes the supplied file with the SHA256 algorithm, and returns the result.
+        /// </summary>
+        /// <param name="filePath">The path to the file to hash.</param>
+        /// <returns>A byte array representation of the hash.</returns>
+        public static byte[] Hash(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                byte[] hashed = null;
+                using (var file = File.OpenRead(filePath))
+                {
+                    hashed = Hash(file);
+                }
+                return hashed;
+            }
+            else
+            {
+                throw new FileNotFoundException();
+            }
         }
     }
 }

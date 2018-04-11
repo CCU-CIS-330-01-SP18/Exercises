@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Week13Security;
 
 namespace Week13SecurityTests
@@ -10,27 +7,22 @@ namespace Week13SecurityTests
     public class SymmetricEncryptionTests
     {
         [TestMethod]
-        public void CanEncrypt()
+        public void CanEncryptDecrypt()
         {
-            string filePath = "encrypt.txt";
-            var file = File.CreateText(filePath);
-            file.WriteLine("Encrypt THIS");
-            file.Close();
+            string stringToEncrypt = "Lorem Ipsum";
 
-            var encrypted = SymmetricEncryption.Encrypt(filePath);
+            var encrypted = SymmetricEncryption.Encrypt(stringToEncrypt);
 
             Assert.IsNotNull(encrypted, "The encryption method returned nothing.");
-            Assert.IsTrue(encrypted.Count == 1, "More than one key-value pair was returned.");
+            Assert.IsNotNull(encrypted["iv"], "A null initialization vector was returned.");
+            Assert.IsNotNull(encrypted["encrypted"], "A null encrypted file was returned.");
+            Assert.IsNotNull(encrypted["key"], "A null encryption key was returned.");
+            Assert.IsTrue(encrypted.Count == 3, "An invalid dictionary was returned.");
+            Assert.AreNotEqual(stringToEncrypt, encrypted["encrypted"], "The encryption method did not actually encrypt the string.");
 
-            //Assert.AreEqual(SymmetricEncryption.Decrypt(encrypted.Values.First(), encrypted.Keys.First()), );
+            string decrypted = SymmetricEncryption.Decrypt(encrypted["encrypted"], encrypted["key"], encrypted["iv"]);
 
-            File.Delete(filePath);
-        }
-
-        [TestMethod]
-        public void CanDecrypt()
-        {
-            Assert.Fail();
+            Assert.AreEqual(stringToEncrypt, decrypted, "Decryption yielded a different result.");
         }
     }
 }

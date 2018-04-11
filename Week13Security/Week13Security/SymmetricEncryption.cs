@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace Week13Security
 {
@@ -16,44 +12,42 @@ namespace Week13Security
         /// <summary>
         /// Encrypts the given file and returns both the encrypted file, as well as the key used to encrypt it.
         /// </summary>
-        /// <param name="filePath">The path to the file to encrypt.</param>
-        /// <returns>A dictionary with one key-pair value: the encryption key, as well as the encrypted file in byte array form.</returns>
-        public static Dictionary<string, byte[]> Encrypt(string filePath)
+        /// <param name="stringToEncrypt">The string to encrypt.</param>
+        /// <returns>A dictionary containing the encrypted file as "encrypted", the key used to encrypt it as "key", and the initialization vector as "iv".</returns>
+        public static Dictionary<string, byte[]> Encrypt(string stringToEncrypt)
         {
             var keyFile = new Dictionary<string, byte[]>();
-            byte[] fileContents = File.ReadAllBytes(filePath);
-
             byte[] encryptedValue;
-
             byte[] key;
-            byte[] iv;
-            
+            byte[] initializationVector;
+
             using (var cryptoServiceProvider = new AesCryptoServiceProvider())
             {
-                //provider.GenerateKey();
+                cryptoServiceProvider.GenerateKey();
                 key = cryptoServiceProvider.Key;
-                Console.WriteLine("Key: {0}", Encoding.UTF8.GetString(key));
 
-                //provider.GenerateIV();
-                iv = cryptoServiceProvider.IV;
-                Console.WriteLine("IV: {0}", Encoding.UTF8.GetString(iv));
+                cryptoServiceProvider.GenerateIV();
+                initializationVector = cryptoServiceProvider.IV;
 
-                ICryptoTransform encryptor = cryptoServiceProvider.CreateEncryptor(key, iv);
+                var encryptor = cryptoServiceProvider.CreateEncryptor(key, initializationVector);
 
-                // Create the streams used for encryption.
-                using (MemoryStream stream = new MemoryStream())
-                using (CryptoStream crypt = new CryptoStream(stream, encryptor, CryptoStreamMode.Write))
+                using (var stream = new MemoryStream())
+                using (var crypt = new CryptoStream(stream, encryptor, CryptoStreamMode.Write))
                 {
-                    using (StreamWriter writer = new StreamWriter(crypt))
+                    using (var writer = new StreamWriter(crypt))
                     {
-                        writer.Write(fileContents);
+                        writer.Write(stringToEncrypt);
                     }
 
                     encryptedValue = stream.ToArray();
                 }
             }
 
-            throw new NotImplementedException();
+            keyFile.Add("encrypted", encryptedValue);
+            keyFile.Add("key", key);
+            keyFile.Add("iv", initializationVector);
+
+            return keyFile;
         }
 
         /// <summary>
@@ -61,10 +55,25 @@ namespace Week13Security
         /// </summary>
         /// <param name="encrypted">The encrypted file, as a byte array.</param>
         /// <param name="key">The symmetric encryption key to decrypt the file with.</param>
-        /// <returns>The decrypted file.</returns>
-        public static Stream Decrypt(byte[] encrypted, string key)
+        /// <param name="iv">The initialization vector to decrypt the file with.</param>
+        /// <returns>The decrypted file, as a byte array.</returns>
+        public static string Decrypt(byte[] encrypted, byte[] key, byte[] iv)
         {
-            throw new NotImplementedException();
+            string decrypted;
+
+            using (var cryptoServiceProvider = new AesCryptoServiceProvider())
+            {
+                var decryptor = cryptoServiceProvider.CreateDecryptor(key, iv);
+                
+                using (var stream = new MemoryStream(encrypted))
+                using (var crypt = new CryptoStream(stream, decryptor, CryptoStreamMode.Read))
+                using (var reader = new StreamReader(crypt))
+                {
+                    decrypted = reader.ReadToEnd();
+                }
+            }
+
+            return decrypted;
         }
     }
 }
