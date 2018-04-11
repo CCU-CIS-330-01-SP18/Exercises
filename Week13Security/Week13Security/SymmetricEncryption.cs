@@ -10,7 +10,7 @@ namespace Week13Security
     public static class SymmetricEncryption
     {
         /// <summary>
-        /// Encrypts the given file and returns both the encrypted file, as well as the key used to encrypt it.
+        /// Encrypts the given string.
         /// </summary>
         /// <param name="stringToEncrypt">The string to encrypt.</param>
         /// <returns>A dictionary containing the encrypted file as "encrypted", the key used to encrypt it as "key", and the initialization vector as "iv".</returns>

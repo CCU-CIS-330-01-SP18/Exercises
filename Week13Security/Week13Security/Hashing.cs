@@ -9,7 +9,7 @@ namespace Week13Security
     public static class Hashing
     {
         /// <summary>
-        /// Hashes the supplied file with the SHA256 algorithm, and returns the result.
+        /// Hashes the supplied file with the SHA256 algorithm.
         /// </summary>
         /// <param name="file">The file to hash.</param>
         /// <returns>A byte array representation of the hash.</returns>
@@ -20,7 +20,7 @@ namespace Week13Security
         }
 
         /// <summary>
-        /// Hashes the supplied file with the SHA256 algorithm, and returns the result.
+        /// Hashes the supplied file with the SHA256 algorithm.
         /// </summary>
         /// <param name="filePath">The path to the file to hash.</param>
         /// <returns>A byte array representation of the hash.</returns>

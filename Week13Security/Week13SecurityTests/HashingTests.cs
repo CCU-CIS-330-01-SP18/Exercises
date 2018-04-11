@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.IO;
 using System.Linq;
 using Week13Security;
@@ -43,6 +44,15 @@ namespace Week13SecurityTests
             
             File.Delete(rootPath);
             File.Delete(libraryPath);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void NonexistentFileThrowsError()
+        {
+            // If you have this file somewhere on your hard drive, I'll buy you a donut.
+            string nonExistentPath = "C:\\" + Guid.NewGuid().ToString() + ".txt";
+            Hashing.Hash(nonExistentPath);
         }
     }
 }
