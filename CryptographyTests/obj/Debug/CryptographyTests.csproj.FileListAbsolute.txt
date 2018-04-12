@@ -1,0 +1,15 @@
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\CryptographyTests.dll
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\CryptographyTests.pdb
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\CryptographyAssignment.dll
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\CryptographyAssignment.pdb
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\obj\Debug\CryptographyTests.csprojResolveAssemblyReference.cache
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\obj\Debug\CryptographyTests.csproj.CoreCompileInputs.cache
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\obj\Debug\CryptographyTests.dll
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyTests\obj\Debug\CryptographyTests.pdb

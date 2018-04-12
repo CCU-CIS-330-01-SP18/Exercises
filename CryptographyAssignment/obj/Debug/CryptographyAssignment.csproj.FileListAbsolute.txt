@@ -1,0 +1,6 @@
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyAssignment\bin\Debug\CryptographyAssignment.dll
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyAssignment\bin\Debug\CryptographyAssignment.pdb
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyAssignment\obj\Debug\CryptographyAssignment.csprojResolveAssemblyReference.cache
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyAssignment\obj\Debug\CryptographyAssignment.csproj.CoreCompileInputs.cache
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyAssignment\obj\Debug\CryptographyAssignment.dll
+C:\Users\Justin\Source\Repos\Exercises\CryptographyAssignment\CryptographyAssignment\obj\Debug\CryptographyAssignment.pdb
