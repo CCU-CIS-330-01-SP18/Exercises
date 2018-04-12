@@ -32,7 +32,7 @@ namespace Week13CryptographyExercise
                 privateKey = csp.ToXmlString(true);
             }
 
-            // encrypts passed in string parameter using the public key.
+            // Encrypts passed in string parameter using the public key.
             using (var csp = new RSACryptoServiceProvider())
             {
                 csp.FromXmlString(publicKey);
