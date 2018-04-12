@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptographyExercise", "CryptographyExercise\CryptographyExercise.csproj", "{C8ABE34A-4D97-4CDF-B888-763F0A1DA2A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptographyTests", "CryptographyTests\CryptographyTests.csproj", "{6E274CCB-BFBF-4583-B39E-B6E0B32BBF41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C8ABE34A-4D97-4CDF-B888-763F0A1DA2A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8ABE34A-4D97-4CDF-B888-763F0A1DA2A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8ABE34A-4D97-4CDF-B888-763F0A1DA2A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E274CCB-BFBF-4583-B39E-B6E0B32BBF41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E274CCB-BFBF-4583-B39E-B6E0B32BBF41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E274CCB-BFBF-4583-B39E-B6E0B32BBF41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E274CCB-BFBF-4583-B39E-B6E0B32BBF41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
