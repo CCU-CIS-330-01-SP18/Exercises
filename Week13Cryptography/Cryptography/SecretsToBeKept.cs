@@ -23,12 +23,6 @@ namespace Cryptography
             // Hash and "save" the password.
             byte[] data = Encoding.UTF8.GetBytes(password);
             byte[] hash = SHA256.Create().ComputeHash(data);
-            Console.WriteLine(Encoding.UTF8.GetString(hash));
-
-            // Confirm the user entered the same password.
-            byte[] data2 = Encoding.UTF8.GetBytes(password);
-            byte[] hash2 = SHA256.Create().ComputeHash(data);
-            Console.WriteLine(Encoding.UTF8.GetString(hash2));
 
             return Encoding.UTF8.GetString(hash);
         }
@@ -47,23 +41,21 @@ namespace Cryptography
             byte[] iv;
 
             // Encrypt the value.
-            using (AesCryptoServiceProvider encryptionProvider = new AesCryptoServiceProvider())
+            using (var encryptionProvider = new AesCryptoServiceProvider())
             {
                 // Generate the key.
                 key = encryptionProvider.Key;
-                Console.WriteLine("Key: {0}", Encoding.UTF8.GetString(key));
 
                 // Generate the IV.
                 iv = encryptionProvider.IV;
-                Console.WriteLine("IV: {0}", Encoding.UTF8.GetString(iv));
 
                 ICryptoTransform encryptor = encryptionProvider.CreateEncryptor(key, iv);
 
                 // Create the streams for encryption.
-                using (MemoryStream stream = new MemoryStream())
-                using (CryptoStream crypt = new CryptoStream(stream, encryptor, CryptoStreamMode.Write))
+                using (var stream = new MemoryStream())
+                using (var crypt = new CryptoStream(stream, encryptor, CryptoStreamMode.Write))
                 {
-                    using (StreamWriter writer = new StreamWriter(crypt))
+                    using (var writer = new StreamWriter(crypt))
                     {
                         writer.Write(plainText);
                     }
@@ -73,14 +65,14 @@ namespace Cryptography
             }
 
             // Decrypt the value.
-            using (AesCryptoServiceProvider csp = new AesCryptoServiceProvider())
+            using (var encryptionProvider = new AesCryptoServiceProvider())
             {
-                ICryptoTransform decryptor = csp.CreateDecryptor(key, iv);
+                ICryptoTransform decryptor = encryptionProvider.CreateDecryptor(key, iv);
 
                 // Create the streams for decryption.
-                using (MemoryStream stream = new MemoryStream(encryptedValue))
-                using (CryptoStream crypt = new CryptoStream(stream, decryptor, CryptoStreamMode.Read))
-                using (StreamReader reader = new StreamReader(crypt))
+                using (var stream = new MemoryStream(encryptedValue))
+                using (var crypt = new CryptoStream(stream, decryptor, CryptoStreamMode.Read))
+                using (var reader = new StreamReader(crypt))
                 {
                     decryptedValue = reader.ReadToEnd();
                 }
