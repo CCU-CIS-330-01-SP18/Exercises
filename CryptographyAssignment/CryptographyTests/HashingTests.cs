@@ -13,7 +13,7 @@ namespace CryptographyTests
         public void HashKeyCheck()
         {
             string key = Guid.NewGuid().ToString("n").Substring(0, new Random().Next(10, 20));
-
+            
             byte[] hashedKey = Hashing.Hash(key);
             byte[] rehashedKey = Hashing.Hash(key);
 
