@@ -27,7 +27,7 @@ namespace Week13Cryptography
         /// </summary>
         public RSAEncryption()
         {
-            using (RSACryptoServiceProvider crypto = new RSACryptoServiceProvider())
+            using (var crypto = new RSACryptoServiceProvider())
             {
                 PublicKey = crypto.ToXmlString(false);
                 PrivateKey = crypto.ToXmlString(true);
@@ -42,7 +42,7 @@ namespace Week13Cryptography
         /// <returns>A byte array of encrypted information.</returns>
         public byte[] Encrypt(string key, string plainText)
         {
-            using (RSACryptoServiceProvider crypto = new RSACryptoServiceProvider())
+            using (var crypto = new RSACryptoServiceProvider())
             {
                 crypto.FromXmlString(key);
 
@@ -58,7 +58,7 @@ namespace Week13Cryptography
         /// <returns>A string of decrypted information.</returns>
         public string Decrypt(string key, byte[] encodedText)
         {
-            using (RSACryptoServiceProvider crypto = new RSACryptoServiceProvider())
+            using (var crypto = new RSACryptoServiceProvider())
             {
                 crypto.FromXmlString(key);
 
