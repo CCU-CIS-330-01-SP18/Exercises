@@ -8,7 +8,18 @@ namespace Week14IDisposableExercise
 {
     public class Animal : IDisposable
     {
+        public void ReadYourAnimalsName(string name)
+        {
+
+        }
+
         public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
         {
 
         }
