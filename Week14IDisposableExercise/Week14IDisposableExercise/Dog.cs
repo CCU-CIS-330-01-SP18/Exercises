@@ -8,15 +8,23 @@ namespace Week14IDisposableExercise
 {
     class Dog : Animal, IDisposable
     {
-        public void Dispose()
+        private bool disposed;
+
+        public void DoDogWork()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            if (this.disposed)
+            {
+                throw new ObjectDisposedException("Dog");
+            }
+
+            Console.WriteLine("This dog is doing some work!");
         }
 
-        protected virtual void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
+            this.disposed = true;
 
+            base.Dispose(disposing);
         }
     }
 }

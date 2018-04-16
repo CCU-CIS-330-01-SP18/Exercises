@@ -8,11 +8,8 @@ namespace Week14IDisposableExercise
 {
     public class Animal : IDisposable
     {
-        public void ReadYourAnimalsName(string name)
-        {
-
-        }
-
+        private Dog dog = new Dog();
+        
         public void Dispose()
         {
             Dispose(true);
@@ -21,7 +18,19 @@ namespace Week14IDisposableExercise
 
         protected virtual void Dispose(bool disposing)
         {
+            if (disposing)
+            {
+                if (dog != null)
+                {
+                    dog.Dispose();
+                    dog = null;
+                }
+            }
+        }
 
+        ~Animal()
+        {
+            Dispose(false);
         }
     }
 }
