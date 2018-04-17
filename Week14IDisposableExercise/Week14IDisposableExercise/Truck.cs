@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace Week14IDisposableExercise
 {
-    class Dog : Animal, IDisposable
+    class Truck : Automobile
     {
-        private bool disposed;
+        //private bool disposed;
 
-        public void DoDogWork()
+        public void BeReallyLoud()
         {
-            if (this.disposed)
+            if (IsDisposed)
             {
-                throw new ObjectDisposedException("Dog");
+                throw new ObjectDisposedException("Truck");
             }
 
-            Console.WriteLine("This dog is doing some work!");
+            Console.WriteLine("Wow this truck is really loud!");
         }
 
         protected override void Dispose(bool disposing)
         {
-            this.disposed = true;
+            //IsDisposed = true;
 
             base.Dispose(disposing);
         }

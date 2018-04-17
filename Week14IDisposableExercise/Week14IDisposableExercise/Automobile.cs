@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Week14IDisposableExercise
 {
-    public class Animal : IDisposable
+    public class Automobile : IDisposable
     {
-        private Dog dog = new Dog();
+        public bool IsDisposed { get; private set; }
+        private Automobile automobile = new Automobile();
         
         public void Dispose()
         {
@@ -18,17 +19,18 @@ namespace Week14IDisposableExercise
 
         protected virtual void Dispose(bool disposing)
         {
+            IsDisposed = true;
             if (disposing)
             {
-                if (dog != null)
+                if (automobile != null)
                 {
-                    dog.Dispose();
-                    dog = null;
+                    automobile.Dispose();
+                    automobile = null;
                 }
             }
         }
 
-        ~Animal()
+        ~Automobile()
         {
             Dispose(false);
         }
