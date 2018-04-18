@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Week14IDisposable
 {
@@ -20,6 +16,14 @@ namespace Week14IDisposable
             get
             {
                 return clearanceLevel;
+            }
+        }
+
+        public string AssetName
+        {
+            get
+            {
+                return assetName;
             }
         }
 
