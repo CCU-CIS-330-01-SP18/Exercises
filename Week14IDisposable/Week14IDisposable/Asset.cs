@@ -11,9 +11,9 @@ namespace Week14IDisposable
     /// </summary>
     public class Asset : IDisposable
     {
-        private bool disposedValue = false;
+        protected bool disposedValue = false;
         protected int clearanceLevel = 1;
-        private string assetName;
+        protected string assetName;
 
         public int ClearanceLevel
         {
@@ -33,20 +33,19 @@ namespace Week14IDisposable
             assetName = name;
             clearanceLevel = clearance;
         }
-
-        #region IDisposable Support
+        
+        /// <summary>
+        /// Dispose this object, freeing up resources.
+        /// </summary>
+        /// <param name="disposing">Whether or not to manually dispose managed state.</param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects).
+                    assetName = null;
                 }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
-
                 disposedValue = true;
             }
         }
@@ -57,9 +56,6 @@ namespace Week14IDisposable
         public void Dispose()
         {
             Dispose(true);
-            // GC.SuppressFinalize(this);
         }
-        #endregion
-
     }
 }

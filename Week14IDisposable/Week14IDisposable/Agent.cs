@@ -24,7 +24,7 @@ namespace Week14IDisposable
         /// <summary>
         /// Instantiates a new Agent object with a random ID number.
         /// </summary>
-        public Agent()
+        public Agent() : base("Agent 1", 1)
         {
             var random = new Random();
             idNumber = random.Next();
@@ -35,8 +35,19 @@ namespace Week14IDisposable
         /// Instantiates a new Agent object with the given ID number.
         /// </summary>
         /// <param name="id">The agent's ID number.</param>
-        public Agent(int id)
+        public Agent(int id) : base("Agent " + id, 1)
         {
+            idNumber = id;
+        }
+
+        /// <summary>
+        /// Instantiates a new Agent object with the given name and ID number.
+        /// </summary>
+        /// <param name="name">The agent's name.</param>
+        /// <param name="id">The agent's ID number.</param>
+        public Agent(string name, int id) : base(name, 1)
+        {
+            assetName = name;
             idNumber = id;
         }
 
@@ -68,12 +79,25 @@ namespace Week14IDisposable
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
-            return "Agent " + idNumber.ToString();
+            return assetName;
         }
 
-        public override Dispose()
+        /// <summary>
+        /// Dispose this object, freeing up resources.
+        /// </summary>
+        /// <param name="disposing">Whether or not to manually dispose managed state.</param>
+        /// <remarks>This isn't the best example of a dispose method - it's not like these resources are taking up that much space.</remarks>
+        protected override void Dispose(bool disposing)
         {
-
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    secrets = null;
+                    base.Dispose(disposing);
+                }
+                disposedValue = true;
+            }
         }
     }
 }
