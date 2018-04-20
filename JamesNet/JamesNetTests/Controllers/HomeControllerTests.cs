@@ -10,7 +10,7 @@ using JamesNet.Controllers;
 namespace JamesNetTests.Controllers
 {
     [TestClass]
-    public class HomeControllerTest
+    public class HomeControllerTests
     {
         [TestMethod]
         public void Index()

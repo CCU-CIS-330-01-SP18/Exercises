@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.AspNet.SignalR;
+﻿using Microsoft.AspNet.SignalR;
 
 namespace JamesNet.Hubs
 {
     public class ChatHub : Hub
     {
-        public void Hello()
+        public void Send(string name, string message)
         {
-            Clients.All.hello();
+            Clients.All.receiveMessage(name, message);
         }
     }
 }
