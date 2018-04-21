@@ -1,4 +1,4 @@
-﻿
+﻿@model ComprehensiveAssignment.Models.User
 @{
     ViewBag.Title = "Index";
     Layout = null;
@@ -30,31 +30,50 @@
             </div>
             <div class="col-lg-6">
                 <h3>New Users</h3>
-                <form class="col-lg-6">
+
+                @using (Html.BeginForm("CreateUser", "Login", FormMethod.Post))
+                {
                     <div class="form-group">
                         <label>First Name:</label>
-                        <input type="text" class="form-control" />
+                        @Html.TextBoxFor(Model => Model.FirstName, new { @class = "form-control", @placeholder = "First Name" })
                     </div>
                     <div class="form-group">
                         <label>Last Name:</label>
-                        <input type="text" class="form-control" />
+                        @Html.TextBoxFor(Model => Model.LastName, new { @class = "form-control", @placeholder = "Last Name" })
                     </div>
                     <div class="form-group">
                         <label>Email:</label>
-                        <input type="email" class="form-control" />
+                        @Html.TextBoxFor(Model => Model.Email, new { @class = "form-control", @placeholder = "Email" })
                     </div>
                     <div class="form-group">
                         <label>Password:</label>
-                        <input type="password" class="form-control" />
+                        @Html.TextBoxFor(Model => Model.Password, new { @class = "form-control" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                }
+
+              <!--  <form action="CreateUser" method="post" class="col-lg-6">
+                    <div class="form-group">
+                        <label>First Name:</label>
+                        <input type="text" name="firstName" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <label>Confirm Password:</label>
-                        <input type="password" class="form-control" />
+                        <label>Last Name:</label>
+                        <input type="text" name="lastName" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" name="email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" name="password" class="form-control" />
                     </div>
                     <button type="submit" class="btn btn-primary">Create Account</button>
-                </form>
+                </form>-->
             </div>
-            
+
         </div>
     </div>
 </body>
