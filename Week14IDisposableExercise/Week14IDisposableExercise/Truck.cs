@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Week14IDisposableExercise
 {
-    class Truck : Automobile
+    public class Truck : Automobile
     {
         //private bool disposed;
 
