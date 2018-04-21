@@ -6,13 +6,29 @@ using System.Threading.Tasks;
 
 namespace Week14IDisposableExercise
 {
+    /// <summary>
+    /// Creates a Truck object.
+    /// </summary>
     public class Truck : Automobile
     {
-        //private bool disposed;
+        private bool disposed;
 
+        /// <summary>
+        /// Constructor that sets the trucks nickname.
+        /// </summary>
+        /// <param name="nickName">The precious name for a truck.</param>
+        public Truck(string nickName)
+            : base(nickName)
+        {
+            nickName = base.NickName;
+        }
+
+        /// <summary>
+        /// A method that causes frustration and annoyance to other drivers.
+        /// </summary>
         public void BeReallyLoud()
         {
-            if (IsDisposed)
+            if (this.disposed)
             {
                 throw new ObjectDisposedException("Truck");
             }
@@ -20,9 +36,14 @@ namespace Week14IDisposableExercise
             Console.WriteLine("Wow this truck is really loud!");
         }
 
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing">True to release both managed and unmanaged resources;
+        /// False to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
-            //IsDisposed = true;
+            this.disposed = true;
 
             base.Dispose(disposing);
         }

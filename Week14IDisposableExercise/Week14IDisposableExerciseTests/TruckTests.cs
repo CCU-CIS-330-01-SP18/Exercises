@@ -5,18 +5,17 @@ using Week14IDisposableExercise;
 namespace Week14IDisposableExerciseTests
 {
     [TestClass]
-    
-    public class AutomobileTests
+    public class TruckTests
     {
         [TestMethod]
         [ExpectedException(typeof(ObjectDisposedException))]
-        public void AutomobileThrowsObjectDisposedException()
+        public void TruckThrowsObjectDisposedException()
         {
-            var a = new Truck("Sally");
+            var truck = new Truck("Mater");
 
-            a.Dispose();
+            truck.Dispose();
 
-            a.BeReallyLoud();           
+            truck.DoAutomobileStuff();      
         }
     }
 }
