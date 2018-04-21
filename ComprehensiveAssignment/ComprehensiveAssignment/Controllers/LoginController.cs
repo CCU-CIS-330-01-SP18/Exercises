@@ -44,5 +44,33 @@ namespace ComprehensiveAssignment.Controllers
             
             
         }
+
+        public ActionResult GetUser(User model)
+        {
+            AdoTickrModel db = new AdoTickrModel();
+            //List<User> users = new List<User>();
+
+            /*var user = from i in db.Users
+                       where i.Email == model.Email && i.Password == model.Password
+                       select i;*/
+
+            //var users = db.Users.Where(i => i.Email == model.Email && i.Password == model.Password).FirstOrDefault();
+            var users = db.Users.Select(u => new { u.Email, u.Password });
+
+            
+
+            /*foreach(var user in users)
+            {
+                if (user.Email == model.Email && user.Password == model.Password)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+            }*/
+
+       
+
+            
+        }
     }
 }
