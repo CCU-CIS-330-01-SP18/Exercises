@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week14IDisposableExercise", "Week14IDisposableExercise\Week14IDisposableExercise.csproj", "{E52DBEE4-10CC-48AC-B995-5F124DFC1804}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week14IDisposableExerciseTests", "Week14DisposableExerciseTests\Week14IDisposableExerciseTests.csproj", "{F4F96EB8-4260-4A74-96C5-4976E8B98B27}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E52DBEE4-10CC-48AC-B995-5F124DFC1804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E52DBEE4-10CC-48AC-B995-5F124DFC1804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E52DBEE4-10CC-48AC-B995-5F124DFC1804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E52DBEE4-10CC-48AC-B995-5F124DFC1804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4F96EB8-4260-4A74-96C5-4976E8B98B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4F96EB8-4260-4A74-96C5-4976E8B98B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4F96EB8-4260-4A74-96C5-4976E8B98B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4F96EB8-4260-4A74-96C5-4976E8B98B27}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {707D0451-8B88-4268-B7F3-0A12D65DC4E3}
+	EndGlobalSection
+EndGlobal
