@@ -23,7 +23,7 @@ namespace ComprehensiveAssignment.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(350)]
         public string Password { get; set; }
     }
 }
