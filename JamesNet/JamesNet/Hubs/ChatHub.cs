@@ -1,5 +1,6 @@
 ﻿using JamesNet.Models;
 using Microsoft.AspNet.SignalR;
+using System;
 using System.Collections.Generic;
 
 namespace JamesNet.Hubs
