@@ -23,23 +23,31 @@
             var chat = $.connection.chatHub;
             chat.client.receiveMessage = function (name, message) {
                 // Add the message to the page.
-                $('#discussion').append('<p><strong class="username">' + name
+                console.info('receiveMessage');
+                $('#discussion').prepend('<p><strong class="username">' + name
                     + '</strong>: ' + message + '</p>');
+            };
+
+            chat.client.receiveEncryptedMessage = function (name, encryptedMessage) {
+                // If the encryption password box is blank, do nothing.
+                console.info('receiveEncryptedMessage');
+                var encryptionBoxValue = $('#encryptionKey').val();
+                if (encryptionBoxValue) {
+                    console.info('called decryptMessage with msg ' + encryptedMessage + ' and val ' + encryptionBoxValue);
+                    chat.server.decryptMessage(encryptedMessage, encryptionBoxValue).done(function (result) {
+                        console.info('called done');
+                        $('#discussion').append('<p><strong class="username">' + name
+                            + '</strong>: ' + result + '</p>');
+                    });
+                }
             };
 
             // Start the connection.
             $.connection.hub.start().done(function () {
-
-                chat.client.receiveEncryptedMessage = function (name, encryptedMessage) {
-                    // If the encryption password box is blank, do nothing.
-                    var encryptionBoxValue = $('#encryptionKey').val();
-                    if (encryptionBoxValue) {
-                        chat.server.decryptMessage(name, encryptedMessage, encryptionBoxValue);
-                    }
-                }
-
+                
                 // Get the user name, sanitized by the server, and store it for later use.
                 chat.server.validateUsername(prompt('Enter your username for this session:', '')).done(function (result) {
+                    console.info('validateUsername');
                     $('#displayname').val(result);
                 });
 

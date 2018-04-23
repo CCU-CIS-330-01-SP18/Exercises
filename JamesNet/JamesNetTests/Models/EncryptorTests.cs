@@ -11,14 +11,15 @@ namespace JamesNetTests.Models
         [TestMethod]
         public void CanEncryptDecrypt()
         {
+            Encryptor.GenerateIV();
             string stringToEncrypt = "Lorem Ipsum";
 
-            byte[] encrypted = Encryptor.Encrypt(stringToEncrypt, Encoding.UTF8.GetBytes("test"));
+            byte[] encrypted = Encryptor.Encrypt(stringToEncrypt, "test");
 
             Assert.IsNotNull(encrypted, "The encryption method returned nothing.");
             Assert.AreNotEqual(stringToEncrypt, Encoding.UTF8.GetString(encrypted), "The encryption method did not actually encrypt the string.");
 
-            string decrypted = Encryptor.Decrypt(encrypted, Encoding.UTF8.GetBytes("test"));
+            string decrypted = Encryptor.Decrypt(encrypted, "test");
 
             Assert.AreEqual(stringToEncrypt, decrypted, "Decryption yielded a different result.");
         }

@@ -15,6 +15,7 @@ namespace JamesNet.Hubs
         /// <param name="app">The app stream to map SignalR hubs to.</param>
         public void Configuration(IAppBuilder app)
         {
+            Models.Encryptor.GenerateIV();
             app.MapSignalR();
         }
     }

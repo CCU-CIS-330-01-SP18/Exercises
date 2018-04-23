@@ -3,6 +3,7 @@ using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace JamesNet.Hubs
 {
@@ -40,9 +41,9 @@ namespace JamesNet.Hubs
         /// </summary>
         /// <param name="encryptedMessage">The encrypted message to decrypt and send.</param>
         /// <param name="encryptionKey">The encryption key to attempt decryption with.</param>
-        public void DecryptMessage(string name, string encryptedMessage, string encryptionKey)
+        public string DecryptMessage(string encryptedMessage, string encryptionKey)
         {
-            Clients.Caller.receiveMessage(name, Encryptor.Decrypt(encryptedMessage, encryptionKey));
+            return Encryptor.Decrypt(encryptedMessage, encryptionKey);
         }
 
         /// <summary>
