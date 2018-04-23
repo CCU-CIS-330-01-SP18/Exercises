@@ -6,10 +6,13 @@
 <p>The <em>actually functional</em> WebSocket web chat system...sort of.</p>
 
 <h2>Chat</h2>
+<!-- TODO: Clean up UI, make message box scroll -->
 <div class="container">
     <input type="text" id="message" />
     <input type="submit" id="sendmessage" value="Send" />
     <input type="hidden" id="displayname" />
+    <label for="encryptionKey">Enter encryption key here (optional):</label>
+    <input type="text" id="encryptionKey" />
     <ul id="discussion"></ul>
 </div>
 @section scripts {
@@ -26,15 +29,32 @@
 
             // Start the connection.
             $.connection.hub.start().done(function () {
+
+                chat.client.receiveEncryptedMessage = function (name, encryptedMessage) {
+                    // If the encryption password box is blank, do nothing.
+                    var encryptionBoxValue = $('#encryptionKey').val();
+                    if (encryptionBoxValue) {
+                        chat.server.decryptMessage(name, encryptedMessage, encryptionBoxValue);
+                    }
+                }
+
                 // Get the user name, sanitized by the server, and store it for later use.
-                chat.server.validate(prompt('Enter your username for this session:', '')).done(function (result) {
+                chat.server.validateUsername(prompt('Enter your username for this session:', '')).done(function (result) {
                     $('#displayname').val(result);
                 });
 
                 $('#message').focus();
                 $('#sendmessage').click(function () {
-                    chat.server.send($('#displayname').val(), $('#message').val());
-                    $('#message').val('').focus();
+                    // If the encryption box has a key in it, send with that key.
+                    if ($('#encryptionKey').val()) {
+                        chat.server.send($('#displayname').val(), $('#message').val(), $('#encryptionKey').val());
+                        $('#message').val('').focus();
+                    }
+                    // Otherwise, send normally.
+                    else {
+                        chat.server.send($('#displayname').val(), $('#message').val());
+                        $('#message').val('').focus();
+                    }
                 });
             });
         });
