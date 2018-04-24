@@ -19,8 +19,11 @@ namespace JamesNet.Hubs
         /// <param name="message">The raw message to send.</param>
         public void Send(string name, string message)
         {
-            string sanitizedMessage = Sanitizer.Sanitize(message);
-            Clients.All.receiveMessage(name, sanitizedMessage);
+            if (!String.IsNullOrWhiteSpace(message))
+            {
+                string sanitizedMessage = Sanitizer.Sanitize(message);
+                Clients.All.receiveMessage(name, sanitizedMessage);
+            }
         }
 
         /// <summary>

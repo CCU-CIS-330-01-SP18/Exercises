@@ -13,7 +13,7 @@ namespace JamesNetTests.Controllers
     public class HomeControllerTests
     {
         [TestMethod]
-        public void Index()
+        public void DisplaysIndex()
         {
             // Arrange
             HomeController controller = new HomeController();
