@@ -1,3 +1,4 @@
 ﻿Threads
 Have player drop soething or start a process that takes a bit
 
+Cryptography on text so can't hack to read ahead for scenarios? lol

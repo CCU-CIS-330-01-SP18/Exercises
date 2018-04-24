@@ -21,9 +21,10 @@ namespace ConsoleApp1
         /// Available Actions that can be taken by the player in the Encounter.
         /// </summary>
         public List<Action> Actions { get; set; }
-        public Encounter(int encounterID,)
+        public Encounter(int encounterID, List<Entity> entities)
         {
-            int _encounterID = encounterID;
+            this.EncounterID = encounterID;
+            this.Entities = entities;
         }
     }
 }

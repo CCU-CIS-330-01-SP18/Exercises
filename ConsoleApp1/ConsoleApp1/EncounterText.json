@@ -1,0 +1,11 @@
+﻿"Encounters" : 
+{
+  {
+    "ID": "1",
+    "Text": "You wake up in woods. You hear a cry for help. What do you do? 1.Run towards sound 2.Cautiously approach 3. Run away from the sound."
+  }
+  {
+    "ID": "2",
+    "Text": "You see a young boy being attacked by a Goblin, what do you do?"
+  }
+}
