@@ -10,5 +10,6 @@ namespace ConsoleApp1
     public class Player: Entity
     {
         //Items<Item>
+
     }
 }

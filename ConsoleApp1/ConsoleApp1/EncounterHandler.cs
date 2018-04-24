@@ -10,7 +10,7 @@ namespace ConsoleApp1
         {
             if (action.ActionID == 1)
             {
-                return Encounter
+                return 1;
             }
         }
     }
