@@ -32,7 +32,7 @@ namespace JamesNet.Hubs
         public void Send(string name, string message, string encryptionKey)
         {
             string sanitizedMessage = Sanitizer.Sanitize(message);
-            byte[] encryptedMessage = Encryptor.Encrypt(message, encryptionKey);
+            byte[] encryptedMessage = Encryptor.Encrypt(sanitizedMessage, encryptionKey);
             Clients.All.receiveEncryptedMessage(name, encryptedMessage);
         }
 
