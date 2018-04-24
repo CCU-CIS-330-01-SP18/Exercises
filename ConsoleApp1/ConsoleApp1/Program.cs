@@ -10,6 +10,11 @@ namespace ConsoleApp1
             GameSetup gameSetup = new GameSetup();
             gameSetup.SetUpGame();
             Console.WriteLine("Welcome to le game");
+            bool GameLoop = true;
+            while (GameLoop == true)
+            {
+                
+            }
         }
     }
 }
