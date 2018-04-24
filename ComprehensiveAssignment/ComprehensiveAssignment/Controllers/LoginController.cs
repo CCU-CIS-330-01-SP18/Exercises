@@ -79,13 +79,14 @@ namespace ComprehensiveAssignment.Controllers
         /// </summary>
         /// <param name="model">User model that is passed in from the form.</param>
         /// <returns>Returns an ActionResult depending on whether a correct login was found.</returns>
+        
         public ActionResult GetUser(User model)
         {
             // If a user was not found, do not let them login.
-            if (!ModelState.IsValid)
+            /*if (!ModelState.IsValid)
             {
                 return RedirectToAction("Index", "Login");
-            }
+            }*/
 
             ActionResult action = null;
             AdoTickrModel db = new AdoTickrModel();
