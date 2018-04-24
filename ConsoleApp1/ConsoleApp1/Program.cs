@@ -7,10 +7,11 @@ namespace ConsoleApp1
         
         static void Main(string[] args)
         {
-            Entity player = new Entity()
+            Entity goblin = new Entity(1, 'Goblin');
+            Entity
             Encounter encounter1 = new Encounter(1);
             Encounter encounter2 = new Encounter(2);
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Welcome to le game");
         }
     }
 }
