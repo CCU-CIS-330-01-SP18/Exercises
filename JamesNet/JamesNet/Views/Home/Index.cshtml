@@ -31,12 +31,13 @@
             chat.client.receiveEncryptedMessage = function (name, encryptedMessage) {
                 // If the encryption password box is blank, do nothing.
                 console.info('receiveEncryptedMessage');
+                // No sanitiziation is needed here, since the key will be hashed anyway.
                 var encryptionBoxValue = $('#encryptionKey').val();
                 if (encryptionBoxValue) {
                     console.info('called decryptMessage with msg ' + encryptedMessage + ' and val ' + encryptionBoxValue);
                     chat.server.decryptMessage(encryptedMessage, encryptionBoxValue).done(function (result) {
                         console.info('called done');
-                        $('#discussion').append('<p><strong class="username">' + name
+                        $('#discussion').prepend('<p><strong class="username">' + name
                             + '</strong>: ' + result + '</p>');
                     });
                 }

@@ -33,7 +33,7 @@ namespace JamesNet.Hubs
         {
             string sanitizedMessage = Sanitizer.Sanitize(message);
             byte[] encryptedMessage = Encryptor.Encrypt(message, encryptionKey);
-            Clients.All.receiveEncryptedMessage(name, Encoding.UTF8.GetString(encryptedMessage));
+            Clients.All.receiveEncryptedMessage(name, encryptedMessage);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace JamesNet.Hubs
         /// </summary>
         /// <param name="encryptedMessage">The encrypted message to decrypt and send.</param>
         /// <param name="encryptionKey">The encryption key to attempt decryption with.</param>
-        public string DecryptMessage(string encryptedMessage, string encryptionKey)
+        public string DecryptMessage(byte[] encryptedMessage, string encryptionKey)
         {
             return Encryptor.Decrypt(encryptedMessage, encryptionKey);
         }

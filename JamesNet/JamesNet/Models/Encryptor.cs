@@ -46,7 +46,6 @@ namespace JamesNet.Models
                 crypto.Key = keyHash;
                 // I know this isn't how you use IVs. Will fix later if I have time.
                 crypto.IV = iv;
-                crypto.Padding = PaddingMode.ANSIX923;
                 var encrypt = crypto.CreateEncryptor();
 
                 using (var memoryStream = new MemoryStream())
@@ -83,17 +82,6 @@ namespace JamesNet.Models
         /// <returns>The decrypted message.</returns>
         public static string Decrypt(byte[] encryptedMessage, byte[] key)
         {
-            byte[] encryptedMessagePadded;
-            if (encryptedMessage.Length % 16 > 0)
-            {
-                string encryptedString = Encoding.UTF8.GetString(encryptedMessage);
-                //encryptedString.PadRight(encryptedString.Length + 16 - encryptedString.Length % 16, '=');
-                encryptedMessagePadded = Encoding.UTF8.GetBytes(encryptedString);
-            }
-            else
-            {
-                encryptedMessagePadded = encryptedMessage;
-            }
             string decryptedMessage;
             byte[] keyHash = SHA256.Create().ComputeHash(key);
 
@@ -102,7 +90,6 @@ namespace JamesNet.Models
                 crypto.Key = keyHash;
                 // I know this isn't how you use IVs. Will fix later if I have time.
                 crypto.IV = iv;
-                crypto.Padding = PaddingMode.ANSIX923;
                 var decryptor = crypto.CreateDecryptor();
 
                 using (var memoryStream = new MemoryStream(encryptedMessage))
