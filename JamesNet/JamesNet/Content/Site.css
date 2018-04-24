@@ -45,3 +45,11 @@ textarea {
     padding-left: 30px;
     background-color: #cdf;
 }
+
+#message {
+    width: 60%;
+}
+
+#chatWindowWrapper {
+    margin-top: 10px;
+}
