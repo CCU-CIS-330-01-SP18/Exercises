@@ -7,11 +7,8 @@ namespace ConsoleApp1
         
         static void Main(string[] args)
         {
-            Entity goblin = new Entity(1, "Goblin");
-            Entity dragon = new Entity(2, "Dragon");
-            Entity thug = new Entity(3, "Thug");
-            Encounter encounter1 = new Encounter(1);
-            Encounter encounter2 = new Encounter(2);
+            GameSetup gameSetup = new GameSetup();
+            gameSetup.SetUpGame();
             Console.WriteLine("Welcome to le game");
         }
     }
