@@ -1,60 +1,53 @@
 ﻿@{
     ViewBag.Title = "JamesNet";
 }
+<html>
+<body>
+    <header>
+        <h1>JamesNet</h1>
+        <p>The <em>actually functional</em> WebSocket web chat system...sort of.</p>
+    </header>
+    <div class="container">
+        <div class="chatArea">
+            <h2>Chat</h2>
+            <input type="text" id="message" />
+            <input type="submit" id="sendmessage" value="Send" />
+            <input type="hidden" id="displayname" />
+            <br /><br />
+            <label for="encryptionKey">Enter encryption key here (optional):</label>
+            <input type="text" id="encryptionKey" />
+            <div id="chatWindowWrapper">
+                <div id="chatWindow">
+                    <p><strong class="username">James</strong>: Welcome to JamesNet!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    @section scripts {
+        <script src="~/Scripts/jquery.signalR-2.2.3.min.js"></script>
+        <script src="~/signalr/hubs"></script>
+        <script>
+            $(function () {
+                var chat = $.connection.chatHub;
+                chat.client.receiveMessage = function (name, message) {
+                    // Add the message to the page.
+                    $('#chatWindow').prepend('<p><strong class="username">' + name
+                        + '</strong>: ' + message + '</p>');
+                };
 
-<h1>JamesNet</h1>
-<p>The <em>actually functional</em> WebSocket web chat system...sort of.</p>
+                chat.client.receiveEncryptedMessage = function (name, encryptedMessage) {
+                    // If the encryption password box is blank, do nothing.
+                    // No sanitiziation is needed here, since the key will be hashed anyway.
+                    var encryptionBoxValue = $('#encryptionKey').val();
+                    if (encryptionBoxValue) {
+                        chat.server.decryptMessage(encryptedMessage, encryptionBoxValue).done(function (result) {
+                            $('#chatWindow').prepend('<p><strong class="username">' + name
+                                + '</strong>: ' + result + '</p>');
+                        });
+                    }
+                };
 
-<h2>Chat</h2>
-<!-- TODO: Clean up UI, make message box scroll -->
-<div class="container">
-    <input type="text" id="message" />
-    <input type="submit" id="sendmessage" value="Send" />
-    <input type="hidden" id="displayname" />
-    <label for="encryptionKey">Enter encryption key here (optional):</label>
-    <input type="text" id="encryptionKey" />
-    <ul id="discussion"></ul>
-</div>
-@section scripts {
-    <script src="~/Scripts/jquery.signalR-2.2.3.min.js"></script>
-    <script src="~/signalr/hubs"></script>
-    <script>
-        $(function () {
-            var chat = $.connection.chatHub;
-            chat.client.receiveMessage = function (name, message) {
-                // Add the message to the page.
-                console.info('receiveMessage');
-                $('#discussion').prepend('<p><strong class="username">' + name
-                    + '</strong>: ' + message + '</p>');
-            };
-
-            chat.client.receiveEncryptedMessage = function (name, encryptedMessage) {
-                // If the encryption password box is blank, do nothing.
-                console.info('receiveEncryptedMessage');
-                // No sanitiziation is needed here, since the key will be hashed anyway.
-                var encryptionBoxValue = $('#encryptionKey').val();
-                if (encryptionBoxValue) {
-                    console.info('called decryptMessage with msg ' + encryptedMessage + ' and val ' + encryptionBoxValue);
-                    chat.server.decryptMessage(encryptedMessage, encryptionBoxValue).done(function (result) {
-                        console.info('called done');
-                        $('#discussion').prepend('<p><strong class="username">' + name
-                            + '</strong>: ' + result + '</p>');
-                    });
-                }
-            };
-
-            // Start the connection.
-            $.connection.hub.start().done(function () {
-                
-                // Get the user name, sanitized by the server, and store it for later use.
-                chat.server.validateUsername(prompt('Enter your username for this session:', '')).done(function (result) {
-                    console.info('validateUsername');
-                    $('#displayname').val(result);
-                });
-
-                $('#message').focus();
-                $('#sendmessage').click(function () {
-                    // If the encryption box has a key in it, send with that key.
+                function sendClicked() {
                     if ($('#encryptionKey').val()) {
                         chat.server.send($('#displayname').val(), $('#message').val(), $('#encryptionKey').val());
                         $('#message').val('').focus();
@@ -64,8 +57,25 @@
                         chat.server.send($('#displayname').val(), $('#message').val());
                         $('#message').val('').focus();
                     }
+                }
+
+                // Start the connection.
+                $.connection.hub.start().done(function () {
+
+                    // Get the user name, sanitized by the server, and store it for later use.
+                    chat.server.validateUsername(prompt('Enter your username for this session:', '')).done(function (result) {
+                        $('#displayname').val(result);
+                    });
+
+                    $('#message').focus();
+                    $('#sendmessage').click(sendClicked);
+                    $('#message').keydown(function (event) {
+                        if (event.keyCode == 13)
+                            sendClicked();
+                    })
                 });
             });
-        });
-    </script>
-}
+        </script>
+    }
+</body>
+</html>

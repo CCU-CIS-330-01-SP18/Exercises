@@ -38,10 +38,14 @@ namespace JamesNet.Models
         /// <returns>The sanitized username.</returns>
         public static string SanitizeUsername(string name)
         {
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                return "I forgot to enter a username :(";
+            }
             var match = Regex.Match(name, @"\<\w*\>");
             if (match.Success)
             {
-                name = "1337 5KR1PT K1DD13!!1!one!";
+                return "1337 5KR1PT K1DD13!!1!one!";
             }
             return name;
         }
