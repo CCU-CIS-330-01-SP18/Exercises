@@ -7,7 +7,7 @@ namespace ConsoleApp1
     /// <summary>
     /// Represents the player and keeps track of their status throughout the journey.
     /// </summary>
-    class Player: Entity
+    public class Player: Entity
     {
         //Items<Item>
     }
