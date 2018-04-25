@@ -42,8 +42,15 @@
                         </div>
                     </div>
                 }
+                @if (Model != null)
+                {
+                    <h5>@Model.CompanyName</h5>
+                    <h5>@Model.Sector</h5>
+                    <h5>@Model.PrimaryExchange</h5>
+                    <h5>@Model.Open</h5>
+                    <h5>@Model.Close</h5>
+                }
 
-                <h5>@Model.CompanyName</h5>
             </div>
         </div>
     </div>

@@ -33,7 +33,9 @@ namespace ComprehensiveAssignment.Controllers
             {
                 CompanyName = stockModel.Quote.CompanyName,
                 Sector = stockModel.Quote.Sector,
-                PrimaryExchange = stockModel.Quote.PrimaryExchange
+                PrimaryExchange = stockModel.Quote.PrimaryExchange,
+                Open = stockModel.Quote.Open,
+                Close = stockModel.Quote.Close
             };
 
             ViewBag.Name = stockModel.Quote.CompanyName;
