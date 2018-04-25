@@ -1,17 +1,28 @@
 ﻿using System;
 using System.IO;
+using System.Media;
 using VoiceRSS_SDK;
+using NAudio.Wave;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace Examples
+namespace ParsonsFinalProject
 {
     class Program
     {
         static void Main(string[] args)
         {
+            var instance = new UserView();
+            string speechText = instance.UserConsole();
+            APICall(speechText);
+        }
+
+        private static void APICall(string speechText)
+        {
             var apiKey = "22c1257eb63c445793bb5e6e14d73611";
             var isSSL = false;
-            var text = "Hi Chad, You are at step one!";
-            var lang = Languages.English_UnitedStates;
+            var text = speechText;
+            var lang = Languages.English_GreatBritain;
 
             var voiceParams = new VoiceParameters(text, lang)
             {
@@ -21,8 +32,9 @@ namespace Examples
                 IsSsml = false,
                 SpeedRate = 0
             };
-            /*
-             var voiceProvider = new VoiceProvider(apiKey, isSSL);
+
+            var voiceProvider = new VoiceProvider(apiKey, isSSL);
+            var voice = voiceProvider.Speech<byte[]>(voiceParams);
 
             voiceProvider.SpeechFailed += (Exception ex) =>
             {
@@ -35,14 +47,30 @@ namespace Examples
                 File.WriteAllBytes(fileName, (byte[])data);
             };
 
-            voiceProvider.SpeechAsync<byte[]>(voiceParams);*/
-            /////
-            var voiceProvider = new VoiceProvider(apiKey, isSSL);
-            var voice = voiceProvider.Speech<byte[]>(voiceParams);
+            voiceProvider.SpeechAsync<byte[]>(voiceParams);
+            PlayAudio();
+        }
 
-            var fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "voice.mp3");
-            File.WriteAllBytes(fileName, voice);
+        private static void PlayAudio()
+        {
+            var pathAndName = AppDomain.CurrentDomain.BaseDirectory + @"\voice.mp3";
+            var oldPathAndName = AppDomain.CurrentDomain.BaseDirectory + @"\voice.wav";
+            ConvertMp3ToWav(pathAndName, oldPathAndName);
+
+            SoundPlayer typewriter = new SoundPlayer();
+            typewriter.SoundLocation = oldPathAndName;
+            typewriter.PlaySync();
+        }
+
+        private static void ConvertMp3ToWav(string pathAndName, string oldPathAndName)
+        {
+            using (Mp3FileReader mp3 = new Mp3FileReader(pathAndName))
+            {
+                using (WaveStream pcm = WaveFormatConversionStream.CreatePcmStream(mp3))
+                {
+                    WaveFileWriter.CreateWaveFile(oldPathAndName, pcm);
+                }
+            }
         }
     }
 }
-

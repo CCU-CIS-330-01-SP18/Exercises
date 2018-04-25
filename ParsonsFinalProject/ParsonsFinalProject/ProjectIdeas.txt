@@ -1,0 +1,10 @@
+﻿.Net Framework Final Project Ideas
+- For Regex requir, check the text for any odd characters and not allow/allow (+,-.|,\, etc do not work, but number func do
+-For parallel requir, just before the api call, have a waiting...retrieving data thing that is asynchronous.
+- Exception handling using api responses
+- serialization could be putting all responses in a txt file 
+-crypt could be hashing all responses in that txt file
+-networking is accomplished
+-LINQ: Keeping a collection of common phrases/questions and using linq to retrieve
+ (linq and delegates go together)
+-Delegates:
