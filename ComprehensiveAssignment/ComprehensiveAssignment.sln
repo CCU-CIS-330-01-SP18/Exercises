@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComprehensiveAssignment", "ComprehensiveAssignment\ComprehensiveAssignment.csproj", "{05EBF22A-BC18-4F60-8A7A-FF5BB5EC3195}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComprehensiveAssignmentTests", "ComprehensiveAssignmentTests\ComprehensiveAssignmentTests.csproj", "{9A581A86-F8C9-44FC-83E9-0186DBB92F6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{05EBF22A-BC18-4F60-8A7A-FF5BB5EC3195}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05EBF22A-BC18-4F60-8A7A-FF5BB5EC3195}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05EBF22A-BC18-4F60-8A7A-FF5BB5EC3195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A581A86-F8C9-44FC-83E9-0186DBB92F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A581A86-F8C9-44FC-83E9-0186DBB92F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A581A86-F8C9-44FC-83E9-0186DBB92F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A581A86-F8C9-44FC-83E9-0186DBB92F6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,26 +9,40 @@ using Newtonsoft.Json;
 
 namespace ComprehensiveAssignment.Controllers
 {
+    /// <summary>
+    /// Controller that is present for the home views when user logs in.
+    /// </summary>
     public class HomeController : Controller
     {
+        /// <summary>
+        /// The main Action of the application for the Home Controller.
+        /// </summary>
+        /// <returns>The Index.cshtml View under Home</returns>
         public ActionResult Index()
         {
             return View();
         }
 
+        /// <summary>
+        /// Action that fetches stock symbol from view and applies it to api call.
+        /// </summary>
+        /// <param name="model">Quote Symbol being returned to controller.</param>
+        /// <returns>Returns the Index view and passes it a Quote model with updated stock info from api call.</returns>
         [HttpGet]
         public ActionResult FetchStock(Quote model)
         {
             StockModel stockModel = null;
             using (var webClient = new WebClient())
             {
-                
+                // Download JSON
                 string rawJson = webClient.DownloadString($"https://api.iextrading.com/1.0/stock/{model.Symbol}/batch?types=quote,news,chart&range=1m&last=10");
 
+                // Deserialize JSON.
                 stockModel = JsonConvert.DeserializeObject<StockModel>(rawJson);
   
             }
 
+            // Model that I'm passing to the view.
             var quote = new Quote()
             {
                 CompanyName = stockModel.Quote.CompanyName,
@@ -38,6 +52,7 @@ namespace ComprehensiveAssignment.Controllers
                 Close = stockModel.Quote.Close
             };
 
+            // Various information regarding the stock.
             ViewBag.Name = stockModel.Quote.CompanyName;
 
             ViewBag.Sector = stockModel.Quote.Sector;
