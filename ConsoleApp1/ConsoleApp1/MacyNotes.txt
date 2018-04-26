@@ -14,3 +14,6 @@ Exception Handling with validating input
 rng from cryptography
 
 play rock paper scissors with an ogre
+
+msking test classes for testing readline and write line.. Call them from the tests so they don't actually use
+the console. I will need this to test my game.
