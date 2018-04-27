@@ -1,0 +1,2 @@
+Login page: send email/password in headers
+Other pages: cookie should be present. If not, redirect to login page

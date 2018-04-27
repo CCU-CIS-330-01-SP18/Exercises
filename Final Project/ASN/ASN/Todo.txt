@@ -1,0 +1,19 @@
+﻿Ideas for a future update:
++ Go Dark
++ Hashtag support
++ Image support
+
+
+=====================
+REQUIRED TECHNOLOGIES
+=====================
+[X] Pillars of OOP: Encapsulation, Inheritance, Polymorphism, Abstraction (posts and comments)
+[X] Collections (users and posts)
+[X] LINQ (order posts by date posted)
+[X] Delegates (OrderByDescending when returning posts)
+[X] Regular Expressions (registration)
+[X] Exception Handling (just because it's good practice)
+[X] Cryptography (password hashing)
+[X] At least one type of concurrency, asynchrony, or parallel programming (asynchronous)
+[X] At least one of: ADO.NET, Serialization (serializing data to JSON)
+[X] At least one of: Networking, Streams (web server)
