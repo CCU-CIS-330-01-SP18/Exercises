@@ -52,17 +52,6 @@ namespace ComprehensiveAssignment.Controllers
                 Close = stockModel.Quote.Close
             };
 
-            // Various information regarding the stock.
-            ViewBag.Name = stockModel.Quote.CompanyName;
-
-            ViewBag.Sector = stockModel.Quote.Sector;
-
-            ViewBag.Exchange = stockModel.Quote.PrimaryExchange;
-
-            ViewBag.Open = stockModel.Quote.Open;
-
-            ViewBag.Close = stockModel.Quote.Close;
-
             return View("Index", quote);
         }
 
