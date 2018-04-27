@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using JamesNet.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using JamesNet;
-using JamesNet.Controllers;
+using System.Web.Mvc;
 
 namespace JamesNetTests.Controllers
 {

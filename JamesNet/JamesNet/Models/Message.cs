@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace JamesNet.Models
@@ -8,11 +9,15 @@ namespace JamesNet.Models
     /// <summary>
     /// Represents a single message.
     /// </summary>
+    [DataContract]
     public class Message
     {
+        [DataMember]
         public readonly DateTime timeStamp;
+        [DataMember]
         protected string senderName;
 
+        [DataMember]
         public string MessageText { get; set; }
         public string SenderName {
             get
