@@ -10,8 +10,15 @@ using System.Threading.Tasks;
 
 namespace ASN
 {
+    /// <summary>
+    /// Serializes objects into a flatfile format.
+    /// </summary>
     public static class DataSerializer
     {
+        /// <summary>
+        /// Serializes a collection object.
+        /// </summary>
+        /// <param name="o">The collection object to serialize.</param>
         public static void SerializeUsers(List<User> o)
         {
             var formatter = new BinaryFormatter();
@@ -22,6 +29,10 @@ namespace ASN
             }
         }
 
+        /// <summary>
+        /// Deserializes a collection object.
+        /// </summary>
+        /// <param name="o">The collection object to deserialize.</param>
         public static List<User> DeserializeUsers()
         {
             try
@@ -42,6 +53,10 @@ namespace ASN
             }
         }
 
+        /// <summary>
+        /// Serializes a collection object.
+        /// </summary>
+        /// <param name="o">The collection object to serialize.</param>
         public static void SerializePosts(List<Post> o)
         {
             var formatter = new BinaryFormatter();
@@ -52,6 +67,10 @@ namespace ASN
             }
         }
 
+        /// <summary>
+        /// Deserializes a collection object.
+        /// </summary>
+        /// <param name="o">The collection object to deserialize.</param>
         public static List<Post> DeserializePosts()
         {
             try

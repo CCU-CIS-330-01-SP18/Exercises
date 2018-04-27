@@ -13,17 +13,29 @@ using System.Web;
 
 namespace ASN
 {
+    /// <summary>
+    /// The core class for the AntisocialNetwork project.
+    /// </summary>
     public class AntisocialNetwork
     {
+        /// <summary>
+        /// A collection of User instances.
+        /// </summary>
         public List<User> Users { get; set; }
 
+        /// <summary>
+        /// A collection of Post instances.
+        /// </summary>
         public List<Post> Posts { get; set; }
 
+        /// <summary>
+        /// Constructs a new instance of the social network server.
+        /// </summary>
         public AntisocialNetwork()
         {
             Users = DataSerializer.DeserializeUsers();
             Posts = DataSerializer.DeserializePosts();
-            
+
             RunServer(8080);
             Console.ReadLine();
 
@@ -33,11 +45,19 @@ namespace ASN
             // Program terminates here.
         }
 
+        /// <summary>
+        /// The entry point of the program.
+        /// </summary>
+        /// <param name="args">An array of command line arguments.</param>
         static void Main(string[] args)
         {
             new AntisocialNetwork();
         }
 
+        /// <summary>
+        /// Generates the next user ID in the sequence, making sure to always produce the next highest number.
+        /// </summary>
+        /// <returns>An integer for the user ID.</returns>
         public int GetNextUserID()
         {
             int id = 0;
@@ -53,6 +73,10 @@ namespace ASN
             return id;
         }
 
+        /// <summary>
+        /// Generates the next post ID in the sequence, making sure to always produce the next highest number.
+        /// </summary>
+        /// <returns>An integer for the post ID.</returns>
         public int GetNextPostID()
         {
             int id = 0;
@@ -68,13 +92,17 @@ namespace ASN
             return id;
         }
 
+        /// <summary>
+        /// An asynchronous method to run our web server on. This creates a new thread for each API call.
+        /// </summary>
+        /// <param name="port">The port to run the server on.</param>
         private async void RunServer(int port)
         {
             Console.WriteLine("Starting server...");
 
             var uri = new UriBuilder("http", "localhost", port);
             var httpListener = new HttpListener();
-            
+
             httpListener.Prefixes.Add(uri.ToString());
             httpListener.Start();
 
@@ -102,6 +130,10 @@ namespace ASN
             Console.WriteLine("Server closed.");
         }
 
+        /// <summary>
+        /// The logic behind an individual API call thread. This parses the data received and makes changes accordingly.
+        /// </summary>
+        /// <param name="context">The HttpListenerContext of the call.</param>
         private void RetrieveHttpData(HttpListenerContext context)
         {
             string method = context.Request.HttpMethod;
@@ -152,7 +184,8 @@ namespace ASN
                     }
                     else if (url.StartsWith("/userbyid"))
                     {
-                        if (queryStrings["id"] != null) {
+                        if (queryStrings["id"] != null)
+                        {
                             int id = Convert.ToInt32(queryStrings["id"]);
                             var user = GetUserByID(id);
                             string serialized = JsonConvert.SerializeObject(user);
@@ -194,7 +227,7 @@ namespace ASN
             {
                 var data = "";
 
-                using (StreamReader reader = new StreamReader(context.Request.InputStream))
+                using (var reader = new StreamReader(context.Request.InputStream))
                 {
                     data = reader.ReadToEnd();
                 }
@@ -223,7 +256,9 @@ namespace ASN
                         var lastName = json["lastName"].ToString();
                         var email = json["email"].ToString();
                         var pass = json["password"].ToString();
-                        var hashedPass = PasswordHasher.HashPassword(email+pass);
+
+                        // Because two or more users may share the same password, store it as a hash along with their email address.
+                        var hashedPass = PasswordHasher.HashPassword(email + pass);
 
                         if (!RegexHandler.Name(firstName) || !RegexHandler.Name(lastName) || !RegexHandler.Email(email))
                         {
@@ -242,6 +277,7 @@ namespace ASN
                             }
                         }
 
+                        // Create the new user.
                         var newUser = new User(firstName, lastName, email, GetNextUserID(), hashedPass);
                         Users.Add(newUser);
 
@@ -372,6 +408,11 @@ namespace ASN
             context.Response.Close();
         }
 
+        /// <summary>
+        /// Takes in a list of HTTP headers, and compares their values with the objects in memory to authenticate a user.
+        /// </summary>
+        /// <param name="headers">The NameValueCollection list of headers to use.</param>
+        /// <returns>A User, if authenticated. Otherwise, returns null.</returns>
         private User GetAuthenticatedUser(NameValueCollection headers)
         {
             if (headers["email"] != null && headers["password"] != null)
@@ -381,7 +422,7 @@ namespace ASN
 
                 foreach (var u in Users)
                 {
-                    var hashed = PasswordHasher.HashPassword(email+pass);
+                    var hashed = PasswordHasher.HashPassword(email + pass);
 
                     if (u.EmailAddress.Equals(email) && u.HashedPassword.Equals(hashed))
                     {
@@ -413,41 +454,56 @@ namespace ASN
             return null;
         }
 
+        /// <summary>
+        /// Streams some data to the user as part of the API call's response.
+        /// </summary>
+        /// <param name="context">The context of our response to use.</param>
+        /// <param name="data">The byte array of data to stream.</param>
         private void StreamOutput(HttpListenerContext context, byte[] data)
-         {
-             context.Response.ContentLength64 = data.Length;
+        {
+            context.Response.ContentLength64 = data.Length;
 
-             using (var s = context.Response.OutputStream)
-             {
-                 s.Write(data, 0, data.Length);
-             }
-         }
+            using (var s = context.Response.OutputStream)
+            {
+                s.Write(data, 0, data.Length);
+            }
+        }
 
-         private Post GetPostByID(int id)
-         {
-             foreach(var item in Posts)
-             {
-                 if(item.PostID == id)
-                 {
-                     return item;
-                 }
-             }
+        /// <summary>
+        /// Attempts to match a Post object with its ID.
+        /// </summary>
+        /// <param name="id">The ID to use.</param>
+        /// <returns>A Post object if found; otherwise, returns null.</returns>
+        private Post GetPostByID(int id)
+        {
+            foreach (var item in Posts)
+            {
+                if (item.PostID == id)
+                {
+                    return item;
+                }
+            }
 
-             return null;
-         }
+            return null;
+        }
 
-         private User GetUserByID(int id)
-         {
-             foreach (var item in Users)
-             {
-                 if (item.UserID == id)
-                 {
-                     return item;
-                 }
-             }
+        /// <summary>
+        /// Attempts to match a User object with their ID.
+        /// </summary>
+        /// <param name="id">The ID to use.</param>
+        /// <returns>A User object if found; otherwise, returns null.</returns>
+        private User GetUserByID(int id)
+        {
+            foreach (var item in Users)
+            {
+                if (item.UserID == id)
+                {
+                    return item;
+                }
+            }
 
-             return null;
-         }
-     }
+            return null;
+        }
+    }
  }
  
