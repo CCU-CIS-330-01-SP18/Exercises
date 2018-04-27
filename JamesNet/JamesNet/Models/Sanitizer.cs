@@ -14,7 +14,7 @@ namespace JamesNet.Models
     public class Sanitizer
     {
         /// <summary>
-        /// Sanitize the given message to eliminate code injection.
+        /// Sanitize the given message to eliminate code injection, and trim it down to size if too long.
         /// </summary>
         /// <param name="message">The message to sanitize.</param>
         /// <returns>A sanitized message, possibly with a snarky comment.</returns>
@@ -28,11 +28,16 @@ namespace JamesNet.Models
                 builder.Insert(0, "(I tried to hack you with this!) " + message);
                 message = builder.ToString();
             }
+            if (message.Length > 255)
+            {
+                message = message.Remove(251, message.Length - 252);
+                message += "...";
+            }
             return message;
         }
 
         /// <summary>
-        /// Sanitize the given username to eliminate code injection.
+        /// Sanitize the given username to eliminate code injection, and trim it down to size if too long.
         /// </summary>
         /// <param name="name">The username to sanitize.</param>
         /// <returns>The sanitized username.</returns>
@@ -46,6 +51,10 @@ namespace JamesNet.Models
             if (match.Success)
             {
                 return "1337 5KR1PT K1DD13!!1!one!";
+            }
+            if (name.Length > 50)
+            {
+                return "Steve McLongName";
             }
             return name;
         }
