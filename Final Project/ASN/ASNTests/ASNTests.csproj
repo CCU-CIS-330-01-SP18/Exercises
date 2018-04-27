@@ -48,11 +48,19 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="PasswordHasherTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegexHandlerTests.cs" />
+    <Compile Include="DataSerializerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASN\AntisocialNetwork.csproj">
+      <Project>{3180d95f-816e-477b-aee3-0ec3f49a6eeb}</Project>
+      <Name>AntisocialNetwork</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
