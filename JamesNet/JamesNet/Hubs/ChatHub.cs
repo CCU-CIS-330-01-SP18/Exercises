@@ -2,6 +2,7 @@
 using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,27 +17,51 @@ namespace JamesNet.Hubs
         /// Send the given message to all users.
         /// </summary>
         /// <param name="name">The name of the user that sent the message.</param>
-        /// <param name="message">The raw message to send.</param>
-        public void Send(string name, string message)
+        /// <param name="messageText">The raw message to send.</param>
+        public void Send(string name, string messageText)
         {
-            if (!String.IsNullOrWhiteSpace(message))
+            if (String.IsNullOrWhiteSpace(messageText))
             {
-                string sanitizedMessage = Sanitizer.Sanitize(message);
-                Clients.All.receiveMessage(name, sanitizedMessage);
+                return;
             }
+            var message = new Message(name, messageText);
+            Clients.All.receiveMessage(message.SenderName, message.MessageText);
         }
 
         /// <summary>
         /// Send a message encrypted with a key to all users.
         /// </summary>
         /// <param name="name">The name of the user that sent the message.</param>
-        /// <param name="message">The raw message to encrypt and send.</param>
+        /// <param name="messageText">The raw message to encrypt and send.</param>
         /// <param name="encryptionKey">The plain-text version of the encryption key.</param>
-        public void Send(string name, string message, string encryptionKey)
+        public void Send(string name, string messageText, string encryptionKey)
         {
-            string sanitizedMessage = Sanitizer.Sanitize(message);
-            byte[] encryptedMessage = Encryptor.Encrypt(sanitizedMessage, encryptionKey);
-            Clients.All.receiveEncryptedMessage(name, encryptedMessage);
+            if (String.IsNullOrWhiteSpace(messageText))
+            {
+                return;
+            }
+            var message = new Message(name, messageText);
+            byte[] encryptedMessage = Encryptor.Encrypt(message.MessageText, encryptionKey);
+            Clients.All.receiveEncryptedMessage(message.SenderName, encryptedMessage);
+        }
+
+        /// <summary>
+        /// Get the last 50 messages and send them down to the client that requested them, in send order.
+        /// </summary>
+        public void PopulateMessageHistory()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Initialize the client that just connected with a message from James, and the last 50 historical messages.
+        /// </summary>
+        public void ClientStartup()
+        {
+            var welcomeMessage = new JamesMessage("Welcome to JamesNet!");
+            Clients.Caller.receiveMessage(welcomeMessage.SenderName, welcomeMessage.MessageText);
+
+            // TODO: Historical messages
         }
 
         /// <summary>
@@ -54,6 +79,7 @@ namespace JamesNet.Hubs
         /// </summary>
         /// <param name="name">The name to validate.</param>
         /// <returns>Whether or not the name is valid.</returns>
+        [Obsolete("Usernames are now sanitized each time a message is sent.")]
         public string ValidateUsername(string name)
         {
             return Sanitizer.SanitizeUsername(name);

@@ -10,17 +10,16 @@
     <div class="container">
         <div class="chatArea">
             <h2>Chat</h2>
+            <div id="chatWindowWrapper">
+                <div id="chatWindow"></div>
+            </div>
+            <br />
             <input type="text" id="message" />
             <input type="submit" id="sendmessage" value="Send" />
             <input type="hidden" id="displayname" />
             <br /><br />
             <label for="encryptionKey">Enter encryption key here (optional):</label>
             <input type="text" id="encryptionKey" />
-            <div id="chatWindowWrapper">
-                <div id="chatWindow">
-                    <p><strong class="username">James</strong>: Welcome to JamesNet!</p>
-                </div>
-            </div>
         </div>
     </div>
     @section scripts {
@@ -31,7 +30,7 @@
                 var chat = $.connection.chatHub;
                 chat.client.receiveMessage = function (name, message) {
                     // Add the message to the page.
-                    $('#chatWindow').prepend('<p><strong class="username">' + name
+                    $('#chatWindow').append('<p><strong class="username">' + name
                         + '</strong>: ' + message + '</p>');
                 };
 
@@ -41,7 +40,7 @@
                     var encryptionBoxValue = $('#encryptionKey').val();
                     if (encryptionBoxValue) {
                         chat.server.decryptMessage(encryptedMessage, encryptionBoxValue).done(function (result) {
-                            $('#chatWindow').prepend('<p><strong class="username">' + name
+                            $('#chatWindow').append('<p><strong class="username">' + name
                                 + '</strong>: ' + result + '</p>');
                         });
                     }
@@ -62,10 +61,10 @@
                 // Start the connection.
                 $.connection.hub.start().done(function () {
 
-                    // Get the user name, sanitized by the server, and store it for later use.
-                    chat.server.validateUsername(prompt('Enter your username for this session:', '')).done(function (result) {
-                        $('#displayname').val(result);
-                    });
+                    // Get the username and store it for later use.
+                    $('#displayname').val(prompt('Enter your username for this session:', ''));
+
+                    chat.server.clientStartup();
 
                     $('#message').focus();
                     $('#sendmessage').click(sendClicked);

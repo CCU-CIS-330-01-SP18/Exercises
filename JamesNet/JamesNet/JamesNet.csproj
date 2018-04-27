@@ -167,6 +167,9 @@
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Models\Encryptor.cs" />
+    <Compile Include="Models\JamesMessage.cs" />
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\MessageLogger.cs" />
     <Compile Include="Models\Sanitizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -13,7 +13,7 @@ namespace JamesNetTests.Models
         public void SanitizesCodeInjectionMessages()
         {
             string injectedCode = "<script>alert('James eats matches!');</script>";
-            string sanitizedCode = Sanitizer.Sanitize(injectedCode);
+            string sanitizedCode = Sanitizer.SanitizeMessageText(injectedCode);
             Assert.IsFalse(Regex.IsMatch(sanitizedCode, @"\<script\>"));
         }
 
@@ -26,7 +26,7 @@ namespace JamesNetTests.Models
                 builder.Append(i);
             }
             string longMessage = builder.ToString();
-            string shortenedMessage = Sanitizer.Sanitize(longMessage);
+            string shortenedMessage = Sanitizer.SanitizeMessageText(longMessage);
             Assert.IsTrue(shortenedMessage.Length <= 255);
         }
 
@@ -35,6 +35,7 @@ namespace JamesNetTests.Models
         {
             string injectedCode = "<script>alert('James eats matches!');</script>";
             string sanitizedCode = Sanitizer.SanitizeUsername(injectedCode);
+            Assert.IsNotNull(sanitizedCode);
             Assert.IsFalse(Regex.IsMatch(sanitizedCode, @"\<script\>"));
         }
 
@@ -48,6 +49,7 @@ namespace JamesNetTests.Models
             }
             string longUsername = builder.ToString();
             string shortenedUsername = Sanitizer.SanitizeUsername(longUsername);
+            Assert.IsNotNull(shortenedUsername);
             Assert.IsFalse(shortenedUsername.Length > 50);
         }
 
@@ -56,6 +58,7 @@ namespace JamesNetTests.Models
         {
             string whitespaceName = "";
             string sanitizedName = Sanitizer.SanitizeUsername(whitespaceName);
+            Assert.IsNotNull(sanitizedName);
             Assert.IsFalse(String.IsNullOrWhiteSpace(sanitizedName));
         }
     }

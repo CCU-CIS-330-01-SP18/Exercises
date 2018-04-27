@@ -16,24 +16,24 @@ namespace JamesNet.Models
         /// <summary>
         /// Sanitize the given message to eliminate code injection, and trim it down to size if too long.
         /// </summary>
-        /// <param name="message">The message to sanitize.</param>
+        /// <param name="messageText">The message to sanitize.</param>
         /// <returns>A sanitized message, possibly with a snarky comment.</returns>
-        public static string Sanitize(string message)
+        public static string SanitizeMessageText(string messageText)
         {
-            var match = Regex.Match(message, @"\<\w*\>");
+            var match = Regex.Match(messageText, @"\<\w*\>");
             if (match.Success)
             {
-                message = message.Replace("<", "&lt;").Replace(">", "&gt;");
+                messageText = messageText.Replace("<", "&lt;").Replace(">", "&gt;");
                 var builder = new StringBuilder();
-                builder.Insert(0, "(I tried to hack you with this!) " + message);
-                message = builder.ToString();
+                builder.Insert(0, "(I tried to hack you with this!) " + messageText);
+                messageText = builder.ToString();
             }
-            if (message.Length > 255)
+            if (messageText.Length > 255)
             {
-                message = message.Remove(251, message.Length - 252);
-                message += "...";
+                messageText = messageText.Remove(251, messageText.Length - 252);
+                messageText += "...";
             }
-            return message;
+            return messageText;
         }
 
         /// <summary>
