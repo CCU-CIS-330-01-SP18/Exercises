@@ -51,6 +51,11 @@ namespace JamesNet.Models
                 // Log the empty queue to force-populate an empty history.
                 Log(messages);
             }
+            catch (FileNotFoundException)
+            {
+                // Log the empty queue to force-populate an empty history.
+                Log(messages);
+            }
             return messages;
         }
     }

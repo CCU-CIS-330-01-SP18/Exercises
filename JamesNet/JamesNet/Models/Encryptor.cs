@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace JamesNet.Models
 {
@@ -62,10 +63,10 @@ namespace JamesNet.Models
         /// <param name="message">The message to encrypt.</param>
         /// <param name="key">The key to encrypt the message with.</param>
         /// <returns>The encrypted message.</returns>
-        public static byte[] Encrypt(string message, string key)
+        public static Task<byte[]> Encrypt(string message, string key)
         {
             byte[] keyBytes = Encoding.UTF8.GetBytes(key);
-            return Encrypt(message, keyBytes);
+            return Task.Run(() => Encrypt(message, keyBytes));
         }
 
         /// <summary>
@@ -103,35 +104,10 @@ namespace JamesNet.Models
         /// <param name="encryptedMessage">The message to decrypt.</param>
         /// <param name="key">The key to attempt decryption with.</param>
         /// <returns>The decrypted message.</returns>
-        public static string Decrypt(byte[] encryptedMessage, string key)
+        public static Task<string> Decrypt(byte[] encryptedMessage, string key)
         {
             byte[] keyBytes = Encoding.UTF8.GetBytes(key);
-            return Decrypt(encryptedMessage, keyBytes);
-        }
-
-        /// <summary>
-        /// Attempt to decrypt the message with the key, and return it.
-        /// </summary>
-        /// <param name="encryptedMessage">The message to decrypt.</param>
-        /// <param name="key">The key to attempt decryption with.</param>
-        /// <returns>The decrypted message.</returns>
-        public static string Decrypt(string encryptedMessage, byte[] key)
-        {
-            byte[] encryptedMessageBytes = Encoding.UTF8.GetBytes(encryptedMessage);
-            return Decrypt(encryptedMessageBytes, key);
-        }
-
-        /// <summary>
-        /// Attempt to decrypt the message with the key, and return it.
-        /// </summary>
-        /// <param name="encryptedMessage">The message to decrypt.</param>
-        /// <param name="key">The key to attempt decryption with.</param>
-        /// <returns>The decrypted message.</returns>
-        public static string Decrypt(string encryptedMessage, string key)
-        {
-            byte[] keyBytes = Encoding.UTF8.GetBytes(key);
-            byte[] encryptedMessageBytes = Encoding.UTF8.GetBytes(encryptedMessage);
-            return Decrypt(encryptedMessageBytes, keyBytes);
+            return Task.Run(() => Decrypt(encryptedMessage, keyBytes));
         }
     }
 }

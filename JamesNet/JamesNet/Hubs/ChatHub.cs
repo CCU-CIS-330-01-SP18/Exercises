@@ -58,7 +58,7 @@ namespace JamesNet.Hubs
                 return;
             }
             var message = new Message(name, messageText);
-            byte[] encryptedMessage = Encryptor.Encrypt(message.MessageText, encryptionKey);
+            byte[] encryptedMessage = Encryptor.Encrypt(message.MessageText, encryptionKey).Result;
             // Encrypted messages are not logged.
             Clients.All.receiveEncryptedMessage(message.SenderName, encryptedMessage);
         }
@@ -68,7 +68,6 @@ namespace JamesNet.Hubs
         /// </summary>
         public void ClientStartup()
         {
-            // TODO: Historical messages
             var oldMessages = messageHistory.Count > 0 ? messageHistory : MessageLogger.RetrieveMessages();
             var orderedMessages = oldMessages.AsQueryable().OrderBy((m) => m.timeStamp);
             foreach (Message message in orderedMessages) {
@@ -86,7 +85,7 @@ namespace JamesNet.Hubs
         /// <param name="encryptionKey">The encryption key to attempt decryption with.</param>
         public string DecryptMessage(byte[] encryptedMessage, string encryptionKey)
         {
-            return Encryptor.Decrypt(encryptedMessage, encryptionKey);
+            return Encryptor.Decrypt(encryptedMessage, encryptionKey).Result;
         }
     }
 }
