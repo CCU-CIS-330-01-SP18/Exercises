@@ -29,13 +29,14 @@ namespace ComprehensiveAssignment.Controllers
         /// <param name="model">Quote Symbol being returned to controller.</param>
         /// <returns>Returns the Index view and passes it a Quote model with updated stock info from api call.</returns>
         [HttpGet]
-        public ActionResult FetchStock(Quote model)
+        public ActionResult FetchStock(StockModel model)
         {
             StockModel stockModel = null;
+            
             using (var webClient = new WebClient())
             {
                 // Download JSON
-                string rawJson = webClient.DownloadString($"https://api.iextrading.com/1.0/stock/{model.Symbol}/batch?types=quote,news,chart&range=1m&last=10");
+                string rawJson = webClient.DownloadString($"https://api.iextrading.com/1.0/stock/{model.Quote.Symbol}/batch?types=quote,news,chart&range=1m&last=10");
 
                 // Deserialize JSON.
                 stockModel = JsonConvert.DeserializeObject<StockModel>(rawJson);
@@ -43,6 +44,10 @@ namespace ComprehensiveAssignment.Controllers
             }
 
             // Model that I'm passing to the view.
+            
+
+            
+
             var quote = new Quote()
             {
                 CompanyName = stockModel.Quote.CompanyName,
@@ -52,7 +57,10 @@ namespace ComprehensiveAssignment.Controllers
                 Close = stockModel.Quote.Close
             };
 
-            return View("Index", quote);
+            var stockInfo = new StockModel() { News = stockModel.News, Quote = quote };
+
+            return View("Index", stockInfo);
+            //return View("Index", quote);
         }
 
         public ActionResult About()
