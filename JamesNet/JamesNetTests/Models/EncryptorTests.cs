@@ -14,12 +14,12 @@ namespace JamesNetTests.Models
             Encryptor.GenerateIV();
             string stringToEncrypt = "Lorem Ipsum";
 
-            byte[] encrypted = Encryptor.Encrypt(stringToEncrypt, "test");
+            byte[] encrypted = Encryptor.Encrypt(stringToEncrypt, "test").Result;
 
             Assert.IsNotNull(encrypted, "The encryption method returned nothing.");
             Assert.AreNotEqual(stringToEncrypt, Encoding.UTF8.GetString(encrypted), "The encryption method did not actually encrypt the string.");
 
-            string decrypted = Encryptor.Decrypt(encrypted, "test");
+            string decrypted = Encryptor.Decrypt(encrypted, "test").Result;
 
             Assert.AreEqual(stringToEncrypt, decrypted, "Decryption yielded a different result.");
         }
