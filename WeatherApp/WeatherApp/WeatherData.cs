@@ -108,7 +108,6 @@ namespace WeatherApp
             catch (NullReferenceException e)
             {
                 Console.WriteLine("Failed to retrieve weater data: Check city name spelling. \r\n" + e);
-                Console.WriteLine("Press ENTER to retry.");
                 return false;
             }
             
