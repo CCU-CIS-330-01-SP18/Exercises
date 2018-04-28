@@ -22,17 +22,20 @@
                     <li><a href="#">Contact</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    <li><a href="~/Controllers/LoginController.cs"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 </ul>
             </div>
         </nav>
-        <div class="col-lg-7">
-            <h1 class="text-primary">Welcome to Tickr</h1>
-            <p class="lead">
-                Search for information about stocks in real time all in the comfort of your laptop.
-                To get started simply search through the textbox and select a criteria you are wanting to search by.
-            </p>
+        <!--<div class="row">-->
+        <!--<div class="col-lg-7">-->
+        <h1 class="text-primary">Welcome to Tickr</h1>
+        <p class="lead">
+            Search for information about stocks in real time all in the comfort of your laptop.
+            To get started simply search through the textbox and select a criteria you are wanting to search by.
+        </p>
+        <div class="row">
             <div class="col-lg-5">
+                @*<div class="col-lg-5">*@
                 <h4 class="text-primary">Search by Stock Symbol</h4>
                 @using (Html.BeginForm("FetchStock", "Home", FormMethod.Get))
                 {
@@ -48,45 +51,51 @@
                 }
                 @if (Model != null)
                 {
-                    <div class="row">
-                        <div class="panel-group">
-                            <div class="panel panel-info">
-                                <div class="panel-heading">Company Name</div>
-                                @*<div class="panel-body">@Model.CompanyName</div>*@
-                                <div class="panel-body">@Model.Quote.CompanyName</div>
-                            </div>
-                            <div class="panel panel-info">
-                                <div class="panel-heading">Sector</div>
-                                @*<div class="panel-body">@Model.Sector</div>*@
-                                <div class="panel-body">@Model.Quote.Sector</div>
-                            </div>
-                            <div class="panel panel-info">
-                                <div class="panel-heading">Primary Exchange</div>
-                                @*<div class="panel-body">@Model.PrimaryExchange</div>*@
-                                <div class="panel-body">@Model.Quote.PrimaryExchange</div>
-                            </div>
-                            <div class="panel panel-info">
-                                <div class="panel-heading">Open Price</div>
-                                @*<div class="panel-body">$@Model.Open</div>*@
-                                <div class="panel-body">$@Model.Quote.Open</div>
-                            </div>
-                            <div class="panel panel-info">
-                                <div class="panel-heading">Close Price</div>
-                                @*<div class="panel-body">$@Model.Close</div>*@
-                                <div class="panel-body">$@Model.Quote.Close</div>
-                            </div>
+                    <div class="panel-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Company Name</div>
+                            @*<div class="panel-body">@Model.CompanyName</div>*@
+                            <div class="panel-body">@Model.Quote.CompanyName</div>
+                        </div>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Sector</div>
+                            @*<div class="panel-body">@Model.Sector</div>*@
+                            <div class="panel-body">@Model.Quote.Sector</div>
+                        </div>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Primary Exchange</div>
+                            @*<div class="panel-body">@Model.PrimaryExchange</div>*@
+                            <div class="panel-body">@Model.Quote.PrimaryExchange</div>
+                        </div>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Open Price</div>
+                            @*<div class="panel-body">$@Model.Open</div>*@
+                            <div class="panel-body">$@Model.Quote.Open</div>
+                        </div>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Close Price</div>
+                            @*<div class="panel-body">$@Model.Close</div>*@
+                            <div class="panel-body">$@Model.Quote.Close</div>
+                        </div>
 
-                        </div>
-                        <div>
-                            <ul class="list-group">
-                                @foreach (var stock in Model.News)
-                                {
-                                    <li class="list-group-item">@stock.Headline</li>
-                                    <li class="list-group-item">@stock.Source</li>
-                                    <li class="list-group-item">@stock.Url</li>
-                                }
-                            </ul>
-                        </div>
+                    </div>
+                }
+
+                @*</div>*@
+            </div>
+            <div class="col-lg-7">
+                @if (Model != null)
+                {
+                    <div>
+                        <h4 class="text-primary">Related News For @Model.Quote.CompanyName</h4>
+                        <ul class="list-group">
+                            @foreach (var stock in Model.News)
+                            {
+                                <li class="list-group-item"><span class="text-primary">Headline:</span> @stock.Headline</li>
+                                <li class="list-group-item"><span class="text-primary">Source:</span> @stock.Source</li>
+                                <li class="list-group-item"><a href="@stock.Url"><span class="text-primary">URL</span></a></li>
+                            }
+                        </ul>
                     </div>
                 }
             </div>
