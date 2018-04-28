@@ -14,14 +14,18 @@ namespace JamesNet.Models
     /// </summary>
     public static class MessageLogger
     {
+        private static string logName = "logs\\msg_history.log";
         /// <summary>
         /// Log the <see cref="Queue{T}"/> to a file, in binary format.
         /// </summary>
         public static void Log(Queue<Message> message)
         {
-            // TODO: This still doesn't work!
+            if (!Directory.Exists("logs"))
+            {
+                Directory.CreateDirectory("logs");
+            }
             var binary = new BinaryFormatter();
-            using (var stream = File.OpenWrite("msg_h.log"))
+            using (var stream = File.OpenWrite(logName))
             {
                 binary.Serialize(stream, message);
             }
@@ -30,16 +34,16 @@ namespace JamesNet.Models
         /// <summary>
         /// Retrieve <see cref="Message"/>s from the log.
         /// </summary>
-        /// <returns>A <see cref="Queue{T}"/> of <see cref="Message"/>s, ordered from most to least recent.</returns>
+        /// <returns>A <see cref="Queue{T}"/> of <see cref="Message"/>s.</returns>
         public static Queue<Message> RetrieveMessages()
         {
-            if (!File.Exists("msg_h.log"))
+            if (!File.Exists(logName))
             {
-                return new Queue<Message>();
+                Log(new Queue<Message>());
             }
             var binary = new BinaryFormatter();
             var messages = new Queue<Message>();
-            using (var stream = File.OpenRead("msg_h.log"))
+            using (var stream = File.OpenRead(logName))
             {
                 messages = (Queue<Message>)binary.Deserialize(stream);
             }

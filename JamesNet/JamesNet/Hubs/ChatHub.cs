@@ -42,6 +42,7 @@ namespace JamesNet.Hubs
             }
             messageHistory.Enqueue(message);
             Clients.All.receiveMessage(message.SenderName, message.MessageText);
+            MessageLogger.Log(messageHistory);
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace JamesNet.Hubs
         public void ClientStartup()
         {
             // TODO: Historical messages
-            var oldMessages = messageHistory ?? MessageLogger.RetrieveMessages();
+            var oldMessages = messageHistory.Count > 0 ? messageHistory : MessageLogger.RetrieveMessages();
             var orderedMessages = oldMessages.AsQueryable().OrderBy((m) => m.timeStamp);
             foreach (Message message in orderedMessages) {
                 Clients.Caller.receiveMessage(message.SenderName, message.MessageText);
