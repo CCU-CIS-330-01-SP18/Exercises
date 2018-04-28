@@ -3,6 +3,7 @@ using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,11 @@ namespace JamesNet.Hubs
     public class ChatHub : Hub
     {
         /// <summary>
+        /// A queue of the last 50 messages.
+        /// </summary>
+        private static Queue<Message> messageHistory = MessageLogger.RetrieveMessages();
+
+        /// <summary>
         /// Send the given message to all users.
         /// </summary>
         /// <param name="name">The name of the user that sent the message.</param>
@@ -24,8 +30,17 @@ namespace JamesNet.Hubs
             {
                 return;
             }
+            if (messageHistory == null)
+            {
+                messageHistory = new Queue<Message>();
+            }
+
             var message = new Message(name, messageText);
-            MessageLogger.Log(message);
+            if (messageHistory.Count == 50)
+            {
+                messageHistory.Dequeue();
+            }
+            messageHistory.Enqueue(message);
             Clients.All.receiveMessage(message.SenderName, message.MessageText);
         }
 
@@ -52,11 +67,15 @@ namespace JamesNet.Hubs
         /// </summary>
         public void ClientStartup()
         {
+            // TODO: Historical messages
+            var oldMessages = messageHistory ?? MessageLogger.RetrieveMessages();
+            var orderedMessages = oldMessages.AsQueryable().OrderBy((m) => m.timeStamp);
+            foreach (Message message in orderedMessages) {
+                Clients.Caller.receiveMessage(message.SenderName, message.MessageText);
+            }
+
             var welcomeMessage = new JamesMessage("Welcome to JamesNet!");
             Clients.Caller.receiveMessage(welcomeMessage.SenderName, welcomeMessage.MessageText);
-
-            // TODO: Historical messages
-            var oldMessages = MessageLogger.RetrieveMessages(50);
         }
 
         /// <summary>

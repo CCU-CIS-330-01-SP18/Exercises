@@ -10,42 +10,38 @@ using System.Web;
 namespace JamesNet.Models
 {
     /// <summary>
-    /// Logs messages to a file.
+    /// Logs <see cref="Message"/>s to a file.
     /// </summary>
     public static class MessageLogger
     {
         /// <summary>
-        /// Log the message to a file, in binary format.
+        /// Log the <see cref="Queue{T}"/> to a file, in binary format.
         /// </summary>
-        public static void Log(Message message)
+        public static void Log(Queue<Message> message)
         {
             // TODO: This still doesn't work!
             var binary = new BinaryFormatter();
-            using (var stream = File.OpenWrite("msg.log"))
+            using (var stream = File.OpenWrite("msg_h.log"))
             {
                 binary.Serialize(stream, message);
             }
         }
 
         /// <summary>
-        /// Retrieve messages from the log.
+        /// Retrieve <see cref="Message"/>s from the log.
         /// </summary>
-        /// <param name="numberToRetrieve">The number of messages to retrieve, starting with the most recent.</param>
-        /// <returns>A list of messages, ordered from most to least recent.</returns>
-        public static List<Message> RetrieveMessages(int numberToRetrieve)
+        /// <returns>A <see cref="Queue{T}"/> of <see cref="Message"/>s, ordered from most to least recent.</returns>
+        public static Queue<Message> RetrieveMessages()
         {
-            if (!File.Exists("msg.log"))
+            if (!File.Exists("msg_h.log"))
             {
-                return new List<Message>();
+                return new Queue<Message>();
             }
-            var messages = new List<Message>();
             var binary = new BinaryFormatter();
-            using (var stream = File.OpenRead("msg.log"))
+            var messages = new Queue<Message>();
+            using (var stream = File.OpenRead("msg_h.log"))
             {
-                for (int i = 0; i < numberToRetrieve; i++)
-                {
-                    messages.Add((Message)binary.Deserialize(stream));
-                }
+                messages = (Queue<Message>)binary.Deserialize(stream);
             }
             return messages;
         }
