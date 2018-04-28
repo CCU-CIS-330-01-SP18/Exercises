@@ -44,7 +44,7 @@ namespace WeatherApp
             var data = new RootObject();
             var result = data.GenerateReport();
 
-            //GenerateReport() returns false in its catch block if NullReferenceExcpetion is caught.
+            //GenerateReport() returns false in it's catch block if NullReferenceExcpetion is caught.
             Assert.IsFalse(result);
         }
     }
