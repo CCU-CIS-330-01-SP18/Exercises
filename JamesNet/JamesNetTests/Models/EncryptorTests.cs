@@ -1,7 +1,6 @@
-﻿using System;
-using System.Text;
-using JamesNet.Models;
+﻿using JamesNet.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Text;
 
 namespace JamesNetTests.Models
 {

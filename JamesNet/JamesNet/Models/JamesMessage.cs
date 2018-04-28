@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace JamesNet.Models
+﻿namespace JamesNet.Models
 {
     /// <summary>
     /// A message from James himself. The sanitizer ignores James's messages, so he can inject JavaScript.
