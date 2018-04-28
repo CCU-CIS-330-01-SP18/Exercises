@@ -9,15 +9,12 @@ namespace JamesNet.Models
     /// <summary>
     /// Represents a single message.
     /// </summary>
-    [DataContract]
+    [Serializable]
     public class Message
     {
-        [DataMember]
         public readonly DateTime timeStamp;
-        [DataMember]
         protected string senderName;
-
-        [DataMember]
+        
         public string MessageText { get; set; }
         public string SenderName {
             get

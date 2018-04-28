@@ -25,6 +25,7 @@ namespace JamesNet.Hubs
                 return;
             }
             var message = new Message(name, messageText);
+            MessageLogger.Log(message);
             Clients.All.receiveMessage(message.SenderName, message.MessageText);
         }
 
@@ -42,15 +43,8 @@ namespace JamesNet.Hubs
             }
             var message = new Message(name, messageText);
             byte[] encryptedMessage = Encryptor.Encrypt(message.MessageText, encryptionKey);
+            // Encrypted messages are not logged.
             Clients.All.receiveEncryptedMessage(message.SenderName, encryptedMessage);
-        }
-
-        /// <summary>
-        /// Get the last 50 messages and send them down to the client that requested them, in send order.
-        /// </summary>
-        public void PopulateMessageHistory()
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -62,6 +56,7 @@ namespace JamesNet.Hubs
             Clients.Caller.receiveMessage(welcomeMessage.SenderName, welcomeMessage.MessageText);
 
             // TODO: Historical messages
+            var oldMessages = MessageLogger.RetrieveMessages(50);
         }
 
         /// <summary>
@@ -72,17 +67,6 @@ namespace JamesNet.Hubs
         public string DecryptMessage(byte[] encryptedMessage, string encryptionKey)
         {
             return Encryptor.Decrypt(encryptedMessage, encryptionKey);
-        }
-
-        /// <summary>
-        /// Checks to see if the given username is valid.
-        /// </summary>
-        /// <param name="name">The name to validate.</param>
-        /// <returns>Whether or not the name is valid.</returns>
-        [Obsolete("Usernames are now sanitized each time a message is sent.")]
-        public string ValidateUsername(string name)
-        {
-            return Sanitizer.SanitizeUsername(name);
         }
     }
 }

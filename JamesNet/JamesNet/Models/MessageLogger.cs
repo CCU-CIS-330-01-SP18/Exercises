@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
 using System.Web;
@@ -9,21 +10,20 @@ using System.Web;
 namespace JamesNet.Models
 {
     /// <summary>
-    /// Logs messages to a JSON file.
+    /// Logs messages to a file.
     /// </summary>
     public static class MessageLogger
     {
-        private delegate List<Message> MessageRetrieval();
-
         /// <summary>
-        /// Log the message to a JSON file.
+        /// Log the message to a file, in binary format.
         /// </summary>
-        public async static void Log(Message message)
+        public static void Log(Message message)
         {
-            var json = new DataContractJsonSerializer(typeof(Message));
+            // TODO: This still doesn't work!
+            var binary = new BinaryFormatter();
             using (var stream = File.OpenWrite("msg.log"))
             {
-                await Task.Run(() => json.WriteObject(stream, message));
+                binary.Serialize(stream, message);
             }
         }
 
@@ -34,16 +34,20 @@ namespace JamesNet.Models
         /// <returns>A list of messages, ordered from most to least recent.</returns>
         public static List<Message> RetrieveMessages(int numberToRetrieve)
         {
+            if (!File.Exists("msg.log"))
+            {
+                return new List<Message>();
+            }
             var messages = new List<Message>();
-            var json = new DataContractJsonSerializer(typeof(Message));
+            var binary = new BinaryFormatter();
             using (var stream = File.OpenRead("msg.log"))
             {
                 for (int i = 0; i < numberToRetrieve; i++)
                 {
-                    messages.Add((Message)json.ReadObject(stream));
+                    messages.Add((Message)binary.Deserialize(stream));
                 }
             }
-            throw new NotImplementedException();
+            return messages;
         }
     }
 }
