@@ -37,15 +37,19 @@ namespace JamesNet.Models
         /// <returns>A <see cref="Queue{T}"/> of <see cref="Message"/>s.</returns>
         public static Queue<Message> RetrieveMessages()
         {
-            if (!File.Exists(logName))
-            {
-                Log(new Queue<Message>());
-            }
             var binary = new BinaryFormatter();
             var messages = new Queue<Message>();
-            using (var stream = File.OpenRead(logName))
+            try
             {
-                messages = (Queue<Message>)binary.Deserialize(stream);
+                using (var stream = File.OpenRead(logName))
+                {
+                    messages = (Queue<Message>)binary.Deserialize(stream);
+                }
+            }
+            catch (DirectoryNotFoundException)
+            {
+                // Log the empty queue to force-populate an empty history.
+                Log(messages);
             }
             return messages;
         }
