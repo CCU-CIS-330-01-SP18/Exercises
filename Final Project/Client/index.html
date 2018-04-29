@@ -9,10 +9,16 @@
 </head>
 <body>
 <div id="nav">
-    <input type="text" placeholder="email" id="login_email"/>
-    <input type="password" placeholder="password" id="login_password"/>
+    <input type="text" placeholder="Email" id="login_email"/>
+    <input type="password" placeholder="Password" id="login_password"/>
     <button type="submit" onclick="tryLogin()">Log in</button>
-    <button type="submit" onclick="window.location='#'">Register</button>
+    <br/>
+    <input type="text" placeholder="First Name" id="reg_fname"/>
+    <input type="text" placeholder="Last Name" id="reg_lname"/>
+    <input type="text" placeholder="Email" id="reg_email"/>
+    <input type="password" placeholder="Password" id="reg_password"/>
+    <button type="submit" onclick="tryRegister()">Register</button>
+    <br/>
     <label for="nav" hidden="hidden" id="loginerr">Error!</label>
 </div>
 <div id="heading">

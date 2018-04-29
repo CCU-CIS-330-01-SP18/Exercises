@@ -43,6 +43,43 @@ function tryLogin(){
     });
 }
 
+function tryRegister(){
+    var fname = document.getElementById("reg_fname").value;
+    var lname = document.getElementById("reg_lname").value;
+    var email = document.getElementById("reg_email").value;
+    var pass = document.getElementById("reg_password").value;
+
+    var jsonData = JSON.stringify({
+        'firstName': fname,
+        'lastName': lname,
+        'email': email,
+        'password': pass
+    });
+
+    $.ajax({
+        url: '//localhost:8080/register',
+        type: 'POST',
+        async: false,
+        data: jsonData,
+        success: function (data) {
+            setCookie(data);
+            window.location = "home.html";
+        },
+        error: function(xhr, textStatus, errorThrown){
+            switch(xhr.status) {
+                case 400:
+                    $("#loginerr").text("There was an error! Please check your formatting.").removeAttr("hidden");
+                    break;
+                case 401:
+                    $("#loginerr").text("Authentication error!").removeAttr("hidden");
+                    break;
+                default:
+                    $("#loginerr").text("There was an error processing your registration!").removeAttr("hidden");
+            }
+        }
+    });
+}
+
 function tryLogout(){
     deleteCookie();
     location.reload();

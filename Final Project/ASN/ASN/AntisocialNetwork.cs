@@ -263,6 +263,7 @@ namespace ASN
                         if (!RegexHandler.Name(firstName) || !RegexHandler.Name(lastName) || !RegexHandler.Email(email))
                         {
                             context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                            context.Response.Close();
                             return;
                         }
 
@@ -281,8 +282,8 @@ namespace ASN
                         var newUser = new User(firstName, lastName, email, GetNextUserID(), hashedPass);
                         Users.Add(newUser);
 
+                        StreamOutput(context, Encoding.UTF8.GetBytes(newUser.HashedPassword));
                         context.Response.StatusCode = (int)HttpStatusCode.OK;
-                        StreamOutput(context, Encoding.UTF8.GetBytes(newUser.UserID.ToString()));
                     }
                     catch (JsonException)
                     {
@@ -305,8 +306,8 @@ namespace ASN
                                     var newPost = new Post(authenticatedUser.UserID, message, GetNextPostID());
 
                                     Posts.Add(newPost);
-                                    context.Response.StatusCode = (int)HttpStatusCode.OK;
                                     StreamOutput(context, System.Text.Encoding.UTF8.GetBytes(newPost.PostID.ToString()));
+                                    context.Response.StatusCode = (int)HttpStatusCode.OK;
                                 }
                                 else
                                 {
