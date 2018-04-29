@@ -82,12 +82,6 @@ namespace ComprehensiveAssignment.Controllers
         
         public ActionResult GetUser(User model)
         {
-            // If a user was not found, do not let them login.
-            /*if (!ModelState.IsValid)
-            {
-                return RedirectToAction("Index", "Login");
-            }*/
-
             ActionResult action = null;
             AdoTickrModel db = new AdoTickrModel();
 

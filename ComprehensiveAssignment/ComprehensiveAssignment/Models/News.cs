@@ -5,13 +5,15 @@ using System.Web;
 
 namespace ComprehensiveAssignment.Models
 {
+    /// <summary>
+    /// Model from which the related news of a stock is pulled.
+    /// </summary>
     public class News
     {
-        public DateTime Datetime { get; set; }
         public string Headline { get; set; }
+
         public string Source { get; set; }
+
         public string Url { get; set; }
-        public string Summary { get; set; }
-        public string Related { get; set; }
     }
 }

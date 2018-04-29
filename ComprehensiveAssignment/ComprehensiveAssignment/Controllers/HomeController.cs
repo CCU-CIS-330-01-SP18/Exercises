@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using ComprehensiveAssignment.Models;
@@ -31,23 +32,22 @@ namespace ComprehensiveAssignment.Controllers
         [HttpGet]
         public ActionResult FetchStock(StockModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Index");
+            }
+            
             StockModel stockModel = null;
             
             using (var webClient = new WebClient())
             {
                 // Download JSON
                 string rawJson = webClient.DownloadString($"https://api.iextrading.com/1.0/stock/{model.Quote.Symbol}/batch?types=quote,news,chart&range=1m&last=10");
-
+                
                 // Deserialize JSON.
                 stockModel = JsonConvert.DeserializeObject<StockModel>(rawJson);
-  
             }
-
-            // Model that I'm passing to the view.
             
-
-            
-
             var quote = new Quote()
             {
                 CompanyName = stockModel.Quote.CompanyName,
@@ -60,20 +60,23 @@ namespace ComprehensiveAssignment.Controllers
             var stockInfo = new StockModel() { News = stockModel.News, Quote = quote };
 
             return View("Index", stockInfo);
-            //return View("Index", quote);
         }
 
+        /// <summary>
+        /// Action result responsible for routing to the About view.
+        /// </summary>
+        /// <returns>The About View.</returns>
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
+        /// <summary>
+        /// Action result responsible for routing to the Contact view.
+        /// </summary>
+        /// <returns>The Contact View.</returns>
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
