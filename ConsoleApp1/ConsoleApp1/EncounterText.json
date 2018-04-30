@@ -3,13 +3,41 @@
   {
     "ID": "1",
     "Text": "You wake up in woods. You hear a cry for help. What do you do? 1.Run towards sound 2.Cautiously approach 3. Run away from the sound."
-  }
+  },
   {
     "ID": "2",
-    "Text": "You see a young boy being attacked by a Goblin. The Goblin hears you approach and jumps at you with a valiant screech. What do you do? 1. Fight Goblin 2. Run away"
-  }
+    "Text": "You see a young boy being attacked by a goblin. The goblin hears you approach and jumps at you with a valiant screech. 1. Fight Goblin 2. Run away"
+  },
   {
     "ID": "3",
-    "Text": ""
+    "Text": "You see a young boy being attacked by a goblin. 1.Throw a rock at the Goblin. 2. Charge in and surprise attack."
+  },
+  {
+    "ID": "4",
+    "Text": "You abandon the cry for help and run willy-nilly into the woods. You burst into a clearing where a giant, menacing dragon is taking an afternoon snooze. 1.Fight the dragon. 2. Run away"
+  },
+  {
+    "ID": "5",
+    "Text": "The goblin runs away, terrified of your obvious strength. 1. Leave the boy and continue on your merry way. 2. Approach the boy and help him."
+  },
+  {
+    "ID": "6",
+    "Text": "You hit the goblin in the head and he is rendered unconcious. 1 Loot goblin 2. Help boy."
+  },
+  {
+    "ID": "7",
+    "Text": "You run towards the dragon and release a barbaric screech. The dragon wakes up, looks at you, and eats you. You die."
+  },
+  {
+    "ID": "8",
+    "Text":
+  },
+  {
+    "ID": "9",
+    "Text": "You run from the dragon. You are slightly fatigued from all of this running. You end running into a young boy being attacked by a goblin. 1. Fight goblin 2. Run away... Again."
+  },
+  {
+    "ID": "10",
+    "Text": "
   }
 }
