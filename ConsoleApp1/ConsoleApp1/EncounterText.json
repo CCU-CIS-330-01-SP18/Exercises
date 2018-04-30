@@ -6,6 +6,10 @@
   }
   {
     "ID": "2",
-    "Text": "You see a young boy being attacked by a Goblin, what do you do?"
+    "Text": "You see a young boy being attacked by a Goblin. The Goblin hears you approach and jumps at you with a valiant screech. What do you do? 1. Fight Goblin 2. Run away"
+  }
+  {
+    "ID": "3",
+    "Text": ""
   }
 }
