@@ -6,3 +6,6 @@
 4. Regular Expressions and Exeception handling -- located in AddItems class.
 5. Cryptography -- located in Encryption.
 6. Serialization and Streams -- located in BinaryFormatSerializer.
+
+Username = "Awesome Anderson"
+Pass = "Dylan is hilarious"

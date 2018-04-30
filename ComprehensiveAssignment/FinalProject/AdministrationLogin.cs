@@ -16,7 +16,7 @@ namespace FinalProject
         /// </summary>
         public static void AdminLogin()
         {
-            string hashedUsername = HashAdminData("Proj Anderson");
+            string hashedUsername = HashAdminData("Awesome Anderson");
             string hashedPass = HashAdminData("Dylan is hilarious");
 
             while (true)
