@@ -42,7 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryFormatSerializer .cs" />
+    <Compile Include="DisplayPlanets.cs" />
+    <Compile Include="GeneratePlanets.cs" />
+    <Compile Include="Planet.cs" />
+    <Compile Include="PlanetList.cs" />
     <Compile Include="RegexValidator.cs" />
+    <Compile Include="SerializeAndDeserialize.cs" />
     <Compile Include="SpaceHeadquarters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
