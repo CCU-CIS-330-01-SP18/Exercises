@@ -1,8 +1,16 @@
 ﻿.Net Framework Final Project Ideas
 
-- serialization could be putting all responses in a txt file 
+Pillars of OOP: Encapsulation, Inheritance, Polymorphism, Abstraction: I think I got it
+Collections
+LINQ: 
+   got em
 
--LINQ: Keeping a collection of common phrases/questions and using linq to retrieve
- (linq and delegates go together)
+Delegates: Got it!
+Regular Expressions. Got it! 
+Exception Handling. Got it!
+Cryptography: Got it!
+At least one type of concurrency, asynchrony, or parallel programming: Got it!
+At least one of: ADO.NET, Serialization: Working on it...Can argue for it!
+        Serialization could be putting all responses in a txt file 
+At least one of: Networking, Streams: Got it!
 
--Delegates: 

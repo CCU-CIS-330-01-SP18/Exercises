@@ -7,17 +7,20 @@ using System.Text.RegularExpressions;
 
 namespace ParsonsFinalProject
 {
-    public class UserView
+    public class UserView : Program
     {
         public static void UserInterface()
         {
+
             Console.WriteLine("Write out the statement for audio conversion:");
             var speechText = Console.ReadLine();
 
-            var result = TextToValidate.ValidateText(speechText);
-            if (result == true)
+            //var result = TextToValidate.ValidateText(speechText);
+            var textValidator = new TextToValidate();
+            bool valid = textValidator.ValidateText(speechText);
+            if (valid == true)
             {
-                Program.APICall(speechText);
+                APICallAsync(speechText);
             }
             else
             {

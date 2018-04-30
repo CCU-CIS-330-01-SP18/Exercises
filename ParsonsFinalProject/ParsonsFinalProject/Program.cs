@@ -6,6 +6,8 @@ using NAudio.Wave;
 using System.Text;
 using System.Security.Cryptography;
 using System.Threading;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ParsonsFinalProject
 {
@@ -13,54 +15,78 @@ namespace ParsonsFinalProject
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to the RSS Vocalizer!");
+            Console.WriteLine("Before you begin, do you want to break the ice by having the program say a little tongue twister (1), a familiar little song (2), or a simple fact (3) ?");
+            
+            string userInput = Console.ReadLine();
+            int index = Convert.ToInt32(userInput);
+            List<string> myList = new List<string>();
+
+            myList.Add("Skipity skip skip skippy skippila skipish skipping");
+            myList.Add("The wheels on the bus go round and round, round and round, round and round. The wheels on the bus go round and round, all through the town!");
+            myList.Add("I am speaking with absolutely no emotions or inflections on my speech. he is dead. he is funny. he is angry. i am angry. but you cannot tell! So many emotions...");
+
+            var value = myList.ElementAt(index-1);
+
+            APICallAsync(value);
             while (true)
             {
                 UserView.UserInterface();
             }
         }
 
-        public static void APICall(string speechText)
+        public static async void APICallAsync(string speechText)
         {
             var apiKey = "22c1257eb63c445793bb5e6e14d73611";
             var isSSL = false;
             var text = speechText;
-            var lang = Languages.English_GreatBritain;
-
+            var lang = Languages.English_UnitedStates; ;
+                /*
+            Languages.English_UnitedStates;
+            Languages.English_India;
+            Languages.English_Australia;
+            Languages.English_Canada;
+            Languages.English_GreatBritain;
+            */
             var voiceParams = new VoiceParameters(text, lang)
             {
                 AudioCodec = AudioCodec.MP3,
                 AudioFormat = AudioFormat.Format_48KHZ.AF_48khz_16bit_stereo,
-                //Format_11KHZ.AF_11khz_8bit_mono,
-                //Format_44KHZ.AF_44khz_16bit_stereo,
                 IsBase64 = false,
                 IsSsml = false,
                 SpeedRate = 1
             };
-            
-
+                        
             var voiceProvider = new VoiceProvider(apiKey, isSSL);
+
+            // An asynchonous API call.
+            var voice = await voiceProvider.SpeechTaskAsync<byte[]>(voiceParams);
+
+            var fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "voice.mp3");
 
             voiceProvider.SpeechFailed += (Exception ex) =>
             {
                 Console.WriteLine(ex.Message);
             };
 
-            var voice = voiceProvider.Speech<byte[]>(voiceParams);
-
-            var fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "voice.mp3");
-
-
             int count = 3;
             for (int i = 1; i <= count; i++)
             {
                 Console.WriteLine("Working on it..." + i);
-                Thread.Sleep(600);
+                Thread.Sleep(500);
             }
             
             try
             {
                 using (var stream = File.Create(fileName)){}
                 File.WriteAllBytes(fileName, voice);
+                //File.Serialize(fileName, voice);
+                /*
+                 BinaryFormatter binaryFormat = new BinaryFormatter();
+            using (FileStream stream = File.Create("binary_Marsupials.txt"))
+            {
+                binaryFormat.Serialize(stream, list);
+}*/
             }
             catch
             {
@@ -68,24 +94,7 @@ namespace ParsonsFinalProject
                 UserView.UserInterface();
             }
             Console.WriteLine("Success!");
-            PlayAudio();
-            /*
-             Console.WriteLine("Do you want to encrypt the audio files? (yes/no)");
-            var encrypt = Console.ReadLine();
-            if (encrypt == "yes")
-            {
-                EncryptFile(pathAndName);
-                EncryptFile(oldPathAndName);
-                Console.WriteLine("Encrypting...");
-                Thread.Sleep(200);
-            }
-            if (encrypt == "no")
-            {
-                Console.WriteLine("Directing back to program...");
-                UserView.UserInterface();
-            }*/
-
-            
+            PlayAudio();            
         }
 
         private static void PlayAudio()

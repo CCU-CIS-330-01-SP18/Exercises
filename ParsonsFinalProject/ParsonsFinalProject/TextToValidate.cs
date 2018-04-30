@@ -9,7 +9,7 @@ namespace ParsonsFinalProject
 {
     public class TextToValidate
     {
-        public static bool ValidateText(string speechText)
+        internal bool ValidateText(string speechText)
         {
             bool nameWorks = Regex.IsMatch(speechText, @"^[^<>\/;~_]*$");
             if (nameWorks == false)
@@ -27,5 +27,7 @@ namespace ParsonsFinalProject
             }
 
         }
+
+        
     }
 }
