@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntisocialNetwork", "ASN\AntisocialNetwork.csproj", "{3180D95F-816E-477B-AEE3-0EC3F49A6EEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASNTests", "ASNTests\ASNTests.csproj", "{359639E4-86B5-4496-A09F-84107C1E1478}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3180D95F-816E-477B-AEE3-0EC3F49A6EEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3180D95F-816E-477B-AEE3-0EC3F49A6EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3180D95F-816E-477B-AEE3-0EC3F49A6EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3180D95F-816E-477B-AEE3-0EC3F49A6EEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{359639E4-86B5-4496-A09F-84107C1E1478}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{359639E4-86B5-4496-A09F-84107C1E1478}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{359639E4-86B5-4496-A09F-84107C1E1478}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{359639E4-86B5-4496-A09F-84107C1E1478}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DADFFCD-46DE-4257-AB0E-A28E457851E9}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ember - Home</title>
+    <link href="main.css" type="text/css" rel="stylesheet"/>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="home.js"></script>
+</head>
+<body>
+<div id="nav">
+    <input type="text" placeholder="email" id="login_email"/>
+    <input type="password" placeholder="password" id="login_password"/>
+    <button type="submit" onclick="tryLogin()">Log in</button>
+    <button type="submit" onclick="window.location='#'">Register</button>
+    <label for="nav" hidden="hidden" id="loginerr">Error!</label>
+</div>
+<div id="newpost">
+    <input type="text" id="newpostdata"/>
+    <button type="submit" id="submitpost" onclick="submitPost()">Submit Post</button>
+    <br/>
+    <input type="text" id="newcommentdata" placeholder="New comment text"/>
+    <input type="text" id="newcommentid" placeholder="Post ID to comment on"/>
+    <button type="submit" id="submitcomment" onclick="submitComment()">Add Comment</button>
+</div>
+<div id="allposts">
+
+</div>
+</body>
+</html>

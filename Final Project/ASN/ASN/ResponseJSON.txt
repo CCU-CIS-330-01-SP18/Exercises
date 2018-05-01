@@ -1,0 +1,62 @@
+﻿This file exists to help me remember what JSON data needs to be POSTed to each URL, or what JSON data will be returned.
+Mainly for UI development purposes, but I left this here for reference.
+
+
+A response for a user's post:
+{
+	"id": 1234,
+	"user": 5678,
+	"points": 5,
+	"message": "this is my post, in which I am well pleased."
+	"comments": [
+		
+	]
+}
+
+
+Create a post request:
+{
+	"message": "wow I expected this to be more complicated, but the user's ID info is in the header so this is all we need."
+}
+
+
+Create new user request:
+{
+  "firstName": "Bobby",
+  "lastName": "Appleseed",
+  "email": "test@test.com",
+  "password": "password"
+}
+
+
+Headers for logging in:
+email: useremail@example.com
+password: passwordhere
+
+Headers for using the site post-login:
+hash: <password hash here>
+
+=====================================================
+GET
+/post?id=post_id
+>> JSON data of the post and comments (serialized)
+
+/user/id
+>> the ID of the current user
+
+
+
+POST
+/register
+>> New user ID
+
+/newpost
+>> New post ID
+
+/givepoint?id=post_id
+>> That post's new number of points
+
+/login
+>> A password hash that is stored as a cookie on the client
+
+/addcomment?pid=post_id
