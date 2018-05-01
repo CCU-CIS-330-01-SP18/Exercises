@@ -1,4 +1,4 @@
-﻿"Encounters" : 
+﻿"Encounters" :
 {
   {
     "ID": "1",
@@ -22,7 +22,7 @@
   },
   {
     "ID": "6",
-    "Text": "You hit the goblin in the head and he is rendered unconcious. 1 Loot goblin 2. Help boy."
+    "Text": "You hit the goblin in the head and he is rendered unconcious. 1.Loot goblin 2. Help boy."
   },
   {
     "ID": "7",
@@ -30,14 +30,18 @@
   },
   {
     "ID": "8",
-    "Text":
-  },
-  {
-    "ID": "9",
     "Text": "You run from the dragon. You are slightly fatigued from all of this running. You end running into a young boy being attacked by a goblin. 1. Fight goblin 2. Run away... Again."
   },
   {
+    "ID": "9",
+    "Text": "You find a small club, along with 3 pieces of string. You keep these treasures. 1. Help boy 2. Continue on your merry way."
+  },
+  {
     "ID": "10",
-    "Text": "
+    "Text": "You run in fear from the tiny goblin. After running frantically through the woods, you burst into a clearing where a giant, menacing dragon is taking an afternoon snooze. 1.Fight the dragon. 2. Run away!"
+  },
+  {
+    "ID": "11",
+    "Text": "Yeet"
   }
 }

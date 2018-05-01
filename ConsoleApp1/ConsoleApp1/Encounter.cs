@@ -30,5 +30,12 @@ namespace ConsoleApp1
             this.EncounterID = encounterID;
             this.Entities = entities;
         }
+        public void GetEncounters()
+        {
+            
+            var ListOfEncounters = new List<Encounter>;
+            var object = JsonConvert.Deserialize<Encounter>()
+            ListOfEncounters.OrderBy<IAsyncResult, string>(r => r.Name).ToList();
+        }
     }
 }
