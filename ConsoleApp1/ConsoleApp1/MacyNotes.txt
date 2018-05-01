@@ -1,0 +1,19 @@
+﻿Threads
+Have player start a process that takes a bit (drawing water from a well, carrying something, etc...)
+
+Cryptography on text so can't hack to read ahead for scenarios? (no cheating)
+
+Regex for input validation, maybe some cheat codes? ;)
+
+Stream to read file?
+LINQ to JSON files
+
+Exception Handling with validating input
+
+
+rng from cryptography
+
+play rock paper scissors with an ogre
+
+msking test classes for testing readline and write line.. Call them from the tests so they don't actually use
+the console. I will need this to test my game.
