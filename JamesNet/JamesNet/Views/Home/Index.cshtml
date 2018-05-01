@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "JamesNet 2.0";
+}
+<html>
+<body>
+    <header>
+        <h1>JamesNet 2.0</h1>
+        <p>The <em>actually functional</em> WebSocket web chat system. <span class="tiny">Sort of.</span></p>
+    </header>
+    <div class="container">
+        <div class="chatArea">
+            <h2>Chat</h2>
+            <div id="chatWindowWrapper">
+                <div id="chatWindow"></div>
+            </div>
+            <br />
+            <input type="text" id="message" />
+            <input type="submit" id="sendmessage" value="Send" />
+            <input type="hidden" id="displayname" />
+            <br /><br />
+            <label for="encryptionKey">Enter encryption key here (optional):</label>
+            <input type="text" id="encryptionKey" />
+        </div>
+    </div>
+    @section scripts {
+        <script src="~/Scripts/jquery.signalR-2.2.3.min.js"></script>
+        <script src="~/signalr/hubs"></script>
+        <script>
+            $(function () {
+                var chat = $.connection.chatHub;
+                chat.client.receiveMessage = function (name, message) {
+                    // Add the message to the page.
+                    $('#chatWindow').append('<p><strong class="username">' + name
+                        + '</strong>: ' + message + '</p>');
+                };
+
+                chat.client.receiveEncryptedMessage = function (name, encryptedMessage) {
+                    // If the encryption password box is blank, do nothing.
+                    // No sanitiziation is needed here, since the key will be hashed anyway.
+                    var encryptionBoxValue = $('#encryptionKey').val();
+                    if (encryptionBoxValue) {
+                        chat.server.decryptMessage(encryptedMessage, encryptionBoxValue).done(function (result) {
+                            $('#chatWindow').append('<p><strong class="username">' + name
+                                + '</strong>: ' + result + '</p>');
+                        });
+                    }
+                };
+
+                function sendClicked() {
+                    if ($('#encryptionKey').val()) {
+                        chat.server.send($('#displayname').val(), $('#message').val(), $('#encryptionKey').val());
+                        $('#message').val('').focus();
+                    }
+                    // Otherwise, send normally.
+                    else {
+                        chat.server.send($('#displayname').val(), $('#message').val());
+                        $('#message').val('').focus();
+                    }
+                }
+
+                // Start the connection.
+                $.connection.hub.start().done(function () {
+
+                    // Get the username and store it for later use.
+                    $('#displayname').val(prompt('Enter your username for this session:', ''));
+
+                    chat.server.clientStartup();
+
+                    $('#message').focus();
+                    $('#sendmessage').click(sendClicked);
+                    $('#message').keydown(function (event) {
+                        if (event.keyCode == 13)
+                            sendClicked();
+                    })
+                });
+            });
+        </script>
+    }
+</body>
+</html>

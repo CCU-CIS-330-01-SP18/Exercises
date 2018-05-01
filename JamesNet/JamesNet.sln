@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamesNet", "JamesNet\JamesNet.csproj", "{BDFA87C7-C658-4D16-BBA0-24AA5468F00F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamesNetTests", "JamesNetTests\JamesNetTests.csproj", "{42007AA9-27BC-4C23-B9DC-4299B5F7F697}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDFA87C7-C658-4D16-BBA0-24AA5468F00F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDFA87C7-C658-4D16-BBA0-24AA5468F00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDFA87C7-C658-4D16-BBA0-24AA5468F00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDFA87C7-C658-4D16-BBA0-24AA5468F00F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42007AA9-27BC-4C23-B9DC-4299B5F7F697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42007AA9-27BC-4C23-B9DC-4299B5F7F697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42007AA9-27BC-4C23-B9DC-4299B5F7F697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42007AA9-27BC-4C23-B9DC-4299B5F7F697}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0272A31E-BD44-4996-A9E4-1E637270144B}
+	EndGlobalSection
+EndGlobal
