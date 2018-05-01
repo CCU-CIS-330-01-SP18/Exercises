@@ -15,7 +15,7 @@ namespace ComprehensiveAssignment.Models
 
         [Required(ErrorMessage ="First Name Cannot Be Empty Or Contain Numbers")]
         [StringLength(50)]
-        [RegularExpression(@"^([a-zA-Z]+)$")]
+        [RegularExpression(@"^([a-zA-Z]+)$", ErrorMessage = "ex. John")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage ="Last Name Cannot Be Empty Or Contain Numbers")]

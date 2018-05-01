@@ -79,7 +79,6 @@ namespace ComprehensiveAssignment.Controllers
         /// </summary>
         /// <param name="model">User model that is passed in from the form.</param>
         /// <returns>Returns an ActionResult depending on whether a correct login was found.</returns>
-        
         public ActionResult GetUser(User model)
         {
             ActionResult action = null;

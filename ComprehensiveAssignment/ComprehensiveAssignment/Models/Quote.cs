@@ -12,6 +12,7 @@ namespace ComprehensiveAssignment.Models
     public class Quote
     {
         [Required(ErrorMessage = "Field Cannot Be Empty")]
+        [RegularExpression(@"^\w{1,5}$", ErrorMessage = "Symbol Cannot Be More Than 5 Characters.")]
         public string Symbol { get; set; }
 
         public string CompanyName { get; set; }
