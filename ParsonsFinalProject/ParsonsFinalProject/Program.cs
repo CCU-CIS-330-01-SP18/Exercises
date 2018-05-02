@@ -176,7 +176,7 @@ namespace ParsonsFinalProject
         /// </summary>
         /// <param name="pathAndName">A string file path to be converted.</param>
         /// <param name="oldPathAndName"> A string file path to be created from the conversion.</param>
-        public static string ConvertMp3ToWav(string pathAndName, string oldPathAndName)
+        public static void ConvertMp3ToWav(string pathAndName, string oldPathAndName)
         {
             try
             {
@@ -185,7 +185,6 @@ namespace ParsonsFinalProject
                     using (WaveStream pcm = WaveFormatConversionStream.CreatePcmStream(mp3))
                     {
                         WaveFileWriter.CreateWaveFile(oldPathAndName, pcm);
-                        return "success";
                     }
                 }
             }
@@ -193,7 +192,6 @@ namespace ParsonsFinalProject
             {
                 Console.WriteLine("File in use, try again.");
                 UserView.UserInterface();
-                return "failure";
             }
         }
     }

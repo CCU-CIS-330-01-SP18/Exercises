@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ParsonsFinalProject
 {
     /// <summary>
-    /// A class that validates text to not have specific special characters
+    /// A class that validates text to not have specific special characters.
     /// </summary>
     public class TextToValidate
     {
@@ -16,7 +16,7 @@ namespace ParsonsFinalProject
         /// A method that validates strings and returns a boolean for the results of the regex.
         /// </summary>
         /// <param name="speechText"> A string that is validated.</param>
-        /// <returns></returns>
+        /// <returns> Return a boolean to indicate whether or not regex found illegal characters.</returns>
         public bool ValidateText(string speechText)
         {
             bool nameWorks = Regex.IsMatch(speechText, @"^[^<>\/;~_]*$");
