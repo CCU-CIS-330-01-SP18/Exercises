@@ -1,0 +1,16 @@
+﻿.Net Framework Final Project
+
+Unit Testing Note: I did very little testing because of the aspect of my API call using the directory and eliminating any access or testing. 
+
+Pillars of OOP: Encapsulation, Inheritance, Polymorphism, Abstraction:
+Collections: Got it!
+LINQ: Got it in line 32 in Program.cs
+Delegates: Got it!
+Regular Expressions. Got it! 
+Exception Handling. Got it!
+Cryptography: Got it!
+At least one type of concurrency, asynchrony, or parallel programming: Got it!
+At least one of: ADO.NET, Serialization: I need to convert some type of object into a stream of bytes using the API, so I am 
+	fulfilling this already by sending and receiving byte[] variables then writing it into an audio file, fulfilling the technical definition of serialization
+At least one of: Networking, Streams: Got it with my API call.
+

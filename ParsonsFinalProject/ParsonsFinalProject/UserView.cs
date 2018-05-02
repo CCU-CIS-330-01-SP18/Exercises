@@ -7,11 +7,16 @@ using System.Text.RegularExpressions;
 
 namespace ParsonsFinalProject
 {
+    /// <summary>
+    /// A class that provides a console user interface that is inherited from the Program class.
+    /// </summary>
     public class UserView : Program
     {
+        /// <summary>
+        /// A method that provides a console interface for the Program class
+        /// </summary>
         public static void UserInterface()
         {
-
             Console.WriteLine("Write out the statement for audio conversion:");
             var speechText = Console.ReadLine();
 

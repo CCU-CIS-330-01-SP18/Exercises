@@ -46,15 +46,23 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="VoiceRSS_TTS_SDK">
+      <HintPath>..\ParsonsFinalProject\VoiceRSS_TTS_SDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProgramTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextToValidateTests.cs" />
-    <Compile Include="UserViewTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ParsonsFinalProject\ParsonsFinalProject.csproj">
+      <Project>{7f32ce20-123a-43e2-9d71-005790bdfec1}</Project>
+      <Name>ParsonsFinalProject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

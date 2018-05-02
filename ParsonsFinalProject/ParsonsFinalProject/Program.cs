@@ -11,20 +11,30 @@ using System.Linq;
 
 namespace ParsonsFinalProject
 {
+    /// <summary>
+    /// A class that makes API calls, encryption, and file conversion.
+    /// </summary>
     public class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Starts the main program.
+        /// </summary>
+        /// <param name="args">A string parameter.</param>
+        protected static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the RSS Vocalizer!");
-            Console.WriteLine("Before you begin, do you want to break the ice by having the program say a little tongue twister (1), a familiar little song (2), or a simple fact (3) ?");
+            Console.WriteLine("Welcome to the RSS TTS Vocalizer!");
+            Console.WriteLine("Before you begin, Break the ice and play a little tongue twister (1)," +
+                " a familiar little song (2), " +
+                "or a simple wierd statement (3)?");
             
             string userInput = Console.ReadLine();
+
             int index = Convert.ToInt32(userInput);
             List<string> myList = new List<string>();
 
-            myList.Add("Skipity skip skip skippy skippila skipish skipping");
+            myList.Add("If you must cross a course cross cow across a crowded cow crossing, cross the cross coarse cow across the crowded cow crossing carefully.");
             myList.Add("The wheels on the bus go round and round, round and round, round and round. The wheels on the bus go round and round, all through the town!");
-            myList.Add("I am speaking with absolutely no emotions or inflections on my speech. he is dead. he is funny. he is angry. i am angry. but you cannot tell! So many emotions...");
+            myList.Add("I am speaking with absolutely no emotions or inflections in my speech. he is dead. I am scared. he is angry. i am angry. but you cannot tell! So many emotions...");
 
             var value = myList.ElementAt(index-1);
 
@@ -35,6 +45,10 @@ namespace ParsonsFinalProject
             }
         }
 
+        /// <summary>
+        /// An async method that calls the API with some error handling.
+        /// </summary>
+        /// <param name="speechText"> A string to be converted to bytes and passed to the API.</param>
         public static async void APICallAsync(string speechText)
         {
             var apiKey = "22c1257eb63c445793bb5e6e14d73611";
@@ -69,24 +83,13 @@ namespace ParsonsFinalProject
                 Console.WriteLine(ex.Message);
             };
 
-            int count = 3;
-            for (int i = 1; i <= count; i++)
-            {
-                Console.WriteLine("Working on it..." + i);
-                Thread.Sleep(500);
-            }
-            
+            Console.WriteLine("Working on it...");
+            Thread.Sleep(3000);
+
             try
             {
-                using (var stream = File.Create(fileName)){}
+                using (var stream = File.Create(fileName)) { }
                 File.WriteAllBytes(fileName, voice);
-                //File.Serialize(fileName, voice);
-                /*
-                 BinaryFormatter binaryFormat = new BinaryFormatter();
-            using (FileStream stream = File.Create("binary_Marsupials.txt"))
-            {
-                binaryFormat.Serialize(stream, list);
-}*/
             }
             catch
             {
@@ -97,6 +100,9 @@ namespace ParsonsFinalProject
             PlayAudio();            
         }
 
+        /// <summary>
+        /// A private method that plays .wav audio files from the base directory.
+        /// </summary>
         private static void PlayAudio()
         {
             var pathAndName = AppDomain.CurrentDomain.BaseDirectory + @"\voice.mp3";
@@ -105,8 +111,10 @@ namespace ParsonsFinalProject
 
             try
             {
-                SoundPlayer typewriter = new SoundPlayer();
-                typewriter.SoundLocation = oldPathAndName;
+                SoundPlayer typewriter = new SoundPlayer
+                {
+                    SoundLocation = oldPathAndName
+                };
                 typewriter.PlaySync();
             }
             catch
@@ -131,10 +139,13 @@ namespace ParsonsFinalProject
             }
         }
 
-        /// Encrypts a file using Rijndael algorithm.
-        ///</summary>
-        ///<param name="outputFile"></param>
-        private static void EncryptFile(string outputFile)
+        
+
+        /// <summary>
+        /// Encrypts a file using the Rijndael algorithm.
+        /// </summary>
+        /// <param name="outputFile"> A string file path to be encrypted.</param>
+        public static string EncryptFile(string outputFile)
         {
             try
             {
@@ -149,16 +160,23 @@ namespace ParsonsFinalProject
 
                 CryptoStream cs = new CryptoStream(fsCrypt,
                     RMCrypto.CreateEncryptor(key, key),
-                    CryptoStreamMode.Write);               
+                    CryptoStreamMode.Write);
             }
             catch
             {
                 Console.WriteLine("Encryption failed!", "Error");
                 Console.Read();
-            }      
+            }
+            return outputFile;
         }
 
-        private static void ConvertMp3ToWav(string pathAndName, string oldPathAndName)
+
+        /// <summary>
+        /// A method to convert .mp3 files to .wav files.
+        /// </summary>
+        /// <param name="pathAndName">A string file path to be converted.</param>
+        /// <param name="oldPathAndName"> A string file path to be created from the conversion.</param>
+        public static string ConvertMp3ToWav(string pathAndName, string oldPathAndName)
         {
             try
             {
@@ -167,6 +185,7 @@ namespace ParsonsFinalProject
                     using (WaveStream pcm = WaveFormatConversionStream.CreatePcmStream(mp3))
                     {
                         WaveFileWriter.CreateWaveFile(oldPathAndName, pcm);
+                        return "success";
                     }
                 }
             }
@@ -174,6 +193,7 @@ namespace ParsonsFinalProject
             {
                 Console.WriteLine("File in use, try again.");
                 UserView.UserInterface();
+                return "failure";
             }
         }
     }
